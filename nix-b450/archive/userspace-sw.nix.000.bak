@@ -1,0 +1,85 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+# edited by phossil
+# 2022-06-17
+# MSI B450 Gaming Plus Max
+
+{ lib, config, pkgs, ... }:
+
+{
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    # now look at this lovely mess
+    firefox-wayland discord links alacritty keepassxc emacs vivaldi
+    vivaldi-ffmpeg-codecs vivaldi-widevine starship
+    hexchat lollypop neofetch speedcrunch
+    libsForQt5.qt5.qtimageformats jp2a lolcat ark unrar
+    libsForQt5.kdeconnect-kde cherrytree krita
+    obs-studio gnome.gnome-disk-utility castor gnome.gnome-system-monitor
+    bleachbit p7zip gparted tealdeer libreoffice-qt hunspellDicts.en_US
+    nicotine-plus mpv picard libsForQt5.soundkonverter ffmpeg-full
+    syncthing git pandoc bottom chezmoi pciutils
+    lsof testdisk-qt whois trash-cli rmlint ripgrep fd gimp
+    qbittorrent olive-editor supercollider bucklespring-libinput
+    dateutils scrcpy kiwix usbutils kwave audacity-gtk3 handbrake dvdauthor
+    vorta drawpile mkchromecast openscad wings pikopixel
+    grafx2 virt-manager gnome.geary bat gnome.epiphany thunderbird gnupg
+    kleopatra youtube-dl woeusb ntfs3g uget puddletag
+    brasero aria2 chntpw cdrkit cabextract wimlib sqlitebrowser
+    imgbrd-grabber xorg.xkill anki zim libsForQt5.kolourpaint
+    bpm-tools protonvpn-gui gsmartcontrol android-studio
+    minecraft shellcheck mangohud trash-cli noteshrink
+    ddate cpu-x uget-integrator gnome.gnome-tweaks shntool flac
+    koreader sigil epr nushell ion tokei wol pavucontrol rustscan
+    nmap-graphical sshfs borgbackup rlwrap vokoscreen-ng gore nixfmt
+    go-langserver waypipe nix-prefetch-github
+    zile enlightenment.terminology calibre gnome-firmware-updater
+    gnome.gnome-calendar darkhttpd v4l-utils qgit digikam5
+    darktable rawtherapee cli-visualizer cava projectm ghostwriter heimdall
+    bandwhich netsurf-browser okteta inkscape
+    gnome.gnome-sound-recorder svt-av1 libavif
+    rav1e dav1d nomacs haskellPackages.hakyll texlive.combined.scheme-full
+    gnome.networkmanagerapplet vscode dotnetCorePackages.sdk_5_0
+    gnome-feeds gnome.dconf-editor hydrus drawing zrythm helvum
+    gnome-usage gnome.gnome-logs flameshot hfsprogs macchina
+    drawio treesheets blender uutils-coreutils syslinux goverlay
+    imagemagick gthumb zip unzip foliate discordchatexporter-cli discocss
+    radeontop easyeffects noisetorch corectrl zoxide dutree delta procs
+    broot bottom-rs ccl tty-clock mono zettlr nixpkgs-fmt newsflash screen
+    shutter chromaprint krename libsForQt5.breeze-qt5 libsForQt5.breeze-icons
+    libsForQt5.kdegraphics-thumbnailers libsForQt5.kio-extras
+    luna-icons la-capitaine-icon-theme flat-remix-icon-theme kora-icon-theme
+    papirus-icon-theme vimix-icon-theme tela-icon-theme taisei timidity
+    soundfont-fluid freepats unetbootin iotop gnome.pomodoro zenmonitor
+    catimg yaft crow-translate translate-shell gcolor3 artha neo-cowsay
+    gnomeExtensions.audio-output-switcher gnomeExtensions.vitals
+    gnomeExtensions.syncthing-icon gnomeExtensions.systemd-manager
+    gnomeExtensions.alphabetical-app-grid gnomeExtensions.appindicator
+    diffpdf arcan.all-wrapped libresprite gmsh bambootracker glava
+    solvespace antimony exa fbv gnomeExtensions.material-shell
+    xournalpp cawbird michabo
+    # all of wine and maybe gecko + mono support
+    winetricks wineWowPackages.stagingFull
+    # music and stuff
+    vmpk hydrogen  zynaddsubfx-ntk calf mimic frescobaldi denemo
+    MIDIVisualizer sonic-visualiser sonic-lineup tony csound-qt puredata
+    schismtracker milkytracker qtractor ardour musescore giada
+    fluidsynth polyphone rosegarden
+    # lv2 plugins - archlinux.org/groups/x86_64/lv2-plugins/
+    geonkick distrho zam-plugins dragonfly-reverb zynaddsubfx-ntk adlplug
+    ams-lv2 artyFX  x42-avldrums bchoppr bsequencer bshapr stone-phaser
+    drumgizmo drumkv1 eq10q fomp x42-gmsynth guitarix gxplugins-lv2 helm
+    infamousPlugins lsp-plugins mda_lv2 ninjas2 noise-repellent opnplug
+    padthv1 qmidiarp samplv1 setbfree sorcer spectmorph surge synthv1
+    wolf-shaper x42-plugins
+    #natron multibootusb clasp-common-lisp monodevelop
+    #heimdall-gui rustracer multimc msbuild
+    # removed in favor of the uwu skin
+    #bslizr
+    # dev stuff
+    #rustup sbcl guile maven electron go dotnetPackages.Nuget mitscheme
+    #mythes haskellPackages.drawille
+  ];
+}

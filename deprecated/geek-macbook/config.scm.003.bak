@@ -1,0 +1,89 @@
+;; This is an operating system configuration generated
+;; by the graphical installer.
+
+;; edited by phossil
+;; 2021-08-15
+
+; (use-modules (gnu))
+(use-modules
+  (gnu)
+  (gnu packages shells)		; shells including zsh
+  (gnu packages cups)		; cups extensions(?)
+  (gnu packages xorg)		; xf86-input-libinput
+  (nongnu packages linux)	; standard kernel
+  (nongnu system linux-initrd))	; microcode
+;; enable networked desktop with earlyoom and printing
+(use-service-modules desktop networking xorg linux cups ssh)
+
+(operating-system
+;; start block
+  (kernel linux)
+  (initrd microcode-initrd)
+  (firmware (list linux-firmware))
+;; end block
+  (locale "en_US.utf8")
+  (timezone "America/New_York")
+  (keyboard-layout (keyboard-layout "us"))
+  (host-name "Geek-MacBook")
+  (users (cons* (user-account
+                  (name "phossil")
+                  (comment "Phosu Parsons")
+                  (group "users")
+                  (home-directory "/home/phossil")
+                  (supplementary-groups
+                    '("wheel" "netdev" "audio" "video")))
+                %base-user-accounts))
+  (packages
+    (append
+      (list (specification->package "nss-certs"))
+      %base-packages))
+
+(services
+    (append
+      (list (service earlyoom-service-type)
+            (service cups-service-type
+              (cups-configuration
+                (web-interface? #t)
+                (extensions
+                  (list cups-filters escpr hplip-minimal brlaser))))
+            (service zram-device-service-type (zram-device-configuration))
+            (service sane-service-type)
+            (service xfce-desktop-service-type)
+            (service openssh-service-type
+              (openssh-configuration
+                (authorized-keys
+                `(("phossil" ,(local-file "phossil.pub"))))))
+            (set-xorg-configuration
+              (xorg-configuration
+                (keyboard-layout keyboard-layout))))
+      ;;%desktop-services))
+      (modify-services %desktop-services
+	(guix-service-type config =>
+		(guix-configuration
+			(inherit config)
+			(substitute-urls
+			  (append (list "https://mirror.brielmaier.net")
+			%default-substitute-urls))
+			(authorized-keys
+			  (append (list (local-file "signing-key_brielmaier.pub"))
+		%default-authorized-guix-keys)))))))
+
+  (bootloader
+    (bootloader-configuration
+      (bootloader grub-efi-bootloader)
+      (target "/boot/efi")
+      (keyboard-layout keyboard-layout)))
+  (swap-devices
+    (list (uuid "4e7b5973-fb5d-4a57-b8b4-1b59ef490281")))
+  (file-systems
+    (cons* (file-system
+             (mount-point "/")
+             (device
+               (uuid "edfb37ee-acd5-40e2-8de2-abfdd05b0475"
+                     'ext4))
+             (type "ext4"))
+           (file-system
+             (mount-point "/boot/efi")
+             (device (uuid "DEB5-1E29" 'fat32))
+             (type "vfat"))
+           %base-file-systems)))

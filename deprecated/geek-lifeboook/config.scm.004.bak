@@ -1,0 +1,102 @@
+;; This is an operating system configuration generated
+;; by the graphical installer.
+;; edited by phossil
+;; 2021-07-25
+
+; (use-modules (gnu))
+(use-modules
+  (gnu)
+  (gnu packages shells)		; shells including bash
+  (gnu packages cups)		; cups extensions(?)
+  (gnu packages xorg)		; xf86-input-libinput
+  (nongnu packages linux)	; standard kernel
+  (nongnu system linux-initrd))	; microcode
+;; enable networked desktop with earlyoom and printing
+(use-service-modules desktop networking xorg linux cups ssh)
+
+(operating-system
+  ;; standard kernel with microcode and intel wireless firmware
+  (kernel linux)
+  (initrd microcode-initrd)
+  (firmware (cons* iwlwifi-firmware
+                 %base-firmware))
+
+  (locale "en_US.utf8")
+  (timezone "America/New_York")
+  ;; caps lock as control key and menu key for composing
+  ; (keyboard-layout (keyboard-layout "us"))
+  (keyboard-layout (keyboard-layout "us"
+                                    #:options '("ctrl:nocaps" "compose:menu")))
+  (host-name "Geek-LifeBook")
+  (users (cons* (user-account
+                  (name "phossil")
+                  (comment "Phosu Parsons")
+                  (group "users")
+                  (home-directory "/home/phossil")
+                  (supplementary-groups
+                    '("wheel" "netdev" "audio" "video")))
+                %base-user-accounts))
+  (packages
+    (append
+      (list (specification->package "nss-certs"))
+      %base-packages))
+  (services
+    (append
+      (list (service earlyoom-service-type)
+            (service cups-service-type
+              (cups-configuration
+                (web-interface? #t)
+                (extensions
+                  (list cups-filters escpr hplip-minimal brlaser))))
+            (service zram-device-service-type (zram-device-configuration))
+            (service sane-service-type)
+            (service enlightenment-desktop-service-type)
+            (service gnome-desktop-service-type)
+            (service openssh-service-type
+              (openssh-configuration
+                (authorized-keys
+                `(("phossil" ,(local-file "./phossil.pub"))))))
+            (set-xorg-configuration
+              (xorg-configuration
+                ;; remove synaptics driver
+                ;(remove (lambda (modules)
+            ;  xf86-input-synaptics
+            ;  %desktop-services))
+                (modules
+                  (list
+                    xf86-video-vesa
+                    xf86-video-fbdev
+                    xf86-input-libinput))
+                (keyboard-layout keyboard-layout))))
+      ;;%desktop-services))
+      (modify-services %desktop-services
+	(guix-service-type config =>
+		(guix-configuration
+			(inherit config)
+			(substitute-urls
+			  (append (list "https://mirror.brielmaier.net")
+			%default-substitute-urls))
+			(authorized-keys
+			  (append (list (local-file "./signing-key_brielmaier.pub"))
+		%default-authorized-guix-keys)))))))
+
+  (bootloader
+    (bootloader-configuration
+      (bootloader grub-efi-bootloader)
+      (target "/boot/efi")
+      (keyboard-layout keyboard-layout)))
+  (swap-devices
+    (list (uuid "9a3eedbd-4af3-46a0-8d57-b02ea2b3c4b3")))
+  (file-systems
+    (cons* (file-system
+             (mount-point "/")
+             (device
+               (uuid "3c163746-0609-4a76-8a79-56ae2c4efe3e"
+                     'btrfs))
+             (type "btrfs")
+             (options "discard=async"))
+           (file-system
+             (mount-point "/boot/efi")
+             (device (uuid "7C0B-F89C" 'fat32))
+             (type "vfat"))
+           %base-file-systems)))

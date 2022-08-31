@@ -1,0 +1,72 @@
+# Main package set of userspace software such as command line
+# utilities, audio players, text editors, games, web browsers,
+# and creative suites.
+# edited by phossil
+# 2022-06-12
+
+{ config, pkgs, ... }:
+
+{
+  # Allow non-free software
+  nixpkgs.config.allowUnfree = true;
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    # now look at this lovely mess
+    firefox-wayland discord links2 alacritty keepassxc emacs vivaldi
+    vivaldi-ffmpeg-codecs starship
+    hexchat lollypop neofetch speedcrunch
+    libsForQt5.qt5.qtimageformats jp2a lolcat ark unrar
+    libsForQt5.kdeconnect-kde cherrytree krita
+    obs-studio gnome.gnome-disk-utility castor gnome.gnome-system-monitor
+    bleachbit p7zip gparted tealdeer libreoffice-qt hunspellDicts.en_US
+    nicotine-plus picard libsForQt5.soundkonverter ffmpeg-full
+    syncthing git pandoc bottom chezmoi pciutils
+    lsof testdisk-qt whois trash-cli rmlint ripgrep fd gimp
+    qbittorrent supercollider bucklespring-libinput
+    dateutils scrcpy kiwix usbutils kwave audacity-gtk3 handbrake dvdauthor
+    vorta drawpile mkchromecast openscad wings pikopixel
+    grafx2 virt-manager gnome.geary bat gnome.epiphany thunderbird gnupg
+    kleopatra youtube-dl woeusb ntfs3g uget puddletag
+    brasero aria2 chntpw cdrkit cabextract wimlib sqlitebrowser
+    imgbrd-grabber rustup xorg.xkill anki zim libsForQt5.kolourpaint
+    bpm-tools protonvpn-gui gsmartcontrol android-studio
+    minecraft shellcheck sbcl guile mangohud trash-cli noteshrink
+    ddate cpu-x uget-integrator gnome.gnome-tweaks shntool flac
+    koreader sigil epr nushell ion tokei wol pavucontrol rustscan
+    nmap sshfs borgbackup rlwrap vokoscreen-ng gore nixfmt
+    go-langserver waypipe nix-prefetch-github
+    maven zile enlightenment.terminology calibre gnome-firmware-updater
+    gnome.gnome-calendar electron go darkhttpd v4l-utils qgit digikam
+    darktable rawtherapee cli-visualizer cava projectm ghostwriter heimdall
+    bandwhich netsurf-browser okteta inkscape
+    gnome.gnome-sound-recorder dotnetPackages.Nuget svt-av1 libavif
+    rav1e dav1d nomacs haskellPackages.hakyll texlive.combined.scheme-full
+    networkmanagerapplet vscode
+    gnome-feeds gnome.dconf-editor hydrus drawing exfatprogs zrythm helvum
+    gnome-usage gnome.gnome-logs flameshot hfsprogs macchina
+    drawio treesheets blender uutils-coreutils syslinux goverlay
+    imagemagick gthumb zip unzip foliate discordchatexporter-cli discocss
+    # all of wine and maybe gecko + mono support
+    #(winetricks.override { wine = wineWowPackages.full; })
+    wineWowPackages.full mono
+    # music and stuff
+    vmpk hydrogen  zynaddsubfx-ntk calf mimic frescobaldi denemo
+    MIDIVisualizer sonic-visualiser tony puredata
+    schismtracker milkytracker qtractor ardour musescore giada
+    # lv2 plugins - archlinux.org/groups/x86_64/lv2-plugins/
+    geonkick distrho zam-plugins dragonfly-reverb zynaddsubfx-ntk adlplug
+    ams-lv2 artyFX  x42-avldrums bchoppr bsequencer bshapr stone-phaser
+    drumgizmo drumkv1 eq10q fomp x42-gmsynth guitarix gxplugins-lv2 helm
+    infamousPlugins lsp-plugins mda_lv2 ninjas2 noise-repellent opnplug
+    padthv1 qmidiarp samplv1 setbfree sorcer spectmorph synthv1
+    wolf-shaper x42-plugins
+    #natron multibootusb clasp-common-lisp monodevelop
+    #heimdall-gui rustracer multimc vivaldi-widevine mitscheme
+    #sonic-lineup olive-editor surge csound-qt
+    # removed in favor of the uwu skin
+    #bslizr
+    emote logseq appimage-run libsForQt5.breeze-icons lazpaint celluloid
+    qpwgraph jamesdsp pipecontrol
+  ];
+}

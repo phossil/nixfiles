@@ -1,0 +1,113 @@
+;; This is an operating system configuration generated
+;; by the graphical installer.
+;; edited by phossil
+;; 2021-07-27
+
+; (use-modules (gnu))
+(use-modules
+  (gnu)
+  (gnu packages shells)		; shells including bash
+  (gnu packages cups)		; cups extensions(?)
+  (gnu packages xorg)		; xf86-input-libinput
+  (nongnu packages linux)	; standard kernel
+  (nongnu system linux-initrd))	; microcode
+;; enable networked desktop with earlyoom and printing
+(use-service-modules desktop networking xorg linux cups)
+
+(operating-system
+  ;; standard kernel with microcode and intel wireless firmware
+  (kernel linux)
+  (initrd microcode-initrd)
+  (firmware (cons* iwlwifi-firmware
+                 %base-firmware))
+  
+  (locale "en_US.utf8")
+  (timezone "America/New_York")
+  ;; caps lock as control key and menu key for composing
+  (keyboard-layout (keyboard-layout "us"
+                                    #:options '("ctrl:nocaps" "compose:menu")))
+  (host-name "Geek-3350")
+  ;; for preserving permissions of migrated data
+  (groups
+   (cons* (user-group
+           (name "phossil")
+           (id 1000))
+          %base-groups))
+  (users
+   (cons* (user-account
+           (comment "Phosu Parsons")
+           (name "phossil")
+           (group "phossil")	; preserve permissions
+           (uid 1000)			; preserve permissions
+           (shell (file-append zsh "/bin/zsh"))	; zsh as default shell
+           (home-directory "/home/phossil")
+           (supplementary-groups
+            '("wheel" "users" "netdev" "audio" "video")))
+          %base-user-accounts))
+  (packages
+    (append
+      (list (specification->package "nss-certs"))
+      %base-packages))
+  (services
+    (append
+      (list (service earlyoom-service-type)
+            (service cups-service-type
+                   (cups-configuration
+                   (web-interface? #t)
+                   (extensions
+                    (list cups-filters escpr hplip-minimal brlaser))))
+	    (service zram-device-service-type
+	          (zram-device-configuration))
+	    (service sane-service-type)
+            (service enlightenment-desktop-service-type)
+            (service gnome-desktop-service-type)
+            (set-xorg-configuration
+              (xorg-configuration
+                ;; remove synaptics driver
+                ;(remove (lambda (modules)
+    		;  xf86-input-synaptics
+    		;  %desktop-services))
+                (modules
+                  (list
+                    xf86-video-vesa
+                    xf86-video-fbdev
+                    xf86-input-libinput))
+                (keyboard-layout keyboard-layout))))
+      ;;%desktop-services))
+      (modify-services %desktop-services
+	(guix-service-type config =>
+		(guix-configuration
+			(inherit config)
+			(substitute-urls
+			(append (list "https://mirror.brielmaier.net")
+			%default-substitute-urls))
+			(authorized-keys
+			(append (list 
+                                  (local-file "./signing-key_LifeBook.pub")
+                                  (local-file "./signing-key_brielmaier.pub"))
+			%default-authorized-guix-keys)))))))
+
+  ;; Allow resolution of '.local' host names with mDNS.
+  (name-service-switch %mdns-host-lookup-nss)
+
+  (bootloader (bootloader-configuration
+               (bootloader grub-efi-bootloader)
+               (target "/boot/efi")
+               (keyboard-layout keyboard-layout)))
+  (swap-devices
+    (list (uuid "ec2fb2a6-240e-4377-9bfd-84c008cb6743")))
+  (file-systems
+   (cons* (file-system
+           (mount-point "/")
+           (device (uuid "fcef2043-b53d-42f7-8f38-aa34d60e0ab5"))
+           (type "btrfs")
+           (options "discard=async"))
+          (file-system
+           (mount-point "/boot/efi")
+           (device (uuid "74F6-5A21" 'fat))
+           (type "vfat"))
+          (file-system
+           (mount-point "/home")
+           (device (uuid "12e7a0c4-fced-486f-93ee-a72b7b0b8a36"))
+           (type "f2fs"))
+          %base-file-systems)))

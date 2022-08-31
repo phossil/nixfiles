@@ -1,0 +1,74 @@
+;; This is an operating system configuration generated
+;; by the graphical installer.
+;; edited by phossil
+;; 2021-06-02
+
+; (use-modules (gnu))
+(use-modules
+  (gnu)
+  (gnu packages shells)			; shells including bash
+  (nongnu packages linux)		; standard kernel
+  (nongnu system linux-initrd))	; microcode
+(use-service-modules desktop networking xorg)
+
+(operating-system
+  ;; standard kernel with microcode and intel wireless firmware
+  (kernel linux)
+  (initrd microcode-initrd)
+  (firmware (cons* iwlwifi-firmware
+                 %base-firmware))
+  
+  (locale "en_US.utf8")
+  (timezone "America/New_York")
+  ;; caps lock as control key and menu key for composing
+  (keyboard-layout (keyboard-layout "us"
+                                    #:options '("ctrl:nocaps" "compose:menu")))
+  (host-name "Geek-LifeBook")
+  ;; for preserving permissions of migrated data
+  (groups
+   (cons* (user-group
+           (name "phossil")
+           (id 1000))
+          %base-groups))
+  (users
+   (cons* (user-account
+           (comment "Phosu Parsons")
+           (name "phossil")
+           (group "phossil")	; preserve permissions
+           (uid 1000)			; preserve permissions
+           (shell (file-append zsh "/bin/zsh"))	; zsh as default shell
+           (home-directory "/home/phossil")
+           (supplementary-groups
+            '("wheel" "netdev" "audio" "video")))
+          %base-user-accounts))
+  (packages
+    (append
+      (list (specification->package "nss-certs"))
+      %base-packages))
+  (services
+    (append
+      (list (service enlightenment-desktop-service-type)
+            (set-xorg-configuration
+              (xorg-configuration
+                (keyboard-layout keyboard-layout))))
+      %desktop-services))
+  (bootloader (bootloader-configuration
+               (bootloader grub-efi-bootloader)
+               (target "/boot/efi")
+               (keyboard-layout keyboard-layout)))
+  (swap-devices
+    (list (uuid "ec2fb2a6-240e-4377-9bfd-84c008cb6743")))
+  (file-systems
+   (cons* (file-system
+           (mount-point "/")
+           (device (uuid "fcef2043-b53d-42f7-8f38-aa34d60e0ab5"))
+           (type "btrfs"))
+          (file-system
+           (mount-point "/boot/efi")
+           (device (uuid "74F6-5A21" 'fat))
+           (type "vfat"))
+          (file-system
+           (mount-point "/home")
+           (device (uuid "12e7a0c4-fced-486f-93ee-a72b7b0b8a36"))
+           (type "f2fs"))
+          %base-file-systems)))
