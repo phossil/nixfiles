@@ -24,7 +24,7 @@ src = fetchFromGitHub {
   meta = with lib; {
     description = "ReplayGain 2.0 loudness normalizer based on the EBU R128/ITU BS.1770 standard";
     homepage    = "https://github.com/Moonbase59/loudgain";
-    maintainers = with maintainers; [ tophullyte ];
+    maintainers = with maintainers; [ phossil ];
     platforms   =  [ "x86_64-linux" ];
     license     = licenses.bsd2;
   };

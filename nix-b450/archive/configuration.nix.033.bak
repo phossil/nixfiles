@@ -1,0 +1,254 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+# edited by phossil
+# 2022-09-27
+# MSI B450 Gaming Plus Max
+
+# lib is required for custom kernel
+{ config, pkgs, ... }:
+#{ lib, config, pkgs, ... }:
+
+{
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+      ./userspace-sw.nix
+      ./fonts.nix
+      ./linux_jank95.nix
+      #./linux_jank95_clang.nix
+    ];
+
+  # gimme that nix command goodness
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
+  #nixpkgs.config.allowBroken = true;
+
+  # Allow non-free software
+  nixpkgs.config.allowUnfree = true;
+
+  # boot options
+  boot = {
+    # Use the systemd-boot EFI boot loader.
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    
+    # latest kernel
+    #kernelPackages = pkgs.linuxPackages_latest;
+    # latest kernel ++ win16 support ++ zen2 optimizations
+    kernelPackages = pkgs.linux_jank95;
+    # latest xanmod Linux kernel
+    #kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    # out-of-tree kernel modules
+    extraModulePackages = with config.boot.kernelPackages; [
+      zenpower
+      v4l2loopback
+      digimend
+    ];
+    # amd graphics and zenpower, immediately on boot
+    initrd.kernelModules = [ "amdgpu" "zenpower" "v4l2loopback" ];
+    # blacklist the radeon graphics and amd temp sensor drivers
+    blacklistedKernelModules = [ "radeon" "k10temp" ];
+    # for R7 250, a Southern Islands (SI ie. GCN 1) card
+    kernelParams = [ "amdgpu.si_support=1" "sysrq_always_enabled" ];
+  };
+
+  # rtkit is optional but recommended for PipeWire
+  security.rtkit.enable = true;
+  # audio and graphics stuffs
+  hardware = {
+    # disable PulseAudio bc PipeWire is better
+    pulseaudio.enable = false;
+    # enable bluetooth
+    bluetooth.enable = true;
+    # Enable scanner support because that's not included ???
+    sane.enable = true;
+    # hardware accelerated graphics
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        # add the official amd vulkan driver just in case (mesa is better, t. phoronix)
+        #amdvlk
+        # video acceleration (youtube is nice)
+        vaapiVdpau
+        libvdpau-va-gl
+        # gpgpu stuffs with opencl
+        rocm-opencl-icd
+        rocm-opencl-runtime
+      ];
+      # enable 32-bit support because Steam 
+      driSupport32Bit = true;
+      # same as extraPackages but 32-bit
+      extraPackages32 = with pkgs.pkgsi686Linux; [
+        #amdvlk
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
+  };
+
+  # interwebs ?
+  networking = {
+    # Define your hostname.
+    hostName = "Gem-B450";
+    # use NetworkManager for managing networks ... it's in the name
+    networkmanager.enable = true;
+
+    firewall = {
+      # Open ports in the firewall.
+      # allowedTCPPorts = [ ... ];
+      # allowedUDPPorts = [ ... ];
+      # Or disable the firewall altogether.
+      # enable = false;
+      # alternate http port for the random darkhttp instance
+      allowedTCPPorts = [ 8008 7590 ];
+    };
+  };
+
+  # Set your time zone.
+  time.timeZone = "America/New_York";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.supportedLocales = [ "all" ];
+  console = {
+    #keyMap = "us";
+    # use the X11 keymap settings instead
+    useXkbConfig = true;
+  };
+
+  # List services that you want to enable:
+  services = {
+    # graphics and stuff
+    xserver = {
+      # Enable the X11 windowing system.
+      enable = true;
+      # Configure keymap in X11
+      layout = "us";
+      # Map Caps Lock as an additional Ctrl key
+      xkbOptions = "ctrl:nocaps";
+      # xorg amdpu driver ??? (does it still matter if i use wayland)
+      #videoDrivers = [ "amdgpu" ];
+      #videoDrivers = [ "fbdev" ];
+      videoDrivers = [ "modesetting" ];
+      useGlamor = true;
+      # Enable the GNOME 3 Desktop Environment.
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+      # Enable touchpad with tap-to-click support
+      libinput.touchpad.tapping = true;
+    };
+    # Enable CUPS with some drivers to print documents.
+    printing.enable = true;
+    printing.drivers = [ pkgs.samsung-unified-linux-driver ];
+    # Enable the OpenSSH daemon.
+    ## please don't, it's just a personal device
+    openssh.enable = true;
+    # userspace out-of-memory killer so your system doesn't freeze
+    earlyoom.enable = true;
+    # Avahi or something
+    avahi = {
+      enable = true;
+      publish = {
+        enable = true;
+        addresses = true;
+        workstation = true;
+      };
+    };
+    # Flatpak, the unnecessary package manager
+    #flatpak.enable = true;
+    # firmware updates and stuff
+    fwupd.enable = true;
+  };
+
+  # make qt apps look good in gnome
+  qt5 = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };
+
+  # enable audio with pipewire
+  services.pipewire = {
+    enable = true;
+    # compatibility with other audio api's
+    alsa.enable = true;
+    pulse.enable = true;
+    jack.enable = true;
+    # enable 32-bit because wine
+    alsa.support32Bit = true;
+  };
+  # bluetooth stuff for pipewire
+  environment.etc = {
+    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
+      bluez_monitor.properties = {
+        ["bluez5.enable-sbc-xq"] = true,
+        ["bluez5.enable-msbc"] = true,
+        ["bluez5.enable-hw-volume"] = true,
+        ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+      }
+    '';
+  };
+
+  # user management
+  users = {
+    # specify group ID because `useradd -mUs /bin/zsh phossil` 
+    groups.phossil.gid = 1000;
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    users.phossil = {
+      isNormalUser = true;
+      shell = pkgs.zsh;
+      home = "/home/phossil";
+      description = "Phosu Parsons";
+      # `useradd -mUs /bin/zsh phossil`
+      uid = 1000;
+      group = "phossil";
+      # Run 'sudo' commands, manage VM's, commit tax fraud on android, 
+      # make scans of crappy drawings, and use Zrythm/"JACK" with unlimited powah
+      extraGroups = [ "wheel" "libvirtd" "adbusers" "scanner" "lp" ];
+    };
+  };
+
+  programs = {
+    # install zsh with autosuggestions
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+    };
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    # Please leave the agent enabled; it is required for pinentry, I think
+    ###
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    ###
+    # enable for libvirt ?
+    dconf.enable = true;
+    # say hello to lineageOS
+    adb.enable = true;
+  };
+  
+  # use kvm/qemu virtual machines
+  virtualisation.libvirtd.enable = true;
+  # enable Waydroid for Android apps
+  #virtualisation.waydroid.enable = true;
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  #system.stateVersion = "21.05"; # Did you read the comment?
+  #system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "22.05"; # Did you read the comment?
+  
+  # added by phossil
+  # i genuinely forgot what this was for
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+}

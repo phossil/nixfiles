@@ -1,0 +1,61 @@
+# custom configuration of the Linux kernel for
+# support of legacy 16-bit Windows apps and
+# and some general performance tweaks
+# edited by phossil
+# 2022-10-07
+# Fujitsu LifeBook T902
+
+# lib is required for custom kernel
+#{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
+
+{
+  # make a custom config for the latest kernel
+  nixpkgs = {
+    overlays = [
+      (self: super: {
+        linux_life95 = pkgs.linuxPackagesFor (pkgs.linux_xanmod_tt.override {
+         # give me all the unloops
+          stdenv = pkgs.llvmPackages_14.stdenv;
+          nativeBuildInputs = pkgs.nativeBuildInputs ++
+            (with pkgs.llvmPackages_14; [ libunwind llvm lld ]);
+          buildInputs = pkgs.buildInputs ++
+              (with pkgs.llvmPackages_14; [ libunwind llvm lld ]);
+          makeFlags = [ 
+            "LLVM=1"
+            "LLVM_IAS=1"
+            "-O2"
+            "-march=ivybridge"
+            "-flto=thin"
+            "-pipe"
+          ];
+          structuredExtraConfig = with lib.kernel; {
+            # enable some compiler optimizations
+            CC_OPTIMIZE_FOR_PERFORMANCE = yes;
+            # add 16-bit support bc deerhunter 3
+            # pls check the linux kernel driver db for x86_16bit
+            EXPERT = yes;
+            MODIFY_LDT_SYSCALL = yes;
+            X86_16BIT = yes;
+            # use clang/llvm
+            # pls check openmandriva's kernel-release spec
+            CC_IS_CLANG = yes;
+            CC_HAS_ASM_GOTO_OUTPUT = yes;
+            LD_IS_LLD = yes;
+            INIT_STACK_NONE = yes;
+            LTO_CLANG_THIN = yes;
+            CFI_CLANG = yes;
+            CFI_CLANG_SHADOW = yes;
+            RELR = yes;
+            # may or may not be required for win98 app installers
+            X86_X32_ABI = yes;
+          };
+          ignoreConfigErrors = true;
+        });
+      })
+    ];
+  };
+}
+# 1. https://www.reddit.com/r/Gentoo/comments/gykkke/your_advice_about_the_kernel_optimizations/
+# 2. https://gitlab.com/redhat/centos-stream/rpms/kernel/-/blob/c9s/kernel-x86_64-rhel.config
+# 3. https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/power_management_guide/tickless-kernel

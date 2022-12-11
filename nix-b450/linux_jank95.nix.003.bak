@@ -1,0 +1,112 @@
+# custom configuration of the Linux kernel for
+# support of legacy 16-bit Windows apps and
+# and some general performance tweaks
+# edited by phossil
+# 2022-10-03
+# MSI B450 Gaming Plus Max
+
+# lib is required for custom kernel
+#{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
+
+{
+  # make a custom config for the latest kernel
+  nixpkgs = {
+    overlays = [
+      (self: super: {
+        linux_jank95 = pkgs.linuxPackagesFor (pkgs.linux_latest.override {
+          makeFlags = [
+             "-fwhole-program"
+             "-02"
+             "-ftree-vectorize"
+             "-march=znver2"
+             "-pipe"
+           ];
+          structuredExtraConfig = with lib.kernel; {
+            # enable some zen2 optimizations
+            MZEN2 = yes;
+            # add 16-bit support bc deerhunter 3
+            # pls check the linux kernel driver db for x86_16bit
+            EXPERT = yes;
+            MODIFY_LDT_SYSCALL = yes;
+            X86_16BIT = yes;
+            # may or may not be required for win98 app installers
+            #X86_X32_ABI = yes;
+            # see the xanmod kernel in nixpkgs
+            NTFS3_LZX_XPRESS = yes;
+            NTFS3_FS_POSIX_ACL = yes;
+            # use zstd for all the cool stuff
+            # pls check gentoo's wiki page for zstd
+            RD_ZSTD = yes;
+            # zstd-compressed modules disabled bc
+            # `.../bin/bash: line 1: zstd: command not found`
+            #MODULE_COMPRESS_XZ = lib.mkForce no;
+            #MODULE_COMPRESS_ZSTD = lib.mkForce yes;
+            CRYPTO_ZSTD = yes;
+            ZSWAP_COMPRESSOR_DEFAULT_ZSTD = yes;
+            F2FS_FS_ZSTD = yes;
+            # enable zswap with the zsmalloc allocator
+            ZSWAP = yes;
+            ZSWAP_DEFAULT_ON = yes;
+            ZPOOL = yes;
+            ZSMALLOC = module;
+            ZSMALLOC_STAT = yes;
+            ZSWAP_ZPOOL_DEFAULT_ZSMALLOC = yes;
+            # some stuff from an old void config
+            ###
+            # cpu/task stats
+            IRQ_TIME_ACCOUNTING = yes;
+            # scheduler stuff
+            HAVE_SCHED_AVG_IRQ = yes;
+            NUMA_BALANCING = yes;
+            NUMA_BALANCING_DEFAULT_ENABLED = yes;
+            # random performance enhancements (?)
+            WATCH_QUEUE = yes;
+            RT_GROUP_SCHED = lib.mkForce yes;
+            PRINTK_NMI = yes;
+            # processor features
+            X86_CPU_RESCTRL = yes;
+            GART_IOMMU = yes;
+            # x86_64_thermal_vector for intel
+            X86_SMAP = yes;
+            SECCOMP = yes;
+            # power management and stuff
+            PM_GENERIC_DOMAINS = yes;
+            WQ_POWER_EFFICIENT_DEFAULT = yes;
+            PM_GENERIC_DOMAINS_SLEEP = yes;
+            ENERGY_MODEL = yes;
+            ACPI_HMAT = yes;
+            ACPI_APEI_GHES = module;
+            ACPI_APEI_PCIEAER = yes;
+            ACPI_APEI_MEMORY_FAILURE = yes;
+            # ..._apei_einj for debugging
+            # ..._dptf_power for intel-based laptops
+            # sfi for intel atom
+            # cpu frequency scaling governor
+            CPU_FREQ_DEFAULT_GOV_PERFORMANCE = lib.mkForce no;
+            CPU_FREQ_DEFAULT_GOV_SCHEDUTIL = yes;
+            # cpu frequency scaling driver
+            X86_INTEL_PSTATE = lib.mkForce module;
+            X86_AMD_PSTATE = lib.mkForce yes;
+            # cpu idle governors
+            CPU_IDLE_GOV_HALTPOLL = yes;
+            CPU_IDLE_GOV_TEO = yes;
+            CPU_IDLE_GOV_LADDER = yes;
+            ###
+            # more optimizations from reddit[1] and
+            # redhat's centos[2] stream
+            CC_OPTIMIZE_FOR_PERFORMANCE = yes;
+            # ticking removed because of interrupted idle states[3]
+            #HZ_1000 = yes;
+            JUMP_LABEL = yes;
+            UNWINDER_ORC = yes;
+          };
+          ignoreConfigErrors = true;
+        });
+      })
+    ];
+  };
+}
+# 1. https://www.reddit.com/r/Gentoo/comments/gykkke/your_advice_about_the_kernel_optimizations/
+# 2. https://gitlab.com/redhat/centos-stream/rpms/kernel/-/blob/c9s/kernel-x86_64-rhel.config
+# 3. https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/power_management_guide/tickless-kernel

@@ -1,0 +1,162 @@
+# Main package set of userspace software such as command line
+# utilities, audio players, text editors, games, web browsers,
+# and creative suites.
+# edited by phossil
+# 2022-10-02
+
+{ config, pkgs, ... }:
+
+{
+  # Allow non-free software
+  nixpkgs.config.allowUnfree = true;
+
+  # services for users :3
+  services = {
+    # install emacs with gcc for native elisp code
+    emacs = { 
+      package = pkgs.emacsNativeComp;
+      enable = true;
+    };
+    # sync the yeetmas joplin files    
+    onedrive.enable = true;
+    # thumbnailer service made by xfce
+    #tumbler.enable = true;
+  };
+  programs = {
+    # games on linux ???
+    steam.enable = true;
+    # sun did it better
+    java = {
+      enable = true;
+      package = pkgs.graalvm17-ce;
+    };
+    # kde connect but for gnome
+    kdeconnect = {
+      enable = true;
+      package = pkgs.gnomeExtensions.gsconnect;
+    };
+    # command palette for gtk3 apps
+    plotinus.enable = true;
+    # network usage wowee
+    bandwhich.enable = true;
+    # curse you, alcohol
+    cdemu = {
+      enable = true;
+      group = "phossil";
+    };
+  };
+  # define lv2 path and some other stuff because zrythm
+  # copied from musnix/modules/base.nix
+  environment.variables = {
+    DSSI_PATH   = "$HOME/.dssi:$HOME/.nix-profile/lib/dssi:/run/current-system/sw/lib/dssi";
+    LADSPA_PATH = "$HOME/.ladspa:$HOME/.nix-profile/lib/ladspa:/run/current-system/sw/lib/ladspa";
+    LV2_PATH    = "$HOME/.lv2:$HOME/.nix-profile/lib/lv2:/run/current-system/sw/lib/lv2";
+    LXVST_PATH  = "$HOME/.lxvst:$HOME/.nix-profile/lib/lxvst:/run/current-system/sw/lib/lxvst";
+    VST_PATH    = "$HOME/.vst:$HOME/.nix-profile/lib/vst:/run/current-system/sw/lib/vst";
+  };
+  # rtkit is optional but recommended for PipeWire
+  security.rtkit.enable = true;
+  # memory unlocking for zrythm, hopefully
+  security.pam.loginLimits = [
+    { domain = "@audio"; item = "memlock"; type = "-"; value = "unlimited"; }
+    { domain = "@audio"; item = "rtprio"; type = "-"; value = "95"; }
+  ];
+  # List packages installed in system profile. To search, run:
+  # $ nix search nixpkgs wget
+  ## pls make sure flakes are enabled for searching to work
+  environment.systemPackages = with pkgs; [
+    # now look at this lovely mess
+    firefox-wayland links2 alacritty keepassxc vivaldi
+    (discord.override { nss = nss_latest; })
+    vivaldi-ffmpeg-codecs vivaldi-widevine starship
+    hexchat neofetch speedcrunch
+    libsForQt5.qt5.qtimageformats jp2a lolcat unrar cherrytree krita
+    obs-studio gnome.gnome-disk-utility castor gnome.gnome-system-monitor
+    bleachbit p7zip gparted tealdeer libreoffice-qt hunspellDicts.en_US
+    nicotine-plus picard libsForQt5.soundkonverter ffmpeg-full
+    syncthing git pandoc bottom chezmoi pciutils
+    lsof testdisk-qt whois trash-cli rmlint ripgrep fd gimp
+    qbittorrent supercollider bucklespring-libinput
+    dateutils scrcpy kiwix usbutils kwave audacity-gtk3 handbrake dvdauthor
+    vorta drawpile mkchromecast openscad pikopixel
+    grafx2 virt-manager bat thunderbird gnupg kleopatra woeusb ntfs3g
+    brasero chntpw cdrkit cabextract wimlib sqlitebrowser
+    imgbrd-grabber xorg.xkill anki
+    bpm-tools protonvpn-gui gsmartcontrol android-studio
+    minecraft shellcheck mangohud trash-cli noteshrink
+    ddate cpu-x gnome.gnome-tweaks shntool flac
+    koreader sigil epr tokei wol pavucontrol rustscan
+    nmap sshfs borgbackup rlwrap vokoscreen-ng gore nixfmt
+    go-langserver waypipe nix-prefetch-github
+    zile enlightenment.terminology calibre gnome-firmware-updater
+    gnome.gnome-calendar v4l-utils qgit digikam
+    darktable rawtherapee cli-visualizer cava projectm ghostwriter heimdall
+    netsurf-browser okteta inkscape
+    gnome.gnome-sound-recorder  svt-av1 libavif
+    rav1e dav1d haskellPackages.hakyll texlive.combined.scheme-full vscode
+    gnome-feeds gnome.dconf-editor hydrus drawing exfatprogs zrythm helvum
+    gnome-usage gnome.gnome-logs flameshot hfsprogs macchina
+    drawio treesheets blender uutils-coreutils syslinux goverlay
+    imagemagick gthumb zip unzip foliate discordchatexporter-cli discocss
+    radeontop easyeffects noisetorch corectrl zoxide dutree delta procs
+    broot bottom-rs tty-clock zettlr nixpkgs-fmt newsflash screen
+    chromaprint krename libsForQt5.breeze-qt5 libsForQt5.breeze-icons
+    libsForQt5.kdegraphics-thumbnailers libsForQt5.kio-extras
+    luna-icons la-capitaine-icon-theme flat-remix-icon-theme kora-icon-theme
+    papirus-icon-theme vimix-icon-theme tela-icon-theme taisei
+    soundfont-fluid freepats unetbootin iotop gnome.pomodoro zenmonitor
+    catimg yaft crow-translate translate-shell gcolor3 artha neo-cowsay
+    gnomeExtensions.audio-output-switcher gnomeExtensions.vitals
+    gnomeExtensions.syncthing-icon gnomeExtensions.systemd-manager
+    gnomeExtensions.alphabetical-app-grid gnomeExtensions.appindicator
+    diffpdf arcan.all-wrapped libresprite gmsh bambootracker glava
+    solvespace antimony exa fbv gnomeExtensions.material-shell
+    xournalpp cawbird michabo logseq appimage-run
+    libsForQt5.breeze-icons lazpaint celluloid
+    qpwgraph jamesdsp pipecontrol helio-workstation exiftool xournalpp
+    ventoy-bin joplin-desktop polymc libsixel river ioping dstat
+    hilbish scsh nyxt gcstar gImageReader paperwork fbcat srain
+    qalculate-gtk orchis-theme lyrebird mediainfo szyszka epeg kate
+    (tauon.override { withDiscordRPC = true; }) itch
+    python310Packages.yt-dlp friture gnomeExtensions.syncthing-indicator
+    meld fluidsynth soundfont-generaluser soundfont-ydp-grand qsynth
+    lapce jstest-gtk sweet dosbox pcem uxn lutris
+    # all of wine and maybe gecko + mono support
+    winetricks wineWowPackages.waylandFull mono
+    (bottles.override { wineWowPackages.minimal = wineWowPackages.waylandFull; })
+    # music and stuff
+    vmpk hydrogen  zynaddsubfx-ntk calf mimic frescobaldi denemo
+    MIDIVisualizer sonic-visualiser tony puredata
+    schismtracker milkytracker qtractor ardour musescore giada
+    ChowCentaur bespokesynth yoshimi non 
+    # lv2 plugins - archlinux.org/groups/x86_64/lv2-plugins/
+    geonkick distrho zam-plugins dragonfly-reverb zynaddsubfx-ntk adlplug
+    ams-lv2 artyFX  x42-avldrums bchoppr bsequencer bshapr stone-phaser
+    drumgizmo drumkv1 eq10q fomp x42-gmsynth guitarix gxplugins-lv2 helm
+    infamousPlugins lsp-plugins mda_lv2 ninjas2 noise-repellent opnplug
+    padthv1 qmidiarp samplv1 setbfree sorcer spectmorph synthv1
+    wolf-shaper x42-plugins bslizr
+    # add custom packages
+    #((import <nixpkgs> {}).callPackage (import ./custom/clasp.nix)
+    #  {
+    #    llvmPackages = llvmPackages_13;
+    #    stdenv = llvmPackages_13.stdenv;
+    #  }
+    #)
+    #((import <nixpkgs> {}).callPackage (import ./custom/activitywatch.nix) {})
+    ((import <nixpkgs> {}).callPackage ./custom/loudgain.nix {})
+    #((import <nixpkgs> {}).callPackage ./custom/bforartists/bfart.nix {})
+    ((import <nixpkgs> {}).callPackage ./custom/bforartists/bforartists.nix {
+      inherit (darwin.apple_sdk.frameworks) Cocoa CoreGraphics ForceFeedback OpenAL OpenGL;
+    })
+    # broken packages
+    #natron multibootusb clasp-common-lisp monodevelop
+    #heimdall-gui rustracer puddletag
+    #sonic-lineup olive-editor surge csound-qt vifm wings
+    # removed bc unused
+    #nushell ion
+    # dev stuff
+    #rustup sbcl guile maven electron go dotnetPackages.Nuget mitscheme
+    #mythes haskellPackages.drawille
+  ];
+}
