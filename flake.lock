@@ -1,49 +1,12 @@
 {
   "nodes": {
-    "cutefish": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1643423115,
-        "narHash": "sha256-CbzFS4Ns11inONv0yKCDXc6iepk52ajQcDXQzsWEIh0=",
-        "owner": "p3psi-boo",
-        "repo": "nix-cutefish",
-        "rev": "11ef92cff38ed0dd32bf4b48b4d0ce9e17168e17",
-        "type": "github"
-      },
-      "original": {
-        "owner": "p3psi-boo",
-        "ref": "main",
-        "repo": "nix-cutefish",
-        "type": "github"
-      }
-    },
-    "flake-utils": {
-      "locked": {
-        "lastModified": 1638122382,
-        "narHash": "sha256-sQzZzAbvKEqN9s0bzWuYmRaA03v40gaJ4+iL1LXjaeI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "74f7e4319258e287b0f9cb95426c9853b282730b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1670625113,
-        "narHash": "sha256-3XuCP1b8U0/rzvQciowoM6sZjtq7nYzHOFUcNRa0WhY=",
+        "lastModified": 1670772952,
+        "narHash": "sha256-b7V3cGtMNcQ5c6hwRqqX+eIuNUj+O3orsb64BKPR9yc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e8ec26f41fd94805d8fbf2552d8e7a449612c08e",
+        "rev": "dfef2e61107dc19c211ead99a5a61374ad8317f4",
         "type": "github"
       },
       "original": {
@@ -54,7 +17,6 @@
     },
     "root": {
       "inputs": {
-        "cutefish": "cutefish",
         "nixpkgs": "nixpkgs"
       }
     }
