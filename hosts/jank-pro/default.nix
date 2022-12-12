@@ -24,11 +24,11 @@
     loader.efi.canTouchEfiVariables = true;
 
     # latest kernel
-    kernelPackages = pkgs.linuxPackages_latest;
-    # latest kernel ++ win16 support ++ zen2 optimizations
-    #kernelPackages = pkgs.linux_jank95;
+    #kernelPackages = pkgs.linuxPackages_latest;
     # latest xanmod Linux kernel
     #kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    # patched kernel with experimental bcachefs support
+    kernelPackages = pkgs.linuxPackages_testing_bcachefs;
     # out-of-tree kernel modules
     extraModulePackages = with config.boot.kernelPackages; [
       zenpower

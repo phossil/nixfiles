@@ -2,10 +2,8 @@
   description = "phossil's nixos flake collection";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-22.11";
-    cutefish.url = "github:p3psi-boo/nix-cutefish/main";
-    cutefish.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, cutefish }:
+  outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -23,7 +21,6 @@
             ./users/phossil.nix
             ./common
             ./common/cups.nix
-            #./common/cutefish.nix
             ./common/desktop.nix
             ./common/fs-support.nix
             ./common/gnome.nix
@@ -47,7 +44,7 @@
           inherit system;
           modules = [
             ./hosts/3350
-            ./users/phossil.nix            
+            ./users/phossil.nix
             ./common
             ./common/cups.nix
             ./common/desktop.nix

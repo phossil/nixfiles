@@ -53,7 +53,6 @@
     usbutils
     bat
     gnupg
-    ntfs3g
     trash-cli
     tokei
     nmap
@@ -62,9 +61,7 @@
     rlwrap
     nix-prefetch-github
     zile
-    exfatprogs
     texlive.combined.scheme-full
-    hfsprogs
     imagemagick
     zip
     unzip
