@@ -67,11 +67,12 @@
     audacity
     obs-studio-plugins.obs-vkcapture
     libreddit
+    swayimg
+    qview
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag
     #sonic-lineup olive-editor surge csound-qt vifm wings
-    #polymc
     # removed bc unused
     #nushell ion
     # dev stuff

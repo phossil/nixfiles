@@ -39,5 +39,6 @@
     cabextract
     wimlib
     haskellPackages.hakyll
+    timg
   ];
 }

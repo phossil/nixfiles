@@ -22,6 +22,7 @@
     jstest-gtk
     grapejuice
     unciv
+    prismlauncher
     # all of wine and maybe gecko + mono support
     winetricks
     wineWowPackages.waylandFull
