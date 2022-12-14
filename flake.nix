@@ -50,6 +50,7 @@
             ./common/desktop.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
+            #./common/linux_latest_98se.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./package-sets
@@ -59,6 +60,19 @@
             ./package-sets/gnome.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
+          ];
+        };
+        Gem-Super = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/9200
+            ./users/phossil.nix
+            ./common
+            ./common/fs-support.nix
+            ./common/shell.nix
+            ./common/user-input.nix
+            ./package-sets
+            ./package-sets/dump-cli.nix
           ];
         };
         /* not ready yet

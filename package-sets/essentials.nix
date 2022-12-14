@@ -22,7 +22,7 @@
   ## pls make sure flakes are enabled for searching to work
   environment.systemPackages = with pkgs; [
     # now look at this lovely mess
-    firefox-wayland
+    firefox
     alacritty
     keepassxc
     vivaldi
@@ -48,7 +48,6 @@
     enlightenment.terminology
     qgit
     ghostwriter
-    hydrus
     gthumb
     discordchatexporter-cli
     discocss
@@ -67,14 +66,12 @@
     gnome.dconf-editor
     okteta
     krename
-    calibre
     koreader
     cdrkit
     dvdauthor
     brasero
     qbittorrent
     gimp
-    cherrytree
     hexchat
     fluidsynth
     soundfont-generaluser
@@ -82,5 +79,6 @@
     soundfont-fluid
     freepats
     lapce
+    obs-studio-plugins.obs-vkcapture
   ];
 }

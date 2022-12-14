@@ -3,7 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 #
 # edited by phossil
-# 2022-11-05
+# 2022-12-14
 
 { config, pkgs, ... }:
 
@@ -24,17 +24,13 @@
   boot.loader.grub.device = "/dev/disk/by-id/ata-WDC_WD2500AAJS-75M0A0_WD-WMAV26953328";
 
   # i still have win xp installed on this machine
-  boot.supportedFilesystems = [ "ntfs" ];
   boot.loader.grub.useOSProber = true;
 
   # networking.hostName = "nixos"; # Define your hostname.
-  # networking.hostName = "nixos"; # Define your hostname.
   networking.hostName = "Gem-Super"; # Define your hostname.
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
-  time.timeZone = "America/New_York";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -53,30 +49,16 @@
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   # };
-  console = {
-    useXkbConfig = true;
-    font = "cybercafe";
-  };
+  console.font = "cybercafe";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   # enable the common desktop environment for a retro look :3
   services.xserver.desktopManager.cde.enable = true;  
-  # a  
-
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-  services.xserver.layout = "us";
-
-
-  # map caps key to ctrl
-  services.xserver.xkbOptions = "ctrl:nocaps";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -93,18 +75,6 @@
   #   isNormalUser = true;
   #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   # };
-  users = {
-    groups.phossil.gid = 1000;
-    users.phossil = {
-      isNormalUser = true;
-      shell = pkgs.zsh;
-      home = "/home/phossil";
-      description = "Phosu Parsons";
-      uid = 1000;
-      group = "phossil";
-      extraGroups = [ "wheel" "libvirt" "audio" "adbusers" "scanner" "lp" ];
-    };
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -113,17 +83,6 @@
   #   wget
   #   firefox
   # ];
-  environment.systemPackages = with pkgs; [
-    firefox emacs enlightenment.terminology starship neofetch bottom ripgrep fd gparted
-    labwc bemenu foot
-  ];
-
-  programs = {
-    zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-    };
-  };
 
   fonts.fonts = with pkgs; [
     ipafont
@@ -145,7 +104,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -160,7 +118,8 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   #system.stateVersion = "21.11"; # Did you read the comment?
-  system.stateVersion = "22.05"; # Did you read the comment?
+  #system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "22.11"; # Did you read the comment?
 
 }
 

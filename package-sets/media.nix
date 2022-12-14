@@ -26,6 +26,8 @@
     imgbrd-grabber
     flac
     handbrake
+    hydrus
+    calibre
     # add custom packages    
     (pkgs.callPackage ./custom/loudgain.nix { })
   ];

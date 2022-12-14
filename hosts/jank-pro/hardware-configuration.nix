@@ -2,7 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 # edited by phossil
-# 2022-09-02
+# 2022-12-15
 # MSI B450 Gaming Plus Max
 
 { config, lib, pkgs, modulesPath, ... }:
@@ -17,14 +17,11 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/24000799-110f-47b8-b97a-5682a9e685ca";
-    fsType = "f2fs";
-    # pls check the arch wiki's page on f2fs
+    device = "/dev/disk/by-uuid/fdf75b59-4641-48db-9f68-d886afd88cab";
+    fsType = "ext4";
+    # performance tuning for ext4
     options = [
-      "compress_algorithm=zstd:6"
-      "compress_chksum"
-      "atgc"
-      "gc_merge"
+      "defaults"
       "lazytime"
     ];
   };
@@ -39,6 +36,7 @@
     fsType = "f2fs";
     # pls check the arch wiki's page on f2fs
     options = [
+      "defaults"
       "compress_algorithm=zstd:6"
       "compress_chksum"
       "atgc"

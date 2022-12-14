@@ -65,10 +65,14 @@
     mkchromecast
     kwave
     audacity
-    obs-studio-plugins.obs-vkcapture
     libreddit
     swayimg
     qview
+    cherrytree
+    labwc
+    bemenu
+    foot
+    amberol
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag
