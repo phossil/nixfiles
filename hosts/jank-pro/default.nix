@@ -75,7 +75,7 @@
         rocm-opencl-runtime
         # when the vulkan borked
         vulkan-extension-layer
-        swiftshader
+        #swiftshader
       ];
       # enable 32-bit support because Steam 
       driSupport32Bit = true;

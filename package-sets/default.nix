@@ -67,7 +67,6 @@
     unzip
     radeontop
     delta
-    bottom-rs
     tty-clock
     nixpkgs-fmt
     exa

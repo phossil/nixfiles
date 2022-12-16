@@ -50,7 +50,6 @@
             ./common/desktop.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
-            #./common/linux_latest_98se.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./package-sets

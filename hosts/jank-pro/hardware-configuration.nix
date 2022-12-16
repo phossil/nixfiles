@@ -17,17 +17,22 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/fdf75b59-4641-48db-9f68-d886afd88cab";
-    fsType = "ext4";
-    # performance tuning for ext4
+    device = "/dev/disk/by-uuid/ed1a772f-1145-4091-9cc4-2395b9dd66ea";
+    fsType = "f2fs";
+    # pls check the arch wiki's page on f2fs
     options = [
       "defaults"
+      "compress_algorithm=zstd:6"
+      "compress_chksum"
+      "atgc"
+      "gc_merge"
       "lazytime"
     ];
   };
 
+
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/375B-9826";
+    device = "/dev/disk/by-uuid/23DA-C4BB";
     fsType = "vfat";
   };
 

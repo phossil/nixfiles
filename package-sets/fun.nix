@@ -15,5 +15,8 @@
     neo-cowsay
     nicotine-plus
     bucklespring-libinput
+    bottom-rs
+    uwuify
+    owofetch    
   ];
 }
