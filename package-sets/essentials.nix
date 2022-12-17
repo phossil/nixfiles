@@ -22,7 +22,7 @@
   ## pls make sure flakes are enabled for searching to work
   environment.systemPackages = with pkgs; [
     # now look at this lovely mess
-    firefox
+    firefox-wayland
     alacritty
     keepassxc
     vivaldi
