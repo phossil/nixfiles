@@ -73,6 +73,8 @@
     bemenu
     foot
     amberol
+    video-trimmer
+    tagger
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag

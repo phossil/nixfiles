@@ -6,3 +6,5 @@ TODO: use `services.xserver.displayManager.sessionPackages` with a wlroots compo
 
 NOTE: remove a mesa driver before blaming the system
 tl;dr user error
+
+TODO: `qvwm` flake
