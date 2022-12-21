@@ -72,5 +72,6 @@
     exa
     iotop
     scrcpy
+    rsync
   ];
 }
