@@ -3,11 +3,6 @@
   inputs = {
     # the most important flake in nixos
     nixpkgs.url = "nixpkgs/nixos-22.11";
-    # a macos-like desktop made with kde frameworks
-    cutefishFlake = {
-       url = "github:p3psi-boo/nix-cutefish";
-       inputs.nixpkgs.follows = "nixpkgs";
-     };
     # a personal flake of a win9x-like wm
     # qvwmFlake = {
     #    url = "github:phossil/nixflake-qvwm";
@@ -18,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, nixpkgs, nixos-generators, cutefishFlake }:
+  outputs = { self, nixpkgs, nixos-generators }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -54,11 +49,6 @@
             ./package-sets/lsp.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
-            cutefishFlake.nixosModule
-            ({ config, lib, pkgs, ... }: {
-              # enable cutefish desktop
-              services.xserver.desktopManager.cutefish.enable = true;
-            })
           ];
         };
         Gem-3350 = lib.nixosSystem {
