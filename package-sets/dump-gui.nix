@@ -61,7 +61,6 @@
     noteshrink
     testdisk-qt
     kiwix
-    castor
     mkchromecast
     kwave
     audacity
@@ -75,6 +74,12 @@
     amberol
     video-trimmer
     tagger
+    lagrange
+    kristall
+    asuka
+    bombadillo
+    kiln
+    md2gemini
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag
