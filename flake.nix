@@ -1,9 +1,25 @@
 {
   description = "phossil's nixos flake collection";
   inputs = {
+    # the most important flake in nixos
     nixpkgs.url = "nixpkgs/nixos-22.11";
+    # a macos-like desktop made with kde frameworks
+    # cutefishFlake = {
+    #    url = "github:p3psi-boo/nix-cutefish";
+    #    inputs.nixpkgs.follows = "nixpkgs";
+    #  };
+    # a personal flake of a win9x-like wm
+    # qvwmFlake = {
+    #    url = "github:phossil/nixflake-qvwm";
+    #    inputs.nixpkgs.follows = "nixpkgs";
+    #  };
+    #   
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { self, nixpkgs }:
+  outputs = { self, nixpkgs, nixos-generators }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -13,6 +29,7 @@
       lib = nixpkgs.lib;
     in
     {
+      # my main devices are defined here
       nixosConfigurations = {
         Gem-JankPro = lib.nixosSystem {
           inherit system;
@@ -92,6 +109,26 @@
              modules = [ ./hosts/7010/configuration.nix ];
               };
         */
+      };
+      # some installation images made with nixos-generators
+      iso-gnome = nixos-generators.nixosGenerate {
+        system = "x86_64-linux";
+        modules = [
+          ({ pkgs, ... }: {
+            # patched kernel with experimental bcachefs support
+            boot.kernelPackages = pkgs.linuxPackages_testing_bcachefs;
+            # disable conflicting options
+            networking.wireless.enable = false;
+          })
+          ./common
+          ./common/desktop.nix
+          ./common/gnome.nix
+          ./common/fs-support.nix
+          ./common/shell.nix
+          ./common/user-input.nix
+          ./package-sets
+        ];
+        format = "install-iso";
       };
     };
 }

@@ -8,3 +8,5 @@ NOTE: remove a mesa driver before blaming the system
 tl;dr user error
 
 TODO: `qvwm` flake
+
+TODO: make rescue/installer iso's
