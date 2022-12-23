@@ -13,7 +13,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # y is this necessary here ...
-    ../../common/linux_latest_98se.nix
+    ../../pkgs/linux_latest_98se.nix
         
   ];
 

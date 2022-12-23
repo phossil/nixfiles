@@ -29,6 +29,6 @@
     hydrus
     calibre
     # add custom packages    
-    (pkgs.callPackage ./custom/loudgain.nix { })
+    (pkgs.callPackage ../pkgs/loudgain.nix { })
   ];
 }

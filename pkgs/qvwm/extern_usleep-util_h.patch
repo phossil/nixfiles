@@ -1,0 +1,12 @@
+diff --git a/src/util.h b/src/util.h
+index eee3d3e..5cc24cc 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -169,7 +169,6 @@ extern const char* GetNextDelim(const char* path, char* name, int maxSize);
+ #include <emx/syscalls.h>
+ #define usleep __sleep2
+ #else
+-extern void usleep(unsigned long);
+ #endif
+ #endif // HAVE_USLEEP
+ 

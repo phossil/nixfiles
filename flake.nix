@@ -4,7 +4,8 @@
     # the most important flake in nixos
     nixpkgs.url = "nixpkgs/nixos-22.11";
     # a personal flake of a win9x-like wm
-    # qvwmFlake = {
+    ## deleted
+    # nixflake-qvwm = {
     #    url = "github:phossil/nixflake-qvwm";
     #    inputs.nixpkgs.follows = "nixpkgs";
     #  };
@@ -67,7 +68,6 @@
             ./package-sets/essentials.nix
             ./package-sets/fun.nix
             ./package-sets/gayming.nix
-            ./package-sets/gnome.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
           ];
