@@ -17,6 +17,6 @@
     bucklespring-libinput
     bottom-rs
     uwuify
-    owofetch    
+    owofetch
   ];
 }

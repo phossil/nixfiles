@@ -2,7 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 # edited by phossil
-# 2022-12-15
+# 2022-12-24
 # MSI B450 Gaming Plus Max
 
 { config, lib, pkgs, modulesPath, ... }:
@@ -30,7 +30,6 @@
     ];
   };
 
-
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/23DA-C4BB";
     fsType = "vfat";
@@ -51,7 +50,11 @@
   };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/34c9ad59-f3b9-4f92-91d3-b29d03879b45"; }];
+    [
+      { device = "/dev/disk/by-uuid/34c9ad59-f3b9-4f92-91d3-b29d03879b45"; }
+      # huge swap for hibernation
+      { device = "/dev/disk/by-uuid/ff5b096e-6dbf-42ce-b795-62ed9eada908"; }
+    ];
 
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;

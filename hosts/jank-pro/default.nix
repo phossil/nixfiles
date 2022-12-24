@@ -14,7 +14,7 @@
     ./hardware-configuration.nix
     # y is this necessary here ...
     ../../pkgs/linux_latest_98se.nix
-        
+
   ];
 
   # Allow non-free software
@@ -47,11 +47,11 @@
     # for R7 250, a Southern Islands (SI ie. GCN 1) card
     kernelParams = [ "amdgpu.si_support=1" "sysrq_always_enabled" ];
     #kernelParams = [ "amdgpu.si_support=1" "sysrq_always_enabled" "amdgpu.ppfeaturemask=1" "mem_encrypt=off" ];
-    
+
     # prepare system for root bcachefs drive
     #initrd.supportedFilesystems = [ "bcachefs" ];
   };
-  
+
   # add bcachefs-tools to system bc it's not included ???
   #environment.systemPackages = with pkgs; [
   #  bcachefs-tools
@@ -63,7 +63,7 @@
     opengl = {
       enable = true;
       driSupport = true;
-      extraPackages = with pkgs; [  
+      extraPackages = with pkgs; [
         # add the official amd vulkan driver just in case
         # (mesa is better, t. phoronix)
         #amdvlk

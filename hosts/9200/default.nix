@@ -9,7 +9,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -58,7 +59,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   # enable the common desktop environment for a retro look :3
-  services.xserver.desktopManager.cde.enable = true;  
+  services.xserver.desktopManager.cde.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
