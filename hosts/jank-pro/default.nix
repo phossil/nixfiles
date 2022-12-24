@@ -44,9 +44,14 @@
     initrd.kernelModules = [ "zenpower" "v4l2loopback" ];
     # blacklist the radeon graphics and amd temp sensor drivers
     blacklistedKernelModules = [ "radeon" "k10temp" ];
-    # for R7 250, a Southern Islands (SI ie. GCN 1) card
-    kernelParams = [ "amdgpu.si_support=1" "sysrq_always_enabled" ];
-    #kernelParams = [ "amdgpu.si_support=1" "sysrq_always_enabled" "amdgpu.ppfeaturemask=1" "mem_encrypt=off" ];
+    # kernel command line
+    kernelParams = [
+      # for R7 250, a Southern Islands (SI ie. GCN 1) card    
+      "amdgpu.si_support=1"
+      "sysrq_always_enabled"
+      # use huge swap volume for resume
+      "resume=/dev/disk/by-uuid/ff5b096e-6dbf-42ce-b795-62ed9eada908"
+    ];
 
     # prepare system for root bcachefs drive
     #initrd.supportedFilesystems = [ "bcachefs" ];
