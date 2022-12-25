@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Xsession
+Name=QVWM
+TryExec=@out@/bin/qvwm
+Exec=@out@/bin/qvwm
+Comment=Windows 9x lookalike window manager
