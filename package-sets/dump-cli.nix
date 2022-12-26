@@ -40,5 +40,7 @@
     wimlib
     haskellPackages.hakyll
     timg
+    ttygif
+    diod
   ];
 }

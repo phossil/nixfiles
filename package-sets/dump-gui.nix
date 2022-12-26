@@ -80,6 +80,9 @@
     bombadillo
     kiln
     md2gemini
+    osdlyrics
+    devede
+    kalzium
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag

@@ -32,11 +32,9 @@
       value = "95";
     }
   ];
-  # List packages installed in system profile. To search, run:
-  # $ nix search nixpkgs wget
-  ## pls make sure flakes are enabled for searching to work
+  # packages
   environment.systemPackages = with pkgs; [
-    # now look at this lovely mess
+    # graphics and design
     krita
     openscad
     pikopixel
@@ -44,41 +42,35 @@
     darktable
     rawtherapee
     inkscape
-    zrythm
     blender
     libresprite
     gmsh
-    bambootracker
     solvespace
     antimony
     drawpile
-    supercollider
-    bpm-tools
     # music and stuff
+    zrythm
     vmpk
     hydrogen
-    zynaddsubfx-ntk
-    calf
     mimic
     frescobaldi
     denemo
     MIDIVisualizer
     sonic-visualiser
     tony
+    bpm-tools
+    supercollider
     puredata
+    bambootracker
     schismtracker
     milkytracker
     qtractor
     ardour
     musescore
     giada
-    ChowCentaur
-    bespokesynth
-    yoshimi
     non
     qsynth
-    industrializer
-    boops
+    surge-XT
     # lv2 plugins - archlinux.org/groups/x86_64/lv2-plugins/
     geonkick
     distrho
@@ -117,5 +109,16 @@
     wolf-shaper
     x42-plugins
     bslizr
+    # other plugins
+    zynaddsubfx-ntk
+    calf
+    ChowCentaur
+    bespokesynth
+    yoshimi
+    industrializer
+    boops
+    dexed
+    cardinal
+    stochas
   ];
 }
