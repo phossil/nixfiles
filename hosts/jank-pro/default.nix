@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # edited by phossil
-# 2022-12-14
+# 2022-12-29
 # MSI B450 Gaming Plus Max
 
 # lib is required for custom kernel
@@ -116,8 +116,8 @@
       # Enable the X11 windowing system.
       enable = true;
       # xorg amdpu driver ??? (does it still matter if i use wayland)
-      #videoDrivers = [ "amdgpu" ];
-      videoDrivers = [ "fbdev" ];
+      videoDrivers = [ "amdgpu" ];
+      # is modesetting better ?
       #videoDrivers = [ "modesetting" ];
       #useGlamor = true;
       # Enable the GNOME 3 Desktop Environment.

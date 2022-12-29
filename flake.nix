@@ -52,9 +52,9 @@
             ./package-sets/themes.nix
             ({ config, pkgs, ... }:
               {
-                # test experimental package
-                environment.systemPackages = [ (pkgs.callPackage ./pkgs/qvwm { }) ];
+                # test qvwm
                 services.xserver.displayManager.sessionPackages = [ (pkgs.callPackage ./pkgs/qvwm { }) ];
+                services.xserver.windowManager.jwm.enable = true;
               })
           ];
         };
