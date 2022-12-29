@@ -83,6 +83,7 @@
     osdlyrics
     devede
     kalzium
+    fiji
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag
