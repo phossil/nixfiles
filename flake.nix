@@ -4,21 +4,21 @@
     # the most important flake in nixos
     nixpkgs.url = "nixpkgs/nixos-22.11";
     # a personal flake of a win9x-like wm
-    nixflake-qvwm = {
-       url = "github:phossil/nixflake-qvwm";
-       inputs.nixpkgs.follows = "nixpkgs";
-     };
+    # nixflake-qvwm = {
+    #    url = "github:phossil/nixflake-qvwm";
+    #    inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, nixpkgs, nixos-generators, nixflake-qvwm }:
+  outputs = { self, nixpkgs, nixos-generators }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ nixflake-qvwm.overlays ];
+        #overlays = [ nixflake-qvwm.overlays ];
         config = { allowUnfree = true; };
       };
       lib = nixpkgs.lib;
@@ -51,12 +51,11 @@
             ./package-sets/media.nix
             ./package-sets/themes.nix
             ({ config, pkgs, ... }:
-            {
-              #nixpkgs.overlays = [ nixflake-qvwm.overlays ];
-              
-              #environment.systemPackages = [ pkgs.qvwm ];
-              #services.xserver.displayManager.sessionPackages = [ pkgs.qvwm ];
-            })
+              {
+                # test experimental package
+                environment.systemPackages = [ (pkgs.callPackage ./pkgs/qvwm { }) ];
+                services.xserver.displayManager.sessionPackages = [ (pkgs.callPackage ./pkgs/qvwm { }) ];
+              })
           ];
         };
         Gem-3350 = lib.nixosSystem {

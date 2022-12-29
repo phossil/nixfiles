@@ -10,6 +10,7 @@
 , audiofile
 , imlib
 , gettext
+, writeText
 }:
 
 stdenv.mkDerivation rec {
@@ -23,7 +24,7 @@ stdenv.mkDerivation rec {
     sha256 = "Bq0N0RslBvjnpWfulWvlVmf7CewPQDMPIKC+BKAxQZA=";
   };
 
-  patches = [ ./extern_usleep-util_h.patch ];
+  #patches = [ ./extern_usleep-util_h.patch ];
 
   nativeBuildInputs = [
     autoconf
@@ -47,12 +48,38 @@ stdenv.mkDerivation rec {
   ];
 
   configureFlags = [
+    #"CXXFLAGS=--std=gnu++98"
     "--enable-rmtcmd"
     "--enable-xsmp"
     "--enable-ss"
     "--with-alsa=${lib.getLib alsa-lib}/lib/libasound.so"
     "--without-esd"
   ];
+
+  xsessionFile = writeText "qvwm.desktop"
+    ''
+      [Desktop Entry]
+      Type=Xsession
+      Name=QVWM
+      TryExec=@out@/bin/qvwm
+      Exec=@out@/bin/qvwm
+      Comment=Windows 9x lookalike window manager
+    '';
+
+  # move xsession file to appropriate path
+  postInstall = ''
+    mkdir -p $out/share/xsessions
+    substitute ${xsessionFile} $out/share/xsessions/qvwm.desktop --subst-var out
+  '';
+
+  passthru.providedSessions = [ "qvwm" ];
+
+  /*
+    outputs = [
+    "out"
+    "man"
+    ];
+  */
 
   meta = with lib; {
     description = "'Windows Classic'-like X11 window manager";
