@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "nixflake-qvwm": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1672334052,
-        "narHash": "sha256-+1xM2Qi/qfdXU/nlnRXMK+eZMD8KbZSrHp8T5trNIPk=",
-        "owner": "phossil",
-        "repo": "nixflake-qvwm",
-        "rev": "9dd74d305bf66f29acf89c560d103b7770bf2e41",
-        "type": "github"
-      },
-      "original": {
-        "owner": "phossil",
-        "repo": "nixflake-qvwm",
-        "type": "github"
-      }
-    },
     "nixlib": {
       "locked": {
         "lastModified": 1636849918,
@@ -73,7 +53,6 @@
     },
     "root": {
       "inputs": {
-        "nixflake-qvwm": "nixflake-qvwm",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs"
       }
