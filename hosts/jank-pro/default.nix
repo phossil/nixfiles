@@ -116,10 +116,9 @@
       # Enable the X11 windowing system.
       enable = true;
       # xorg amdpu driver ??? (does it still matter if i use wayland)
-      videoDrivers = [ "amdgpu" ];
+      #videoDrivers = [ "amdgpu" ];
       # is modesetting better ?
-      #videoDrivers = [ "modesetting" ];
-      #useGlamor = true;
+      videoDrivers = [ "modesetting" ];
       # Enable the GNOME 3 Desktop Environment.
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
