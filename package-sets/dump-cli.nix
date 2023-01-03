@@ -42,5 +42,6 @@
     timg
     ttygif
     diod
+    #wkhtmltopdf
   ];
 }

@@ -54,7 +54,7 @@
               {
                 # test qvwm
                 services.xserver.displayManager.sessionPackages = [ (pkgs.callPackage ./pkgs/qvwm { }) ];
-                services.xserver.windowManager.jwm.enable = true;
+                services.xserver.desktopManager.enlightenment.enable = true;
               })
           ];
         };

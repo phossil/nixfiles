@@ -84,6 +84,10 @@
     devede
     kalzium
     fiji
+    #parsec-bin
+    moonlight-qt
+    sunshine
+    rlaunch
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag

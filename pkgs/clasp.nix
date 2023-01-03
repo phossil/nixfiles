@@ -87,18 +87,21 @@ in
 stdenv.mkDerivation rec {
   pname = "clasp";
   version = "1.0.0";
+  #version = "2.1.0";
 
   src = fetchFromGitHub {
     owner = "clasp-developers";
     repo = "clasp";
     rev = version;
     sha256 = "1yyxclwfk64rqia3j76wkd877zjv4r0yav7r6wj6ksgcfylbsn0j";
+    #sha256 = "LDDMvBCfLsgltUkCd8mYIWUKooqn3vfoVMsdUchJTkM=";
     fetchSubmodules = true;
   };
 
   checkInputs = [ glibcLocales ];
 
   nativeBuildInputs = [ python3 git sbcl wafHook ] ++ (with llvmPackages; [
+  #nativeBuildInputs = [ python3 git sbcl ] ++ (with llvmPackages; [
     llvm
     clang
   ]);
