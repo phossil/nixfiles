@@ -14,8 +14,6 @@
     };
     # did not know there was a module for this xd
     gnome-disks.enable = true;
-    # clipboard manager
-    gpaste.enable = true;
   };
   # List packages installed in system profile. To search, run:
   # $ nix search nixpkgs wget
@@ -80,5 +78,7 @@
     freepats
     lapce
     obs-studio-plugins.obs-vkcapture
+    copyq
+    synapse
   ];
 }
