@@ -69,24 +69,17 @@
       enable = true;
       driSupport = true;
       extraPackages = with pkgs; [
-        # add the official amd vulkan driver just in case
-        # (mesa is better, t. phoronix)
-        #amdvlk
         # video acceleration (youtube is nice)
         vaapiVdpau
         libvdpau-va-gl
         # gpgpu stuffs with opencl
         rocm-opencl-icd
         rocm-opencl-runtime
-        # when the vulkan borked
-        vulkan-extension-layer
-        #swiftshader
       ];
       # enable 32-bit support because Steam 
       driSupport32Bit = true;
       # same as extraPackages but 32-bit
       extraPackages32 = with pkgs.pkgsi686Linux; [
-        #amdvlk
         vaapiVdpau
         libvdpau-va-gl
       ];

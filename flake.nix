@@ -52,8 +52,6 @@
             ./package-sets/themes.nix
             ({ config, pkgs, ... }:
               {
-                # test qvwm
-                services.xserver.displayManager.sessionPackages = [ (pkgs.callPackage ./pkgs/qvwm { }) ];
                 services.xserver.desktopManager.enlightenment.enable = true;
               })
           ];

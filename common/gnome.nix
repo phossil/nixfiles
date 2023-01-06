@@ -29,20 +29,21 @@
 
   # some gnome apps and extensions
   environment.systemPackages = with pkgs; [
-    # now look at this lovely mess
     gnome.gnome-tweaks
     gnome.pomodoro
-    gnomeExtensions.audio-output-switcher
-    gnomeExtensions.vitals
-    gnomeExtensions.syncthing-icon
-    gnomeExtensions.systemd-manager
-    gnomeExtensions.alphabetical-app-grid
-    gnomeExtensions.appindicator
-    gnomeExtensions.material-shell
-    gnomeExtensions.syncthing-indicator
     gnome-usage
     gnome.gnome-system-monitor
-  ];
+  ] ++ (with pkgs.gnomeExtensions; [
+    audio-output-switcher
+    vitals
+    syncthing-icon
+    systemd-manager
+    alphabetical-app-grid
+    appindicator
+    #material-shell
+    syncthing-indicator
+    fildem-global-menu
+  ]);
 
   # i genuinely forgot what this was for
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
