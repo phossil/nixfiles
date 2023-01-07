@@ -73,5 +73,6 @@
     iotop
     scrcpy
     rsync
+    fclones
   ];
 }

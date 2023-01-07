@@ -101,7 +101,7 @@ stdenv.mkDerivation rec {
   checkInputs = [ glibcLocales ];
 
   nativeBuildInputs = [ python3 git sbcl wafHook ] ++ (with llvmPackages; [
-  #nativeBuildInputs = [ python3 git sbcl ] ++ (with llvmPackages; [
+    #nativeBuildInputs = [ python3 git sbcl ] ++ (with llvmPackages; [
     llvm
     clang
   ]);

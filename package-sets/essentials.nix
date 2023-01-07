@@ -80,5 +80,6 @@
     obs-studio-plugins.obs-vkcapture
     copyq
     synapse
+    czkawka
   ];
 }
