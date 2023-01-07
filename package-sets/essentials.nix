@@ -46,7 +46,6 @@
     enlightenment.terminology
     qgit
     ghostwriter
-    gthumb
     discordchatexporter-cli
     discocss
     breeze-icons

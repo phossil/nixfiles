@@ -87,6 +87,7 @@
     moonlight-qt
     sunshine
     rlaunch
+    gthumb
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag
