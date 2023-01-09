@@ -24,8 +24,6 @@ stdenv.mkDerivation rec {
     sha256 = "Bq0N0RslBvjnpWfulWvlVmf7CewPQDMPIKC+BKAxQZA=";
   };
 
-  #patches = [ ./extern_usleep-util_h.patch ];
-
   nativeBuildInputs = [
     autoconf
     automake
@@ -48,7 +46,6 @@ stdenv.mkDerivation rec {
   ];
 
   configureFlags = [
-    #"CXXFLAGS=--std=gnu++98"
     "--enable-rmtcmd"
     "--enable-xsmp"
     "--enable-ss"
@@ -73,13 +70,6 @@ stdenv.mkDerivation rec {
   '';
 
   passthru.providedSessions = [ "qvwm" ];
-
-  /*
-    outputs = [
-    "out"
-    "man"
-    ];
-  */
 
   meta = with lib; {
     description = "'Windows Classic'-like X11 window manager";

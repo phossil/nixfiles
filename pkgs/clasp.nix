@@ -15,7 +15,7 @@
 , sbcl
 , libbsd
 , libffi
-, wafHook
+, ninja
 }:
 
 let
@@ -38,25 +38,14 @@ let
     rev = "d4d1c7aa6aba9b4ac8b7bb78ff4902a52126633f";
     sha256 = "1amcv0f3vbsq0aqhai7ki5bi367giway1pbfxyc47r7q3hq5hw3c";
   };
-  acclimation = fetchFromGitHub {
-    owner = "robert-strandh";
-    repo = "Acclimation";
-    rev = "dd15c86b0866fc5d8b474be0da15c58a3c04c45c";
-    sha256 = "0ql224qs3zgflvdhfbca621v3byhhqfb71kzy70bslyczxv1bsh2";
-  };
+
   eclector = fetchFromGitHub {
     owner = "s-expressionists";
     repo = "Eclector";
     rev = "dddb4d8af3eae78017baae7fb9b99e73d2a56e6b";
     sha256 = "00raw4nfg9q73w1pj4r001g90g97n2rq6q3zijg5j6j7iq81df9s";
   };
-  alexandria = fetchFromGitLab {
-    domain = "gitlab.common-lisp.net";
-    owner = "alexandria";
-    repo = "alexandria";
-    rev = "v1.4";
-    sha256 = "0r1adhvf98h0104vq14q7y99h0hsa8wqwqw92h7ghrjxmsvz2z6l";
-  };
+
   esrap = fetchFromGitHub {
     owner = "scymtym";
     repo = "esrap";
@@ -83,24 +72,131 @@ let
     sha256 = "0gz7s22c6y0rz148w1sinxmqdk079k0k6rjrxpgaic14wqrqpk9q";
     fetchSubmodules = true;
   };
+
+
+  ansi-test = fetchFromGitLab {
+    domain = "gitlab.common-lisp.net";
+    owner = "yitzchak";
+    repo = "ansi-test";
+    rev = "33e6391c8d49187918cb2db28155e396017a5151";
+    sha256 = "1kaxw4jjqn4yp0wqy98nhxaapmqws4k3nwhryysfzlmniy9ly2ln";
+  };
+  cl-bench = fetchFromGitLab {
+    domain = "gitlab.common-lisp.net";
+    owner = "ansi-test";
+    repo = "cl-bench";
+    rev = "7d184b4ef2a6272f0e3de88f6c243edb20f7071a1";
+    sha256 = "1yxl26wf7ybq4hg06k78bh9ws236wywmpsn42kc0rvi3s5c0i4gd";
+  };
+  cl-who = fetchFromGitHub {
+    owner = "edicl";
+    repo = "cl-who";
+    rev = "07dafe9b351c32326ce20b5804e798f10d4f273d";
+    sha256 = "1rdvs113q6d46cblwhsv1vmm31p952wyzkyibqix0ypadpczlgp5";
+  };
+  quicklisp-client = fetchFromGitHub {
+    owner = "quicklisp";
+    repo = "quicklisp-client";
+    rev = "version-2021-02-13";
+    sha256 = "102f1chpx12h5dcf659a9kzifgfjc482ylf73fg1cs3w34zdawnl";
+  };
+  shasht = fetchFromGitHub {
+    owner = "yitzchak";
+    repo = "shasht";
+    rev = "4fc7c9dad567a4266ec3a6596d50744df9ea1c61";
+    sha256 = "1xpspksfkhk95wjirrqfrqm7sc1wyr2pjw7z25i0qz02rg479hlg";
+  };
+  trivial-do = fetchFromGitHub {
+    owner = "yitzchak";
+    repo = "trivial-do";
+    rev = "a19f93227cb80a6bec8846655ebcc7998020bd7e";
+    sha256 = "0vql7am4zyg6zav3l6n6q3qgdxlnchdxpgdxp8lr9sm7jra7sdsf";
+  };
+  trivial-gray-streams = fetchFromGitHub {
+    owner = "trivial-gray-streams";
+    repo = "trivial-gray-streams";
+    rev = "2b3823edbc78a450db4891fd2b566ca0316a7876";
+    sha256 = "1hipqwwd5ylskybd173rvlsk7ds4w4nq1cmh9952ivm6dgh7pwzn";
+  };
+  acclimation = fetchFromGitHub {
+    owner = "robert-strandh";
+    repo = "Acclimation";
+    rev = "ff1839faeaaf3bb40775b35174beb9c7dd13ef19";
+    sha256 = "04bk389p4fddh4vf9apry4a40ryfhcdf5fq23gh1ihvfdpv3b957";
+  };
+  alexandria = fetchFromGitLab {
+    domain = "gitlab.common-lisp.net";
+    owner = "alexandria";
+    repo = "alexandria";
+    rev = "v1.4";
+    sha256 = "0r1adhvf98h0104vq14q7y99h0hsa8wqwqw92h7ghrjxmsvz2z6l";
+  };
+  anaphora = fetchFromGitHub {
+    owner = "spwhitton";
+    repo = "anaphora";
+    rev = "bcf0f7485eec39415be1b2ec6ca31cf04a8ab5c5";
+    sha256 = "1ds5ab0rzkrhfl29xpvmvyxmkdyj9mi19p330pz603lx95njjc0b";
+  };
+  architecture-builder-protocol = fetchFromGitHub {
+    owner = "scymtym";
+    repo = "architecture.builder-protocol";
+    rev = "fb4e2577ca7787988f09c8ce3f3d3177cd77c9af";
+    sha256 = "0nv5wmcf7nvh44148cvq6fvz8zjm212rzzn5r3bi72phpywjxc9v";
+  };
+  array-utils = fetchFromGitHub {
+    owner = "Shinmera";
+    repo = "array-utils";
+    rev = "5acd90fa3d9703cea33e3825334b256d7947632f";
+    sha256 = "1qiw31xxyd73pchim5q9ki012726xvn5ab869qksd1kys7gwgg86";
+  };
+  babel = fetchFromGitHub {
+    owner = "cl-babel";
+    repo = "babel";
+    rev = "f892d0587c7f3a1e6c0899425921b48008c29ee3";
+    sha256 = "04frn19mngvsh8bh7fb1rfjm8mqk8bgzx5c43dg7z02nfsxkqqak";
+  };
+  bordeaux-threads = fetchFromGitHub {
+    owner = "sionescu";
+    repo = "bordeaux-threads";
+    rev = "3d25cd01176f7c9215ebc792c78313cb99ff02f9";
+    sha256 = "1hh2wn6gjfs22jqys2qsc33znn0mrrqj1lchsi9zfwq7p799dv8f";
+  };
+  cffi = fetchFromGitHub {
+    owner = "cffi";
+    repo = "cffi";
+    rev = "9c912e7b89eb09dd347d3ebae16e4dc5f53e5717";
+    sha256 = "0fv1a5iv6q9sqcjza6wk2zv6sqsjn4daylk56fcp8czvclg78sxs";
+  };
+  cl-markup = fetchFromGitHub {
+    owner = "arielnetworks";
+    repo = "cl-markup";
+    rev = "e0eb7debf4bdff98d1f49d0f811321a6a637b390";
+    sha256 = "10l6k45971dl13fkdmva7zc6i453lmq9j4xax2ci6pjzlc6xjhp7";
+  };
+  cl-ppcre = fetchFromGitHub {
+    owner = "edicl";
+    repo = "cl-ppcre";
+    rev = "b4056c5aecd9304e80abced0ef9c89cd66ecfb5e";
+    sha256 = "13z548s88xrz2nscq91w3i33ymxacgq3zl62i8d31hqmwr4s45zb";
+  };
 in
 stdenv.mkDerivation rec {
   pname = "clasp";
-  version = "1.0.0";
-  #version = "2.1.0";
+  #version = "1.0.0";
+  version = "2.1.0";
 
   src = fetchFromGitHub {
     owner = "clasp-developers";
     repo = "clasp";
     rev = version;
-    sha256 = "1yyxclwfk64rqia3j76wkd877zjv4r0yav7r6wj6ksgcfylbsn0j";
-    #sha256 = "LDDMvBCfLsgltUkCd8mYIWUKooqn3vfoVMsdUchJTkM=";
+    #sha256 = "1yyxclwfk64rqia3j76wkd877zjv4r0yav7r6wj6ksgcfylbsn0j";
+    sha256 = "LDDMvBCfLsgltUkCd8mYIWUKooqn3vfoVMsdUchJTkM=";
     fetchSubmodules = true;
   };
 
   checkInputs = [ glibcLocales ];
 
-  nativeBuildInputs = [ python3 git sbcl wafHook ] ++ (with llvmPackages; [
+  nativeBuildInputs = [ python3 git sbcl ninja ] ++ (with llvmPackages; [
     #nativeBuildInputs = [ python3 git sbcl ] ++ (with llvmPackages; [
     llvm
     clang
@@ -186,6 +282,10 @@ stdenv.mkDerivation rec {
 
     chmod -R u+rwX src
     ( cd src/lisp/modules/asdf; make )
+  '';
+
+  configurePhase = ''
+    ${sbcl}/bin/sbcl --script $src/koga --skip-sync
   '';
 
   buildTargets = "build_cboehmprecise";

@@ -23,6 +23,7 @@
     grapejuice
     unciv
     prismlauncher
+    gamescope
     # all of wine and maybe gecko + mono support
     winetricks
     wineWowPackages.waylandFull
