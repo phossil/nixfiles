@@ -10,12 +10,14 @@
 , ncurses
 , boost
 , libelf
-, python3
 , git
 , sbcl
 , libbsd
 , libffi
 , ninja
+, pkg-config
+, fmt
+, ctags
 }:
 
 let
@@ -315,8 +317,7 @@ stdenv.mkDerivation rec {
 
   checkInputs = [ glibcLocales ];
 
-  nativeBuildInputs = [ python3 git sbcl ninja ] ++ (with llvmPackages; [
-    #nativeBuildInputs = [ python3 git sbcl ] ++ (with llvmPackages; [
+  nativeBuildInputs = [ git sbcl ninja pkg-config ] ++ (with llvmPackages; [
     llvm
     clang
   ]);
@@ -330,6 +331,7 @@ stdenv.mkDerivation rec {
       llvm
       clang
       clang-unwrapped
+      #libunwind
     ]) ++ [
       gmp
       zlib
@@ -349,6 +351,8 @@ stdenv.mkDerivation rec {
         configureFlags = (x.configureFlags or [ ])
         ++ [ "--enable-static" "--enable-handle-fork" ];
       }))
+      fmt
+      #ctags
     ];
 
   NIX_CXXSTDLIB_COMPILE = " -frtti -DBOOST_SYSTEM_ENABLE_DEPRECATED=1 ";
@@ -366,14 +370,17 @@ stdenv.mkDerivation rec {
     libelf
     libffi
     glibcLocales
+    #ctags
+    #llvmPackages.libunwind
   ];
 
   LD_LIBRARY_PATH = "${libPath}";
 
   postPatch = ''
-    echo "create directories found in ${src}/repos.sexp"
+    echo "creating directories found in ${src}/repos.sexp"
     mkdir -p $(grep -ri "directory" repos.sexp | sed -e 's/:directory //' -e 's/"//g')
   
+    echo "copying dependencies to desired locations"
     cp -rfT "${ansi-test}" dependencies/ansi-test/
     cp -rfT "${cl-bench}" dependencies/cl-bench/
     cp -rfT "${cl-who}" dependencies/cl-who/
@@ -425,7 +432,18 @@ stdenv.mkDerivation rec {
   '';
 
   configurePhase = ''
-    ${sbcl}/bin/sbcl --script $src/koga --skip-sync
+    echo "executing workaround for '/homeless-shelter'"
+    export XDG_CACHE_HOME=$(pwd)/.cache
+    mkdir -p "$XDG_CACHE_HOME"
+
+    echo "executing $src/koga with ${sbcl}/bin/sbcl"
+    ${sbcl}/bin/sbcl --script $src/koga --skip-sync \
+      --cc=${llvmPackages.clang}/bin/clang \
+      --cxx=${llvmPackages.clang}/bin/clang \
+      --reproducible-build
+
+    echo "copying ninja.build to $(pwd)"
+    cp build/build.ninja .
   '';
 
   buildTargets = "build_cboehmprecise";
