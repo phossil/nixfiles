@@ -56,7 +56,6 @@
     appimage-run
     celluloid
     szyszka
-    kate
     meld
     kolourpaint
     gnome.gnome-dictionary

@@ -18,6 +18,7 @@
 , pkg-config
 , fmt
 , ctags
+, libedit
 }:
 
 let
@@ -320,6 +321,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ git sbcl ninja pkg-config ] ++ (with llvmPackages; [
     llvm
     clang
+    lld
   ]);
 
   buildInputs = with llvmPackages;
@@ -331,8 +333,7 @@ stdenv.mkDerivation rec {
       llvm
       clang
       clang-unwrapped
-      #libunwind
-    ]) ++ [
+     ]) ++ [
       gmp
       zlib
       ncurses
@@ -352,7 +353,8 @@ stdenv.mkDerivation rec {
         ++ [ "--enable-static" "--enable-handle-fork" ];
       }))
       fmt
-      #ctags
+      ctags
+      libedit
     ];
 
   NIX_CXXSTDLIB_COMPILE = " -frtti -DBOOST_SYSTEM_ENABLE_DEPRECATED=1 ";
@@ -370,8 +372,9 @@ stdenv.mkDerivation rec {
     libelf
     libffi
     glibcLocales
-    #ctags
-    #llvmPackages.libunwind
+    fmt
+    ctags
+    libedit
   ];
 
   LD_LIBRARY_PATH = "${libPath}";
@@ -440,14 +443,13 @@ stdenv.mkDerivation rec {
     ${sbcl}/bin/sbcl --script $src/koga --skip-sync \
       --cc=${llvmPackages.clang}/bin/clang \
       --cxx=${llvmPackages.clang}/bin/clang \
-      --reproducible-build
-
-    echo "copying ninja.build to $(pwd)"
-    cp build/build.ninja .
+      --ld=lld \
+      --ctags=${ctags}/bin/ctags
   '';
 
-  buildTargets = "build_cboehmprecise";
-  installTargets = "install_cboehmprecise";
+  buildPhase = ''
+    ninja -C build -v
+  '';
 
   CLASP_SRC_DONTTOUCH = "true";
 
