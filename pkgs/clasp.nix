@@ -333,7 +333,7 @@ stdenv.mkDerivation rec {
       llvm
       clang
       clang-unwrapped
-     ]) ++ [
+    ]) ++ [
       gmp
       zlib
       ncurses

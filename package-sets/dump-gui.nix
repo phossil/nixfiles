@@ -88,6 +88,7 @@
     sunshine
     rlaunch
     gthumb
+    oneko
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag

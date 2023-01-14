@@ -2,5 +2,5 @@
 
 {
   # meh
-  services.xserver.displayManager.sessionPackages = [ (pkgs.callPackage ./../pkgs/qvwm { }) ];
+  services.xserver.displayManager.sessionPackages = [ (pkgs.callPackage ./../pkgs/qvwm.nix { }) ];
 }

@@ -39,6 +39,7 @@
             ./common/libvirtd.nix
             ./common/shell.nix
             ./common/user-input.nix
+            ./common/qvwm.nix
             ./package-sets
             ./package-sets/creative.nix
             ./package-sets/dump-cli.nix
@@ -49,11 +50,8 @@
             ./package-sets/gayming.nix
             ./package-sets/lsp.nix
             ./package-sets/media.nix
+            ./package-sets/mir.nix
             ./package-sets/themes.nix
-            ({ config, pkgs, ... }:
-              {
-                services.xserver.desktopManager.enlightenment.enable = true;
-              })
           ];
         };
         Gem-3350 = lib.nixosSystem {
