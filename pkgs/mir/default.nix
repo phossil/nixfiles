@@ -32,6 +32,7 @@
 , doxygen
 , libxslt
 , pkg-config
+, xwayland
 }:
 
 let
@@ -107,6 +108,7 @@ stdenv.mkDerivation rec {
     xorg.libXdmcp
     xorg.libXrender
     xorg.xorgproto
+    xwayland
   ];
 
   buildFlags = [ "all" "doc" ];
@@ -115,6 +117,11 @@ stdenv.mkDerivation rec {
     "-DMIR_PLATFORM='gbm-kms;eglstream-kms;x11;wayland'"
     # Tests depend on package wlcs which is not yet packaged
     "-DMIR_ENABLE_TESTS=OFF"
+  ];
+
+  # Fix Xwayland path
+  CXXFLAGS = [
+    ''-DNIXPKGS_XWAYLAND=\"${lib.getBin xwayland}/bin/Xwayland\"''
   ];
 
   outputs = [ "out" "dev" "doc" ];
