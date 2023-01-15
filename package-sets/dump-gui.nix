@@ -8,7 +8,7 @@
     # now look at this lovely mess
     android-studio
     digikam
-    vscode
+    #vscode
     gnome-feeds
     drawing
     flameshot

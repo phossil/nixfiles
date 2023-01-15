@@ -382,7 +382,7 @@ stdenv.mkDerivation rec {
   postPatch = ''
     echo "creating directories found in ${src}/repos.sexp"
     mkdir -p $(grep -ri "directory" repos.sexp | sed -e 's/:directory //' -e 's/"//g')
-  
+
     echo "copying dependencies to desired locations"
     cp -rfT "${ansi-test}" dependencies/ansi-test/
     cp -rfT "${cl-bench}" dependencies/cl-bench/
@@ -464,4 +464,3 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/clasp-developers/clasp";
   };
 }
-
