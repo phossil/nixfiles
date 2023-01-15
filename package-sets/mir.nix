@@ -11,13 +11,14 @@
     })
     # example mir desktop environment
     # this is ugly for now TuT
-    (pkgs.callPackage ../pkgs/egmde.nix {
-      mir = pkgs.callPackage ../pkgs/mir {
-        egl-wayland = pkgs.callPackage ./../pkgs/mir/egl-wayland.nix {
-          eglexternalplatform = pkgs.callPackage ./../pkgs/mir/eglexternalplatform.nix { };
-        };
-        eglexternalplatform = pkgs.callPackage ./../pkgs/mir/eglexternalplatform.nix { };
-      };
-    })
+
+    # (pkgs.callPackage ../pkgs/egmde.nix {
+    #   mir = pkgs.callPackage ../pkgs/mir {
+    #     egl-wayland = pkgs.callPackage ./../pkgs/mir/egl-wayland.nix {
+    #       eglexternalplatform = pkgs.callPackage ./../pkgs/mir/eglexternalplatform.nix { };
+    #     };
+    #     eglexternalplatform = pkgs.callPackage ./../pkgs/mir/eglexternalplatform.nix { };
+    #   };
+    # })
   ];
 }
