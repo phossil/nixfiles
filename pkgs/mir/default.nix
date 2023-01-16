@@ -11,6 +11,7 @@
 , udev
 , glib
 , wayland
+, xwayland
 , libxcb
 , xorg
 , libdrm
@@ -21,7 +22,6 @@
 , libinput
 , libxmlxx
 , libuuid
-, pcre2
 , freetype
 , libyamlcpp
 , python3
@@ -32,30 +32,65 @@
 , doxygen
 , libxslt
 , pkg-config
-, xwayland
+, pcre
+, pcre2
+, dbus
+, gtest
+, umockdev
+, wlcs
 }:
 
 let
-  pythonEnv = python3.withPackages (ps: [ ps.pillow ]);
+  doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
+  pythonEnv = python3.withPackages (ps: with ps; [
+    pillow
+  ] ++ lib.optionals doCheck [
+    python-dbusmock
+    pygobject3
+  ]);
 in
 
 stdenv.mkDerivation rec {
   pname = "mir";
-  version = "2.10.0";
+  version = "2.11.0";
 
   src = fetchFromGitHub {
     owner = "MirServer";
     repo = "mir";
     rev = "v${version}";
-    sha256 = "sha256-HPbToo7lhsHyx0w4oO2wp3zZ0xpr6SlEm2oE6Rm8b3E=";
+    sha256 = "sha256-103PJZEoSgtSbDGCanD2/XdpX6DXXx678GmghdZI7H4=";
   };
 
   postPatch = ''
+    # Fix scripts that get run in tests
+    patchShebangs tools/detect_fd_leaks.bash tests/acceptance-tests/wayland-generator/test_wayland_generator.sh.in
+
+    # Fix LD_PRELOADing in tests
+    for needsPreloadFixing in cmake/MirCommon.cmake tests/umock-acceptance-tests/CMakeLists.txt tests/unit-tests/platforms/gbm-kms/kms/CMakeLists.txt tests/unit-tests/CMakeLists.txt; do
+      substituteInPlace $needsPreloadFixing \
+        --replace 'LD_PRELOAD=liblttng-ust-fork.so' 'LD_PRELOAD=${lib.getLib lttng-ust}/lib/liblttng-ust-fork.so' \
+        --replace 'LD_PRELOAD=libumockdev-preload.so.0' 'LD_PRELOAD=${lib.getLib umockdev}/lib/libumockdev-preload.so.0'
+    done
+
+    # Fix Xwayland default (also used by tests, unsure how to set this for just the tests)
+    substituteInPlace src/miral/x11_support.cpp \
+      --replace '/usr/bin/Xwayland' '${xwayland}/bin/Xwayland'
+
+    # Patch in which tests we want to skip (revise when version > 2.10.0
+    substituteInPlace cmake/MirCommon.cmake \
+      --replace 'set(test_exclusion_filter)' 'set(test_exclusion_filter "${lib.strings.concatStringsSep ":" [
+        # These all fail in the same way: GDK_BACKEND expected to have "wayland", actually has "wayland,x11".
+        # They succeed when run interactively.
+        "ExternalClient.empty_override_does_nothing"
+        "ExternalClient.strange_override_does_nothing"
+        "ExternalClient.another_strange_override_does_nothing"
+      ]}")'
+
     # Fix error broken path found in pc file ("//")
     for f in $(find . -name '*.pc.in') ; do
       substituteInPlace $f \
-        --replace "/@CMAKE_INSTALL_LIBDIR@" "@CMAKE_INSTALL_LIBDIR@" \
-        --replace "/@CMAKE_INSTALL_INCLUDEDIR@" "@CMAKE_INSTALL_INCLUDEDIR@"
+        --replace "$"'{prefix}/@CMAKE_INSTALL_LIBDIR@' '@CMAKE_INSTALL_FULL_LIBDIR@' \
+        --replace "$"'{prefix}/@CMAKE_INSTALL_INCLUDEDIR@' '@CMAKE_INSTALL_FULL_INCLUDEDIR@'
     done
 
     # Fix paths for generating drm-formats
@@ -74,55 +109,78 @@ stdenv.mkDerivation rec {
     libxslt
     pkg-config
     pythonEnv
+    lttng-ust # lttng-gen-tp
+    glib # gdbus-codegen
   ];
 
   buildInputs = [
     boost
-    eglexternalplatform
     egl-wayland
-    freetype
-    glib
+    libglvnd
     glm
     glog
+    lttng-ust
+    udev
+    glib
+    wayland
+    libxcb
+    xorg.libXcursor
+    xorg.xorgproto
     libdrm
+    mesa
     libepoxy
-    libevdev
-    libglvnd
+    nettle
+    libxkbcommon
     libinput
+    libxmlxx
+    libuuid
+    freetype
+    libyamlcpp
+    libevdev
+    xorg.libX11
+
+    xwayland
+
+    eglexternalplatform
+    pcre
+    pcre2
     libselinux
     libsepol
-    libuuid
-    libxcb
-    libxkbcommon
-    libxmlxx
-    libyamlcpp
-    lttng-ust
-    mesa
-    nettle
-    pcre2
-    udev
-    wayland
-    xorg.libX11
     xorg.libXau
-    xorg.libXcursor
     xorg.libXdmcp
     xorg.libXrender
-    xorg.xorgproto
-    xwayland
+  ] ++ lib.optionals doCheck [
+    gtest
+    umockdev
+    wlcs
+  ];
+
+  strictDeps = true;
+
+  checkInputs = [
+    dbus
   ];
 
   buildFlags = [ "all" "doc" ];
 
   cmakeFlags = [
     "-DMIR_PLATFORM='gbm-kms;eglstream-kms;x11;wayland'"
-    # Tests depend on package wlcs which is not yet packaged
-    "-DMIR_ENABLE_TESTS=OFF"
+    "-DMIR_ENABLE_TESTS=${if doCheck then "ON" else "OFF"}"
+    # Renamed to MIR_SIGBUS_HANDLER_ENVIRONMENT_BROKEN in version > 2.10.0
+    "-DMIR_BAD_BUFFER_TEST_ENVIRONMENT_BROKEN=ON"
+    # These get built but don't get executed by default, yet they get installed when tests are enabled
+    "-DMIR_BUILD_PERFORMANCE_TESTS=OFF"
+    "-DMIR_BUILD_PLATFORM_TEST_HARNESS=OFF"
   ];
 
-  # Fix Xwayland path
-  CXXFLAGS = [
-    ''-DNIXPKGS_XWAYLAND=\"${lib.getBin xwayland}/bin/Xwayland\"''
-  ];
+  inherit doCheck;
+
+  # Conflicts about sockets already being in use
+  enableParallelChecking = false;
+
+  preCheck = ''
+    export XDG_RUNTIME_DIR=$TMPDIR
+  '';
 
   outputs = [ "out" "dev" "doc" ];
 

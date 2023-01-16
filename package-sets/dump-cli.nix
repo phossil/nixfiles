@@ -43,5 +43,6 @@
     ttygif
     diod
     #wkhtmltopdf
+    onefetch
   ];
 }

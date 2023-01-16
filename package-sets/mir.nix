@@ -8,6 +8,7 @@
         eglexternalplatform = pkgs.callPackage ./../pkgs/mir/eglexternalplatform.nix { };
       };
       eglexternalplatform = pkgs.callPackage ./../pkgs/mir/eglexternalplatform.nix { };
+      wlcs = pkgs.callPackage ./../pkgs/mir/wlcs.nix { };
     })
     # example mir desktop environment
     # this is ugly for now TuT
