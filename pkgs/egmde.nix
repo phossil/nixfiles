@@ -8,6 +8,7 @@
 , wayland
 , libxkbcommon
 , boost
+, gnome
 }:
 
 stdenv.mkDerivation rec {
@@ -23,6 +24,19 @@ stdenv.mkDerivation rec {
   };
 
   postPatch = ''
+    # Fix font search paths
+    substituteInPlace printer.cpp \
+      --replace "\"/usr" "\"/run/current-system/sw"
+
+    # Patch hard-coded path to gnome-terminal
+    substituteInPlace egmde-terminal \
+      --replace "/usr" "${gnome.gnome-terminal}"
+
+    # Fix application search paths
+    substituteInPlace eglauncher.cpp \
+      --replace "/usr/local/share/applications:/usr/share/applications" "/run/current-system/sw/share/applications" \
+      --replace "/usr" "${gnome.gnome-terminal}"
+
     # Fix egmde.desktop install path
     substituteInPlace CMakeLists.txt \
       --replace "/usr" "\''${CMAKE_INSTALL_PREFIX}"

@@ -37,6 +37,7 @@
             ./common/fs-support.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
+            ./common/mir.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./common/qvwm.nix
@@ -50,7 +51,6 @@
             ./package-sets/gayming.nix
             ./package-sets/lsp.nix
             ./package-sets/media.nix
-            ./package-sets/mir.nix
             ./package-sets/themes.nix
           ];
         };

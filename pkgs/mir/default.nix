@@ -38,6 +38,7 @@
 , gtest
 , umockdev
 , wlcs
+, gnome
 }:
 
 let
@@ -101,6 +102,10 @@ stdenv.mkDerivation rec {
     # Fix server-platform install path
     substituteInPlace src/platforms/CMakeLists.txt \
       --replace "\''${CMAKE_INSTALL_PREFIX}/\''${CMAKE_INSTALL_LIBDIR}/mir/server-platform" "\''${CMAKE_INSTALL_LIBDIR}/mir/server-platform"
+
+    # Patch hard-coded path to gnome-terminal
+    substituteInPlace examples/miral-shell/miral-terminal.sh \
+      --replace "/usr" "${gnome.gnome-terminal}"
   '';
 
   nativeBuildInputs = [

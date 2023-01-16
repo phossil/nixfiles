@@ -22,6 +22,8 @@
         wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
       };
     })
+    # the example mir shell enabled in the sessions below depends on gnome-terminal
+    gnome.gnome-terminal
   ];
 
   # enable sessions
