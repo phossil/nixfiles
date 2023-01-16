@@ -9,6 +9,7 @@
 , libxkbcommon
 , boost
 , gnome
+, freefont_ttf
 }:
 
 stdenv.mkDerivation rec {
@@ -26,7 +27,7 @@ stdenv.mkDerivation rec {
   postPatch = ''
     # Fix font search paths
     substituteInPlace printer.cpp \
-      --replace "\"/usr" "\"/run/current-system/sw"
+      --replace "/usr/share/fonts/truetype/freefont/" "${freefont_ttf}/share/fonts/truetype/"
 
     # Patch hard-coded path to gnome-terminal
     substituteInPlace egmde-terminal \
