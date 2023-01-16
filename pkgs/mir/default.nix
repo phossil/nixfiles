@@ -184,6 +184,8 @@ stdenv.mkDerivation rec {
 
   outputs = [ "out" "dev" "doc" ];
 
+  passthru.providedSessions = [ "mir-shell" ];
+
   meta = with lib; {
     description = "Compositor and display server used by Canonical";
     homepage = "https://mir-server.io";

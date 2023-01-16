@@ -22,6 +22,13 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
+  postPatch = ''
+    # Fix egmde.desktop install path
+    substituteInPlace CMakeLists.txt \
+      --replace "/usr" "\''${CMAKE_INSTALL_PREFIX}"
+  '';
+
+
   nativeBuildInputs = [
     cmake
     pkg-config
@@ -34,6 +41,8 @@ stdenv.mkDerivation rec {
     libxkbcommon
     boost
   ];
+
+  passthru.providedSessions = [ "egmde" ];
 
   meta = with lib; {
     homepage = "https://mir-server.io/";
