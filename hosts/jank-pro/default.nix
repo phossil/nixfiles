@@ -27,13 +27,13 @@
     loader.efi.canTouchEfiVariables = true;
 
     # latest kernel
-    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
     # latest xanmod Linux kernel
     #kernelPackages = pkgs.linuxPackages_xanmod_latest;
     # patched kernel with experimental bcachefs support
     #kernelPackages = pkgs.linuxPackages_testing_bcachefs;
     # can your linux run dh3 ? i thought so
-    kernelPackages = pkgs.linux_latest_98se;
+    #kernelPackages = pkgs.linux_latest_98se;
     # out-of-tree kernel modules
     extraModulePackages = with config.boot.kernelPackages; [
       zenpower
