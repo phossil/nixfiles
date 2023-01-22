@@ -38,6 +38,14 @@
     swaybg
     # top bar for wayland
     waybar
+    # notification thingy
+    mako
+    # screenshot utilities
+    wf-recorder
+    slurp
+    grim
+    # admin prompt
+    lxqt.lxqt-policykit
   ];
 
   # enable sessions
