@@ -11,10 +11,10 @@ TODO: fix [`clasp-common-lisp`](./pkgs/clasp.nix)
 
 `nix flake show` output:
 ```shell
-[1mgithub:phossil/nixfiles/a2b95997529a6fa946b086a4b0ba18c06518e2bc[0m
-[32;1m├───[0m[1miso-gnome[0m: [35;1munknown[0m
-[32;1m└───[0m[1mnixosConfigurations[0m
-[32;1m    ├───[0m[1mGem-3350[0m: [35;1mNixOS configuration[0m
-[32;1m    ├───[0m[1mGem-JankPro[0m: [35;1mNixOS configuration[0m
-[32;1m    └───[0m[1mGem-Super[0m: [35;1mNixOS configuration[0m
+github:phossil/nixfiles/fe064c469e6375a58822fc69f7daf29ca8a4b14e
+├───iso-gnome: unknown
+└───nixosConfigurations
+    ├───Gem-3350: NixOS configuration
+    ├───Gem-JankPro: NixOS configuration
+    └───Gem-Super: NixOS configuration
 ```
