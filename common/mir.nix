@@ -22,8 +22,22 @@
         wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
       };
     })
+    # miriway wayland compositor
+    (callPackage ../pkgs/miriway.nix {
+      mir = callPackage ../pkgs/mir {
+        egl-wayland = callPackage ./../pkgs/mir/egl-wayland.nix {
+          eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
+        };
+        eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
+        wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
+      };
+    })
     # the example mir shell enabled in the sessions below depends on gnome-terminal
     gnome.gnome-terminal
+    # required for setting background in miriway
+    swaybg
+    # top bar for wayland
+    waybar
   ];
 
   # enable sessions
@@ -46,5 +60,18 @@
         wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
       };
     })
+    # miriway
+    (callPackage ../pkgs/miriway.nix {
+      mir = callPackage ../pkgs/mir {
+        egl-wayland = callPackage ./../pkgs/mir/egl-wayland.nix {
+          eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
+        };
+        eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
+        wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
+      };
+    })
   ];
+
+  # screensharing in wayland ??? :O
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
 }
