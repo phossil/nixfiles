@@ -65,7 +65,6 @@
     audacity
     libreddit
     swayimg
-    qview
     cherrytree
     labwc
     bemenu
@@ -91,12 +90,11 @@
     oneko
     shortwave
     armcord
-    wezterm
     racket
     obs-studio-plugins.input-overlay
     obs-studio-plugins.obs-gstreamer
-    obs-studio-plugins.obs-pipewire-audio-capture
-    obs-studio-plugins.wlrobs
+    texmaker
+    lyx
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag

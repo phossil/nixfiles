@@ -79,5 +79,9 @@
     copyq
     synapse
     czkawka
+    qview
+    wezterm
+    obs-studio-plugins.obs-pipewire-audio-capture
+    obs-studio-plugins.wlrobs
   ];
 }

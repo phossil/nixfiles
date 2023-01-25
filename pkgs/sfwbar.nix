@@ -14,6 +14,7 @@
 , gobject-introspection
 , gdk-pixbuf
 , cmake
+, wayland-scanner
 }:
 
 stdenv.mkDerivation rec {
@@ -40,6 +41,8 @@ stdenv.mkDerivation rec {
     gtk-layer-shell
     gtk3
 
+    wayland-scanner
+
     dbus
     dbus-glib
     gdk-pixbuf
@@ -53,6 +56,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/LBCrion/sfwbar";
     maintainers = with maintainers; [ phossil ];
     platforms = [ "x86_64-linux" ];
-    license = licenses.bsd2;
+    license = licenses.gpl3Only;
   };
 }

@@ -64,10 +64,15 @@
             ./common/desktop.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
+            ./common/mir.nix
             ./common/shell.nix
             ./common/user-input.nix
+            ./common/qvwm.nix
             ./package-sets
+            ./package-sets/dump-cli.nix
+            ./package-sets/dump-gui.nix
             ./package-sets/essentials.nix
+            ./package-sets/fonts.nix
             ./package-sets/fun.nix
             ./package-sets/gayming.nix
             ./package-sets/media.nix
