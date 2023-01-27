@@ -66,7 +66,6 @@
     libreddit
     swayimg
     cherrytree
-    labwc
     bemenu
     foot
     amberol
