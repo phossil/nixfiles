@@ -46,6 +46,9 @@
     grim
     # admin prompt
     lxqt.lxqt-policykit
+    # wowee, a taskbar ??
+    ## it's still broken on miriway TuT
+    (pkgs.callPackage ./../pkgs/sfwbar.nix { })
   ];
 
   # enable sessions
