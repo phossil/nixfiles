@@ -8,13 +8,6 @@
 , gtk3
 , glib
 , gtk-layer-shell
-, dbus
-, dbus-glib
-, librsvg
-, gobject-introspection
-, gdk-pixbuf
-, cmake
-, wayland-scanner
 }:
 
 stdenv.mkDerivation rec {
@@ -32,23 +25,17 @@ stdenv.mkDerivation rec {
     meson
     ninja
     pkgconfig
-    gobject-introspection
-    cmake
   ];
 
   buildInputs = [
     json_c
     gtk-layer-shell
     gtk3
+  ];
 
-    wayland-scanner
-
-    dbus
-    dbus-glib
-    gdk-pixbuf
-    glib
-
-    librsvg
+  mesonFlags = [
+    # TODO: https://github.com/NixOS/nixpkgs/issues/36468
+    "-Dc_args=-I${glib.dev}/include/gio-unix-2.0"
   ];
 
   meta = with lib; {
