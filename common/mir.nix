@@ -12,16 +12,6 @@
       eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
       wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
     })
-    # example mir desktop environment (egmde)
-    (callPackage ../pkgs/egmde.nix {
-      mir = callPackage ../pkgs/mir {
-        egl-wayland = callPackage ./../pkgs/mir/egl-wayland.nix {
-          eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
-        };
-        eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
-        wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
-      };
-    })
     # miriway wayland compositor
     (callPackage ../pkgs/miriway.nix {
       mir = callPackage ../pkgs/mir {
@@ -60,16 +50,6 @@
       };
       eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
       wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
-    })
-    # egmde
-    (callPackage ../pkgs/egmde.nix {
-      mir = callPackage ../pkgs/mir {
-        egl-wayland = callPackage ./../pkgs/mir/egl-wayland.nix {
-          eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
-        };
-        eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
-        wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
-      };
     })
     # miriway
     (callPackage ../pkgs/miriway.nix {
