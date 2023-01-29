@@ -325,15 +325,12 @@ stdenv.mkDerivation rec {
   ]);
 
   buildInputs = with llvmPackages;
-    (builtins.map
-      (x:
-        lib.overrideDerivation x
-          (x: { NIX_CFLAGS_COMPILE = (x.NIX_CFLAGS_COMPILE or "") + " -frtti"; })) [
+    [
       libllvm
       llvm
       clang
       clang-unwrapped
-    ]) ++ [
+    ] ++ [
       gmp
       zlib
       ncurses
