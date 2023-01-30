@@ -359,6 +359,7 @@ stdenv.mkDerivation rec {
 
   libPath = lib.makeLibraryPath [
     llvmPackages.libllvm
+    llvmPackages.libclang
     gmp
     zlib
     ncurses
@@ -428,7 +429,7 @@ stdenv.mkDerivation rec {
     cp -rfT "${seqan}" extensions/seqan-clasp/seqan/
 
     chmod -R u+rwX src
-    ( cd src/lisp/modules/asdf; make )
+    make -C src/lisp/modules/asdf -j$NIX_BUILD_CORES
   '';
 
   configurePhase = ''
@@ -436,16 +437,22 @@ stdenv.mkDerivation rec {
     export XDG_CACHE_HOME=$(pwd)/.cache
     mkdir -p "$XDG_CACHE_HOME"
 
-    echo "executing $src/koga with ${sbcl}/bin/sbcl"
-    ${sbcl}/bin/sbcl --script $src/koga --skip-sync \
+    echo "executing koga with ${sbcl}/bin/sbcl"
+    ${sbcl}/bin/sbcl --script koga --skip-sync \
+      --prefix=$out \
       --cc=${llvmPackages.clang}/bin/clang \
-      --cxx=${llvmPackages.clang}/bin/clang \
+      --cxx=${llvmPackages.clang}/bin/clang++ \
       --ld=lld \
-      --ctags=${ctags}/bin/ctags
+      --ctags=${ctags}/bin/ctags \
+      --jobs=$NIX_BUILD_CORES
+
+    # TODO --prefix not actually used?
+    substituteInPlace build/build.ninja \
+      --replace /usr/local $out
   '';
 
-  buildPhase = ''
-    ninja -C build -v
+  preBuild = ''
+    cd build
   '';
 
   CLASP_SRC_DONTTOUCH = "true";
@@ -456,8 +463,8 @@ stdenv.mkDerivation rec {
     license = lib.licenses.lgpl21Plus;
     maintainers = [ lib.maintainers.raskin ];
     platforms = lib.platforms.linux;
-    # Large, long to build, a private build of clang is needed, a prerelease.
-    hydraPlatforms = [ ];
+    # Long build, high RAM requirement
+    requiredSystemFeatures = [ "big-parallel" ];
     homepage = "https://github.com/clasp-developers/clasp";
   };
 }
