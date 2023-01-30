@@ -50,11 +50,7 @@
   };
 
   swapDevices =
-    [
-      { device = "/dev/disk/by-uuid/34c9ad59-f3b9-4f92-91d3-b29d03879b45"; }
-      # huge swap for hibernation
-      { device = "/dev/disk/by-uuid/ff5b096e-6dbf-42ce-b795-62ed9eada908"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/34c9ad59-f3b9-4f92-91d3-b29d03879b45"; }];
 
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
