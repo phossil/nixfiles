@@ -24,7 +24,7 @@
       permitRootLogin = "no";
       ports = [ 2222 ];
       # wholesome message
-      banner = "meowdy :3\n";
+      banner = "meowdy :3\n\n";
     };
     # be a silly lil goober
     endlessh-go = {

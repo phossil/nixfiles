@@ -109,6 +109,7 @@
             ./users/phossil.nix
             ./common
             ./common/shell.nix
+            ./package-sets
           ];
         };
         /*
