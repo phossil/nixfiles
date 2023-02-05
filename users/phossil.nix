@@ -15,8 +15,8 @@
       uid = 1000;
       group = "phossil";
       # Run 'sudo' commands, manage VM's, commit tax fraud on android, 
-      # make scans of crappy drawings, and use Zrythm/"JACK" with unlimited powah
-      extraGroups = [ "wheel" "libvirtd" "adbusers" "scanner" "lp" ];
+      # make scans of crappy drawings, and configure NetworkManager
+      extraGroups = [ "wheel" "libvirtd" "adbusers" "scanner" "lp" "networkmanager" ];
     };
   };
 }

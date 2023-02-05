@@ -101,14 +101,21 @@
              inherit system;
              modules = [ ./hosts/elie/configuration.nix ];
            };
-           aswitch = lib.nixosSystem {
-             inherit system;
-             modules = [ ./hosts/aswitch/configuration.nix ];
-           };
+        */
+        Gem-ASwitch = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/aswitch
+            ./users/phossil.nix
+            ./common
+            ./common/shell.nix
+          ];
+        };
+        /*
            opt-7010 = lib.nixosSystem {
              inherit system;
              modules = [ ./hosts/7010/configuration.nix ];
-              };
+           };
         */
       };
       # some installation images made with nixos-generators

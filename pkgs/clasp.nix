@@ -444,7 +444,10 @@ stdenv.mkDerivation rec {
       --cxx=${llvmPackages.clang}/bin/clang++ \
       --ld=lld \
       --ctags=${ctags}/bin/ctags \
-      --jobs=$NIX_BUILD_CORES
+      --jobs=$NIX_BUILD_CORES \
+      --bin-path=$out/bin \
+      --lib-path=$out/lib \
+      --share-path=$out/share
 
     # TODO --prefix not actually used?
     substituteInPlace build/build.ninja \

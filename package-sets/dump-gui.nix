@@ -24,7 +24,7 @@
     xournalpp
     cawbird
     michabo
-    logseq
+    #logseq
     pipecontrol
     river
     nyxt
@@ -94,6 +94,7 @@
     obs-studio-plugins.obs-gstreamer
     texmaker
     lyx
+    flowblade
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag

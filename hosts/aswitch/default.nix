@@ -19,7 +19,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "Gem-ASwitch"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -27,10 +27,10 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  #networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  #time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -54,12 +54,12 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.phossil = {
-    isNormalUser = true;
-    description = "Phosu Parsons";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
-  };
+  # users.users.phossil = {
+  #   isNormalUser = true;
+  #   description = "Phosu Parsons";
+  #   extraGroups = [ "networkmanager" "wheel" ];
+  #   packages = with pkgs; [];
+  # };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -83,7 +83,9 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-  services.openssh.enable = true;
+
+  # syncthing server ? :o
+  services.syncthing.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
