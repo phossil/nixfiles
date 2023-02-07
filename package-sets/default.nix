@@ -75,5 +75,6 @@
     rsync
     fclones
     nix-prefetch-git
+    wget
   ];
 }

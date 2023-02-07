@@ -69,6 +69,7 @@
             ./common/user-input.nix
             ./common/qvwm.nix
             ./package-sets
+            ./package-sets/creative.nix
             ./package-sets/dump-cli.nix
             ./package-sets/dump-gui.nix
             ./package-sets/essentials.nix
