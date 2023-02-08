@@ -22,6 +22,8 @@
     };
     # network usage wowee
     bandwhich.enable = true;
+    # enable for libvirtd and nautilus ?
+    dconf.enable = true;
   };
   # List packages installed in system profile. To search, run:
   # $ nix search nixpkgs wget
