@@ -80,6 +80,10 @@
   ## for the random darkhttp instance
   networking.firewall.allowedTCPPorts = [ 8008 ];
 
+  # wireguard owo ?
+  networking.wireguard.enable = true;
+  networking.firewall.checkReversePath = false;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
