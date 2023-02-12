@@ -24,7 +24,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/74F6-5A21";
+    device = "/dev/disk/by-uuid/6207-575F";
     fsType = "vfat";
   };
 
