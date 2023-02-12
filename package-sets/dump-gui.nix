@@ -37,7 +37,7 @@
     qalculate-gtk
     srain
     paperwork
-    helvum
+    #helvum
     gnome.gnome-logs
     gnome.gnome-sound-recorder
     drawio
