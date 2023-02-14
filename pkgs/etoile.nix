@@ -209,7 +209,7 @@ let
     fetchSubmodules = true;
   };
 in
-gnustep'.gsmakeDerivation rec {
+gnustep.gsmakeDerivation rec {
   pname = "etoile";
   version = "0.4.2";
 
@@ -233,9 +233,9 @@ gnustep'.gsmakeDerivation rec {
   ];
 
   buildInputs = [
-    gnustep'.base
-    gnustep'.gui
-    gnustep'.back
+    gnustep.base
+    gnustep.gui
+    gnustep.back
     libpng
     zlib
     oniguruma
