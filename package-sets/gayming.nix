@@ -24,6 +24,7 @@
     unciv
     prismlauncher
     gamescope
+    teeworlds
     # all of wine and maybe gecko + mono support
     winetricks
     wineWowPackages.waylandFull
