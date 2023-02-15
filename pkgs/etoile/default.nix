@@ -4,8 +4,6 @@
 , cmake
 , fetchFromGitHub
 , fetchurl
-, clang
-, libclang
 , ninja
 , gnustep
 , libpng
@@ -14,17 +12,15 @@
 , dbus
 , libstartup_notification
 , libXcursor
-, llvm
 , lemon
 , gmp
 , sqlite
 , ffmpeg
 , graphviz
 , discount
-, pkgs
-, git
 , pkg-config
 , openssl
+, llvmPackages
 }:
 
 let
@@ -98,7 +94,7 @@ let
     sha256 = "Q9Z2W1zeI7wyPMWXffsqgS2kt9uUKezFs2FdzGhhUSs=";
     fetchSubmodules = true;
   };
-  IconKit = pkgs.fetchFromGitHub {
+  IconKit = fetchFromGitHub {
     owner = "etoile";
     repo = "IconKit";
     rev = "c084f369dec8355b2db5dde36e168d39ce11e226";
@@ -233,11 +229,15 @@ gnustep.gsmakeDerivation rec {
   nativeBuildInputs = [
     #cmake
     pkg-config
-    clang
-    git
+    #clang
+    #git
   ];
 
-  buildInputs = [
+  buildInputs = with llvmPackages;
+  [
+    libllvm
+    llvm
+  ] ++ [
     gnustep.base
     gnustep.gui
     gnustep.back
@@ -296,8 +296,8 @@ gnustep.gsmakeDerivation rec {
 
   cmakeFlags = [
     "-DCMAKE_INSTALL_LIBDIR=lib"
-    "-DCMAKE_C_COMPILER=clang"
-    "-DCMAKE_CXX_COMPILER=clang++"
+    #"-DCMAKE_C_COMPILER=clang"
+    #"-DCMAKE_CXX_COMPILER=clang++"
     "-DTESTS=FALSE"
   ];
 
