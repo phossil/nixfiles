@@ -5,21 +5,21 @@
   # install as system packages
   environment.systemPackages = with pkgs; [
     # mir wayland compositor
-    (callPackage ../pkgs/mir {
-      egl-wayland = callPackage ./../pkgs/mir/egl-wayland.nix {
-        eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
+    (callPackage ../pkgs/mir/mir {
+      egl-wayland = callPackage ./../pkgs/mir/mir/egl-wayland.nix {
+        eglexternalplatform = callPackage ./../pkgs/mir/mir/eglexternalplatform.nix { };
       };
-      eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
-      wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
+      eglexternalplatform = callPackage ./../pkgs/mir/mir/eglexternalplatform.nix { };
+      wlcs = callPackage ./../pkgs/mir/mir/wlcs.nix { };
     })
     # miriway wayland compositor
-    (callPackage ../pkgs/miriway.nix {
-      mir = callPackage ../pkgs/mir {
-        egl-wayland = callPackage ./../pkgs/mir/egl-wayland.nix {
-          eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
+    (callPackage ../pkgs/mir/miriway.nix {
+      mir = callPackage ../pkgs/mir/mir {
+        egl-wayland = callPackage ./../pkgs/mir/mir/egl-wayland.nix {
+          eglexternalplatform = callPackage ./../pkgs/mir/mir/eglexternalplatform.nix { };
         };
-        eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
-        wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
+        eglexternalplatform = callPackage ./../pkgs/mir/mir/eglexternalplatform.nix { };
+        wlcs = callPackage ./../pkgs/mir/mir/wlcs.nix { };
       };
     })
     # the example mir shell enabled in the sessions below depends on gnome-terminal
@@ -44,21 +44,21 @@
   # enable sessions
   services.xserver.displayManager.sessionPackages = with pkgs; [
     # mir
-    (callPackage ../pkgs/mir {
-      egl-wayland = callPackage ./../pkgs/mir/egl-wayland.nix {
-        eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
+    (callPackage ../pkgs/mir/mir {
+      egl-wayland = callPackage ./../pkgs/mir/mir/egl-wayland.nix {
+        eglexternalplatform = callPackage ./../pkgs/mir/mir/eglexternalplatform.nix { };
       };
-      eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
-      wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
+      eglexternalplatform = callPackage ./../pkgs/mir/mir/eglexternalplatform.nix { };
+      wlcs = callPackage ./../pkgs/mir/mir/wlcs.nix { };
     })
     # miriway
-    (callPackage ../pkgs/miriway.nix {
-      mir = callPackage ../pkgs/mir {
-        egl-wayland = callPackage ./../pkgs/mir/egl-wayland.nix {
-          eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
+    (callPackage ../pkgs/mir/miriway.nix {
+      mir = callPackage ../pkgs/mir/mir {
+        egl-wayland = callPackage ./../pkgs/mir/mir/egl-wayland.nix {
+          eglexternalplatform = callPackage ./../pkgs/mir/mir/eglexternalplatform.nix { };
         };
-        eglexternalplatform = callPackage ./../pkgs/mir/eglexternalplatform.nix { };
-        wlcs = callPackage ./../pkgs/mir/wlcs.nix { };
+        eglexternalplatform = callPackage ./../pkgs/mir/mir/eglexternalplatform.nix { };
+        wlcs = callPackage ./../pkgs/mir/mir/wlcs.nix { };
       };
     })
   ];
