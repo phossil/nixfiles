@@ -23,6 +23,8 @@
 , discount
 , pkgs
 , git
+, pkg-config
+, openssl
 }:
 
 let
@@ -220,14 +222,17 @@ gnustep.gsmakeDerivation rec {
     sha256 = "08mqd0q0ag92y2c5hzaa8vb21maszx7g5bacnv3kg3mkkz3gyrps";
   };
 
+  /*
   impureEnvVars = lib.fetchers.proxyImpureEnvVars ++ [
     "GIT_PROXY_COMMAND"
     "SOCKS_SERVER"
   ];
+  */
+
 
   nativeBuildInputs = [
-    cmake
-    ninja
+    #cmake
+    pkg-config
     clang
     git
   ];
@@ -248,7 +253,46 @@ gnustep.gsmakeDerivation rec {
     ffmpeg
     graphviz
     discount
+    openssl
   ];
+
+  postPatch = ''
+    echo "creating directories found in ${src}/etoile-fetch.sh"
+    mkdir -p $(grep -ri "etoilefetch " etoile-fetch.sh | sed 's/\.//g' | awk '{print $2 "/" $3}')
+
+    echo "copying dependencies to desired locations"
+    cp -rfT "${Languages}" Languages/
+    cp -rfT "${ObjC2JS}" Languages/ObjC2JS/
+    cp -rfT "${SourceCodeKit}" Languages/SourceCodeKit/
+    cp -rfT "${ParserKit}" Languages/ParserKit/
+    cp -rfT "${CoreObject}" Frameworks/CoreObject/
+    cp -rfT "${EtoileFoundation}" Frameworks/EtoileFoundation/
+    cp -rfT "${UnitKit}" Frameworks/UnitKit/
+    cp -rfT "${EtoileUI}" Frameworks/EtoileUI/
+    cp -rfT "${EtoilePaint}" Frameworks/EtoilePaint/
+    cp -rfT "${EtoileText}" Frameworks/EtoileText/
+    cp -rfT "${IconKit}" Frameworks/IconKit/
+    cp -rfT "${ScriptKit}" Frameworks/ScriptKit/
+    cp -rfT "${SystemConfig}" Frameworks/SystemConfig/
+    cp -rfT "${XMPPKit}" Frameworks/XMPPKit/
+    cp -rfT "${ObjectManager}" Services/Private/ObjectManager/
+    cp -rfT "${ProjectManager}" Services/Private/ProjectManager/
+    cp -rfT "${Worktable}" Services/Private/Worktable/
+    cp -rfT "${System}" Services/Private/System/
+    cp -rfT "${DictionaryReader}" Services/User/DictionaryReader/
+    cp -rfT "${FontManager}" Services/User/FontManager/
+    cp -rfT "${Inbox}" Services/User/Inbox/
+    cp -rfT "${StepChat}" Services/User/StepChat/
+    cp -rfT "${StructuredTextEditor}" Services/User/StructuredTextEditor/
+    cp -rfT "${DocGenerator}" Developer/Services/DocGenerator/
+    cp -rfT "${ModelBuilder}" Developer/Services/ModelBuilder/
+    cp -rfT "${libdispatch-objc2}" Dependencies/libdispatch-objc2/
+
+    ln -sfn ../Frameworks/UnitKit Bootstrap
+    ln -sfn ../Frameworks/EtoileFoundation Bootstrap
+
+    chmod -R u+rwX .
+  '';
 
   cmakeFlags = [
     "-DCMAKE_INSTALL_LIBDIR=lib"
