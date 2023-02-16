@@ -2,13 +2,11 @@
 
 let
   self = rec {
-    llvmPackages_3 = callPackage ../pkgs/etoile/llvm {
-      binutils_gold = binutils;
-    };
-    etoile = callPackage ../pkgs/etoile {
-      llvmPackages = recurseIntoAttrs (callPackage ../pkgs/etoile/llvm {
-        binutils_gold = binutils;
-      });
+    llvmPackages_3 = pkgs.recurseIntoAttrs (pkgs.callPackage ../pkgs/etoile/llvm {
+      binutils_gold = pkgs.binutils;
+    });
+    etoile = pkgs.callPackage ../pkgs/etoile {
+      llvmPackages = self.llvmPackages_3;
     };
   };
 in
