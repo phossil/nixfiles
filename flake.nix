@@ -62,7 +62,7 @@
             ./common
             ./common/cups.nix
             ./common/desktop.nix
-            ./common/etoile.nix
+            #./common/etoile.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
             ./common/mir.nix
