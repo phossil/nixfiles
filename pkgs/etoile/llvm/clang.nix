@@ -24,8 +24,8 @@ stdenv.mkDerivation {
   enableParallelBuilding = true;
 
   src = fetchurl {
-      url = "http://llvm.org/releases/${version}/cfe-${version}.src.tar.gz";
-      sha256 = "15mrvw43s4frk1j49qr4v5viq68h8qlf10qs6ghd6mrsmgj5vddi";
+    url = "http://llvm.org/releases/${version}/cfe-${version}.src.tar.gz";
+    sha256 = "15mrvw43s4frk1j49qr4v5viq68h8qlf10qs6ghd6mrsmgj5vddi";
   };
 
   passthru = { gcc = stdenv.gcc.gcc; };
@@ -34,7 +34,7 @@ stdenv.mkDerivation {
     homepage = http://clang.llvm.org/;
     description = "A C language family frontend for LLVM";
     license = "BSD";
-    maintainers = with stdenv.lib.maintainers; [viric shlevy];
+    maintainers = with stdenv.lib.maintainers; [ viric shlevy ];
     platforms = with stdenv.lib.platforms; all;
   };
 }

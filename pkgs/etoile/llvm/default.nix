@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, perl, groff, cmake, python, libffi, binutils_gold }:
+{ stdenv, lib, fetchurl, perl, groff, cmake, python, libffi, binutils_gold }:
 
 let version = "3.3"; in
 
@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
   name = "llvm-${version}";
 
   src = fetchurl {
-    url    = "http://llvm.org/releases/${version}/llvm-${version}.src.tar.gz";
+    url = "http://llvm.org/releases/${version}/llvm-${version}.src.tar.gz";
     sha256 = "0y3mfbb5qzcpw3v5qncn69x1hdrrrfirgs82ypi2annhf0g6nxk8";
   };
 
@@ -18,7 +18,8 @@ stdenv.mkDerivation rec {
   buildInputs = [ perl groff cmake python libffi ]; # ToDo: polly, libc++; enable cxx11?
 
   # hacky fix: created binaries need to be run before installation
-  preBuild = let LD = if stdenv.isDarwin then "DYLD" else "LD";
+  preBuild =
+    let LD = if stdenv.isDarwin then "DYLD" else "LD";
     in "export ${LD}_LIBRARY_PATH='$$${LD}_LIBRARY_PATH:'`pwd`/lib";
 
   cmakeFlags = with stdenv; [
@@ -31,11 +32,11 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Collection of modular and reusable compiler and toolchain technologies";
-    homepage    = http://llvm.org/;
-    license     = licenses.bsd3;
+    homepage = http://llvm.org/;
+    license = licenses.bsd3;
     maintainers = with maintainers; [ lovek323 raskin shlevy viric ];
-    platforms   = platforms.all;
+    platforms = platforms.all;
   };
 }

@@ -1,4 +1,4 @@
-{stdenv, fetchurl, llvm, gmp, mpfr, mpc}:
+{ stdenv, fetchurl, llvm, gmp, mpfr, mpc }:
 
 stdenv.mkDerivation rec {
   version = "3.3";
@@ -24,7 +24,7 @@ stdenv.mkDerivation rec {
     homepage = http://dragonegg.llvm.org/;
     description = "gcc plugin that replaces gcc's optimizers and code generators by those in LLVM";
     license = "GPLv2+";
-    maintainers = with stdenv.lib.maintainers; [viric];
+    maintainers = with stdenv.lib.maintainers; [ viric ];
     platforms = with stdenv.lib.platforms; linux;
   };
 }

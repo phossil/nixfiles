@@ -219,10 +219,10 @@ gnustep.gsmakeDerivation rec {
   };
 
   /*
-  impureEnvVars = lib.fetchers.proxyImpureEnvVars ++ [
+    impureEnvVars = lib.fetchers.proxyImpureEnvVars ++ [
     "GIT_PROXY_COMMAND"
     "SOCKS_SERVER"
-  ];
+    ];
   */
 
 
@@ -234,27 +234,26 @@ gnustep.gsmakeDerivation rec {
   ];
 
   buildInputs = with llvmPackages;
-  [
-    libllvm
-    llvm
-  ] ++ [
-    gnustep.base
-    gnustep.gui
-    gnustep.back
-    libpng
-    zlib
-    oniguruma
-    dbus
-    libstartup_notification
-    libXcursor
-    lemon
-    gmp
-    sqlite
-    ffmpeg
-    graphviz
-    discount
-    openssl
-  ];
+    [
+      llvm
+    ] ++ [
+      gnustep.base
+      gnustep.gui
+      gnustep.back
+      libpng
+      zlib
+      oniguruma
+      dbus
+      libstartup_notification
+      libXcursor
+      lemon
+      gmp
+      sqlite
+      ffmpeg
+      graphviz
+      discount
+      openssl
+    ];
 
   postPatch = ''
     echo "creating directories found in ${src}/etoile-fetch.sh"
