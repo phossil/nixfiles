@@ -63,6 +63,7 @@
             ./common/cups.nix
             ./common/desktop.nix
             #./common/etoile.nix
+            #./crude-testing/top-level.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
             ./common/mir.nix
