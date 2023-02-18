@@ -3,11 +3,6 @@
   inputs = {
     # the most important flake in nixos
     nixpkgs.url = "nixpkgs/nixos-22.11";
-    # a personal flake of a win9x-like wm
-    # nixflake-qvwm = {
-    #    url = "github:phossil/nixflake-qvwm";
-    #    inputs.nixpkgs.follows = "nixpkgs";
-    # };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,7 +58,6 @@
             ./common/cups.nix
             ./common/desktop.nix
             #./common/etoile.nix
-            #./crude-testing/top-level.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
             ./common/mir.nix
