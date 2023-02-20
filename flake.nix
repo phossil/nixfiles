@@ -2,13 +2,17 @@
   description = "phossil's nixos flake collection";
   inputs = {
     # the most important flake in nixos
-    nixpkgs.url = "nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-software-center = {
+      url = "github:vlinkz/nix-software-center";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { self, nixpkgs, nixos-generators }:
+  outputs = { self, nixpkgs, nixos-generators, nix-software-center }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -74,6 +78,12 @@
             ./package-sets/gayming.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
+            ({ config, pkgs, ... }:
+              {
+                environment.systemPackages = with pkgs; [
+                  nix-software-center.packages.${system}.nix-software-center
+                ];
+              })
           ];
         };
         Gem-Super = lib.nixosSystem {
