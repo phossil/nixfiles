@@ -11,8 +11,9 @@
       url = "github:vlinkz/nix-software-center";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-lomiri.url = "github:OPNA2608/nixpkgs/init/lomiri-junk";    
   };
-  outputs = { self, nixpkgs, nixos-generators, nix-software-center }:
+  outputs = { self, nixpkgs, nixos-generators, nix-software-center, nixpkgs-lomiri }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -78,12 +79,12 @@
             ./package-sets/gayming.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
-            ({ config, pkgs, ... }:
-              {
-                environment.systemPackages = with pkgs; [
-                  nix-software-center.packages.${system}.nix-software-center
-                ];
-              })
+            ({ config, pkgs, ... }: {
+              environment.systemPackages = with pkgs; [
+                nix-software-center.packages.${system}.nix-software-center
+                #nixpkgs-lomiri.legacyPackages.${system}.lomiri-session
+              ];
+            })
           ];
         };
         Gem-Super = lib.nixosSystem {
