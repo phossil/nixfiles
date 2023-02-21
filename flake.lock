@@ -19,6 +19,24 @@
         "type": "github"
       }
     },
+    "nixflake-qvwm": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1676938260,
+        "narHash": "sha256-s31SZyC2dVNGT4sK4rqdyLJNIE0yWVkqJC1smoUNWIE=",
+        "owner": "phossil",
+        "repo": "nixflake-qvwm",
+        "rev": "270a980ed8d922bfd7f27e55f886f0d110cfc270",
+        "type": "github"
+      },
+      "original": {
+        "owner": "phossil",
+        "repo": "nixflake-qvwm",
+        "type": "github"
+      }
+    },
     "nixlib": {
       "locked": {
         "lastModified": 1636849918,
@@ -89,6 +107,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1676721149,
+        "narHash": "sha256-mN2EpTGxxVNnFZLoLWRwh6f7UWhXy4qE+wO2CZyrXps=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5f4e07deb7c44f27d498f8df9c5f34750acf52d2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1676817468,
         "narHash": "sha256-ovuJ1jQOC2/EEibufBkXmSN/O9mLx80Wh7aDmHmHAhA=",
         "owner": "NixOS",
@@ -106,8 +140,9 @@
     "root": {
       "inputs": {
         "nix-software-center": "nix-software-center",
+        "nixflake-qvwm": "nixflake-qvwm",
         "nixos-generators": "nixos-generators",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-lomiri": "nixpkgs-lomiri"
       }
     },

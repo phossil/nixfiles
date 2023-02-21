@@ -11,9 +11,18 @@
       url = "github:vlinkz/nix-software-center";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-lomiri.url = "github:OPNA2608/nixpkgs/init/lomiri-junk";    
+    nixpkgs-lomiri.url = "github:OPNA2608/nixpkgs/init/lomiri-junk";
+    # personal flake with qvwm
+    nixflake-qvwm.url = "github:phossil/nixflake-qvwm";
   };
-  outputs = { self, nixpkgs, nixos-generators, nix-software-center, nixpkgs-lomiri }:
+  outputs =
+    { self
+    , nixpkgs
+    , nixos-generators
+    , nix-software-center
+    , nixpkgs-lomiri
+    , nixflake-qvwm
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -65,10 +74,10 @@
             #./common/etoile.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
-            ./common/mir.nix
+            #./common/mir.nix
             ./common/shell.nix
             ./common/user-input.nix
-            ./common/qvwm.nix
+            #./common/qvwm.nix
             ./package-sets
             ./package-sets/creative.nix
             ./package-sets/dump-cli.nix
@@ -81,8 +90,13 @@
             ./package-sets/themes.nix
             ({ config, pkgs, ... }: {
               environment.systemPackages = with pkgs; [
+                # install nix-software-center
                 nix-software-center.packages.${system}.nix-software-center
                 #nixpkgs-lomiri.legacyPackages.${system}.lomiri-session
+              ];
+              # enable qvwm
+              services.xserver.displayManager.sessionPackages = [
+                nixflake-qvwm.packages.${system}.default
               ];
             })
           ];
