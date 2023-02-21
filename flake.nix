@@ -12,6 +12,10 @@
     nixpkgs-lomiri.url = "github:OPNA2608/nixpkgs/init/lomiri-junk";
     # personal flake with qvwm
     nixflake-qvwm.url = "github:phossil/nixflake-qvwm";
+    # personal flake with a bunch of random stuff
+    nixflake-misc.url = "github:phossil/nixflake-misc";
+    # unstable branch of nixpkgs
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
   outputs =
     { self
@@ -20,6 +24,8 @@
     , nix-software-center
     , nixpkgs-lomiri
     , nixflake-qvwm
+    , nixflake-misc
+    , nixpkgs-unstable
     }:
     let
       system = "x86_64-linux";
@@ -83,15 +89,22 @@
             ./package-sets/gayming.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
+            # i'll comment this properly later, am feeling lazy
             ({ config, pkgs, ... }: {
               environment.systemPackages = with pkgs; [
                 # install nix-software-center
                 nix-software-center.packages.${system}.nix-software-center
                 #nixpkgs-lomiri.legacyPackages.${system}.lomiri-session
+                nixflake-misc.packages.${system}.egmde
+                nixpkgs-unstable.legacyPackages.${system}.miriway
+                nixpkgs-unstable.legacyPackages.${system}.mir
+                nixflake-misc.packages.${system}.sfwbar
               ];
-              # enable qvwm
+              # enable qvwm and some wayland compositors
               services.xserver.displayManager.sessionPackages = [
                 nixflake-qvwm.packages.${system}.default
+                nixpkgs-unstable.legacyPackages.${system}.miriway
+                nixpkgs-unstable.legacyPackages.${system}.mir
               ];
             })
           ];

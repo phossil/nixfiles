@@ -19,9 +19,27 @@
         "type": "github"
       }
     },
-    "nixflake-qvwm": {
+    "nixflake-misc": {
       "inputs": {
         "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1676948806,
+        "narHash": "sha256-l4MoZ54NPlD/ZQgL0IhPGoP4GYn2XUOmObCre5gxZxY=",
+        "owner": "phossil",
+        "repo": "nixflake-misc",
+        "rev": "71de5578fb4235dee048e7a04993e56d1b7d67ae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "phossil",
+        "repo": "nixflake-misc",
+        "type": "github"
+      }
+    },
+    "nixflake-qvwm": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1676938260,
@@ -105,6 +123,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1676721149,
+        "narHash": "sha256-mN2EpTGxxVNnFZLoLWRwh6f7UWhXy4qE+wO2CZyrXps=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5f4e07deb7c44f27d498f8df9c5f34750acf52d2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1676721149,
@@ -123,6 +157,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1676721149,
+        "narHash": "sha256-mN2EpTGxxVNnFZLoLWRwh6f7UWhXy4qE+wO2CZyrXps=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5f4e07deb7c44f27d498f8df9c5f34750acf52d2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1676817468,
         "narHash": "sha256-ovuJ1jQOC2/EEibufBkXmSN/O9mLx80Wh7aDmHmHAhA=",
         "owner": "NixOS",
@@ -140,10 +190,12 @@
     "root": {
       "inputs": {
         "nix-software-center": "nix-software-center",
+        "nixflake-misc": "nixflake-misc",
         "nixflake-qvwm": "nixflake-qvwm",
         "nixos-generators": "nixos-generators",
-        "nixpkgs": "nixpkgs_3",
-        "nixpkgs-lomiri": "nixpkgs-lomiri"
+        "nixpkgs": "nixpkgs_4",
+        "nixpkgs-lomiri": "nixpkgs-lomiri",
+        "nixpkgs-unstable": "nixpkgs-unstable"
       }
     },
     "utils": {
