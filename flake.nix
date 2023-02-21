@@ -7,10 +7,8 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-software-center = {
-      url = "github:vlinkz/nix-software-center";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-software-center.url = "github:vlinkz/nix-software-center";
+    # nixpkgs fork with WIP lomiri commits
     nixpkgs-lomiri.url = "github:OPNA2608/nixpkgs/init/lomiri-junk";
     # personal flake with qvwm
     nixflake-qvwm.url = "github:phossil/nixflake-qvwm";
@@ -27,7 +25,6 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        #overlays = [ nixflake-qvwm.overlays ];
         config = { allowUnfree = true; };
       };
       lib = nixpkgs.lib;
@@ -49,7 +46,6 @@
             ./common/mir.nix
             ./common/shell.nix
             ./common/user-input.nix
-            ./common/qvwm.nix
             ./package-sets
             ./package-sets/creative.nix
             ./package-sets/dump-cli.nix
@@ -77,7 +73,6 @@
             #./common/mir.nix
             ./common/shell.nix
             ./common/user-input.nix
-            #./common/qvwm.nix
             ./package-sets
             ./package-sets/creative.nix
             ./package-sets/dump-cli.nix
