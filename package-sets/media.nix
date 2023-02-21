@@ -28,7 +28,5 @@
     handbrake
     hydrus
     calibre
-    # add custom packages    
-    (pkgs.callPackage ../pkgs/loudgain.nix { })
   ];
 }
