@@ -43,7 +43,7 @@
             ./common/fs-support.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
-            ./common/mir.nix
+            #./common/mir.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./package-sets
