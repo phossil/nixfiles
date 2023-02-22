@@ -99,13 +99,35 @@
                 nixpkgs-unstable.legacyPackages.${system}.miriway
                 nixpkgs-unstable.legacyPackages.${system}.mir
                 nixflake-misc.packages.${system}.sfwbar
+                ## these are required for my miriwway-based rice
+                # the example mir shell enabled in the sessions below depends on gnome-terminal
+                gnome.gnome-terminal
+                # required for setting background in miriway
+                swaybg
+                # top bar for wayland
+                waybar
+                # notification thingy
+                mako
+                # screenshot utilities
+                wf-recorder
+                slurp
+                grim
+                # admin prompt
+                lxqt.lxqt-policykit
+                ## just here for testing from a tty
+                nixpkgs-lomiri.legacyPackages.${system}.lomiri
               ];
               # enable qvwm and some wayland compositors
               services.xserver.displayManager.sessionPackages = [
                 nixflake-qvwm.packages.${system}.default
                 nixpkgs-unstable.legacyPackages.${system}.miriway
                 nixpkgs-unstable.legacyPackages.${system}.mir
-                nixpkgs-lomiri.legacyPackages.${system}.lomiri-session                
+                nixpkgs-lomiri.legacyPackages.${system}.lomiri-session
+              ];
+              # also required for mir-based sessions
+              xdg.portal.extraPortals = with pkgs; [
+                xdg-desktop-portal-wlr
+                #xdg-desktop-portal-gtk
               ];
             })
           ];
