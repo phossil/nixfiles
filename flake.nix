@@ -94,7 +94,7 @@
               environment.systemPackages = with pkgs; [
                 # install nix-software-center
                 nix-software-center.packages.${system}.nix-software-center
-                #nixpkgs-lomiri.legacyPackages.${system}.lomiri-session
+                nixpkgs-lomiri.legacyPackages.${system}.lomiri-session
                 nixflake-misc.packages.${system}.egmde
                 nixpkgs-unstable.legacyPackages.${system}.miriway
                 nixpkgs-unstable.legacyPackages.${system}.mir
@@ -105,6 +105,7 @@
                 nixflake-qvwm.packages.${system}.default
                 nixpkgs-unstable.legacyPackages.${system}.miriway
                 nixpkgs-unstable.legacyPackages.${system}.mir
+                nixpkgs-lomiri.legacyPackages.${system}.lomiri-session                
               ];
             })
           ];
