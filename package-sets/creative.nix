@@ -120,5 +120,10 @@
     dexed
     cardinal
     stochas
+    # video editing
+    olive-editor
+    flowblade
+    #cinelerra
+    kdenlive
   ];
 }
