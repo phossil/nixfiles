@@ -26,8 +26,15 @@
   #boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
   # would be great if discord could use pipewire >:[
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-  # make Intel Graphics go fast, even for VMs
-  boot.kernelParams = [ "i915.fastboot=1" "i915.enable_fbc=1" "enable_gvt=1" ];
+  # kernel command line
+  boot.kernelParams = [
+    # make Intel Graphics go fast, even for VMs
+    "i915.fastboot=1"
+    "i915.enable_fbc=1"
+    "i915.enable_gvt=1"
+    # rescue me !!!
+    "sysrq_always_enabled"
+  ];
 
   # splash screen :D
   #boot.plymouth.enable = true;
