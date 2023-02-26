@@ -94,7 +94,6 @@
               environment.systemPackages = with pkgs; [
                 # install nix-software-center
                 nix-software-center.packages.${system}.nix-software-center
-                nixpkgs-lomiri.legacyPackages.${system}.lomiri-session
                 nixflake-misc.packages.${system}.egmde
                 nixpkgs-unstable.legacyPackages.${system}.miriway
                 nixpkgs-unstable.legacyPackages.${system}.mir
@@ -114,15 +113,12 @@
                 grim
                 # admin prompt
                 lxqt.lxqt-policykit
-                ## just here for testing from a tty
-                nixpkgs-lomiri.legacyPackages.${system}.lomiri
               ];
               # enable qvwm and some wayland compositors
               services.xserver.displayManager.sessionPackages = [
                 nixflake-qvwm.packages.${system}.default
                 nixpkgs-unstable.legacyPackages.${system}.miriway
                 nixpkgs-unstable.legacyPackages.${system}.mir
-                nixpkgs-lomiri.legacyPackages.${system}.lomiri-session
               ];
               # also required for mir-based sessions
               xdg.portal.extraPortals = with pkgs; [
@@ -130,6 +126,48 @@
                 #xdg-desktop-portal-gtk
               ];
             })
+            # stinky theft
+            ({ config, pkgs, ... }:
+              let
+                pkgs = import nixpkgs-lomiri {
+                  inherit system;
+                };
+              in
+              {
+                environment = {
+                  systemPackages = with pkgs; [
+                    lomiri-session # Wrappers to properly launch the session
+                    lomiri
+
+                    # Services
+                    libayatana-common
+                    ayatana-indicator-session
+                    ayatana-indicator-messages
+                    ayatana-indicator-display
+                    lomiri-indicator-network
+
+                    # Used(?) themes
+                    ubuntu-themes
+                    vanilla-dmz
+                  ];
+                };
+
+                # To make the Lomiri desktop session available if a display manager like SDDM is enabled:
+                services.xserver.displayManager.sessionPackages = [ pkgs.lomiri-session ];
+
+                # TODO is this really the way to do this, can't we reuse upstream's files?
+                # Shadows ayatana-indicators.target from libayatana-common, brings up required indicator services
+                systemd.user.targets."ayatana-indicators" = {
+                  description = "Target representing the lifecycle of the Ayatana Indicators. Each indicator should be bound to it in its individual service file.";
+                  partOf = [ "graphical-session.target" ];
+                  wants = [
+                    "ayatana-indicator-session.service"
+                    "ayatana-indicator-messages.service"
+                    "ayatana-indicator-display.service"
+                    "lomiri-indicator-network.service"
+                  ];
+                };
+              })
           ];
         };
         Gem-Super = lib.nixosSystem {
