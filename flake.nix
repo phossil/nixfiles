@@ -134,39 +134,7 @@
                 };
               in
               {
-                environment = {
-                  systemPackages = with pkgs; [
-                    lomiri-session # Wrappers to properly launch the session
-                    lomiri
-
-                    # Services
-                    libayatana-common
-                    ayatana-indicator-session
-                    ayatana-indicator-messages
-                    ayatana-indicator-display
-                    lomiri-indicator-network
-
-                    # Used(?) themes
-                    ubuntu-themes
-                    vanilla-dmz
-                  ];
-                };
-
-                # To make the Lomiri desktop session available if a display manager like SDDM is enabled:
-                services.xserver.displayManager.sessionPackages = [ pkgs.lomiri-session ];
-
-                # TODO is this really the way to do this, can't we reuse upstream's files?
-                # Shadows ayatana-indicators.target from libayatana-common, brings up required indicator services
-                systemd.user.targets."ayatana-indicators" = {
-                  description = "Target representing the lifecycle of the Ayatana Indicators. Each indicator should be bound to it in its individual service file.";
-                  partOf = [ "graphical-session.target" ];
-                  wants = [
-                    "ayatana-indicator-session.service"
-                    "ayatana-indicator-messages.service"
-                    "ayatana-indicator-display.service"
-                    "lomiri-indicator-network.service"
-                  ];
-                };
+                imports = [(nixpkgs-lomiri + "/nixos/modules/programs/lomiri.nix")];
               })
           ];
         };
