@@ -25,6 +25,7 @@
     prismlauncher
     gamescope
     teeworlds
+    melonDS
     # all of wine and maybe gecko + mono support
     winetricks
     wineWowPackages.waylandFull
