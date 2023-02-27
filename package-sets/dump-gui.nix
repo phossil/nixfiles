@@ -95,6 +95,7 @@
     texmaker
     lyx
     flowblade
+    blackbox-terminal
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag
