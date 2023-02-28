@@ -25,11 +25,11 @@
         "nixpkgs-19_03": "nixpkgs-19_03"
       },
       "locked": {
-        "lastModified": 1677562811,
-        "narHash": "sha256-a1py9ye5EZgvSWdEs39uukw9VTzxH+4ha7USm671X/I=",
+        "lastModified": 1677565939,
+        "narHash": "sha256-J8EYI+XnPPWyhotRJwvuFGgVUc3uMxNcfIJT9Q7uPaI=",
         "owner": "phossil",
         "repo": "nixflake-misc",
-        "rev": "3464e150473e7d53cf5213280bf45e671452a9ab",
+        "rev": "f98ccb5f04bfe392fa555a3aa6112cc7f4231cc8",
         "type": "github"
       },
       "original": {
