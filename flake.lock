@@ -25,34 +25,16 @@
         "nixpkgs-19_03": "nixpkgs-19_03"
       },
       "locked": {
-        "lastModified": 1677294895,
-        "narHash": "sha256-bCC/gr34IiUmef08g6RxkMjMvRGqS4xtSuZ7gwqiWgI=",
+        "lastModified": 1677562811,
+        "narHash": "sha256-a1py9ye5EZgvSWdEs39uukw9VTzxH+4ha7USm671X/I=",
         "owner": "phossil",
         "repo": "nixflake-misc",
-        "rev": "fa6c7c76c0e2ae65e63cc0b0442eef0cb3e9cde0",
+        "rev": "3464e150473e7d53cf5213280bf45e671452a9ab",
         "type": "github"
       },
       "original": {
         "owner": "phossil",
         "repo": "nixflake-misc",
-        "type": "github"
-      }
-    },
-    "nixflake-qvwm": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1676938260,
-        "narHash": "sha256-s31SZyC2dVNGT4sK4rqdyLJNIE0yWVkqJC1smoUNWIE=",
-        "owner": "phossil",
-        "repo": "nixflake-qvwm",
-        "rev": "270a980ed8d922bfd7f27e55f886f0d110cfc270",
-        "type": "github"
-      },
-      "original": {
-        "owner": "phossil",
-        "repo": "nixflake-qvwm",
         "type": "github"
       }
     },
@@ -175,22 +157,6 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1676721149,
-        "narHash": "sha256-mN2EpTGxxVNnFZLoLWRwh6f7UWhXy4qE+wO2CZyrXps=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "5f4e07deb7c44f27d498f8df9c5f34750acf52d2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
         "lastModified": 1677447818,
         "narHash": "sha256-dgXEUbz2hgaJL4xCD/5JLhA36UJOhP4qn7Cp6UZhB0I=",
         "owner": "NixOS",
@@ -209,9 +175,8 @@
       "inputs": {
         "nix-software-center": "nix-software-center",
         "nixflake-misc": "nixflake-misc",
-        "nixflake-qvwm": "nixflake-qvwm",
         "nixos-generators": "nixos-generators",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-lomiri": "nixpkgs-lomiri",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }
