@@ -28,5 +28,7 @@
     handbrake
     hydrus
     calibre
+    syncplay
+    mpv
   ];
 }
