@@ -96,6 +96,7 @@
     lyx
     flowblade
     blackbox-terminal
+    basex
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag
