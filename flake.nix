@@ -124,15 +124,51 @@
               ];
             })
             # stinky theft
-            ({ config, pkgs, ... }:
+            (
               let
-                pkgs = import nixpkgs-lomiri {
-                  inherit system;
-                };
+                baseconfig = { allowUnfree = true; };
+                unstable = import nixpkgs-lomiri { inherit system; config = baseconfig; };
               in
               {
-                imports = [(nixpkgs-lomiri + "/nixos/modules/programs/lomiri.nix")];
-              })
+                imports = [ (nixpkgs-lomiri + "/nixos/modules/programs/lomiri.nix") ];
+
+                disabledModules = [ "programs/lomiri.nix" ];
+
+                programs.lomiri.enable = true;
+
+                nixpkgs.config = baseconfig // {
+                  packageOverrides = pkgs: {
+                    lomiri-session = unstable.lomiri-session;
+                    hfd-service = unstable.hfd-service;
+                    repowerd = unstable.repowerd;
+                    lomiri = unstable.lomiri;
+                    qtmir = unstable.qtmir;
+                    libayatana-common = unstable.libayatana-common;
+                    lomiri-thumbnailer = unstable.lomiri-thumbnailer;
+                    lomiri-url-dispatcher = unstable.lomiri-url-dispatcher;
+                    lomiri-click = unstable.lomiri-click;
+                    lomiri-schemas = unstable.lomiri-schemas;
+                    history-service = unstable.history-service;
+                    telephony-service = unstable.telephony-service;
+                    telepathy-mission-control = unstable.telepathy-mission-control;
+                    ubuntu-themes = unstable.ubuntu-themes;
+                    vanilla-dmz = unstable.vanilla-dmz;
+                    ayatana-indicator-application = unstable.ayatana-indicator-application;
+                    ayatana-indicator-bluetooth = unstable.ayatana-indicator-bluetooth;
+                    ayatana-indicator-datetime = unstable.ayatana-indicator-datetime;
+                    ayatana-indicator-display = unstable.ayatana-indicator-display;
+                    ayatana-indicator-keyboard = unstable.ayatana-indicator-keyboard;
+                    ayatana-indicator-messages = unstable.ayatana-indicator-messages;
+                    ayatana-indicator-notifications = unstable.ayatana-indicator-notifications;
+                    ayatana-indicator-power = unstable.ayatana-indicator-power;
+                    ayatana-indicator-printers = unstable.ayatana-indicator-printers;
+                    ayatana-indicator-session = unstable.ayatana-indicator-session;
+                    ayatana-indicator-sound = unstable.ayatana-indicator-sound;
+                    lomiri-indicator-network = unstable.lomiri-indicator-network;
+                  };
+                };
+              }
+            )
           ];
         };
         Gem-Super = lib.nixosSystem {
