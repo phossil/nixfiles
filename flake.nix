@@ -165,6 +165,7 @@
                     ayatana-indicator-session = unstable.ayatana-indicator-session;
                     ayatana-indicator-sound = unstable.ayatana-indicator-sound;
                     lomiri-indicator-network = unstable.lomiri-indicator-network;
+                    ubports-click = unstable.ubports-click;
                   };
                 };
               }
