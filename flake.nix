@@ -217,12 +217,12 @@
         system = "x86_64-linux";
         modules = [
           ({ pkgs, ... }: {
-            # patched kernel with experimental bcachefs support
-            boot.kernelPackages = pkgs.linuxPackages_testing_bcachefs;
+            # latest kernel
+            boot.kernelPackages = pkgs.linuxPackages_latest;
             # disable conflicting options
             networking.wireless.enable = false;
           })
-          ./common
+          #./common
           ./common/desktop.nix
           ./common/gnome.nix
           ./common/fs-support.nix
