@@ -97,6 +97,17 @@
     flowblade
     blackbox-terminal
     basex
+    zeal
+    bustle
+    ctx
+    dfeet
+    regextester
+    sysprof
+    #nasc
+    fondo
+    ripes
+    lugaru
+    linthesia
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag
