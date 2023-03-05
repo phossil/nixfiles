@@ -43,7 +43,7 @@
     cpu-x
     pavucontrol
     waypipe
-    enlightenment.terminology
+    #enlightenment.terminology
     qgit
     ghostwriter
     discordchatexporter-cli
