@@ -140,6 +140,9 @@
                     ayatana-indicator-sound = unstable.ayatana-indicator-sound;
                     lomiri-indicator-network = unstable.lomiri-indicator-network;
                     ubports-click = unstable.ubports-click;
+                    lomiri-download-manager = unstable.lomiri-download-manager;
+                    lomiri-system-settings = unstable.lomiri-system-settings;
+                    content-hub = unstable.content-hub;
                   };
                 };
               }
@@ -250,6 +253,9 @@
                     ayatana-indicator-sound = unstable.ayatana-indicator-sound;
                     lomiri-indicator-network = unstable.lomiri-indicator-network;
                     ubports-click = unstable.ubports-click;
+                    lomiri-download-manager = unstable.lomiri-download-manager;
+                    lomiri-system-settings = unstable.lomiri-system-settings;
+                    content-hub = unstable.content-hub;
                   };
                 };
               }
