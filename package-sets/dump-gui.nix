@@ -108,6 +108,7 @@
     ripes
     lugaru
     linthesia
+    warp
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag
