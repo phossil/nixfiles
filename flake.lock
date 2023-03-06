@@ -25,11 +25,11 @@
         "nixpkgs-19_03": "nixpkgs-19_03"
       },
       "locked": {
-        "lastModified": 1677754938,
-        "narHash": "sha256-4VejaONocuk8iMO1OO29ydodBhAiQHkQ/yW704zV6HU=",
+        "lastModified": 1678074028,
+        "narHash": "sha256-xVFI+7qki2sBuVS3uuKwngr2PBGFrtF2JVbCd4TKN5o=",
         "owner": "phossil",
         "repo": "nixflake-misc",
-        "rev": "f088452c9af7eb7e18a534ec65b8d43aeb210336",
+        "rev": "c646ede954d5427b18fdabc1ac815cf99238959d",
         "type": "github"
       },
       "original": {
@@ -125,11 +125,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1677852945,
-        "narHash": "sha256-liiVJjkBTuBTAkRW3hrI8MbPD2ImYzwUpa7kvteiKhM=",
+        "lastModified": 1677906469,
+        "narHash": "sha256-RWWFSy8PaDyOk4ivOk18bYItyVL3w1Kz91kEafa3tbs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f5ffd5787786dde3a8bf648c7a1b5f78c4e01abb",
+        "rev": "f6f9829f50dc13807565b2b7d41fbbc0f41b9ba7",
         "type": "github"
       },
       "original": {
