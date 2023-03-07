@@ -15,13 +15,13 @@
     overlays = [
       (self: super: {
         linux_life95 = pkgs.linuxPackagesFor (pkgs.linux_xanmod_tt.override {
-         # give me all the unloops
+          # give me all the unloops
           stdenv = pkgs.llvmPackages_14.stdenv;
           nativeBuildInputs = pkgs.nativeBuildInputs ++
             (with pkgs.llvmPackages_14; [ libunwind llvm lld ]);
           buildInputs = pkgs.buildInputs ++
-              (with pkgs.llvmPackages_14; [ libunwind llvm lld ]);
-          makeFlags = [ 
+            (with pkgs.llvmPackages_14; [ libunwind llvm lld ]);
+          makeFlags = [
             "LLVM=1"
             "LLVM_IAS=1"
             "-O2"

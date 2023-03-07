@@ -275,11 +275,21 @@
             ./package-sets/dump-cli.nix
           ];
         };
+        Gem-LifeBook = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/lifebook
+            ./users/phossil.nix
+            ./common
+            ./common/desktop.nix
+            ./common/fs-support.nix
+            ./common/gnome.nix
+            ./common/shell.nix
+            ./common/user-input.nix
+            ./package-sets
+          ];
+        };
         /* not ready yet
-           Gem-LifeBook = lib.nixosSystem {
-             inherit system;
-             modules = [ ./hosts/lifebook/configuration.nix ];
-           };
            elie = lib.nixosSystem {
              inherit system;
              modules = [ ./hosts/elie/configuration.nix ];
