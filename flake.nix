@@ -137,7 +137,6 @@
             ./common/fs-support.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
-            #./common/mir.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./package-sets
@@ -163,10 +162,8 @@
             ./common
             ./common/cups.nix
             ./common/desktop.nix
-            #./common/etoile.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
-            #./common/mir.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./package-sets
