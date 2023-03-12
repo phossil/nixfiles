@@ -91,7 +91,7 @@
 
     # required for configuring syncthing "locally"
     waypipe
-    netsurf-browser
+    midori
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
