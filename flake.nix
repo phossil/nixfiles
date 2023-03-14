@@ -95,7 +95,6 @@
                 libayatana-common = unstable.libayatana-common;
                 lomiri-thumbnailer = unstable.lomiri-thumbnailer;
                 lomiri-url-dispatcher = unstable.lomiri-url-dispatcher;
-                lomiri-click = unstable.lomiri-click;
                 lomiri-schemas = unstable.lomiri-schemas;
                 history-service = unstable.history-service;
                 telephony-service = unstable.telephony-service;
@@ -118,6 +117,10 @@
                 lomiri-download-manager = unstable.lomiri-download-manager;
                 lomiri-system-settings = unstable.lomiri-system-settings;
                 content-hub = unstable.content-hub;
+                morph-browser = unstable.morph-browser;
+                maliit-framework = unstable.maliit-framework;
+                lomiri-keyboard = unstable.lomiri-keyboard;
+                lomiri-terminal-app = unstable.lomiri-terminal-app;
               };
             };
           }
