@@ -111,22 +111,17 @@
   services.syncthing.enable = true;
 
   # music server ? owo
-  services.airsonic = {
+  services.navidrome = {
     enable = true;
-    # fetch airsonic advanced from github
-    war = builtins.fetchurl {
-      url = "https://github.com/airsonic-advanced/airsonic-advanced/releases/download/v10.6.0/airsonic.war";
-      sha256 = "0saccqbk8vgq2pinam42w1qgyziw3qwnvf6qgynn34a9b5z433sj";
+    settings = {
+      Address = "0.0.0.0";
+      MusicFolder = "/var/music";
     };
-    # use graalvm, the better jre
-    #jre = pkgs.graalvm11-ce;
-    # all the addresses
-    listenAddress = "0.0.0.0";
   };
   networking.firewall = {
-    # airsonic
-    allowedTCPPorts = [ 4040 ];
-    allowedUDPPorts = [ 4040 ];
+    # navidrome
+    allowedTCPPorts = [ 4533 ];
+    allowedUDPPorts = [ 4533 ];
   };
 
   # Open ports in the firewall.
