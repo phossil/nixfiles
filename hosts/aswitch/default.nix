@@ -110,6 +110,25 @@
   # syncthing server ? :o
   services.syncthing.enable = true;
 
+  # music server ? owo
+  services.airsonic = {
+    enable = true;
+    # fetch airsonic advanced from github
+    war = builtins.fetchurl {
+      url = "https://github.com/airsonic-advanced/airsonic-advanced/releases/download/v10.6.0/airsonic.war";
+      sha256 = "0saccqbk8vgq2pinam42w1qgyziw3qwnvf6qgynn34a9b5z433sj";
+    };
+    # use graalvm, the better jre
+    #jre = pkgs.graalvm11-ce;
+    # all the addresses
+    listenAddress = "0.0.0.0";
+  };
+  networking.firewall = {
+    # airsonic
+    allowedTCPPorts = [ 4040 ];
+    allowedUDPPorts = [ 4040 ];
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
