@@ -121,6 +121,9 @@
                 maliit-framework = unstable.maliit-framework;
                 lomiri-keyboard = unstable.lomiri-keyboard;
                 lomiri-terminal-app = unstable.lomiri-terminal-app;
+                address-book-app = unstable.address-book-app;
+                messaging-app = unstable.messaging-app;
+                buteo-syncfw = unstable.buteo-syncfw;
               };
             };
           }

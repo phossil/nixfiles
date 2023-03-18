@@ -91,11 +91,11 @@
     },
     "nixpkgs-lomiri": {
       "locked": {
-        "lastModified": 1678820238,
-        "narHash": "sha256-6f0oT7LOCZ4N9wEfCher9M4sRGp9aiWS14GeEQg4src=",
+        "lastModified": 1679099934,
+        "narHash": "sha256-buBinC/SoSji25IFT53fFVGhIHpGJjtwhAMHGUYDWLA=",
         "owner": "OPNA2608",
         "repo": "nixpkgs",
-        "rev": "85baa5792ff70566301371e3d80bf1a77b72ccbf",
+        "rev": "0107f91929c98cb1c2ec51573b436790d65a0c62",
         "type": "github"
       },
       "original": {
