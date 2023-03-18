@@ -48,7 +48,7 @@
             # required for setting background in miriway
             swaybg
             # top bar for wayland
-            waybar
+            nixflake-misc.packages.${system}.wapanel
             # notification thingy
             mako
             # screenshot utilities
