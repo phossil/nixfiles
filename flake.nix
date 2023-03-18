@@ -124,6 +124,10 @@
                 address-book-app = unstable.address-book-app;
                 messaging-app = unstable.messaging-app;
                 buteo-syncfw = unstable.buteo-syncfw;
+                dialer-app = unstable.dialer-app;
+                lomiri-calendar-app = unstable.lomiri-calendar-app;
+                lomiri-filemanager-app = unstable.lomiri-filemanager-app;
+                sync-monitor = unstable.sync-monitor;
               };
             };
           }
