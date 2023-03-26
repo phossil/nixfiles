@@ -1,5 +1,41 @@
 {
   "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1678901627,
+        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nix-cutefish": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1679864858,
+        "narHash": "sha256-0BxayYMHJ3bWzxUqCN5qU2wje1JtZCAafQHsMzbbgmk=",
+        "owner": "phossil",
+        "repo": "nix-cutefish",
+        "rev": "e72858e15497d2597c76639fcb603ab4e5e2ca3c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "phossil",
+        "repo": "nix-cutefish",
+        "type": "github"
+      }
+    },
     "nix-software-center": {
       "inputs": {
         "nixpkgs": "nixpkgs",
@@ -91,11 +127,11 @@
     },
     "nixpkgs-lomiri": {
       "locked": {
-        "lastModified": 1679509060,
-        "narHash": "sha256-pA/x+EA68NXeFimKqYDPyMEpoPktfd2yEE5AOPTRoTM=",
+        "lastModified": 1679845331,
+        "narHash": "sha256-+h8HZ4isLVCi07oHF4CW3Y6gNpOLbH0jwAxb8YmuZ+E=",
         "owner": "OPNA2608",
         "repo": "nixpkgs",
-        "rev": "12d50e4ef2aa215779202486f27808a129196182",
+        "rev": "280d114f90c9f73d48dc02b7a55c625a3ec69bad",
         "type": "github"
       },
       "original": {
@@ -139,11 +175,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1679710833,
-        "narHash": "sha256-9yKVvGX1oAnlc8vTVvN2lRH35q6ETudQbM1w9ragMRU=",
+        "lastModified": 1679748960,
+        "narHash": "sha256-BP8XcYHyj1NxQi04RpyNW8e7KiXSoI+Fy1tXIK2GfdA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "83607dae4e05e1de755bbc7d7949b33fc1cfbbb9",
+        "rev": "da26ae9f6ce2c9ab380c0f394488892616fc5a6a",
         "type": "github"
       },
       "original": {
@@ -155,6 +191,7 @@
     },
     "root": {
       "inputs": {
+        "nix-cutefish": "nix-cutefish",
         "nix-software-center": "nix-software-center",
         "nixflake-misc": "nixflake-misc",
         "nixos-generators": "nixos-generators",

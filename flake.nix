@@ -14,6 +14,10 @@
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # unstable branch of nixpkgs
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-cutefish = {
+      url = "github:phossil/nix-cutefish";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { self
@@ -23,6 +27,7 @@
     , nixpkgs-lomiri
     , nixflake-misc
     , nixpkgs-unstable
+    , nix-cutefish
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let
@@ -67,6 +72,11 @@
             ./package-sets/lsp.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
+            nix-cutefish.nixosModules.default
+            ({
+              nixpkgs.overlays = [ nix-cutefish.overlays.default ];
+              #services.xserver.desktopManager.cutefish.enable = true;
+            })
           ];
         };
         Gem-3350 = lib.nixosSystem {
