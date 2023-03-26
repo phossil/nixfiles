@@ -24,11 +24,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1679810484,
-        "narHash": "sha256-kWLrNOr47GLXvKbBivhxf95uX+BvzYzJdshRDlwXWO0=",
+        "lastModified": 1679816426,
+        "narHash": "sha256-/p+Aqs3YlM1ZwM9LNt7lfSey0hDj5QMnbPc5Q7oUwFg=",
         "owner": "phossil",
         "repo": "nixflake-misc",
-        "rev": "29e6cc60636f19b58e34f2a06ef649ddf9bad68c",
+        "rev": "ee18d911357094e7d3867094397ae39c268cc427",
         "type": "github"
       },
       "original": {
