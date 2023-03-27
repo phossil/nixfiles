@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1679864858,
-        "narHash": "sha256-0BxayYMHJ3bWzxUqCN5qU2wje1JtZCAafQHsMzbbgmk=",
+        "lastModified": 1679867559,
+        "narHash": "sha256-/8eeqh4vyNojQWiB9TvJJLJJd9gKYHGUSG6HP2PVBX8=",
         "owner": "phossil",
         "repo": "nix-cutefish",
-        "rev": "e72858e15497d2597c76639fcb603ab4e5e2ca3c",
+        "rev": "83dd28acb90ff5c96cd90dc234da690ec6306e95",
         "type": "github"
       },
       "original": {
@@ -60,11 +60,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1679816426,
-        "narHash": "sha256-/p+Aqs3YlM1ZwM9LNt7lfSey0hDj5QMnbPc5Q7oUwFg=",
+        "lastModified": 1679886958,
+        "narHash": "sha256-znlIGQbLef3jVXjuq3rM9AiQyBP5B0g+fAmBL3PeYfg=",
         "owner": "phossil",
         "repo": "nixflake-misc",
-        "rev": "ee18d911357094e7d3867094397ae39c268cc427",
+        "rev": "88b65ccf04cbd27b8ef1f50951ab1ccd3c479715",
         "type": "github"
       },
       "original": {
@@ -127,11 +127,11 @@
     },
     "nixpkgs-lomiri": {
       "locked": {
-        "lastModified": 1679845331,
-        "narHash": "sha256-+h8HZ4isLVCi07oHF4CW3Y6gNpOLbH0jwAxb8YmuZ+E=",
+        "lastModified": 1679866864,
+        "narHash": "sha256-rcHpNUUyTOCkWft1qsM/MCg6YYUZAVqwvnSfSigEz5c=",
         "owner": "OPNA2608",
         "repo": "nixpkgs",
-        "rev": "280d114f90c9f73d48dc02b7a55c625a3ec69bad",
+        "rev": "34a812f6a375cbea3eb06572cb2f94eb68ec9052",
         "type": "github"
       },
       "original": {
