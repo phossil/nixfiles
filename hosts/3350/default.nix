@@ -19,7 +19,7 @@
   '';
 
   # latest linux kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
   # linux kernel with experimental bcachefs support
   #boot.kernelPackages = pkgs.linuxPackages_testing_bcachefs;
   # latest xanmod Linux kernel for speed and android
