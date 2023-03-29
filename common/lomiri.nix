@@ -57,6 +57,8 @@ in
       lomiri-calendar-app = unstable.lomiri-calendar-app;
       lomiri-filemanager-app = unstable.lomiri-filemanager-app;
       sync-monitor = unstable.sync-monitor;
+      libusermetrics = unstable.libusermetrics;
+      lomiri-camera-app = unstable.lomiri-camera-app;
     };
   };
 }
