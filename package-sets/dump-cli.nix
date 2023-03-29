@@ -44,5 +44,6 @@
     diod
     #wkhtmltopdf
     onefetch
+    nix-index
   ];
 }
