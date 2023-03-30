@@ -221,6 +221,11 @@
             # ./package-sets/gayming.nix
             # ./package-sets/media.nix
             ./package-sets/themes.nix
+            nix-cutefish.nixosModules.default
+            ({
+              nixpkgs.overlays = [ nix-cutefish.overlays.default ];
+              #services.xserver.desktopManager.cutefish.enable = true;
+            })
           ];
         };
       };
