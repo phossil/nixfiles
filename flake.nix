@@ -79,6 +79,7 @@
             })
           ];
         };
+        /*
         Gem-3350 = lib.nixosSystem {
           inherit system;
           # also required for lomiri
@@ -108,6 +109,7 @@
             ./package-sets/themes.nix
           ];
         };
+        */
         Gem-Super = lib.nixosSystem {
           inherit system;
           modules = [
@@ -181,5 +183,46 @@
 
       # make the flake look pretty :)
       formatter.${system} = pkgs.nixpkgs-fmt;
-    };
+    } // (
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs-unstable {
+        inherit system;
+        config = { allowUnfree = true; };
+      };
+      lib = nixpkgs-unstable.lib;
+    in
+    {
+      nixosConfigurations = {
+        Gem-3350 = lib.nixosSystem {
+          inherit system;
+          # also required for lomiri
+          specialArgs = attrs;
+
+          modules = [
+            ./hosts/3350
+            ./users/phossil.nix
+            ./common
+            ./common/cups.nix
+            ./common/desktop.nix
+            ./common/gnome.nix
+            ./common/libvirtd.nix
+            # ./common/lomiri.nix
+            # ./common/nixflake-misc.nix
+            ./common/shell.nix
+            ./common/user-input.nix
+            ./package-sets
+            # ./package-sets/creative.nix
+            ./package-sets/dump-cli.nix
+            # ./package-sets/dump-gui.nix
+            # ./package-sets/essentials.nix
+            ./package-sets/fonts.nix
+            ./package-sets/fun.nix
+            # ./package-sets/gayming.nix
+            # ./package-sets/media.nix
+            ./package-sets/themes.nix
+          ];
+        };
+      };
+    });
 }
