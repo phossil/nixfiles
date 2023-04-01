@@ -233,6 +233,10 @@
                 #displayManager.sddm.enable = true;
                 desktopManager.cutefish.enable = true;
               };
+              # enable qvwm bc yes
+              services.xserver.displayManager.sessionPackages = [
+                nixflake-misc.packages.${system}.qvwm
+              ];
             })
           ];
         };
