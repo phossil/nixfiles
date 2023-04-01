@@ -26,7 +26,8 @@
     vivaldi
     (discord.override { nss = nss_latest; })
     vivaldi-ffmpeg-codecs
-    vivaldi-widevine
+    #vivaldi-widevine
+    widevine-cdm
     speedcrunch
     libsForQt5.qtimageformats
     obs-studio
