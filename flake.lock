@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680323342,
-        "narHash": "sha256-YhatoUY8BDlFmqqneukTuWej8Rn6dW/5WzIjdE2vQkA=",
+        "lastModified": 1680332677,
+        "narHash": "sha256-40IxoN6BQC/aZkLfsKkdlfw0dMcaJmxFPLAHQR3RZrw=",
         "owner": "phossil",
         "repo": "nix-cutefish",
-        "rev": "1fc47cc9a0569b34b31a6cd2e9416847ab9d794d",
+        "rev": "2772a96e98fb28aadaa4bd9e3b05f0f8cda65923",
         "type": "github"
       },
       "original": {
