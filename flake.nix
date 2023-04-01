@@ -207,7 +207,7 @@
             ./common/desktop.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
-            # ./common/lomiri.nix
+            ./common/lomiri.nix
             # ./common/nixflake-misc.nix
             ./common/shell.nix
             ./common/user-input.nix
@@ -223,8 +223,16 @@
             ./package-sets/themes.nix
             nix-cutefish.nixosModules.default
             ({
+              # add `nix-cutefish` packages to `nixpkgs`
               nixpkgs.overlays = [ nix-cutefish.overlays.default ];
-              #services.xserver.desktopManager.cutefish.enable = true;
+              # enable cutefish and its required settings
+              services.xserver = {
+                enable = true;
+                libinput.enable = true;
+                libinput.touchpad.tapping = true;
+                #displayManager.sddm.enable = true;
+                desktopManager.cutefish.enable = true;
+              };
             })
           ];
         };
