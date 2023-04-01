@@ -23,11 +23,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680069446,
-        "narHash": "sha256-Ta13uTNcQAobxXWvEWmXPPftFIZ9vcV9PWWNxP+Hxq8=",
+        "lastModified": 1680307420,
+        "narHash": "sha256-O6/+8hEYly7+hL8l4ygdRq4eEgRyt2ZxRZKvog+5YcM=",
         "owner": "phossil",
         "repo": "nix-cutefish",
-        "rev": "357469241a5bd3dd0a25010827beb27fe6b24081",
+        "rev": "af8e7082cedb72e75977529dff3ddeaa628d51b5",
         "type": "github"
       },
       "original": {
@@ -127,11 +127,11 @@
     },
     "nixpkgs-lomiri": {
       "locked": {
-        "lastModified": 1680051060,
-        "narHash": "sha256-zohaDc8gMYfkOsItw7Wtif3o5/fJQ7rC/2sIcyY9Lms=",
+        "lastModified": 1680191667,
+        "narHash": "sha256-dDLw6T2WqWE/FNZnWRbcblKoS59a7S8GJ++uu79W1TA=",
         "owner": "OPNA2608",
         "repo": "nixpkgs",
-        "rev": "22325bc07fd584789d9c164e490306457e31ac12",
+        "rev": "f239a53d46e09d3772a92af907518c2e3602bf16",
         "type": "github"
       },
       "original": {
@@ -143,11 +143,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1680121753,
-        "narHash": "sha256-rB3ZnNodA4o8Rq0sKZ0t/YdY/MRon4V+bW1b20adgr4=",
+        "lastModified": 1680273054,
+        "narHash": "sha256-Bs6/5LpvYp379qVqGt9mXxxx9GSE789k3oFc+OAL07M=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e779e17ebdf3907ce08c75c7c1b2dc8a1c5038c9",
+        "rev": "3364b5b117f65fe1ce65a3cdd5612a078a3b31e3",
         "type": "github"
       },
       "original": {
@@ -175,11 +175,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1679966490,
-        "narHash": "sha256-k0jV+y1jawE6w4ZvKgXDNg4+O9NNtcaWwzw8gufv0b4=",
+        "lastModified": 1680122840,
+        "narHash": "sha256-zCQ/9iFHzCW5JMYkkHMwgK1/1/kTMgCMHq4THPINpAU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5b7cd5c39befee629be284970415b6eb3b0ff000",
+        "rev": "a575c243c23e2851b78c00e9fa245232926ec32f",
         "type": "github"
       },
       "original": {
