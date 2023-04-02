@@ -109,6 +109,7 @@
     lugaru
     linthesia
     warp
+    nix-query-tree-viewer
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag

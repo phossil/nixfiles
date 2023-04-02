@@ -45,5 +45,6 @@
     #wkhtmltopdf
     onefetch
     nix-index
+    nix-tree
   ];
 }
