@@ -21,7 +21,7 @@
     python310Packages.yt-dlp
     exiftool
     jamesdsp
-    helio-workstation
+    #helio-workstation
     shntool
     imgbrd-grabber
     flac
