@@ -244,6 +244,12 @@
               services.xserver.displayManager.sessionPackages = [
                 nixflake-misc.packages.${system}.qvwm
               ];
+              environment.systemPackages = [
+                # pls just gimme that global menu aaa
+                nixflake-misc.packages.${system}.dbuskit
+                nixflake-misc.packages.${system}.themes-gtk
+                pkgs.gnustep.system_preferences
+              ];
             })
           ];
         };
