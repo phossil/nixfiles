@@ -3,10 +3,13 @@
   inputs = {
     # the most important flake in nixos
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    # generates nixos images (useful for creating 
+    # rescue iso's)
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # gnome software center but for derivations
     nix-software-center.url = "github:vlinkz/nix-software-center";
     # nixpkgs fork with WIP lomiri commits
     nixpkgs-lomiri.url = "github:OPNA2608/nixpkgs/init/lomiri-junk";
@@ -14,6 +17,7 @@
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # unstable branch of nixpkgs
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # my fork of the cutefish desktop flake
     nix-cutefish = {
       url = "github:phossil/nix-cutefish";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -79,7 +83,7 @@
             })
           ];
         };
-        /*
+        /* commented until 23.05 is released
         Gem-3350 = lib.nixosSystem {
           inherit system;
           # also required for lomiri
@@ -153,7 +157,7 @@
             ./package-sets
           ];
         };
-        /*
+        /* borked bc of the yabits payload for coreboot
            opt-7010 = lib.nixosSystem {
              inherit system;
              modules = [ ./hosts/7010/configuration.nix ];
@@ -184,6 +188,8 @@
       # make the flake look pretty :)
       formatter.${system} = pkgs.nixpkgs-fmt;
     } // (
+    # this host needs to be defined separately
+    # because it uses the unstable branch of nixpkgs
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs-unstable {
