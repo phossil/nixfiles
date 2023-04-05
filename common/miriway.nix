@@ -6,12 +6,9 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    # install nix-software-center
-    nix-software-center.packages.${system}.nix-software-center
-    nixflake-misc.packages.${system}.egmde
+    # install mir(iway) system-wide for testing
     nixpkgs-unstable.legacyPackages.${system}.miriway
     nixpkgs-unstable.legacyPackages.${system}.mir
-    nixflake-misc.packages.${system}.sfwbar
     ## these are required for my miriwway-based rice
     # the example mir shell enabled in the sessions below depends on gnome-terminal
     gnome.gnome-terminal
@@ -28,15 +25,13 @@ in
     # admin prompt
     lxqt.lxqt-policykit
   ];
-  # enable qvwm and some wayland compositors
+  # enable miriway and mir
   services.xserver.displayManager.sessionPackages = [
-    nixflake-misc.packages.${system}.qvwm
     nixpkgs-unstable.legacyPackages.${system}.miriway
     nixpkgs-unstable.legacyPackages.${system}.mir
   ];
   # also required for mir-based sessions
   xdg.portal.extraPortals = with pkgs; [
     xdg-desktop-portal-wlr
-    #xdg-desktop-portal-gtk
   ];
 }

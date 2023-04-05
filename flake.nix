@@ -62,7 +62,7 @@
             ./common/libvirtd.nix
             # the next two imports are special :3
             ./common/lomiri.nix
-            ./common/nixflake-misc.nix
+            ./common/miriway.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./package-sets
@@ -107,7 +107,7 @@
               ./common/gnome.nix
               ./common/libvirtd.nix
               ./common/lomiri.nix
-              # ./common/nixflake-misc.nix
+              # ./common/miriway.nix
               ./common/shell.nix
               ./common/user-input.nix
               ./package-sets
