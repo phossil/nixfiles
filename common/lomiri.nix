@@ -59,6 +59,11 @@ in
       sync-monitor = unstable.sync-monitor;
       libusermetrics = unstable.libusermetrics;
       lomiri-camera-app = unstable.lomiri-camera-app;
+      location-service = unstable.location-service;
+      lomiri-calculator-app = unstable.lomiri-calculator-app;
+      lomiri-clock-app = unstable.lomiri-clock-app;
+      lomiri-gallery-app = unstable.lomiri-gallery-app;
+      indicator-location = unstable.indicator-location;
     };
   };
 }
