@@ -13,8 +13,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # y is this necessary here ...
-    ../../pkgs/linux_latest_98se.nix
-
+    ../../package-sets/kernels.nix
   ];
 
   # Allow non-free software

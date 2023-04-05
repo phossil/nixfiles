@@ -83,37 +83,69 @@
             })
           ];
         };
-        /* commented until 23.05 is released
-        Gem-3350 = lib.nixosSystem {
-          inherit system;
-          # also required for lomiri
-          specialArgs = attrs;
+        # this host uses the unstable branch so this looks a bit different
+        Gem-3350 =
+          let
+            system = "x86_64-linux";
+            pkgs = import nixpkgs-unstable {
+              inherit system;
+              config = { allowUnfree = true; };
+            };
+            lib = nixpkgs-unstable.lib;
+          in
+          lib.nixosSystem {
+            inherit system;
+            # also required for lomiri
+            specialArgs = attrs;
 
-          modules = [
-            ./hosts/3350
-            ./users/phossil.nix
-            ./common
-            ./common/cups.nix
-            ./common/desktop.nix
-            ./common/gnome.nix
-            ./common/libvirtd.nix
-            ./common/lomiri.nix
-            ./common/nixflake-misc.nix
-            ./common/shell.nix
-            ./common/user-input.nix
-            ./package-sets
-            ./package-sets/creative.nix
-            ./package-sets/dump-cli.nix
-            ./package-sets/dump-gui.nix
-            ./package-sets/essentials.nix
-            ./package-sets/fonts.nix
-            ./package-sets/fun.nix
-            ./package-sets/gayming.nix
-            ./package-sets/media.nix
-            ./package-sets/themes.nix
-          ];
-        };
-        */
+            modules = [
+              ./hosts/3350
+              ./users/phossil.nix
+              ./common
+              ./common/cups.nix
+              ./common/desktop.nix
+              ./common/gnome.nix
+              ./common/libvirtd.nix
+              ./common/lomiri.nix
+              # ./common/nixflake-misc.nix
+              ./common/shell.nix
+              ./common/user-input.nix
+              ./package-sets
+              ./package-sets/creative.nix
+              ./package-sets/dump-cli.nix
+              ./package-sets/dump-gui.nix
+              ./package-sets/essentials.nix
+              ./package-sets/fonts.nix
+              ./package-sets/fun.nix
+              # ./package-sets/gayming.nix
+              ./package-sets/media.nix
+              ./package-sets/themes.nix
+              nix-cutefish.nixosModules.default
+              ({
+                # add `nix-cutefish` packages to `nixpkgs`
+                nixpkgs.overlays = [ nix-cutefish.overlays.default ];
+                # enable cutefish and its required settings
+                services.xserver = {
+                  enable = true;
+                  libinput.enable = true;
+                  libinput.touchpad.tapping = true;
+                  # i want to use gdm so the sddm theme is overriden
+                  displayManager.sddm.theme = "";
+                  desktopManager.cutefish.enable = true;
+                };
+                # enable qvwm bc yes
+                services.xserver.displayManager.sessionPackages = [
+                  nixflake-misc.packages.${system}.qvwm
+                ];
+                environment.systemPackages = [
+                  # pls just gimme that global menu aaa
+                  nixflake-misc.packages.${system}.dbuskit
+                  nixflake-misc.packages.${system}.themes-gtk
+                  pkgs.gnustep.system_preferences
+                ];
+              })
+            ];
+          };
         Gem-Super = lib.nixosSystem {
           inherit system;
           modules = [
@@ -187,72 +219,5 @@
 
       # make the flake look pretty :)
       formatter.${system} = pkgs.nixpkgs-fmt;
-    } // (
-    # this host needs to be defined separately
-    # because it uses the unstable branch of nixpkgs
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs-unstable {
-        inherit system;
-        config = { allowUnfree = true; };
-      };
-      lib = nixpkgs-unstable.lib;
-    in
-    {
-      nixosConfigurations = {
-        Gem-3350 = lib.nixosSystem {
-          inherit system;
-          # also required for lomiri
-          specialArgs = attrs;
-
-          modules = [
-            ./hosts/3350
-            ./users/phossil.nix
-            ./common
-            ./common/cups.nix
-            ./common/desktop.nix
-            ./common/gnome.nix
-            ./common/libvirtd.nix
-            ./common/lomiri.nix
-            # ./common/nixflake-misc.nix
-            ./common/shell.nix
-            ./common/user-input.nix
-            ./package-sets
-            ./package-sets/creative.nix
-            ./package-sets/dump-cli.nix
-            ./package-sets/dump-gui.nix
-            ./package-sets/essentials.nix
-            ./package-sets/fonts.nix
-            ./package-sets/fun.nix
-            # ./package-sets/gayming.nix
-            ./package-sets/media.nix
-            ./package-sets/themes.nix
-            nix-cutefish.nixosModules.default
-            ({
-              # add `nix-cutefish` packages to `nixpkgs`
-              nixpkgs.overlays = [ nix-cutefish.overlays.default ];
-              # enable cutefish and its required settings
-              services.xserver = {
-                enable = true;
-                libinput.enable = true;
-                libinput.touchpad.tapping = true;
-                # i want to use gdm so the sddm theme is overriden
-                displayManager.sddm.theme = "";
-                desktopManager.cutefish.enable = true;
-              };
-              # enable qvwm bc yes
-              services.xserver.displayManager.sessionPackages = [
-                nixflake-misc.packages.${system}.qvwm
-              ];
-              environment.systemPackages = [
-                # pls just gimme that global menu aaa
-                nixflake-misc.packages.${system}.dbuskit
-                nixflake-misc.packages.${system}.themes-gtk
-                pkgs.gnustep.system_preferences
-              ];
-            })
-          ];
-        };
-      };
-    });
+    };
 }
