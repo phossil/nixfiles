@@ -30,7 +30,8 @@
     winetricks
     wineWowPackages.waylandFull
     mono
-    (bottles.override { wine = wineWowPackages.waylandFull; })
+    #(bottles.override { wine = wineWowPackages.waylandFull; })
+    bottles
     lutris
   ];
 }
