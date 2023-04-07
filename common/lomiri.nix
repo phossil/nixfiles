@@ -64,6 +64,8 @@ in
       lomiri-clock-app = unstable.lomiri-clock-app;
       lomiri-gallery-app = unstable.lomiri-gallery-app;
       indicator-location = unstable.indicator-location;
+      lomiri-music-app = unstable.lomiri-music-app;
+      mediascanner2 = unstable.mediascanner2;
     };
   };
 }
