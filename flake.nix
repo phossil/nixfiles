@@ -63,6 +63,7 @@
             # the next two imports are special :3
             ./common/lomiri.nix
             ./common/miriway.nix
+            ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./package-sets
