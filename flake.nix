@@ -118,7 +118,7 @@
               ./package-sets/essentials.nix
               ./package-sets/fonts.nix
               ./package-sets/fun.nix
-              # ./package-sets/gayming.nix
+              ./package-sets/gayming.nix
               ./package-sets/media.nix
               ./package-sets/themes.nix
               nix-cutefish.nixosModules.default
