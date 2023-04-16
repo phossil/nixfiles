@@ -110,6 +110,11 @@
     linthesia
     warp
     nix-query-tree-viewer
+    wike
+    junction
+    #emblem #not in stable yet
+    curtail
+    gnome-obfuscate
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag
