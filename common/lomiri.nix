@@ -66,6 +66,7 @@ in
       indicator-location = unstable.indicator-location;
       lomiri-music-app = unstable.lomiri-music-app;
       mediascanner2 = unstable.mediascanner2;
+      mediaplayer-app = unstable.mediaplayer-app;
     };
   };
 }
