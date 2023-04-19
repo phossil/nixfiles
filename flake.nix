@@ -197,25 +197,28 @@
            };
         */
       };
-      # some installation images made with nixos-generators
-      iso-gnome = nixos-generators.nixosGenerate {
-        system = "x86_64-linux";
-        modules = [
-          ({ pkgs, ... }: {
-            # latest kernel
-            boot.kernelPackages = pkgs.linuxPackages_latest;
-            # disable conflicting options
-            networking.wireless.enable = false;
-          })
-          #./common
-          ./common/desktop.nix
-          ./common/gnome.nix
-          ./common/fs-support.nix
-          ./common/shell.nix
-          ./common/user-input.nix
-          ./package-sets
-        ];
-        format = "install-iso";
+
+      packages.${system} = {
+        # some installation images made with nixos-generators
+        iso-gnome = nixos-generators.nixosGenerate {
+          system = "x86_64-linux";
+          modules = [
+            ({ pkgs, ... }: {
+              # latest kernel
+              boot.kernelPackages = pkgs.linuxPackages_latest;
+              # disable conflicting options
+              networking.wireless.enable = false;
+            })
+            #./common
+            ./common/desktop.nix
+            ./common/gnome.nix
+            ./common/fs-support.nix
+            ./common/shell.nix
+            ./common/user-input.nix
+            ./package-sets
+          ];
+          format = "install-iso";
+        };
       };
 
       # make the flake look pretty :)
