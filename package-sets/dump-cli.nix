@@ -30,7 +30,7 @@
     epeg
     fbcat
     uxn
-    ventoy-bin
+    #ventoy
     heimdall
     v4l-utils
     gore

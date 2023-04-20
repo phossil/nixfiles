@@ -36,13 +36,13 @@
   ] ++ (with pkgs.gnomeExtensions; [
     audio-output-switcher
     vitals
-    syncthing-icon
+    #syncthing-icon
     systemd-manager
     alphabetical-app-grid
     appindicator
     #material-shell
     syncthing-indicator
-    fildem-global-menu
+    #fildem-global-menu
   ]);
 
   # i genuinely forgot what this was for

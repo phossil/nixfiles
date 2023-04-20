@@ -25,7 +25,7 @@
     cawbird
     michabo
     #logseq
-    pipecontrol
+    #pipecontrol
     river
     nyxt
     gcstar
