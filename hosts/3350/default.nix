@@ -18,12 +18,8 @@
     experimental-features = nix-command flakes
   '';
 
-  # latest linux kernel
-  #boot.kernelPackages = pkgs.linuxPackages_latest;
-  # linux kernel with experimental bcachefs support
-  #boot.kernelPackages = pkgs.linuxPackages_testing_bcachefs;
-  # latest xanmod Linux kernel for speed and android
-  #boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  # add bcachefs support
+  boot.supportedFilesystems = [ "bcachefs" ];
   # would be great if discord could use pipewire >:[
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   # kernel command line
