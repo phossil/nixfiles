@@ -131,8 +131,8 @@
                   libinput.enable = true;
                   libinput.touchpad.tapping = true;
                   # i want to use gdm so the sddm theme is overriden
-                  displayManager.sddm.theme = "";
-                  desktopManager.cutefish.enable = true;
+                  #displayManager.sddm.theme = "";
+                  #desktopManager.cutefish.enable = true;
                 };
                 # enable qvwm bc yes
                 services.xserver.displayManager.sessionPackages = [
