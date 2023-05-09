@@ -107,7 +107,7 @@
               ./common/desktop.nix
               ./common/gnome.nix
               ./common/libvirtd.nix
-              ./common/lomiri.nix
+              # ./common/lomiri.nix
               # ./common/miriway.nix
               ./common/shell.nix
               ./common/user-input.nix
