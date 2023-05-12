@@ -18,8 +18,6 @@
     experimental-features = nix-command flakes
   '';
 
-  # add bcachefs support
-  boot.supportedFilesystems = [ "bcachefs" ];
   # would be great if discord could use pipewire >:[
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   # kernel command line
@@ -33,7 +31,7 @@
   ];
 
   # splash screen :D
-  #boot.plymouth.enable = true;
+  boot.plymouth.enable = true;
 
   # let's add some more for intel graphics while we're at it :>
   nixpkgs.config.packageOverrides = pkgs: {

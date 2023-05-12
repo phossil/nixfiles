@@ -2,7 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 # edited by phossil
-# 2022-06-06
+# 2023-05-12
 # Latitude 3350
 
 { config, lib, pkgs, modulesPath, ... }:
@@ -10,37 +10,33 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "ehci_pci"
-    "ahci"
-    "sd_mod"
-    "sr_mod"
-    "rtsx_pci_sdmmc"
-    "usb_storage"
-  ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "uas" "sd_mod" "rtsx_pci_sdmmc" "bcache" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/6207-575F";
-    fsType = "vfat";
-  };
-
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/412ed394-6a0f-4354-8804-f3cfe624348f";
-    fsType = "f2fs";
-    options = [
-      "compress_algorithm=zstd:6"
-      "compress_chksum"
-      "atgc"
-      "gc_merge"
-      "lazytime"
-    ];
+      #device = "/dev/sda3";
+      device = "/dev/disk/by-partuuid/e1b54f5a-9a4c-4539-91e9-81f69a5ee2c4";
+      fsType = "bcachefs";
+    };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/7248-D260";
+    fsType = "vfat";
   };
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/ec2fb2a6-240e-4377-9bfd-84c008cb6743"; }];
 
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
