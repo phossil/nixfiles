@@ -30,9 +30,6 @@
     "sysrq_always_enabled"
   ];
 
-  # splash screen :D
-  boot.plymouth.enable = true;
-
   # let's add some more for intel graphics while we're at it :>
   nixpkgs.config.packageOverrides = pkgs: {
     # i want to play youtube videos without h.264, ty
