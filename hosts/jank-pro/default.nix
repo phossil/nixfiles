@@ -49,15 +49,7 @@
       "amdgpu.si_support=1"
       "sysrq_always_enabled"
     ];
-
-    # prepare system for root bcachefs drive
-    #initrd.supportedFilesystems = [ "bcachefs" ];
   };
-
-  # add bcachefs-tools to system bc it's not included ???
-  #environment.systemPackages = with pkgs; [
-  #  bcachefs-tools
-  #];
 
   # audio and graphics stuffs
   hardware = {
