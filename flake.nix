@@ -16,7 +16,7 @@
     # personal flake with a bunch of random stuff
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # unstable branch of nixpkgs
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # my fork of the cutefish desktop flake
     nix-cutefish = {
       url = "github:phossil/nix-cutefish";
