@@ -115,6 +115,9 @@
     #emblem #not in stable yet
     curtail
     gnome-obfuscate
+    tangram
+    ferdium
+    station
     # broken packages
     #natron multibootusb clasp-common-lisp monodevelop
     #heimdall-gui rustracer puddletag
