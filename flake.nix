@@ -115,10 +115,10 @@
               ./package-sets
               # ./package-sets/creative.nix
               ./package-sets/dump-cli.nix
-              # ./package-sets/dump-gui.nix
+              ./package-sets/dump-gui.nix
               ./package-sets/essentials.nix
               ./package-sets/fonts.nix
-              # ./package-sets/fun.nix
+              ./package-sets/fun.nix
               ./package-sets/gayming.nix
               ./package-sets/media.nix
               ./package-sets/themes.nix

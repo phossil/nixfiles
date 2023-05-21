@@ -32,11 +32,7 @@
     "sysrq_always_enabled"
   ];
 
-  # let's add some more for intel graphics while we're at it :>
-  nixpkgs.config.packageOverrides = pkgs: {
-    # i want to play youtube videos without h.264, ty
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-  };
+  # graphics drivers and stuff
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
