@@ -105,7 +105,7 @@
               ./common
               # ./common/cups.nix
               ./common/desktop.nix
-              ./common/gnome.nix
+              # ./common/gnome.nix
               ./common/libvirtd.nix
               # ./common/lomiri.nix
               # ./common/miriway.nix
@@ -122,29 +122,11 @@
               ./package-sets/gayming.nix
               ./package-sets/media.nix
               ./package-sets/themes.nix
-              nix-cutefish.nixosModules.default
               ({
-                # add `nix-cutefish` packages to `nixpkgs`
-                nixpkgs.overlays = [ nix-cutefish.overlays.default ];
-                # enable cutefish and its required settings
-                services.xserver = {
-                  enable = true;
-                  libinput.enable = true;
-                  libinput.touchpad.tapping = true;
-                  # i want to use gdm so the sddm theme is overriden
-                  #displayManager.sddm.theme = "";
-                  #desktopManager.cutefish.enable = true;
-                };
-                # enable qvwm bc yes
-                services.xserver.displayManager.sessionPackages = [
-                  nixflake-misc.packages.${system}.qvwm
-                ];
-                environment.systemPackages = [
-                  # pls just gimme that global menu aaa
-                  nixflake-misc.packages.${system}.dbuskit
-                  nixflake-misc.packages.${system}.themes-gtk
-                  pkgs.gnustep.system_preferences
-                ];
+                # enable plasma5 qwq
+                services.xserver.enable = true;
+                services.xserver.displayManager.sddm.enable = true;
+                services.xserver.desktopManager.plasma5.enable = true;
               })
             ];
           };
