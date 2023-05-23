@@ -20,8 +20,8 @@
     openssh = {
       enable = true;
       # very basic hardening
-      passwordAuthentication = false;
-      permitRootLogin = "no";
+      settings.PasswordAuthentication = false;
+      settings.PermitRootLogin = "no";
       ports = [ 2222 ];
       # wholesome message
       banner = "meowdy :3\n\n";
