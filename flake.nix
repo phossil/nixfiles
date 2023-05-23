@@ -2,7 +2,7 @@
   description = "phossil's nixos flake collection";
   inputs = {
     # the most important flake in nixos
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     # generates nixos images (useful for creating 
     # rescue iso's)
     nixos-generators = {
@@ -86,14 +86,6 @@
         };
         # this host uses the unstable branch so this looks a bit different
         Gem-3350 =
-          let
-            system = "x86_64-linux";
-            pkgs = import nixpkgs-unstable {
-              inherit system;
-              config = { allowUnfree = true; };
-            };
-            lib = nixpkgs-unstable.lib;
-          in
           lib.nixosSystem {
             inherit system;
             # also required for lomiri
