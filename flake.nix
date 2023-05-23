@@ -119,6 +119,9 @@
                 displayManager.sddm.enable = true;
                 desktopManager.plasma5.enable = true;
               };
+              environment.systemPackages = [
+                nix-software-center.packages.${system}.nix-software-center
+              ];
             })
           ];
         };
