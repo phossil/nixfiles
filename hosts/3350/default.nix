@@ -36,13 +36,17 @@
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
-      # holy hecc the older driver is actually better
-      #intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      # might be needed for qsv support
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
       vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
       # opencl on a laptop ???
       intel-compute-runtime
+      # all the intel stuffs
+      intel-media-sdk
+      level-zero
+      mkl
     ];
     # enable 32-bit graphics support because Steam 
     driSupport32Bit = true;
