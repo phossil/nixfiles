@@ -84,44 +84,44 @@
             })
           ];
         };
-        # this host uses the unstable branch so this looks a bit different
-        Gem-3350 =
-          lib.nixosSystem {
-            inherit system;
-            # also required for lomiri
-            specialArgs = attrs;
+        Gem-3350 = lib.nixosSystem {
+          inherit system;
+          # also required for lomiri
+          specialArgs = attrs;
 
-            modules = [
-              ./hosts/3350
-              ./users/phossil.nix
-              ./common
-              # ./common/cups.nix
-              ./common/desktop.nix
-              # ./common/gnome.nix
-              ./common/libvirtd.nix
-              # ./common/lomiri.nix
-              # ./common/miriway.nix
-              ./common/plymouth.nix              
-              ./common/shell.nix
-              ./common/user-input.nix
-              ./package-sets
-              # ./package-sets/creative.nix
-              ./package-sets/dump-cli.nix
-              ./package-sets/dump-gui.nix
-              ./package-sets/essentials.nix
-              ./package-sets/fonts.nix
-              ./package-sets/fun.nix
-              ./package-sets/gayming.nix
-              ./package-sets/media.nix
-              ./package-sets/themes.nix
-              ({
-                # enable plasma5 qwq
-                services.xserver.enable = true;
-                services.xserver.displayManager.sddm.enable = true;
-                services.xserver.desktopManager.plasma5.enable = true;
-              })
-            ];
-          };
+          modules = [
+            ./hosts/3350
+            ./users/phossil.nix
+            ./common
+            # ./common/cups.nix
+            ./common/desktop.nix
+            # ./common/gnome.nix
+            ./common/libvirtd.nix
+            # ./common/lomiri.nix
+            # ./common/miriway.nix
+            ./common/plymouth.nix
+            ./common/shell.nix
+            ./common/user-input.nix
+            ./package-sets
+            # ./package-sets/creative.nix
+            ./package-sets/dump-cli.nix
+            ./package-sets/dump-gui.nix
+            ./package-sets/essentials.nix
+            ./package-sets/fonts.nix
+            ./package-sets/fun.nix
+            ./package-sets/gayming.nix
+            ./package-sets/media.nix
+            ./package-sets/themes.nix
+            ({
+              # enable plasma5 qwq
+              services.xserver = {
+                enable = true;
+                displayManager.sddm.enable = true;
+                desktopManager.plasma5.enable = true;
+              };
+            })
+          ];
+        };
         Gem-Super = lib.nixosSystem {
           inherit system;
           modules = [
