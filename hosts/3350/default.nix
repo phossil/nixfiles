@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # edited by phossil
-# 2022-12-11
+# 2022-05-26
 # Dell Latitude 3350
 
 { config, pkgs, ... }:
@@ -30,6 +30,14 @@
     "i915.enable_gvt=1"
     # rescue me !!!
     "sysrq_always_enabled"
+  ];
+
+  # fs options for the root partition (bcachefs)
+  fileSystems."/".options = [
+    # foreground compression with zstd
+    "compression=zstd"
+    # background compression with zstd
+    "background_compression=zstd"
   ];
 
   # graphics drivers and stuff
