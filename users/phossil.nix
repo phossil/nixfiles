@@ -15,8 +15,9 @@
       uid = 1000;
       group = "phossil";
       # Run 'sudo' commands, manage VM's, commit tax fraud on android, 
-      # make scans of crappy drawings, and configure NetworkManager
-      extraGroups = [ "wheel" "libvirtd" "adbusers" "scanner" "lp" "networkmanager" ];
+      # make scans of crappy drawings, configure NetworkManager, and
+      # type loudly :3
+      extraGroups = [ "wheel" "libvirtd" "adbusers" "scanner" "lp" "networkmanager" "input" ];
     };
   };
 }
