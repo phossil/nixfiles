@@ -21,7 +21,7 @@
   # would be great if discord could use pipewire >:[
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   # load i915 (intel iGPU) and v4l2loopback immediately on boot
-  boot.initrd.kernelModules = [ "i915" "v4l2loopback" ];
+  boot.initrd.kernelModules = [ "i915" "intel_agp" "v4l2loopback" ];
   # kernel command line
   boot.kernelParams = [
     # make Intel Graphics go fast, even for VMs
