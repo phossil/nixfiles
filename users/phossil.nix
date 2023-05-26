@@ -17,7 +17,15 @@
       # Run 'sudo' commands, manage VM's, commit tax fraud on android, 
       # make scans of crappy drawings, configure NetworkManager, and
       # type loudly :3
-      extraGroups = [ "wheel" "libvirtd" "adbusers" "scanner" "lp" "networkmanager" "input" ];
+      extraGroups = [
+        "wheel"
+        "libvirtd"
+        "adbusers"
+        "scanner"
+        "lp"
+        "networkmanager"
+        "input"
+      ];
     };
   };
 }
