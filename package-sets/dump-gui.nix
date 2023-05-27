@@ -90,8 +90,6 @@
     shortwave
     armcord
     racket
-    obs-studio-plugins.input-overlay
-    obs-studio-plugins.obs-gstreamer
     texmaker
     lyx
     flowblade

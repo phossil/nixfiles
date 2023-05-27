@@ -30,7 +30,15 @@
     widevine-cdm
     speedcrunch
     libsForQt5.qtimageformats
-    obs-studio
+    (wrapOBS.override { } {
+      plugins = with obs-studio-plugins; [
+        obs-vkcapture
+        obs-pipewire-audio-capture
+        wlrobs
+        input-overlay
+        obs-gstreamer
+      ];
+    })
     bleachbit
     gparted
     libreoffice-qt
@@ -76,13 +84,10 @@
     soundfont-fluid
     freepats
     lapce
-    obs-studio-plugins.obs-vkcapture
     copyq
     synapse
     czkawka
     qview
     wezterm
-    obs-studio-plugins.obs-pipewire-audio-capture
-    obs-studio-plugins.wlrobs
   ];
 }
