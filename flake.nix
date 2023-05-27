@@ -103,7 +103,7 @@
             ./common/shell.nix
             ./common/user-input.nix
             ./package-sets
-            # ./package-sets/creative.nix
+            ./package-sets/creative.nix
             ./package-sets/dump-cli.nix
             ./package-sets/dump-gui.nix
             ./package-sets/essentials.nix
