@@ -89,5 +89,6 @@
     czkawka
     qview
     wezterm
+    activitywatch
   ];
 }
