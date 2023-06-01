@@ -79,5 +79,6 @@
     nix-prefetch-git
     wget
     intel-gpu-tools
+    fontfor
   ];
 }

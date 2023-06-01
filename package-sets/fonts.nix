@@ -67,5 +67,9 @@
     freefont_ttf
     # kaomoji, maybe ??
     arphic-uming
+    # more random fonts
+    cooper-hewitt
+    unscii
+    kreative-square-fonts
   ];
 }

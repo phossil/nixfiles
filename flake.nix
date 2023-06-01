@@ -121,6 +121,7 @@
               };
               environment.systemPackages = [
                 nix-software-center.packages.${system}.nix-software-center
+                pkgs.gnome.gnome-characters
               ];
             })
           ];
