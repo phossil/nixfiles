@@ -86,8 +86,6 @@
       # allowedUDPPorts = [ ... ];
       # Or disable the firewall altogether.
       # enable = false;
-      # alternate http port for the random darkhttp instance
-      allowedTCPPorts = [ 8008 ];
       # when yukari train :3 (touhou 15.5)
       allowedUDPPorts = [ 10800 ];
     };

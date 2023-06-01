@@ -86,8 +86,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-  ## for the random darkhttp instance
-  networking.firewall.allowedTCPPorts = [ 8008 ];
 
   # wireguard owo ?
   networking.wireguard.enable = true;
