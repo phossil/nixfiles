@@ -46,5 +46,10 @@
     onefetch
     nix-index
     nix-tree
+    fontfor
+    numatop
+    recode
+    unipicker
+    uniscribe
   ];
 }
