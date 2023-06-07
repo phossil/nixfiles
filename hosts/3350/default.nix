@@ -35,7 +35,7 @@
   # fs options for the root partition (bcachefs)
   fileSystems."/".options = [
     # foreground compression with zstd
-    "compression=zstd"
+    #"compression=zstd"
     # background compression with zstd
     "background_compression=zstd"
   ];
