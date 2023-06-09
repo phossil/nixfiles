@@ -51,5 +51,6 @@
     recode
     unipicker
     uniscribe
+    mediamtx
   ];
 }
