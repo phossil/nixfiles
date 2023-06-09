@@ -90,5 +90,6 @@
     qview
     wezterm
     activitywatch
+    font-manager
   ];
 }
