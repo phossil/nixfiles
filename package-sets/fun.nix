@@ -18,5 +18,6 @@
     bottom-rs
     uwuify
     owofetch
+    activate-linux
   ];
 }
