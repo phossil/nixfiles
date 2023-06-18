@@ -18,7 +18,7 @@
     chromaprint
     mediainfo
     (tauon.override { withDiscordRPC = true; })
-    python310Packages.yt-dlp
+    python311Packages.yt-dlp
     exiftool
     jamesdsp
     #helio-workstation
@@ -31,5 +31,7 @@
     syncplay
     mpv
     sonixd
+    clematis
+    tartube-yt-dlp
   ];
 }
