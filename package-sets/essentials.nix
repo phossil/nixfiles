@@ -14,6 +14,8 @@
     };
     # did not know there was a module for this xd
     gnome-disks.enable = true;
+    # brasero wasn't working for me :|
+    k3b.enable = true;
   };
   # List packages installed in system profile. To search, run:
   # $ nix search nixpkgs wget
@@ -74,7 +76,7 @@
     koreader
     cdrkit
     dvdauthor
-    brasero
+    #brasero
     qbittorrent
     gimp
     hexchat

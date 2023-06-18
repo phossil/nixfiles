@@ -14,17 +14,16 @@
       # `useradd -mUs /bin/zsh phossil`
       uid = 1000;
       group = "phossil";
-      # Run 'sudo' commands, manage VM's, commit tax fraud on android, 
-      # make scans of crappy drawings, configure NetworkManager, and
-      # type loudly :3
+      # all teh powa !!
       extraGroups = [
-        "wheel"
-        "libvirtd"
-        "adbusers"
-        "scanner"
-        "lp"
-        "networkmanager"
-        "input"
+        "wheel"           # admin group
+        "libvirtd"        # virtual-manager access
+        "adbusers"        # android debug bridge
+        "scanner"         # for scanning drawings
+        "lp"              # printers
+        "networkmanager"  # meow
+        "input"           # required for bucklespring and arcan(?)
+        "cdrom"           # k3b
       ];
     };
   };
