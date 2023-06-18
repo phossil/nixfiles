@@ -80,5 +80,9 @@
     wget
     intel-gpu-tools
     fontfor
+    glxinfo
+    vulkan-tools
+    clinfo
+    wayland-utils
   ];
 }
