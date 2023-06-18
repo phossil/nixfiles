@@ -77,27 +77,20 @@
             ./package-sets/lsp.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
-            nix-cutefish.nixosModules.default
-            ({
-              nixpkgs.overlays = [ nix-cutefish.overlays.default ];
-              #services.xserver.desktopManager.cutefish.enable = true;
-            })
           ];
         };
         Gem-3350 = lib.nixosSystem {
           inherit system;
-          # also required for lomiri
+          # required for `nixflake-misc` in the miriway module
           specialArgs = attrs;
 
           modules = [
             ./hosts/3350
             ./users/phossil.nix
             ./common
-            # ./common/cups.nix
+            ./common/cups.nix
             ./common/desktop.nix
-            # ./common/gnome.nix
             ./common/libvirtd.nix
-            # ./common/lomiri.nix
             ./common/miriway.nix
             ./common/plymouth.nix
             ./common/shell.nix

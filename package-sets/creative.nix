@@ -67,7 +67,7 @@
     qtractor
     ardour
     musescore
-    #giada
+    giada
     non
     qsynth
     surge-XT
@@ -93,7 +93,7 @@
     guitarix
     gxplugins-lv2
     helm
-    #infamousPlugins
+    infamousPlugins
     lsp-plugins
     mda_lv2
     ninjas2
@@ -123,7 +123,7 @@
     # video editing
     olive-editor
     flowblade
-    #cinelerra
+    cinelerra
     kdenlive
   ];
 }

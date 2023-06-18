@@ -5,10 +5,8 @@
   # $ nix search nixpkgs wget
   ## pls make sure flakes are enabled for searching to work
   environment.systemPackages = with pkgs; [
-    # now look at this lovely mess
     android-studio
     digikam
-    #vscode
     gnome-feeds
     drawing
     flameshot
@@ -24,8 +22,6 @@
     xournalpp
     cawbird
     michabo
-    #logseq
-    #pipecontrol
     river
     nyxt
     gcstar
@@ -37,7 +33,7 @@
     qalculate-gtk
     srain
     paperwork
-    #helvum
+    helvum
     gnome.gnome-logs
     gnome.gnome-sound-recorder
     drawio
@@ -81,7 +77,7 @@
     devede
     kalzium
     fiji
-    #parsec-bin
+    parsec-bin
     moonlight-qt
     sunshine
     rlaunch
@@ -101,7 +97,7 @@
     dfeet
     regextester
     sysprof
-    #nasc
+    nasc
     fondo
     ripes
     lugaru
@@ -110,21 +106,21 @@
     nix-query-tree-viewer
     wike
     junction
-    #emblem #not in stable yet
+    emblem
     curtail
     gnome-obfuscate
     tangram
     ferdium
     station
     gpu-viewer
+    puddletag
+    heimdall-gui
+    sonic-lineup
+    surge
+    csound-qt
+    vifm
+    wings
     # broken packages
-    #natron multibootusb clasp-common-lisp monodevelop
-    #heimdall-gui rustracer puddletag
-    #sonic-lineup olive-editor surge csound-qt vifm wings
-    # removed bc unused
-    #nushell ion
-    # dev stuff
-    #rustup sbcl guile maven electron go dotnetPackages.Nuget mitscheme
-    #mythes haskellPackages.drawille gopls
+    #natron
   ];
 }

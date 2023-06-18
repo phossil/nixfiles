@@ -5,7 +5,6 @@
   # $ nix search nixpkgs wget
   ## pls make sure flakes are enabled for searching to work
   environment.systemPackages = with pkgs; [
-    # now look at this lovely mess
     ddate
     wol
     shellcheck
@@ -30,7 +29,7 @@
     epeg
     fbcat
     uxn
-    #ventoy
+    ventoy
     heimdall
     v4l-utils
     gore
@@ -42,7 +41,6 @@
     timg
     ttygif
     diod
-    #wkhtmltopdf
     onefetch
     nix-index
     nix-tree

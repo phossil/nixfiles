@@ -19,16 +19,13 @@
   };
   # List packages installed in system profile. To search, run:
   # $ nix search nixpkgs wget
-  ## pls make sure flakes are enabled for searching to work
   environment.systemPackages = with pkgs; [
-    # now look at this lovely mess
     firefox-wayland
     alacritty
     keepassxc
     vivaldi
     (discord.override { nss = nss_latest; })
     vivaldi-ffmpeg-codecs
-    #vivaldi-widevine
     widevine-cdm
     speedcrunch
     libsForQt5.qtimageformats
@@ -54,7 +51,6 @@
     cpu-x
     pavucontrol
     waypipe
-    #enlightenment.terminology
     qgit
     ghostwriter
     discordchatexporter-cli
@@ -76,7 +72,6 @@
     koreader
     cdrkit
     dvdauthor
-    #brasero
     qbittorrent
     gimp
     hexchat
