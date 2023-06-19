@@ -31,5 +31,6 @@
     sonixd
     clematis
     tartube-yt-dlp
+    trackma-qt
   ];
 }
