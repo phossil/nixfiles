@@ -48,6 +48,7 @@
     solvespace
     antimony
     drawpile
+    rx
     # music and stuff
     zrythm
     vmpk
