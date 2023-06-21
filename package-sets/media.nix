@@ -27,10 +27,10 @@
     hydrus
     calibre
     syncplay
-    mpv
     sonixd
     clematis
     tartube-yt-dlp
     trackma-qt
+    vlc
   ];
 }

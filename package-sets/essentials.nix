@@ -61,7 +61,6 @@
     diffpdf
     zenmonitor
     appimage-run
-    celluloid
     szyszka
     meld
     kolourpaint
