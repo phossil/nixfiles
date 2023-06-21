@@ -158,6 +158,7 @@
             ./hosts/aswitch
             ./users/phossil.nix
             ./common
+            ./common/gnome.nix
             ./common/shell.nix
             ./package-sets
           ];
