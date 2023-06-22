@@ -32,5 +32,7 @@
     tartube-yt-dlp
     trackma-qt
     vlc
+    mpv
+    memento
   ];
 }
