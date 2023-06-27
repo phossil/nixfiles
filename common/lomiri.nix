@@ -69,6 +69,7 @@ in
       mediaplayer-app = unstable.mediaplayer-app;
       lomiri-sounds = unstable.lomiri-sounds;
       address-book-service = unstable.address-book-service;
+      lomiri-wallpapers = unstable.lomiri-wallpapers;
     };
   };
 }

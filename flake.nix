@@ -91,6 +91,8 @@
             ./common/cups.nix
             ./common/desktop.nix
             ./common/libvirtd.nix
+            # two special imports
+            ./common/lomiri.nix
             ./common/miriway.nix
             ./common/plymouth.nix
             ./common/shell.nix
@@ -111,6 +113,7 @@
                 enable = true;
                 displayManager.sddm.enable = true;
                 desktopManager.plasma5.enable = true;
+                displayManager.defaultSession = lib.mkForce "plasmawayland";
               };
               environment.systemPackages = [
                 nix-software-center.packages.${system}.nix-software-center
