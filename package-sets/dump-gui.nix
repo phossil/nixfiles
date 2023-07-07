@@ -81,7 +81,7 @@
     moonlight-qt
     sunshine
     rlaunch
-    gthumb
+    #gthumb
     oneko
     shortwave
     armcord
