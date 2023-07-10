@@ -118,6 +118,19 @@
       MusicFolder = "/var/music";
     };
   };
+  # streaming server !!! >:D
+  services.mediamtx = {
+    enable = true;
+    settings = {
+      paths = {
+        all = { };
+        obs = {
+          runOnReady = "ffmpeg -i rtsp://localhost:$RTSP_PORT/$RTSP_PATH -c:v h264_qsv -f rtsp rtsp://localhost:$RTSP_PORT/live.stream";
+          runOnReadyRestart = "yes";
+        };
+      };
+    };
+  };
   networking.firewall = {
     # navidrome
     allowedTCPPorts = [ 4533 ];
