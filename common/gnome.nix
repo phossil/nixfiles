@@ -21,7 +21,7 @@
   };
 
   # make qt apps look good in gnome
-  qt5 = {
+  qt = {
     enable = true;
     platformTheme = "gnome";
     style = "adwaita-dark";

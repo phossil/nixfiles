@@ -149,12 +149,10 @@
             ./package-sets
           ];
         };
-        /* not ready yet
-           elie = lib.nixosSystem {
-             inherit system;
-             modules = [ ./hosts/elie/configuration.nix ];
-           };
-        */
+        Gem-elie = lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/elie ];
+        };
         Gem-ASwitch = lib.nixosSystem {
           inherit system;
           modules = [
@@ -181,7 +179,7 @@
           modules = [
             ({ pkgs, ... }: {
               # latest kernel
-              boot.kernelPackages = pkgs.linuxPackages_latest;
+              #boot.kernelPackages = pkgs.linuxPackages_latest;
               # disable conflicting options
               networking.wireless.enable = false;
             })
