@@ -12,7 +12,7 @@
       enable = true;
     };
     # sync the yeetmas joplin files    
-    onedrive.enable = true;
+    #onedrive.enable = true;
   };
   programs = {
     # sun did it better
