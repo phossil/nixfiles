@@ -71,5 +71,6 @@
     cooper-hewitt
     unscii
     kreative-square-fonts
+    comic-neue
   ];
 }
