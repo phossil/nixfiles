@@ -3,7 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 # edited by phossil
-# 2023-02-03
+# 2023-07-14
 
 { config, pkgs, ... }:
 
@@ -15,19 +15,20 @@
     ];
 
   # intel graphics
-  nixpkgs.config.packageOverrides = pkgs: {
-    # i want to play youtube videos without h.264, ty
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-  };
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
+      # might be needed for qsv support
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
       vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
       # opencl on a laptop ???
       intel-compute-runtime
+      # all the intel stuffs
+      intel-media-sdk
+      level-zero
+      mkl
     ];
     # enable 32-bit graphics support because Steam 
     driSupport32Bit = true;
@@ -123,18 +124,20 @@
     enable = true;
     settings = {
       paths = {
-        all = { };
+        "live.stream" = { };
         obs = {
-          runOnReady = "ffmpeg -i rtsp://localhost:$RTSP_PORT/$RTSP_PATH -c:v h264_qsv -f rtsp rtsp://localhost:$RTSP_PORT/live.stream";
+          runOnReady = "ffmpeg -hwaccel_output_format qsv -i rtsp://localhost:$RTSP_PORT/$RTSP_PATH -c:v h264_qsv -f rtsp rtsp://localhost:$RTSP_PORT/live.stream";
           runOnReadyRestart = "yes";
         };
       };
     };
   };
   networking.firewall = {
-    # navidrome
-    allowedTCPPorts = [ 4533 ];
-    allowedUDPPorts = [ 4533 ];
+    allowedTCPPorts = [
+      4533 # navidrome
+      1935 # mediamtx
+      8554 # mediamtx
+    ];
   };
 
   # Open ports in the firewall.
