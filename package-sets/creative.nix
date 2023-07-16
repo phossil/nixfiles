@@ -49,6 +49,7 @@
     antimony
     drawpile
     rx
+    wings    
     # music and stuff
     zrythm
     vmpk
@@ -73,6 +74,8 @@
     qsynth
     surge-XT
     luppp
+    sonic-lineup        
+    csound-qt
     # lv2 plugins - archlinux.org/groups/x86_64/lv2-plugins/
     geonkick
     distrho

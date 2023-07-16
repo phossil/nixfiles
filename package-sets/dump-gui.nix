@@ -113,11 +113,8 @@
     gpu-viewer
     puddletag
     heimdall-gui
-    sonic-lineup
     surge
-    csound-qt
     vifm
-    wings
     cudatext
     lite-xl
     # broken packages
