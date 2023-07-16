@@ -10,7 +10,7 @@
     # when the land way is gaym
     gamescope.enable = true;
     # steam desktop session :o
-    steam.gamescopeSession.enable = true;
+    #steam.gamescopeSession.enable = true;
     # corectrl
     corectrl.enable = true;
   };
