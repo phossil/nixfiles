@@ -8,7 +8,6 @@
     android-studio
     digikam
     gnome-feeds
-    drawing
     flameshot
     goverlay
     foliate
@@ -81,7 +80,6 @@
     moonlight-qt
     sunshine
     rlaunch
-    #gthumb
     oneko
     shortwave
     armcord
