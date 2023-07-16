@@ -118,6 +118,8 @@
     csound-qt
     vifm
     wings
+    cudatext
+    lite-xl
     # broken packages
     #natron
   ];
