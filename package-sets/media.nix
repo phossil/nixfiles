@@ -34,6 +34,5 @@
     vlc
     mpv
     memento
-    sublime-music
   ];
 }
