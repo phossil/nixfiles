@@ -117,6 +117,8 @@
     vifm
     cudatext
     lite-xl
+    scite
+    textadept
     # broken packages
     #natron
   ];
