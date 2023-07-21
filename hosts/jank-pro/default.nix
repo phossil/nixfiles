@@ -27,12 +27,6 @@
 
     # latest kernel
     kernelPackages = pkgs.linuxPackages_latest;
-    # latest xanmod Linux kernel
-    #kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    # patched kernel with experimental bcachefs support
-    #kernelPackages = pkgs.linuxPackages_testing_bcachefs;
-    # can your linux run dh3 ? i thought so
-    #kernelPackages = pkgs.linux_latest_98se;
     # out-of-tree kernel modules
     extraModulePackages = with config.boot.kernelPackages; [
       zenpower
@@ -42,11 +36,14 @@
     # load zenpower and v4l2loopback immediately on boot
     initrd.kernelModules = [ "zenpower" "v4l2loopback" ];
     # blacklist the radeon graphics and amd temp sensor drivers
-    blacklistedKernelModules = [ "radeon" "k10temp" ];
+    blacklistedKernelModules = [ "k10temp" ];
     # kernel command line
     kernelParams = [
-      # for R7 250, a Southern Islands (SI ie. GCN 1) card    
-      "amdgpu.si_support=1"
+      # make Intel Graphics go fast, even for VMs
+      "i915.fastboot=1"
+      "i915.enable_fbc=1"
+      "i915.enable_gvt=1"
+      # rescue me !!!
       "sysrq_always_enabled"
     ];
   };
@@ -58,12 +55,17 @@
       enable = true;
       driSupport = true;
       extraPackages = with pkgs; [
-        # video acceleration (youtube is nice)
+        # might be needed for qsv support
+        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
         vaapiVdpau
         libvdpau-va-gl
-        # gpgpu stuffs with opencl
-        rocm-opencl-icd
-        rocm-opencl-runtime
+        # opencl with intel, uwu
+        intel-compute-runtime
+        # all the intel stuffs
+        intel-media-sdk
+        level-zero
+        mkl
       ];
       # enable 32-bit support because Steam 
       driSupport32Bit = true;
@@ -97,8 +99,6 @@
     xserver = {
       # Enable the X11 windowing system.
       enable = true;
-      # xorg amdpu driver ??? (does it still matter if i use wayland)
-      #videoDrivers = [ "amdgpu" ];
       # is modesetting better ?
       videoDrivers = [ "modesetting" ];
       # Enable the GNOME 3 Desktop Environment.
