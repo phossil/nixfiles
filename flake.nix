@@ -79,13 +79,14 @@
             ./package-sets/themes.nix
           ];
         };
-        Gem-3350 = lib.nixosSystem {
+        # i need a darla too :>
+        Gem-Emily = lib.nixosSystem {
           inherit system;
           # required for `nixflake-misc` in the miriway module
           specialArgs = attrs;
 
           modules = [
-            ./hosts/3350
+            ./hosts/emily
             ./users/phossil.nix
             ./common
             ./common/cups.nix

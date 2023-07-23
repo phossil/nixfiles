@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # edited by phossil
-# 2022-05-26
+# 2023-07-22
 # Dell Latitude 3350
 
 { config, pkgs, ... }:
@@ -65,7 +65,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # networking.hostName = "nixos"; # Define your hostname.
-  networking.hostName = "Gem-3350";
+  networking.hostName = "Gem-Emily";
 
   # say hello to lineageOS
   programs.adb.enable = true;
