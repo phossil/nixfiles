@@ -7,8 +7,11 @@
     xserver = {
       # Configure keymap in X11
       layout = "us";
-      # Map Caps Lock as an additional Ctrl key
-      xkbOptions = "ctrl:nocaps";
+      # `ctrl:nocaps`: Map Caps Lock as an additional Ctrl key
+      # (the vanilla Caps Lock key is useless to me)
+      # `compose:menu`: Map the Menu key as the Compose key
+      # (the Compose key is useful for inputing "exotic" characters)
+      xkbOptions = "ctrl:nocaps,compose:menu";
       # Enable touchpad with tap-to-click support
       libinput.touchpad.tapping = true;
     };
