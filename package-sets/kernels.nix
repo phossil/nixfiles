@@ -1,11 +1,18 @@
 # custom linux kernel with 16-bit app support
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, nixpkgs-unstable, ... }:
 
+let
+  baseconfig = { allowUnfree = true; };
+  unstable = import nixpkgs-unstable {
+    system = "x86_64-linux";
+    config = baseconfig;
+  };
+in
 {
-  # make a custom config for the latest kernel
   nixpkgs = {
     overlays = [
-      (self: super: {
+      (final: prev: {
+        # make a custom config for the latest kernel
         linux_latest_98se = pkgs.linuxPackagesFor (pkgs.linux_latest.override {
           structuredExtraConfig = with lib.kernel; {
             # add 16-bit support bc deerhunter 3
@@ -16,6 +23,9 @@
           };
           ignoreConfigErrors = true;
         });
+        # use the bcachefs-patched kernel from the unstable branch
+        linuxPackages_testing_bcachefs = unstable.linuxPackages_testing_bcachefs;
+        bcachefs-tools = unstable.bcachefs-tools;
       })
     ];
   };
