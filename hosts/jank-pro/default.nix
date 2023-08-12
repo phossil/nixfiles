@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # edited by phossil
-# 2022-12-29
+# 2023-08-12
 # MSI B450 Gaming Plus Max
 
 # lib is required for custom kernel
@@ -12,8 +12,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    # y is this necessary here ...
-    ../../package-sets/kernels.nix
   ];
 
   # Allow non-free software
@@ -25,8 +23,6 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
-    # latest kernel
-    kernelPackages = pkgs.linuxPackages_latest;
     # out-of-tree kernel modules
     extraModulePackages = with config.boot.kernelPackages; [
       zenpower
@@ -47,6 +43,26 @@
       "sysrq_always_enabled"
     ];
   };
+
+  # fs options for the root and home partitions
+  # pls check the arch wiki's page on f2fs  
+  fileSystems."/".options = [
+    "defaults"
+    "compress_algorithm=zstd:6"
+    "compress_chksum"
+    "atgc"
+    "gc_merge"
+    "lazytime"
+  ];
+  # pls check the arch wiki's page on f2fs      
+  fileSystems."/home".options = [
+    "defaults"
+    "compress_algorithm=zstd:6"
+    "compress_chksum"
+    "atgc"
+    "gc_merge"
+    "lazytime"
+  ];
 
   # audio and graphics stuffs
   hardware = {

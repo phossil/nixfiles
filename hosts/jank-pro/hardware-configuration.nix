@@ -2,7 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 # edited by phossil
-# 2022-12-24
+# 2023-08-12
 # MSI B450 Gaming Plus Max
 
 { config, lib, pkgs, modulesPath, ... }:
@@ -11,7 +11,7 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules =
-    [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" "sr_mod" ];
+    [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" "sr_mod" "bcache" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -19,15 +19,6 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/ed1a772f-1145-4091-9cc4-2395b9dd66ea";
     fsType = "f2fs";
-    # pls check the arch wiki's page on f2fs
-    options = [
-      "defaults"
-      "compress_algorithm=zstd:6"
-      "compress_chksum"
-      "atgc"
-      "gc_merge"
-      "lazytime"
-    ];
   };
 
   fileSystems."/boot" = {
@@ -38,15 +29,6 @@
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/12e7a0c4-fced-486f-93ee-a72b7b0b8a36";
     fsType = "f2fs";
-    # pls check the arch wiki's page on f2fs
-    options = [
-      "defaults"
-      "compress_algorithm=zstd:6"
-      "compress_chksum"
-      "atgc"
-      "gc_merge"
-      "lazytime"
-    ];
   };
 
   swapDevices =
