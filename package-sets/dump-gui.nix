@@ -116,7 +116,7 @@
     surge
     vifm
     cudatext
-    lite-xl
+    #lite-xl
     scite
     textadept
     # broken packages
