@@ -119,6 +119,10 @@
     #lite-xl
     scite
     textadept
+    neochat
+    quaternion
+    fractal
+    nheko
     # broken packages
     #natron
   ];
