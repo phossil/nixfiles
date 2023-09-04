@@ -81,6 +81,12 @@
   ## disabled bc galaxy phone
   #virtualisation.waydroid.enable = true;
 
+  # ipfs
+  services.kubo = {
+    enable = true;
+    settings.Addresses.API = ["/ip4/127.0.0.1/tcp/5001"];
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
