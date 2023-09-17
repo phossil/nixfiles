@@ -61,18 +61,7 @@
   };
 
   # Use the systemd-boot EFI boot loader.
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
-
-  # using grub instead bc os-prober
-  boot.loader.grub = {
-    enable = true;
-    useOSProber = true;
-    # this isnt enabled by default ??
-    efiSupport = true;
-    # bc efi partition, *not* mbr
-    device = "nodev";
-  };
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # networking.hostName = "nixos"; # Define your hostname.
