@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # edited by phossil
-# 2023-01-31
+# 2023-09-20
 
 { config, pkgs, ... }:
 
@@ -27,8 +27,6 @@
     # make Intel Graphics go fast
     "i915.fastboot=1"
     "i915.enable_fbc=1"
-    # maybe required for deerhunter iii ?
-    "vsyscall=emulate"
   ];
 
   # splash screen :D
@@ -51,6 +49,7 @@
   #system.stateVersion = "21.05"; # Did you read the comment?
   #system.stateVersion = "21.11"; # Did you read the comment?
   #system.stateVersion = "22.05"; # Did you read the comment?
-  system.stateVersion = "22.11"; # Did you read the comment?
+  #system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 
 }

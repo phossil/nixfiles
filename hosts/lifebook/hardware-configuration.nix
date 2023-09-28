@@ -2,7 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 # edited by phossil
-# 2022-02-14
+# 203-09-20
 
 { config, lib, pkgs, modulesPath, ... }:
 
@@ -26,7 +26,7 @@
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/7C0B-F89C";
+      device = "/dev/disk/by-uuid/52A1-1EE9";
       fsType = "vfat";
     };
 
