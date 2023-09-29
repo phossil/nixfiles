@@ -2,21 +2,6 @@
   "nodes": {
     "flake-utils": {
       "locked": {
-        "lastModified": 1678901627,
-        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_2": {
-      "locked": {
         "lastModified": 1652776076,
         "narHash": "sha256-gzTw/v1vj4dOVbpBSJX4J0DwUR6LIyXo7/SuuTJp1kM=",
         "owner": "numtide",
@@ -28,27 +13,6 @@
         "owner": "numtide",
         "ref": "v1.0.0",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "nix-cutefish": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1680480236,
-        "narHash": "sha256-t1iYMC1KhqcCLigcfjtOQ71ZYh7Dorzl+jzFPwd0QBs=",
-        "owner": "phossil",
-        "repo": "nix-cutefish",
-        "rev": "1504b1d862bd5709c3e6581f674a791443424ff6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "phossil",
-        "repo": "nix-cutefish",
         "type": "github"
       }
     },
@@ -73,7 +37,7 @@
     },
     "nixflake-misc": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
@@ -208,7 +172,6 @@
     },
     "root": {
       "inputs": {
-        "nix-cutefish": "nix-cutefish",
         "nix-software-center": "nix-software-center",
         "nixflake-misc": "nixflake-misc",
         "nixos-generators": "nixos-generators",
