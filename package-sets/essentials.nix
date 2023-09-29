@@ -5,6 +5,19 @@
   nixpkgs.config.allowUnfree = true;
 
   programs = {
+    # the most essential of the essentials, apart from the termulators
+    firefox = {
+      enable = true;
+      # give ff super powers >:D
+      nativeMessagingHosts = {
+        fxCast = true;
+        ff2mpv = true;
+        bukubrow = true;
+        jabref = true;
+      };
+      # uncomment when in nixos stable
+      #speechSynthesisSupport = true;
+    };
     # command palette for gtk3 apps
     plotinus.enable = true;
     # curse you, alcohol
@@ -20,7 +33,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search nixpkgs wget
   environment.systemPackages = with pkgs; [
-    firefox-wayland
     alacritty
     keepassxc
     vivaldi
