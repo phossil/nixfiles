@@ -16,14 +16,14 @@
       group = "phossil";
       # all teh powa !!
       extraGroups = [
-        "wheel"           # admin group
-        "libvirtd"        # virtual-manager access
-        "adbusers"        # android debug bridge
-        "scanner"         # for scanning drawings
-        "lp"              # printers
-        "networkmanager"  # meow
-        "input"           # required for bucklespring and arcan(?)
-        "cdrom"           # k3b
+        "wheel" # admin group
+        "libvirtd" # virtual-manager access
+        "adbusers" # android debug bridge
+        "scanner" # for scanning drawings
+        "lp" # printers
+        "networkmanager" # meow
+        "input" # required for bucklespring and arcan(?)
+        "cdrom" # k3b
       ];
     };
   };
