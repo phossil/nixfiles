@@ -122,7 +122,8 @@
     neochat
     quaternion
     fractal
-    # broken packages
+    # add when updated package moves from unstable to unstable
     #natron
+    jedit
   ];
 }

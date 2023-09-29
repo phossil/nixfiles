@@ -69,7 +69,7 @@
     discocss
     breeze-icons
     crow-translate
-    artha
+    #artha
     diffpdf
     zenmonitor
     appimage-run
