@@ -96,7 +96,7 @@
             ./common/libvirtd.nix
             # two special imports
             ./common/lomiri.nix
-            ./common/miriway.nix
+            #./common/miriway.nix
             ./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
@@ -114,6 +114,9 @@
             ./package-sets/media.nix
             ./package-sets/themes.nix
             ({
+              # minimal environment
+              services.xserver.desktopManager.lxqt.enable = true;
+
               # i'll move this to a different file ...
               # some other day:tm:
               environment.systemPackages = [
