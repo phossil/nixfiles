@@ -107,9 +107,9 @@
     emblem
     curtail
     gnome-obfuscate
-    tangram
-    ferdium
-    station
+    #tangram
+    #ferdium
+    #station
     gpu-viewer
     puddletag
     heimdall-gui
@@ -122,7 +122,6 @@
     neochat
     quaternion
     fractal
-    nheko
     # broken packages
     #natron
   ];

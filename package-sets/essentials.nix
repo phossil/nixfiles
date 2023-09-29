@@ -81,8 +81,8 @@
     okteta
     krename
     koreader
-    cdrkit
-    dvdauthor
+    #cdrkit
+    #dvdauthor
     qbittorrent
     gimp
     hexchat
@@ -99,5 +99,6 @@
     wezterm
     activitywatch
     font-manager
+    nheko    
   ];
 }
