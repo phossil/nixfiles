@@ -97,6 +97,7 @@
             # two special imports
             ./common/lomiri.nix
             ./common/miriway.nix
+            ./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
@@ -113,13 +114,8 @@
             ./package-sets/media.nix
             ./package-sets/themes.nix
             ({
-              # enable plasma5 qwq
-              services.xserver = {
-                enable = true;
-                displayManager.sddm.enable = true;
-                desktopManager.plasma5.enable = true;
-                displayManager.defaultSession = lib.mkForce "plasmawayland";
-              };
+              # i'll move this to a different file ...
+              # some other day:tm:
               environment.systemPackages = [
                 nix-software-center.packages.${system}.nix-software-center
                 pkgs.gnome.gnome-characters
