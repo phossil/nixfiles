@@ -99,6 +99,8 @@
     wezterm
     activitywatch
     font-manager
-    nheko    
+    nheko
+    # add when in nixpkgs stable
+    #peazip
   ];
 }
