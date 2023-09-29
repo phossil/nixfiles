@@ -13,6 +13,11 @@
     # i thought this was installed by default qwq
     kdeconnect.enable = true;
   };
+  
+  environment.systemPackages = with pkgs; [
+    # syncthing is nice     
+    syncthingtray
+  ];
 
   # the gtk-based (?) panel is annoying
   i18n.inputMethod.ibus.panel = "${pkgs.plasma5Packages.plasma-desktop}/lib/libexec/kimpanel-ibus-panel";
