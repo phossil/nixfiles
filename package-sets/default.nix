@@ -18,7 +18,7 @@
     # sun did it better
     java = {
       enable = true;
-      package = pkgs.graalvm17-ce;
+      package = pkgs.graalvm19-ce;
     };
     # network usage wowee
     bandwhich.enable = true;
