@@ -7,6 +7,8 @@
   programs = {
     # games on linux ???
     steam.enable = true;
+    # steam link cool
+    steam.remotePlay.openFirewall = true;
     # when the land way is gaym
     gamescope.enable = true;
     # steam desktop session :o
