@@ -82,7 +82,9 @@
     rlaunch
     oneko
     shortwave
-    armcord
+    # Known issues:
+    # - CVE-2023-4863
+    #armcord
     racket
     texmaker
     lyx
