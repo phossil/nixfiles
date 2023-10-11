@@ -102,5 +102,6 @@
     nheko
     # add when in nixpkgs stable
     #peazip
+    revolt-desktop
   ];
 }
