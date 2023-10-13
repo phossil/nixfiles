@@ -104,8 +104,14 @@
       # allowedUDPPorts = [ ... ];
       # Or disable the firewall altogether.
       # enable = false;
-      # when yukari train :3 (touhou 15.5)
-      allowedUDPPorts = [ 10800 ];
+      allowedUDPPorts = [ 
+        # when yukari train :3 (touhou 15.5)
+        10800
+        # tauon
+        7590
+      ];
+      # more tauon
+      allowedTCPPorts = [ 7590 ];
     };
   };
 
