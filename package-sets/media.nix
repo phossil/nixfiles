@@ -27,7 +27,7 @@
     hydrus
     calibre
     syncplay
-    sonixd
+    #sonixd
     clematis
     tartube-yt-dlp
     trackma-qt
