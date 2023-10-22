@@ -54,7 +54,10 @@
       # all the intel stuffs
       intel-media-sdk
       level-zero
-      mkl
+      #error: hash mismatch in fixed-output derivation '/nix/store/59mh14pl3xl56lnywrjzsas8qmlyzmsd-intel-oneapi-tbb-2021.9.0-2021.9.0-43484.x86_64.rpm.drv':
+      #   specified: sha256-wIktdf1p1SS1KrnUlc8LPkm0r9dhZE6cQNr4ZKTWI6A=
+      #      got:    sha256-pzJpQdiYVpcKDShePak2I0uEh7u08vJgX7OBF5p5yAM=
+      #mkl
     ];
     # enable 32-bit graphics support because Steam 
     driSupport32Bit = true;
