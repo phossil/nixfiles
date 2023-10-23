@@ -35,5 +35,6 @@
     mono
     bottles
     lutris
+    winetricks
   ];
 }
