@@ -13,7 +13,7 @@
     # i thought this was installed by default qwq
     kdeconnect.enable = true;
   };
-  
+
   environment.systemPackages = with pkgs; [
     # syncthing is nice     
     syncthingtray
