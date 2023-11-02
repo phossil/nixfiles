@@ -172,14 +172,34 @@
 
       packages.${system} = {
         # some installation images made with nixos-generators
-        iso-gnome = nixos-generators.nixosGenerate {
-          system = "x86_64-linux";
+        # naming scheme: [arch]-[image format]-[kernel]-[user interface]
+        x86_64-iso-bcachefs-gnome = nixos-generators.nixosGenerate {
+          inherit system;
+          # required for `nixflake-unstable` in the kernels module
+          specialArgs = attrs;
+
           modules = [
+            ## copied from the nixos wiki's page on bcachefs
+            # Currently fails on NixOS 23.05 to build due to ZFS incompatibility with bcachefs
+            #<nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
+            #(nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
             ({ pkgs, ... }: {
-              # latest kernel
-              #boot.kernelPackages = pkgs.linuxPackages_latest;
+              # kernelPackages already defined in installation-cd-minimal-new-kernel-no-zfs.nix
+              boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_testing_bcachefs;
+              #isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+              # gib zstd instead >:DDD
+              isoImage.squashfsCompression = "zstd -Xcompression-level 6";
+            })
+
+            ({ pkgs, ... }: {
+              # gimme that nix command goodness
+              nix.extraOptions = ''
+                experimental-features = nix-command flakes
+              '';
               # disable conflicting options
               networking.wireless.enable = false;
+              # don't let the system run out of memory
+              services.earlyoom.enable = true;
             })
             #./common
             ./common/desktop.nix
@@ -188,6 +208,8 @@
             ./common/shell.nix
             ./common/user-input.nix
             ./package-sets
+            # use bcachefs-enabled kernel from nixpkgs-unstable
+            ./package-sets/kernels.nix
           ];
           format = "install-iso";
         };
