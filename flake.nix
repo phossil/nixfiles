@@ -3,8 +3,7 @@
   inputs = {
     # the most important flake in nixos
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
-    # generates nixos images (useful for creating 
-    # rescue iso's)
+    # generates nixos images (useful for creating rescue iso's)
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -173,16 +172,19 @@
       packages.${system} = {
         # some installation images made with nixos-generators
         # naming scheme: [arch]-[image format]-[kernel]-[user interface]
-        x86_64-iso-bcachefs-gnome = nixos-generators.nixosGenerate {
+
+        # iso image with bcachefs-enabled kernel and lomiri for x86_64-based systems
+        x86_64-iso-bcachefs-lomiri = nixos-generators.nixosGenerate {
           inherit system;
           # required for `nixflake-unstable` in the kernels module
+          # and the lomiri branch of nixpkgs in the lomiri module
           specialArgs = attrs;
 
           modules = [
             ## copied from the nixos wiki's page on bcachefs
             # Currently fails on NixOS 23.05 to build due to ZFS incompatibility with bcachefs
             #<nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
-            #(nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
+            (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
             ({ pkgs, ... }: {
               # kernelPackages already defined in installation-cd-minimal-new-kernel-no-zfs.nix
               boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_testing_bcachefs;
@@ -202,6 +204,44 @@
               services.earlyoom.enable = true;
             })
             #./common
+            ./common/desktop.nix
+            ./common/fs-support.nix
+            ./common/lomiri.nix
+            ./common/shell.nix
+            ./common/user-input.nix
+            ./package-sets
+            # use bcachefs-enabled kernel from nixpkgs-unstable
+            ./package-sets/kernels.nix
+          ];
+          format = "install-iso";
+        };
+        # same as above but with gnome instead of lomiri
+        x86_64-iso-bcachefs-gnome = nixos-generators.nixosGenerate {
+          inherit system;
+          # required for `nixflake-unstable` in the kernels module
+          specialArgs = attrs;
+
+          modules = [
+            # Currently fails on NixOS 23.05 to build due to ZFS incompatibility with bcachefs
+            #<nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
+            (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
+            ({ pkgs, ... }: {
+              # kernelPackages already defined in installation-cd-minimal-new-kernel-no-zfs.nix
+              boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_testing_bcachefs;
+              # use zstd compression when generating squashfs image
+              isoImage.squashfsCompression = "zstd -Xcompression-level 6";
+            })
+
+            ({ pkgs, ... }: {
+              # gimme that nix command goodness
+              nix.extraOptions = ''
+                experimental-features = nix-command flakes
+              '';
+              # disable conflicting options
+              networking.wireless.enable = false;
+              # don't let the system run out of memory
+              services.earlyoom.enable = true;
+            })
             ./common/desktop.nix
             ./common/gnome.nix
             ./common/fs-support.nix
