@@ -139,7 +139,7 @@
             ./users/phossil.nix
             ./common
             ./common/desktop.nix
-            ./common/fs-support.nix
+            #./common/fs-support.nix
             ./common/gnome.nix
             ./common/shell.nix
             ./common/user-input.nix
