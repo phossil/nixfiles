@@ -13,15 +13,13 @@
     ./hardware-configuration.nix
   ];
 
-  # gimme that nix command goodness
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
-
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
   # would be great if discord could use pipewire >:[
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   # load i915 (intel iGPU) and v4l2loopback immediately on boot
-  boot.initrd.kernelModules = [ "i915" "intel_agp" "v4l2loopback" ];
+  boot.initrd.kernelModules = [ "intel_agp" "i915" "v4l2loopback" ];
   # kernel command line
   boot.kernelParams = [
     # make Intel Graphics go fast, even for VMs
@@ -54,18 +52,10 @@
       # all the intel stuffs
       intel-media-sdk
       level-zero
-      #error: hash mismatch in fixed-output derivation '/nix/store/59mh14pl3xl56lnywrjzsas8qmlyzmsd-intel-oneapi-tbb-2021.9.0-2021.9.0-43484.x86_64.rpm.drv':
-      #   specified: sha256-wIktdf1p1SS1KrnUlc8LPkm0r9dhZE6cQNr4ZKTWI6A=
-      #      got:    sha256-pzJpQdiYVpcKDShePak2I0uEh7u08vJgX7OBF5p5yAM=
-      #mkl
     ];
     # enable 32-bit graphics support because Steam 
     driSupport32Bit = true;
   };
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   # networking.hostName = "nixos"; # Define your hostname.
   networking.hostName = "Gem-Emily";
@@ -89,12 +79,6 @@
     enable = true;
     settings.Addresses.API = [ "/ip4/127.0.0.1/tcp/5001" ];
   };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # wireguard owo ?
   networking.wireguard.enable = true;

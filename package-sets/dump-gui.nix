@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-software-center, ... }:
 
 {
   # List packages installed in system profile. To search, run:
@@ -127,5 +127,7 @@
     # add when updated package moves from unstable to unstable
     #natron
     jedit
+    nix-software-center.packages.${system}.nix-software-center
+    gnome.gnome-characters
   ];
 }

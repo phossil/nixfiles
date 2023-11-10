@@ -109,13 +109,6 @@
             ({
               # minimal environment
               services.xserver.desktopManager.lxqt.enable = true;
-
-              # i'll move this to a different file ...
-              # some other day:tm:
-              environment.systemPackages = [
-                nix-software-center.packages.${system}.nix-software-center
-                pkgs.gnome.gnome-characters
-              ];
             })
           ];
         };
