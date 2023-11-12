@@ -6,11 +6,6 @@
 
   # services for users :3
   services = {
-    # install emacs with gcc for native elisp code
-    emacs = {
-      package = pkgs.emacsNativeComp;
-      enable = true;
-    };
     # sync the yeetmas joplin files    
     #onedrive.enable = true;
   };
@@ -61,7 +56,6 @@
     rlwrap
     nix-prefetch-github
     zile
-    texlive.combined.scheme-full
     imagemagick
     zip
     unzip
