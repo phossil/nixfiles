@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixflake-misc, ... }:
 
 {
   # Allow non-free software
@@ -34,5 +34,6 @@
     vlc
     mpv
     memento
+    nixflake-misc.packages.${system}.loudgain
   ];
 }

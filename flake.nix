@@ -15,7 +15,9 @@
     # personal flake with a bunch of random stuff
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # unstable branch of nixpkgs
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    ## pinned bc test fail: logs/extra-utils-2023-11-13T07:28:24-05:00.log
+    #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/7c9cc5a6e5d38010801741ac830a3f8fd667a7a0";
   };
   outputs =
     { self
