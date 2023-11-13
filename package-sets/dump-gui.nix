@@ -15,7 +15,7 @@
     noisetorch
     libsForQt5.kdegraphics-thumbnailers
     libsForQt5.kio-extras
-    unetbootin
+    #unetbootin
     gcolor3
     arcanPackages.all-wrapped
     xournalpp
@@ -50,7 +50,7 @@
     sigil
     sqlitebrowser
     anki
-    woeusb
+    #woeusb
     kleopatra
     noteshrink
     testdisk-qt
