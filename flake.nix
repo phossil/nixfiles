@@ -200,9 +200,11 @@
             ./common/desktop.nix
             ./common/fs-support.nix
             ./common/lomiri.nix
+            ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./package-sets
+            ./package-sets/fonts.nix
             # use bcachefs-enabled kernel from nixpkgs-unstable
             ./package-sets/kernels.nix
           ];
@@ -238,9 +240,11 @@
             ./common/desktop.nix
             ./common/gnome.nix
             ./common/fs-support.nix
+            ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./package-sets
+            ./package-sets/fonts.nix
             # use bcachefs-enabled kernel from nixpkgs-unstable
             ./package-sets/kernels.nix
           ];
