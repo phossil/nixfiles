@@ -23,8 +23,19 @@ in
           };
           ignoreConfigErrors = true;
         });
-        # use the bcachefs-patched kernel from the unstable branch
-        linuxPackages_testing_bcachefs = unstable.linuxPackages_testing_bcachefs;
+        # temporary override until nixos stable has 
+        # linux 6.7 (first official release with bcachefs, hopefully)
+        linuxPackages_testing_bcachefs = unstable.linuxPackagesFor
+          (unstable.linux_testing_bcachefs.override {
+            structuredExtraConfig = with lib.kernel; {
+              # add 16-bit support bc deerhunter 3
+              # pls check the linux kernel driver db for x86_16bit
+              EXPERT = yes;
+              MODIFY_LDT_SYSCALL = yes;
+              X86_16BIT = yes;
+            };
+            ignoreConfigErrors = true;
+          });
         bcachefs-tools = unstable.bcachefs-tools;
       })
     ];
