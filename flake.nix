@@ -88,6 +88,7 @@
             ./common
             ./common/cups.nix
             ./common/desktop.nix
+            ./common/fs-support.nix
             ./common/libvirtd.nix
             # two special imports
             ./common/lomiri.nix
