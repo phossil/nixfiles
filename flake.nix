@@ -18,6 +18,8 @@
     ## pinned bc test fail: logs/extra-utils-2023-11-13T07:28:24-05:00.log
     #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/7c9cc5a6e5d38010801741ac830a3f8fd667a7a0";
+    # the new common lisp IDE
+    lem-flake.url = "github:dariof4/lem-flake";
   };
   outputs =
     { self
@@ -27,6 +29,7 @@
     , nixpkgs-lomiri
     , nixflake-misc
     , nixpkgs-unstable
+    , lem-flake
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let

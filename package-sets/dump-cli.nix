@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lem-flake, ... }:
 
 {
   # List packages installed in system profile. To search, run:
@@ -50,5 +50,7 @@
     unipicker
     uniscribe
     mediamtx
+    # when will this be added to nixpkgs ? q q
+    lem-flake.packages.${system}.lem
   ];
 }
