@@ -22,7 +22,7 @@
   fonts.fontconfig.cache32Bit = true;
 
   # extra fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     # largest collection
     noto-fonts
     # chinese, japanese, and korean

@@ -9,12 +9,12 @@
     firefox = {
       enable = true;
       # give ff super powers >:D
-      nativeMessagingHosts = {
-        fxCast = true;
-        ff2mpv = true;
-        bukubrow = true;
-        jabref = true;
-      };
+      nativeMessagingHosts.packages = with pkgs; [
+        fx-cast-bridge
+        ff2mpv
+        bukubrow
+        jabref
+      ];
       # uncomment when in nixos stable
       #speechSynthesisSupport = true;
     };
@@ -100,8 +100,7 @@
     activitywatch
     font-manager
     nheko
-    # add when in nixpkgs stable
-    #peazip
+    peazip
     revolt-desktop
   ];
 }

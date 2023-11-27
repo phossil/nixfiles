@@ -34,7 +34,7 @@
     gnome-usage
     gnome.gnome-system-monitor
   ] ++ (with pkgs.gnomeExtensions; [
-    audio-output-switcher
+    #audio-output-switcher
     vitals
     #syncthing-icon
     systemd-manager

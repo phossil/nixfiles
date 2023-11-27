@@ -75,7 +75,7 @@
     surge-XT
     luppp
     sonic-lineup
-    csound-qt
+    #csound-qt
     # lv2 plugins - archlinux.org/groups/x86_64/lv2-plugins/
     geonkick
     distrho

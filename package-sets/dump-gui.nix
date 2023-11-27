@@ -19,7 +19,6 @@
     gcolor3
     arcanPackages.all-wrapped
     xournalpp
-    cawbird
     michabo
     river
     nyxt
@@ -71,7 +70,7 @@
     asuka
     bombadillo
     kiln
-    md2gemini
+    #md2gemini
     osdlyrics
     devede
     kalzium
@@ -124,8 +123,7 @@
     neochat
     quaternion
     fractal
-    # add when updated package moves from unstable to unstable
-    #natron
+    natron
     jedit
     nix-software-center.packages.${system}.nix-software-center
     gnome.gnome-characters

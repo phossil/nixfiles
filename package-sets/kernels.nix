@@ -1,13 +1,6 @@
 # custom linux kernel with 16-bit app support
-{ lib, config, pkgs, nixpkgs-unstable, ... }:
+{ lib, config, pkgs, ... }:
 
-let
-  baseconfig = { allowUnfree = true; };
-  unstable = import nixpkgs-unstable {
-    system = "x86_64-linux";
-    config = baseconfig;
-  };
-in
 {
   nixpkgs = {
     overlays = [
@@ -23,10 +16,9 @@ in
           };
           ignoreConfigErrors = true;
         });
-        # temporary override until nixos stable has 
-        # linux 6.7 (first official release with bcachefs, hopefully)
-        linuxPackages_testing_bcachefs = unstable.linuxPackagesFor
-          (unstable.linux_testing_bcachefs.override {
+        # temporary override until 6.7 is officially released
+        linuxPackages_testing = pkgs.linuxPackagesFor
+          (pkgs.linux_testing.override {
             structuredExtraConfig = with lib.kernel; {
               # add 16-bit support bc deerhunter 3
               # pls check the linux kernel driver db for x86_16bit
@@ -36,7 +28,6 @@ in
             };
             ignoreConfigErrors = true;
           });
-        bcachefs-tools = unstable.bcachefs-tools;
       })
     ];
   };

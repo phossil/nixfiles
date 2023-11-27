@@ -2,7 +2,7 @@
   description = "phossil's nixos flake collection";
   inputs = {
     # the most important flake in nixos
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     # generates nixos images (useful for creating rescue iso's)
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -15,9 +15,7 @@
     # personal flake with a bunch of random stuff
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # unstable branch of nixpkgs
-    ## pinned bc test fail: logs/extra-utils-2023-11-13T07:28:24-05:00.log
-    #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/7c9cc5a6e5d38010801741ac830a3f8fd667a7a0";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # the new common lisp IDE
     lem-flake.url = "github:dariof4/lem-flake";
   };
@@ -45,7 +43,7 @@
       nixosConfigurations = {
         Gem-JankPro = lib.nixosSystem {
           inherit system;
-          # also required for lomiri
+          # also required for lomiri and lem
           specialArgs = attrs;
 
           # the real config files :3
@@ -82,7 +80,7 @@
         # i need a darla too :>
         Gem-Emily = lib.nixosSystem {
           inherit system;
-          # required for `nixflake-misc` in the miriway module
+          # required for `nixflake-misc` in the miriway module and lem
           specialArgs = attrs;
 
           modules = [
@@ -120,6 +118,9 @@
         };
         Gem-Super = lib.nixosSystem {
           inherit system;
+          # also required for lem
+          specialArgs = attrs;
+
           modules = [
             ./hosts/9200
             ./users/phossil.nix
@@ -175,8 +176,7 @@
         # iso image with bcachefs-enabled kernel and lomiri for x86_64-based systems
         x86_64-iso-bcachefs-lomiri = nixos-generators.nixosGenerate {
           inherit system;
-          # required for `nixflake-unstable` in the kernels module
-          # and the lomiri branch of nixpkgs in the lomiri module
+          # required for the lomiri branch of nixpkgs in the lomiri module
           specialArgs = attrs;
 
           modules = [
@@ -186,7 +186,7 @@
             (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
             ({ pkgs, ... }: {
               # kernelPackages already defined in installation-cd-minimal-new-kernel-no-zfs.nix
-              boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_testing_bcachefs;
+              boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_testing;
               #isoImage.squashfsCompression = "gzip -Xcompression-level 1";
               # gib zstd instead >:DDD
               isoImage.squashfsCompression = "zstd -Xcompression-level 6";
@@ -211,7 +211,7 @@
             ./common/user-input.nix
             ./package-sets
             ./package-sets/fonts.nix
-            # use bcachefs-enabled kernel from nixpkgs-unstable
+            # use bcachefs-enabled kernel
             ./package-sets/kernels.nix
           ];
           format = "install-iso";
@@ -219,16 +219,13 @@
         # same as above but with gnome instead of lomiri
         x86_64-iso-bcachefs-gnome = nixos-generators.nixosGenerate {
           inherit system;
-          # required for `nixflake-unstable` in the kernels module
-          specialArgs = attrs;
-
           modules = [
             # Currently fails on NixOS 23.05 to build due to ZFS incompatibility with bcachefs
             #<nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
             (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
             ({ pkgs, ... }: {
               # kernelPackages already defined in installation-cd-minimal-new-kernel-no-zfs.nix
-              boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_testing_bcachefs;
+              boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_testing;
               # use zstd compression when generating squashfs image
               isoImage.squashfsCompression = "zstd -Xcompression-level 6";
             })
@@ -251,7 +248,7 @@
             ./common/user-input.nix
             ./package-sets
             ./package-sets/fonts.nix
-            # use bcachefs-enabled kernel from nixpkgs-unstable
+            # use bcachefs-enabled kernel
             ./package-sets/kernels.nix
           ];
           format = "install-iso";

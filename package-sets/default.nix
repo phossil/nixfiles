@@ -13,7 +13,7 @@
     # sun did it better
     java = {
       enable = true;
-      package = pkgs.graalvm19-ce;
+      package = pkgs.graalvm-ce;
     };
     # network usage wowee
     bandwhich.enable = true;
@@ -63,7 +63,7 @@
     delta
     tty-clock
     nixpkgs-fmt
-    exa
+    eza
     iotop
     scrcpy
     rsync
