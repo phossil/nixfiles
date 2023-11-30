@@ -18,5 +18,6 @@
     uwuify
     owofetch
     activate-linux
+    soulseekqt
   ];
 }
