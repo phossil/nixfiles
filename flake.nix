@@ -113,6 +113,8 @@
             ({
               # minimal environment
               services.xserver.desktopManager.lxqt.enable = true;
+              # bc bcachefs :3
+              boot.kernelPackages = pkgs.linuxPackages_testing;
             })
           ];
         };
