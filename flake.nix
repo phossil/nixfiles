@@ -14,8 +14,6 @@
     nixpkgs-lomiri.url = "github:OPNA2608/nixpkgs/init/lomiri-junk";
     # personal flake with a bunch of random stuff
     nixflake-misc.url = "github:phossil/nixflake-misc";
-    # unstable branch of nixpkgs
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # the new common lisp IDE
     lem-flake.url = "github:dariof4/lem-flake";
   };
@@ -26,7 +24,6 @@
     , nix-software-center
     , nixpkgs-lomiri
     , nixflake-misc
-    , nixpkgs-unstable
     , lem-flake
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
