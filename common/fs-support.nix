@@ -5,4 +5,6 @@
   environment.systemPackages = with pkgs; [
     hfsprogs
   ];
+  # bc bcachefs :3
+  boot.kernelPackages = pkgs.linuxPackages_testing;
 }

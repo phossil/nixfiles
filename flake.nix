@@ -115,25 +115,7 @@
             ({
               # minimal environment
               services.xserver.desktopManager.lxqt.enable = true;
-              # bc bcachefs :3
-              boot.kernelPackages = pkgs.linuxPackages_testing;
             })
-          ];
-        };
-        Gem-Super = lib.nixosSystem {
-          inherit system;
-          # also required for lem
-          specialArgs = attrs;
-
-          modules = [
-            ./hosts/9200
-            ./users/phossil.nix
-            ./common
-            ./common/fs-support.nix
-            ./common/shell.nix
-            ./common/user-input.nix
-            ./package-sets
-            ./package-sets/dump-cli.nix
           ];
         };
         Gem-LifeBook = lib.nixosSystem {
@@ -150,10 +132,6 @@
             ./package-sets
           ];
         };
-        Gem-elie = lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/elie ];
-        };
         Gem-ASwitch = lib.nixosSystem {
           inherit system;
           modules = [
@@ -165,62 +143,13 @@
             ./package-sets
           ];
         };
-        /* borked bc of the yabits payload for coreboot
-           opt-7010 = lib.nixosSystem {
-             inherit system;
-             modules = [ ./hosts/7010/configuration.nix ];
-           };
-        */
       };
 
       packages.${system} = {
         # some installation images made with nixos-generators
         # naming scheme: [arch]-[image format]-[kernel]-[user interface]
 
-        # iso image with bcachefs-enabled kernel and lomiri for x86_64-based systems
-        x86_64-iso-bcachefs-lomiri = nixos-generators.nixosGenerate {
-          inherit system;
-          # required for the lomiri branch of nixpkgs in the lomiri module
-          specialArgs = attrs;
-
-          modules = [
-            ## copied from the nixos wiki's page on bcachefs
-            # Currently fails on NixOS 23.05 to build due to ZFS incompatibility with bcachefs
-            #<nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
-            (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
-            ({ pkgs, ... }: {
-              # kernelPackages already defined in installation-cd-minimal-new-kernel-no-zfs.nix
-              boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_testing;
-              #isoImage.squashfsCompression = "gzip -Xcompression-level 1";
-              # gib zstd instead >:DDD
-              isoImage.squashfsCompression = "zstd -Xcompression-level 6";
-            })
-
-            ({ pkgs, ... }: {
-              # gimme that nix command goodness
-              nix.extraOptions = ''
-                experimental-features = nix-command flakes
-              '';
-              # disable conflicting options
-              networking.wireless.enable = false;
-              # don't let the system run out of memory
-              services.earlyoom.enable = true;
-            })
-            #./common
-            ./common/desktop.nix
-            ./common/fs-support.nix
-            ./common/lomiri.nix
-            ./common/plymouth.nix
-            ./common/shell.nix
-            ./common/user-input.nix
-            ./package-sets
-            ./package-sets/fonts.nix
-            # use bcachefs-enabled kernel
-            ./package-sets/kernels.nix
-          ];
-          format = "install-iso";
-        };
-        # same as above but with gnome instead of lomiri
+        # iso image with bcachefs-enabled kernel and gnome for x86_64-based systems
         x86_64-iso-bcachefs-gnome = nixos-generators.nixosGenerate {
           inherit system;
           modules = [
