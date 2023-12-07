@@ -1,12 +1,12 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, kde2nix, ... }:
 
 {
   # enable plasma5 qwq
   services.xserver = {
     enable = true;
     displayManager.sddm.enable = true;
-    desktopManager.plasma5.enable = true;
-    displayManager.defaultSession = lib.mkForce "plasmawayland";
+    desktopManager.plasma6.enable = true;
+    displayManager.defaultSession = lib.mkForce "plasma";
   };
 
   programs = {

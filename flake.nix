@@ -16,6 +16,8 @@
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # the new common lisp IDE
     lem-flake.url = "github:dariof4/lem-flake";
+    # temporary flake for plasma 6
+    kde2nix.url = "github:nix-community/kde2nix";
   };
   outputs =
     { self
@@ -25,6 +27,7 @@
     , nixpkgs-lomiri
     , nixflake-misc
     , lem-flake
+    , kde2nix
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let
@@ -107,6 +110,8 @@
             ./package-sets/kernels.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
+            # temporary import for plasma 6
+            kde2nix.nixosModules.default
             ({
               # minimal environment
               services.xserver.desktopManager.lxqt.enable = true;
