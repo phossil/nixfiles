@@ -19,5 +19,6 @@
     owofetch
     activate-linux
     soulseekqt
+    macchina
   ];
 }

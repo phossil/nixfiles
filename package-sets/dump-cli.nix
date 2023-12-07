@@ -9,10 +9,8 @@
     wol
     shellcheck
     rustscan
-    macchina
     uutils-coreutils
     syslinux
-    dutree
     procs
     zoxide
     broot
@@ -29,12 +27,10 @@
     epeg
     fbcat
     uxn
-    ventoy
     heimdall
     v4l-utils
     gore
     epr
-    chntpw
     cabextract
     wimlib
     haskellPackages.hakyll
@@ -42,8 +38,6 @@
     ttygif
     diod
     onefetch
-    nix-index
-    nix-tree
     fontfor
     numatop
     recode

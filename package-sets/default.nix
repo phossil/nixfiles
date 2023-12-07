@@ -76,5 +76,10 @@
     vulkan-tools
     clinfo
     wayland-utils
+    ventoy
+    chntpw
+    nix-index
+    nix-tree
+    dutree
   ];
 }
