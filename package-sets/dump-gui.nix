@@ -128,5 +128,6 @@
     nix-software-center.packages.${system}.nix-software-center
     gnome.gnome-characters
     labwc
+    flacon
   ];
 }
