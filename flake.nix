@@ -58,7 +58,6 @@
             ./common/libvirtd.nix
             # the next two imports are special :3
             ./common/lomiri.nix
-            ./common/miriway.nix
             ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
@@ -80,7 +79,7 @@
         # i need a darla too :>
         Gem-Emily = lib.nixosSystem {
           inherit system;
-          # required for `nixflake-misc` in the miriway module and lem
+          # required for `lem-flake`
           specialArgs = attrs;
 
           modules = [
@@ -93,7 +92,6 @@
             ./common/libvirtd.nix
             # two special imports
             ./common/lomiri.nix
-            ./common/miriway.nix
             ./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
