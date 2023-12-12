@@ -93,7 +93,7 @@
             ./common/libvirtd.nix
             # two special imports
             ./common/lomiri.nix
-            #./common/miriway.nix
+            ./common/miriway.nix
             ./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
