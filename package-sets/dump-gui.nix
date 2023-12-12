@@ -129,5 +129,6 @@
     gnome.gnome-characters
     labwc
     flacon
+    unityhub
   ];
 }
