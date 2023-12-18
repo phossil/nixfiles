@@ -18,6 +18,8 @@
     lem-flake.url = "github:dariof4/lem-flake";
     # temporary flake for plasma 6
     kde2nix.url = "github:nix-community/kde2nix";
+    # gib louvre-views
+    nixflake-cuarzo.url = "github:phossil/nixflake-cuarzo";
   };
   outputs =
     { self
@@ -28,6 +30,7 @@
     , nixflake-misc
     , lem-flake
     , kde2nix
+    , nixflake-cuarzo
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let
@@ -113,6 +116,17 @@
             ({
               # minimal environment
               services.xserver.desktopManager.lxqt.enable = true;
+
+              # enable louvre-views
+              services.xserver.displayManager.sessionPackages = with pkgs; [
+                nixflake-cuarzo.packages.${system}.Louvre
+              ];
+              environment.systemPackages = with pkgs; [
+                # install so louvre-views can be launched from tty's too
+                nixflake-cuarzo.packages.${system}.Louvre
+                # need weston for the terminal
+                weston
+              ];
             })
           ];
         };
