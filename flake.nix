@@ -20,6 +20,8 @@
     kde2nix.url = "github:nix-community/kde2nix";
     # gib louvre-views
     nixflake-cuarzo.url = "github:phossil/nixflake-cuarzo";
+    # macos x knockoff but qt
+    #nix-cutefish.url = "github:phossil/nix-cutefish";
   };
   outputs =
     { self
@@ -31,6 +33,7 @@
     , lem-flake
     , kde2nix
     , nixflake-cuarzo
+    #, nix-cutefish
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let
@@ -113,6 +116,8 @@
             ./package-sets/themes.nix
             # temporary import for plasma 6
             kde2nix.nixosModules.default
+            # third try can't hurt right ?
+            #nix-cutefish.nixosModules.default
             ({
               # minimal environment
               services.xserver.desktopManager.lxqt.enable = true;
@@ -127,6 +132,11 @@
                 # need weston for the terminal
                 weston
               ];
+
+              # maybe i'll stick with cutefish this time qwq
+              #nixpkgs.overlays = [ nix-cutefish.overlays.default ];
+              #services.xserver.desktopManager.cutefish.enable = true;
+              #services.xserver.displayManager.sddm.theme = lib.mkForce "breeze";
             })
           ];
         };
