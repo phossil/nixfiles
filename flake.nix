@@ -108,7 +108,7 @@
             ./package-sets/fun.nix
             ./package-sets/gayming.nix
             # special kernel stuffs
-            ./package-sets/kernels.nix
+            #./package-sets/kernels.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
             # temporary import for plasma 6
