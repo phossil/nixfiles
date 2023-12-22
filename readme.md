@@ -4,16 +4,15 @@
 
 `nix flake show` output:
 ```shell
-github:phossil/nixfiles/68fc14842394147267120014396a948d59ad26ff
+github:phossil/nixfiles/0e66c07c8a91a04d3beb529768ea8a57956b6be7
 ├───formatter
 │   └───x86_64-linux: package 'nixpkgs-fmt-1.3.0'
 ├───nixosConfigurations
-│   ├───Gem-3350: NixOS configuration
 │   ├───Gem-ASwitch: NixOS configuration
+│   ├───Gem-Emily: NixOS configuration
 │   ├───Gem-JankPro: NixOS configuration
-│   ├───Gem-LifeBook: NixOS configuration
-│   └───Gem-Super: NixOS configuration
+│   └───Gem-LifeBook: NixOS configuration
 └───packages
     └───x86_64-linux
-        └───iso-gnome: package 'nixos-22.11.20230518.628d4bb-x86_64-linux.isonixos.iso'
+        └───x86_64-iso-bcachefs-gnome: package 'nixos-23.11.20231212.cf28ee2-x86_64-linux.iso'
 ```
