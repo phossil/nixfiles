@@ -236,22 +236,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-lomiri": {
-      "locked": {
-        "lastModified": 1690731503,
-        "narHash": "sha256-SsilkieyOd13TGdE8U8zqW/2ozhlszsgyE/uzsa0iJ4=",
-        "owner": "OPNA2608",
-        "repo": "nixpkgs",
-        "rev": "de9aa960b824209e66d1d5f1852ec011b3e7773f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "OPNA2608",
-        "ref": "init/lomiri-junk",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1685801374,
@@ -381,8 +365,7 @@
         "nixflake-cuarzo": "nixflake-cuarzo",
         "nixflake-misc": "nixflake-misc",
         "nixos-generators": "nixos-generators",
-        "nixpkgs": "nixpkgs_6",
-        "nixpkgs-lomiri": "nixpkgs-lomiri"
+        "nixpkgs": "nixpkgs_6"
       }
     },
     "systems": {

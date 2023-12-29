@@ -11,7 +11,8 @@
     # gnome software center but for derivations
     nix-software-center.url = "github:vlinkz/nix-software-center";
     # nixpkgs fork with WIP lomiri commits
-    nixpkgs-lomiri.url = "github:OPNA2608/nixpkgs/init/lomiri-junk";
+    # will fix later:tm:
+    #nixpkgs-lomiri.url = "github:OPNA2608/nixpkgs/init/lomiri-junk";
     # personal flake with a bunch of random stuff
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # the new common lisp IDE
@@ -20,20 +21,17 @@
     kde2nix.url = "github:nix-community/kde2nix";
     # gib louvre-views
     nixflake-cuarzo.url = "github:phossil/nixflake-cuarzo";
-    # macos x knockoff but qt
-    #nix-cutefish.url = "github:phossil/nix-cutefish";
   };
   outputs =
     { self
     , nixpkgs
     , nixos-generators
     , nix-software-center
-    , nixpkgs-lomiri
+    #, nixpkgs-lomiri
     , nixflake-misc
     , lem-flake
     , kde2nix
     , nixflake-cuarzo
-    #, nix-cutefish
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let
@@ -62,8 +60,8 @@
             ./common/fs-support.nix
             ./common/gnome.nix
             ./common/libvirtd.nix
-            # the next two imports are special :3
-            ./common/lomiri.nix
+            # the next ~~two~~ imports are special :3
+            #./common/lomiri.nix
             ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
@@ -96,8 +94,8 @@
             ./common/desktop.nix
             ./common/fs-support.nix
             ./common/libvirtd.nix
-            # two special imports
-            ./common/lomiri.nix
+            # ~~two~~ special imports
+            #./common/lomiri.nix
             ./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
@@ -116,8 +114,6 @@
             ./package-sets/themes.nix
             # temporary import for plasma 6
             kde2nix.nixosModules.default
-            # third try can't hurt right ?
-            #nix-cutefish.nixosModules.default
             ({
               # minimal environment
               services.xserver.desktopManager.lxqt.enable = true;
@@ -132,11 +128,6 @@
                 # need weston for the terminal
                 weston
               ];
-
-              # maybe i'll stick with cutefish this time qwq
-              #nixpkgs.overlays = [ nix-cutefish.overlays.default ];
-              #services.xserver.desktopManager.cutefish.enable = true;
-              #services.xserver.displayManager.sddm.theme = lib.mkForce "breeze";
             })
           ];
         };
