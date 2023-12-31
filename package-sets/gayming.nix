@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixflake-misc, ... }:
 
 {
   # Allow non-free software
@@ -36,5 +36,8 @@
     bottles
     lutris
     winetricks
+    # need these for mangohud when playing noita and cruelty squad respectively
+    nixflake-misc.packages.${system}.unifraktur-cook
+    arphic-uming
   ];
 }

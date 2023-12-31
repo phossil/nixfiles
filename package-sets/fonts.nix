@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixflake-misc, ... }:
 
 {
   # set font in tty
@@ -43,12 +43,14 @@
     font-awesome_5
     # japanese
     ipafont
+    ipaexfont
     # essential Macrohard fonts like Times New Roman
     corefonts
     # yes
     xkcd-font
     # go outside and touch the grass :^)
     national-park-typeface
+    overpass
     # more monospace fonts
     monoid
     iosevka
@@ -58,6 +60,9 @@
     jetbrains-mono
     fixedsys-excelsior
     tamsyn
+    cozette
+    borg-sans-mono
+    monocraft
     # more cjk fonts
     # borks some text, be careful
     wqy_microhei
@@ -72,5 +77,9 @@
     unscii
     kreative-square-fonts
     comic-neue
+    # font i've been using when playing noita with mangohud for years now
+    nixflake-misc.packages.${system}.unifraktur-cook
+    # and its sibling for use some day:tm:
+    nixflake-misc.packages.${system}.unifraktur-maguntia
   ];
 }

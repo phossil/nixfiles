@@ -171,11 +171,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1699631912,
-        "narHash": "sha256-zm9WQk0uUuSldpVaLr4hKVco795+ufoUl9xCgh3k2jY=",
+        "lastModified": 1703989570,
+        "narHash": "sha256-G5FGnP19T3koDt2nfkw9gpuq6TBAecE8YcV9ymI3Fzg=",
         "owner": "phossil",
         "repo": "nixflake-misc",
-        "rev": "7d3ceafe967d51c2a9137fc5f49af155e6c06f2d",
+        "rev": "dd98dfaf58e237e80bc56487d5ae627eacdbb7b8",
         "type": "github"
       },
       "original": {
