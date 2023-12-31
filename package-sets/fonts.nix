@@ -12,7 +12,7 @@
   # make sure they're installed in `fonts.fonts`
   fonts.fontconfig.defaultFonts = {
     serif = [ "FreeSerif" "Noto Serif" ];
-    sansSerif = [ "Go" "IPAPGothic" "FreeSans" "Noto Sans" ];
+    sansSerif = [ "Go" "IPAexGothic" "FreeSans" "Noto Sans" ];
     monospace =
       [ "mononoki" "Fantasque Sans Mono" "FreeMono" "Noto Sans Mono" ];
     emoji = [ "Twitter Color Emoji" "Noto Color Emoji" ];
@@ -36,13 +36,12 @@
     # what, it looks nice
     go-font
     # make that code look good
-    source-code-pro
-    # source code pro but with ligatures
-    hasklig
+    fantasque-sans-mono
+    # if source code pro were made by google, probably
+    borg-sans-mono
     # random symbols and some logos
     font-awesome_5
     # japanese
-    ipafont
     ipaexfont
     # essential Macrohard fonts like Times New Roman
     corefonts
@@ -56,12 +55,10 @@
     iosevka
     ocr-a
     proggyfonts
-    fantasque-sans-mono
     jetbrains-mono
     fixedsys-excelsior
     tamsyn
     cozette
-    borg-sans-mono
     monocraft
     # more cjk fonts
     # borks some text, be careful
