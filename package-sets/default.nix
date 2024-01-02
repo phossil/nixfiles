@@ -81,5 +81,6 @@
     nix-index
     nix-tree
     dutree
+    file
   ];
 }
