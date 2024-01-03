@@ -19,7 +19,7 @@
     gcolor3
     arcanPackages.all-wrapped
     xournalpp
-    michabo
+    #michabo
     river
     nyxt
     gcstar
@@ -130,5 +130,7 @@
     labwc
     flacon
     unityhub
+    tokodon
+    tootle
   ];
 }
