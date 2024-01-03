@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # edited by phossil
-# 2023-07-22
+# 2024-01-03
 # Dell Latitude 3350
 
 { config, pkgs, ... }:
@@ -18,8 +18,20 @@
   boot.loader.efi.canTouchEfiVariables = true;
   # would be great if discord could use pipewire >:[
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-  # load i915 (intel iGPU) and v4l2loopback immediately on boot
-  boot.initrd.kernelModules = [ "intel_agp" "i915" "v4l2loopback" ];
+  # embed kernel modules into initrd
+  boot.initrd.kernelModules = [
+    # intel graphics NOW
+    "intel_agp" "i915"
+    # note from gentoo wiki: bcachefs page
+    #
+    # If the crc32c-intel module is available and bcachefs loads before it
+    # (or is built in) the CRC32 hardware instruction will not be used
+    # resulting in increased system resource utilisation. Ensure that the
+    # module loads before bcachefs or build it into the kernel to avoid this.
+    "crc32c-intel"
+    # discord pls upgade ur electron aaaaa
+    "v4l2loopback"
+  ];
   # kernel command line
   boot.kernelParams = [
     # make Intel Graphics go fast, even for VMs
@@ -32,10 +44,10 @@
 
   # fs options for the root partition (bcachefs)
   fileSystems."/".options = [
-    # foreground compression with zstd
-    "compression=zstd"
-    # background compression with zstd
-    "background_compression=zstd"
+    # foreground compression with zstd, level 6
+    "compression=zstd:6"
+    # background compression with zstd, level 6
+    "background_compression=zstd:6"
   ];
 
   # graphics drivers and stuff
@@ -94,6 +106,7 @@
   #system.stateVersion = "21.11"; # Did you read the comment?
   #system.stateVersion = "22.05"; # Did you read the comment?
   #system.stateVersion = "22.11"; # Did you read the comment?
-  system.stateVersion = "23.05"; # Did you read the comment?
+  #system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
 }

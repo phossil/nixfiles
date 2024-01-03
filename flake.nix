@@ -170,6 +170,9 @@
         # iso image with bcachefs-enabled kernel and gnome for x86_64-based systems
         x86_64-iso-bcachefs-gnome = nixos-generators.nixosGenerate {
           inherit system;
+          # required by `package-sets/fonts` for some yet-to-be-merged fonts
+          specialArgs = attrs;
+
           modules = [
             # Currently fails on NixOS 23.05 to build due to ZFS incompatibility with bcachefs
             #<nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
@@ -190,6 +193,9 @@
               networking.wireless.enable = false;
               # don't let the system run out of memory
               services.earlyoom.enable = true;
+              ## warning: mdadm: Neither MAILADDR nor PROGRAM has been set. This will cause the `mdmon` service to crash.
+              # who needs swraid when you can have bcachefs ?
+              boot.swraid.enable = lib.mkForce false;
             })
             ./common/desktop.nix
             ./common/gnome.nix
@@ -199,8 +205,6 @@
             ./common/user-input.nix
             ./package-sets
             ./package-sets/fonts.nix
-            # use bcachefs-enabled kernel
-            ./package-sets/kernels.nix
           ];
           format = "install-iso";
         };
