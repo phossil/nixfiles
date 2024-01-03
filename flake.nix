@@ -115,9 +115,6 @@
             # temporary import for plasma 6
             kde2nix.nixosModules.default
             ({
-              # minimal environment
-              services.xserver.desktopManager.lxqt.enable = true;
-
               # enable louvre-views
               services.xserver.displayManager.sessionPackages = with pkgs; [
                 nixflake-cuarzo.packages.${system}.Louvre
