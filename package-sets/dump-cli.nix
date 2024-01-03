@@ -46,5 +46,8 @@
     mediamtx
     # when will this be added to nixpkgs ? q q
     lem-flake.packages.${system}.lem
+    asuka
+    bombadillo
+    kiln
   ];
 }

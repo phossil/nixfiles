@@ -102,5 +102,6 @@
     nheko
     peazip
     revolt-desktop
+    textadept
   ];
 }

@@ -45,7 +45,7 @@
     libsForQt5.breeze-qt5
     gnome-firmware-updater
     gnome.gnome-calendar
-    vokoscreen-ng
+    #vokoscreen-ng
     sigil
     sqlitebrowser
     anki
@@ -59,7 +59,7 @@
     audacity
     libreddit
     swayimg
-    cherrytree
+    #cherrytree
     bemenu
     foot
     amberol
@@ -67,9 +67,6 @@
     tagger
     lagrange
     kristall
-    asuka
-    bombadillo
-    kiln
     #md2gemini
     osdlyrics
     devede
@@ -78,7 +75,7 @@
     parsec-bin
     moonlight-qt
     sunshine
-    rlaunch
+    #rlaunch
     oneko
     shortwave
     # Known issues:
@@ -88,11 +85,11 @@
     texmaker
     lyx
     flowblade
-    blackbox-terminal
+    #blackbox-terminal
     basex
     zeal
     bustle
-    ctx
+    #ctx
     dfeet
     regextester
     sysprof
@@ -118,10 +115,9 @@
     vifm
     cudatext
     #lite-xl
-    scite
-    textadept
-    neochat
-    quaternion
+    #scite
+    #neochat
+    #quaternion
     fractal
     natron
     jedit
