@@ -128,5 +128,6 @@
     unityhub
     tokodon
     tootle
+    vesktop
   ];
 }
