@@ -103,5 +103,6 @@
     peazip
     revolt-desktop
     textadept
+    xfe
   ];
 }
