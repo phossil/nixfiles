@@ -1,4 +1,4 @@
-{ config, pkgs, nixflake-misc, ... }:
+{ config, pkgs, nixpkgs-unstable, ... }:
 
 {
   # Allow non-free software
@@ -34,6 +34,7 @@
     vlc
     mpv
     memento
-    nixflake-misc.packages.${system}.loudgain
+    # use unstable until 24.05 (?) is released
+    nixpkgs-unstable.legacyPackages.${system}.rsgain
   ];
 }

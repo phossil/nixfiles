@@ -21,6 +21,8 @@
     kde2nix.url = "github:nix-community/kde2nix";
     # gib louvre-views
     nixflake-cuarzo.url = "github:phossil/nixflake-cuarzo";
+    # `nixpkgs` but rolling
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
   outputs =
     { self
@@ -32,6 +34,7 @@
     , lem-flake
     , kde2nix
     , nixflake-cuarzo
+    , nixpkgs-unstable
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let
@@ -73,9 +76,8 @@
             ./package-sets/fonts.nix
             ./package-sets/fun.nix
             ./package-sets/gayming.nix
-            # special kernel stuffs
-            ./package-sets/kernels.nix
             ./package-sets/lsp.nix
+            # needs unstable bc rsgain
             ./package-sets/media.nix
             ./package-sets/themes.nix
           ];
@@ -108,8 +110,7 @@
             ./package-sets/fonts.nix
             ./package-sets/fun.nix
             ./package-sets/gayming.nix
-            # special kernel stuffs
-            #./package-sets/kernels.nix
+            # needs unstable bc rsgain            
             ./package-sets/media.nix
             ./package-sets/themes.nix
             # temporary import for plasma 6
