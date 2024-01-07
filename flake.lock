@@ -152,11 +152,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1702876476,
-        "narHash": "sha256-9IeaJagKZ5MZ61KXEcrGtqdnNiQk8IXz0OQcEFfZkRk=",
+        "lastModified": 1704588960,
+        "narHash": "sha256-PzOXbjwQ9S9o/fr+6KhyAeBdB4Kydo64gi+1igaeLg4=",
         "owner": "phossil",
         "repo": "nixflake-cuarzo",
-        "rev": "7de3b994d605ad8d99d0733a6319348b336d2757",
+        "rev": "79066037836a4184e3645c3dce725deea422fa0f",
         "type": "github"
       },
       "original": {
