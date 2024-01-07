@@ -1,3 +1,4 @@
-result
+result*
 logs
 readme.md.backup
+*.cuda-proj
