@@ -21,7 +21,8 @@
   # embed kernel modules into initrd
   boot.initrd.kernelModules = [
     # intel graphics NOW
-    "intel_agp" "i915"
+    "intel_agp"
+    "i915"
     # note from gentoo wiki: bcachefs page
     #
     # If the crc32c-intel module is available and bcachefs loads before it

@@ -19,8 +19,6 @@
     lem-flake.url = "github:dariof4/lem-flake";
     # temporary flake for plasma 6
     kde2nix.url = "github:nix-community/kde2nix";
-    # gib louvre-views
-    nixflake-cuarzo.url = "github:phossil/nixflake-cuarzo";
     # `nixpkgs` but rolling
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
@@ -29,11 +27,10 @@
     , nixpkgs
     , nixos-generators
     , nix-software-center
-    #, nixpkgs-lomiri
+      #, nixpkgs-lomiri
     , nixflake-misc
     , lem-flake
     , kde2nix
-    , nixflake-cuarzo
     , nixpkgs-unstable
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
@@ -116,14 +113,9 @@
             # temporary import for plasma 6
             kde2nix.nixosModules.default
             ({
-              # enable louvre-views
-              services.xserver.displayManager.sessionPackages = with pkgs; [
-                nixflake-cuarzo.packages.${system}.Louvre
-              ];
+              # louvre-views and weston-terminal
               environment.systemPackages = with pkgs; [
-                # install so louvre-views can be launched from tty's too
-                nixflake-cuarzo.packages.${system}.Louvre
-                # need weston for the terminal
+                nixpkgs-unstable.legacyPackages.${system}.louvre
                 weston
               ];
 
