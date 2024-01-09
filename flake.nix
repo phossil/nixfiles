@@ -21,6 +21,8 @@
     kde2nix.url = "github:nix-community/kde2nix";
     # `nixpkgs` but rolling
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # i swear i'll delete this after i merge everything:tm:
+    nixflake-cuarzo.url = "github:phossil/nixflake-cuarzo";
   };
   outputs =
     { self
@@ -32,6 +34,7 @@
     , lem-flake
     , kde2nix
     , nixpkgs-unstable
+    , nixflake-cuarzo
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let
@@ -113,10 +116,12 @@
             # temporary import for plasma 6
             kde2nix.nixosModules.default
             ({
-              # louvre-views and weston-terminal
+              # cuarzo packages and weston-terminal
               environment.systemPackages = with pkgs; [
                 nixpkgs-unstable.legacyPackages.${system}.louvre
                 weston
+                nixflake-cuarzo.packages.${system}.qtcuarzo
+                nixflake-cuarzo.packages.${system}.firmament
               ];
 
               # enable wayfire
