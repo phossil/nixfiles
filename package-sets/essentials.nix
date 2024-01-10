@@ -106,5 +106,7 @@
     xfe
     cudatext
     vesktop
+    qpwgraph
+    cage
   ];
 }

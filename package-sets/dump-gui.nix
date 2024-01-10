@@ -6,11 +6,11 @@
   ## pls make sure flakes are enabled for searching to work
   environment.systemPackages = with pkgs; [
     android-studio
-    digikam
+    #digikam
     gnome-feeds
     flameshot
     goverlay
-    foliate
+    #foliate
     easyeffects
     noisetorch
     libsForQt5.kdegraphics-thumbnailers
@@ -20,7 +20,7 @@
     arcanPackages.all-wrapped
     xournalpp
     #michabo
-    river
+    #river
     nyxt
     gcstar
     gImageReader
@@ -41,7 +41,6 @@
     newsflash
     joplin-desktop
     xournalpp
-    qpwgraph
     libsForQt5.breeze-qt5
     gnome-firmware-updater
     gnome.gnome-calendar
@@ -51,22 +50,21 @@
     anki
     #woeusb
     kleopatra
-    noteshrink
     testdisk-qt
     kiwix
     mkchromecast
     kwave
-    audacity
+    #audacity
     libreddit
-    swayimg
+    #swayimg
     #cherrytree
-    bemenu
-    foot
-    amberol
+    #bemenu
+    #foot
+    #amberol
     video-trimmer
-    tagger
+    #tagger
     lagrange
-    kristall
+    #kristall
     #md2gemini
     osdlyrics
     devede
@@ -92,7 +90,7 @@
     regextester
     sysprof
     nasc
-    fondo
+    #fondo
     ripes
     lugaru
     linthesia
@@ -125,5 +123,6 @@
     unityhub
     tokodon
     tootle
+    zathura
   ];
 }
