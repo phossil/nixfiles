@@ -78,8 +78,6 @@
     #rlaunch
     oneko
     shortwave
-    # Known issues:
-    # - CVE-2023-4863
     #armcord
     racket
     texmaker
@@ -112,8 +110,7 @@
     puddletag
     heimdall-gui
     surge
-    vifm
-    cudatext
+    #vifm
     #lite-xl
     #scite
     #neochat
@@ -128,6 +125,5 @@
     unityhub
     tokodon
     tootle
-    vesktop
   ];
 }

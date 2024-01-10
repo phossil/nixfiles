@@ -66,7 +66,7 @@
     qgit
     ghostwriter
     discordchatexporter-cli
-    discocss
+    #discocss
     breeze-icons
     crow-translate
     #artha
@@ -80,7 +80,7 @@
     gnome.dconf-editor
     okteta
     krename
-    koreader
+    #koreader
     #cdrkit
     #dvdauthor
     qbittorrent
@@ -104,5 +104,7 @@
     revolt-desktop
     textadept
     xfe
+    cudatext
+    vesktop
   ];
 }
