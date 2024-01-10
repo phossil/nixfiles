@@ -131,6 +131,9 @@
                 wf-shell
                 wayfire-plugins-extra
               ];
+
+              # more sped !1!!
+              services.dbus.implementation = "broker";
             })
           ];
         };
