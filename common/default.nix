@@ -16,6 +16,8 @@
   services = {
     # userspace out-of-memory killer so your system doesn't freeze
     earlyoom.enable = true;
+    # high performance dbus thingy
+    dbus.implementation = "broker";
     # configure the OpenSSH daemon.
     openssh = {
       enable = true;
