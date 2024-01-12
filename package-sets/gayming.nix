@@ -39,5 +39,7 @@
     # need these for mangohud when playing noita and cruelty squad respectively
     nixflake-misc.packages.${system}.unifraktur-cook
     arphic-uming
+    # yes, it's the same one from windows xp :)
+    space-cadet-pinball
   ];
 }
