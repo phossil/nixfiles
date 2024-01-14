@@ -18,7 +18,18 @@
     # the new common lisp IDE
     lem-flake.url = "github:dariof4/lem-flake";
     # temporary flake for plasma 6
-    kde2nix.url = "github:nix-community/kde2nix";
+    #kde2nix.url = "github:nix-community/kde2nix";
+    # idk how to fix this :/
+    #
+    # error: attribute 'sddm' missing
+    #
+    # at /nix/store/0jzkpp4xbpwj3mx8qni5bnvqzvbvjpxs-source/nixos/modules/services/x11/desktop-managers/plasma6.nix:238:17:
+    #
+    #    237|       # FIXME: extremely hacky wrapper
+    #    238|       package = kdePackages.sddm.overrideAttrs (old: {
+    #       |                 ^
+    #    239|         buildInputs = old.buildInputs ++ (with kdePackages; [kirigami qtsvg ksvg plasma5support qt5compat breeze-icons]);
+    kde2nix.url = "github:nix-community/kde2nix/b123e781c912109c41c34d7778b970c9d8e403b7";
     # `nixpkgs` but rolling
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # i swear i'll delete this after i merge everything:tm:
