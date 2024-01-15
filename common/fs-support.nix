@@ -6,5 +6,5 @@
     hfsprogs
   ];
   # bc bcachefs :3
-  boot.kernelPackages = pkgs.linuxPackages_testing;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_7;
 }
