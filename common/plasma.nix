@@ -13,6 +13,8 @@
   programs = {
     # i thought this was installed by default qwq
     kdeconnect.enable = true;
+    # gnome disks alone isn't enough !!!
+    partition-manager.enable = true;
   };
 
   environment.systemPackages = with pkgs; [

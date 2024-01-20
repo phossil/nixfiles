@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # edited by phossil
-# 2024-01-03
+# 2024-01-20
 # Dell Latitude 3350
 
 { config, pkgs, ... }:
@@ -84,8 +84,7 @@
 
   # List services that you want to enable:
   # enable waydroid for Android apps
-  ## disabled bc galaxy phone
-  #virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.enable = true;
 
   # ipfs
   services.kubo = {
