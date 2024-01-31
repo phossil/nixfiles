@@ -22,8 +22,6 @@
     kde2nix.url = "github:nix-community/kde2nix/b123e781c912109c41c34d7778b970c9d8e403b7";
     # `nixpkgs` but rolling
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # i swear i'll delete this after i merge everything:tm:
-    nixflake-cuarzo.url = "github:phossil/nixflake-cuarzo";
   };
   outputs =
     { self
@@ -35,7 +33,6 @@
     , lem-flake
     , kde2nix
     , nixpkgs-unstable
-    , nixflake-cuarzo
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let
@@ -49,6 +46,7 @@
     {
       # my main devices are defined here
       nixosConfigurations = {
+        /* Device is inaccessible and offline indefintely
         Gem-JankPro = lib.nixosSystem {
           inherit system;
           # also required for lomiri and lem
@@ -63,7 +61,7 @@
             ./common/desktop.nix
             ./common/fs-support.nix
             ./common/gnome.nix
-            ./common/libvirtd.nix
+            ./common/virtualization.nix
             # the next ~~two~~ imports are special :3
             #./common/lomiri.nix
             ./common/plymouth.nix
@@ -83,6 +81,7 @@
             ./package-sets/themes.nix
           ];
         };
+        */
         # i need a darla too :>
         Gem-Emily = lib.nixosSystem {
           inherit system;
@@ -96,7 +95,7 @@
             ./common/cups.nix
             ./common/desktop.nix
             ./common/fs-support.nix
-            ./common/libvirtd.nix
+            ./common/virtualization.nix
             # ~~two~~ special imports
             #./common/lomiri.nix
             ./common/plasma.nix
@@ -116,25 +115,9 @@
             ./package-sets/themes.nix
             # temporary import for plasma 6
             kde2nix.nixosModules.default
-            ({
-              # cuarzo packages and weston-terminal
-              environment.systemPackages = with pkgs; [
-                nixpkgs-unstable.legacyPackages.${system}.louvre
-                weston
-                nixflake-cuarzo.packages.${system}.qtcuarzo
-                nixflake-cuarzo.packages.${system}.firmament
-              ];
-
-              # enable wayfire
-              programs.wayfire.enable = true;
-              programs.wayfire.plugins = with pkgs.wayfirePlugins; [
-                wcm
-                wf-shell
-                wayfire-plugins-extra
-              ];
-            })
           ];
         };
+        /* Pending re-install
         Gem-LifeBook = lib.nixosSystem {
           inherit system;
           modules = [
@@ -149,6 +132,8 @@
             ./package-sets
           ];
         };
+        */
+        /* Device is inaccessible and offline indefintely
         Gem-ASwitch = lib.nixosSystem {
           inherit system;
           modules = [
@@ -160,52 +145,55 @@
             ./package-sets
           ];
         };
+        */
       };
 
-      packages.${system} = {
+      packages = {
         # some installation images made with nixos-generators
-        # naming scheme: [arch]-[image format]-[kernel]-[user interface]
+        # naming scheme: [image format]-[kernel]-[user interface]
 
-        # iso image with bcachefs-enabled kernel and gnome for x86_64-based systems
-        x86_64-iso-bcachefs-gnome = nixos-generators.nixosGenerate {
-          inherit system;
-          # required by `package-sets/fonts` for some yet-to-be-merged fonts
-          specialArgs = attrs;
+        x86_64-linux = {
+          # iso image with bcachefs-enabled kernel and gnome for x86_64-based systems
+          iso-bcachefs-gnome = nixos-generators.nixosGenerate {
+            inherit system;
+            # required by `package-sets/fonts` for some yet-to-be-merged fonts
+            specialArgs = attrs;
 
-          modules = [
-            # Currently fails on NixOS 23.05 to build due to ZFS incompatibility with bcachefs
-            #<nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
-            (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
-            ({ pkgs, ... }: {
-              # kernelPackages already defined in installation-cd-minimal-new-kernel-no-zfs.nix
-              boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_testing;
-              # use zstd compression when generating squashfs image
-              isoImage.squashfsCompression = "zstd -Xcompression-level 6";
-            })
+            modules = [
+              # Currently fails on NixOS 23.05 to build due to ZFS incompatibility with bcachefs
+              #<nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
+              (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
+              ({ pkgs, ... }: {
+                # kernelPackages already defined in installation-cd-minimal-new-kernel-no-zfs.nix
+                boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_testing;
+                # use zstd compression when generating squashfs image
+                isoImage.squashfsCompression = "zstd -Xcompression-level 6";
+              })
 
-            ({ pkgs, ... }: {
-              # gimme that nix command goodness
-              nix.extraOptions = ''
-                experimental-features = nix-command flakes
-              '';
-              # disable conflicting options
-              networking.wireless.enable = false;
-              # don't let the system run out of memory
-              services.earlyoom.enable = true;
-              ## warning: mdadm: Neither MAILADDR nor PROGRAM has been set. This will cause the `mdmon` service to crash.
-              # who needs swraid when you can have bcachefs ?
-              boot.swraid.enable = lib.mkForce false;
-            })
-            ./common/desktop.nix
-            ./common/gnome.nix
-            ./common/fs-support.nix
-            ./common/plymouth.nix
-            ./common/shell.nix
-            ./common/user-input.nix
-            ./package-sets
-            ./package-sets/fonts.nix
-          ];
-          format = "install-iso";
+              ({ pkgs, ... }: {
+                # gimme that nix command goodness
+                nix.extraOptions = ''
+                  experimental-features = nix-command flakes
+                '';
+                # disable conflicting options
+                networking.wireless.enable = false;
+                # don't let the system run out of memory
+                services.earlyoom.enable = true;
+                ## warning: mdadm: Neither MAILADDR nor PROGRAM has been set. This will cause the `mdmon` service to crash.
+                # who needs swraid when you can have bcachefs ?
+                boot.swraid.enable = lib.mkForce false;
+              })
+              ./common/desktop.nix
+              ./common/gnome.nix
+              ./common/fs-support.nix
+              ./common/plymouth.nix
+              ./common/shell.nix
+              ./common/user-input.nix
+              ./package-sets
+              ./package-sets/fonts.nix
+            ];
+            format = "install-iso";
+          };
         };
       };
 

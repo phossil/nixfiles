@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # edited by phossil
-# 2023-08-12
+# 2024-01-30
 # MSI B450 Gaming Plus Max
 
 # lib is required for custom kernel
@@ -94,6 +94,8 @@
       ];
     };
   };
+  # is modesetting better ?
+  services.xserver.videoDrivers = [ "modesetting" ];
 
   # interwebs ?
   networking = {
@@ -118,36 +120,12 @@
   };
 
   # List services that you want to enable:
-  services = {
-    # graphics and stuff
-    xserver = {
-      # Enable the X11 windowing system.
-      enable = true;
-      # is modesetting better ?
-      videoDrivers = [ "modesetting" ];
-      # Enable the GNOME 3 Desktop Environment.
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-    };
-  };
 
-  programs = {
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # programs.mtr.enable = true;
-    # Please leave the agent enabled; it is required for pinentry, I think
-    ###
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
-    ###
-    # say hello to lineageOS
-    adb.enable = true;
+  # i don't remember what this was for
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
   };
-
-  # enable Waydroid for Android apps
-  #virtualisation.waydroid.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -158,6 +136,7 @@
   #system.stateVersion = "21.11"; # Did you read the comment?
   #system.stateVersion = "22.05"; # Did you read the comment?
   #system.stateVersion = "22.11"; # Did you read the comment?
-  system.stateVersion = "23.05"; # Did you read the comment?
+  #system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
 }

@@ -29,7 +29,15 @@
     gnome-disks.enable = true;
     # brasero wasn't working for me :|
     k3b.enable = true;
+    # useful for interacting with vm's managed by libvirt
+    virt-manager.enable = true;
+    # useful when interacting with android-based devices
+    adb.enable = true;
   };
+
+  # enable waydroid for Android apps
+  virtualisation.waydroid.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search nixpkgs wget
   environment.systemPackages = with pkgs; [
@@ -55,7 +63,7 @@
     libreoffice-qt
     hunspellDicts.en_US
     thunderbird
-    virt-manager
+    #virt-manager
     vorta
     xorg.xkill
     protonvpn-gui

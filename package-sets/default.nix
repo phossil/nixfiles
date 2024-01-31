@@ -17,7 +17,8 @@
     };
     # network usage wowee
     bandwhich.enable = true;
-    # enable for libvirtd and nautilus ?
+    # I don't remember what this was for but the setting
+    # in libvirt makes this one redundant
     dconf.enable = true;
   };
   # List packages installed in system profile. To search, run:
