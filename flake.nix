@@ -94,14 +94,15 @@
             ./common
             ./common/cups.nix
             ./common/desktop.nix
+            ./common/gnome.nix
             ./common/fs-support.nix
-            ./common/virtualization.nix
             # ~~two~~ special imports
             #./common/lomiri.nix
-            ./common/plasma.nix
+            #./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
+            ./common/virtualization.nix
             ./package-sets
             ./package-sets/creative.nix
             ./package-sets/dump-cli.nix
