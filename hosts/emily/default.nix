@@ -50,6 +50,13 @@
     # background compression with zstd, level 6
     "background_compression=zstd:6"
   ];
+  
+  # ⚠️ Mount point '/boot' which backs the random seed file is world accessible, which is a security hole! ⚠️
+  # ⚠️ Random seed file '/boot/loader/random-seed' is world accessible, which is a security hole! ⚠️
+  fileSystems."/boot".options = [
+    # stolen from a debian fstab
+    "umask=0077"
+  ];
 
   # graphics drivers and stuff
   hardware.opengl = {
