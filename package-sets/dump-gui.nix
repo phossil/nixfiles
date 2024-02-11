@@ -124,5 +124,7 @@
     tokodon
     tootle
     zathura
+    remmina
+    rustdesk
   ];
 }
