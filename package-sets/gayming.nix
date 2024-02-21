@@ -41,5 +41,13 @@
     arphic-uming
     # yes, it's the same one from windows xp :)
     space-cadet-pinball
+    # some clones c:
+    zeroad
+    freeciv
+    xonotic
+    # pet the froge :>
+    #frogatto
+    # kiki, my beloved ❤
+    superTuxKart
   ];
 }
