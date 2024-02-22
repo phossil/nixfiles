@@ -49,5 +49,8 @@
     #frogatto
     # kiki, my beloved ❤
     superTuxKart
+    # racing gayms
+    #armagetronad
+    extremetuxracer
   ];
 }
