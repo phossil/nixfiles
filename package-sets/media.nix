@@ -30,7 +30,7 @@
     #sonixd
     clematis
     tartube-yt-dlp
-    trackma-qt
+    trackma-gtk
     vlc
     mpv
     memento
