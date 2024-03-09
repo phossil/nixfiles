@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs-unstable, ... }:
 
 {
   # Allow non-free software
@@ -113,7 +113,11 @@
     textadept
     xfe
     cudatext
-    vesktop
+    # vesktop currently broken with error in nixos stable:
+    #
+    # Error: tsx must be loaded with --import instead of --loader
+    # The --loader flag was deprecated in Node v20.6.0
+    nixpkgs-unstable.legacyPackages.${system}.vesktop
     qpwgraph
     cage
   ];
