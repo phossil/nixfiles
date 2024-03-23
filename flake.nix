@@ -17,9 +17,6 @@
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # the new common lisp IDE
     lem-flake.url = "github:dariof4/lem-flake";
-    # temporary flake for plasma 6
-    # pinned bc nixos stable is no longer supported
-    kde2nix.url = "github:nix-community/kde2nix/b123e781c912109c41c34d7778b970c9d8e403b7";
     # `nixpkgs` but rolling
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
@@ -31,7 +28,6 @@
       #, nixpkgs-lomiri
     , nixflake-misc
     , lem-flake
-    , kde2nix
     , nixpkgs-unstable
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
@@ -114,8 +110,6 @@
             # needs unstable bc rsgain            
             ./package-sets/media.nix
             ./package-sets/themes.nix
-            # temporary import for plasma 6
-            kde2nix.nixosModules.default
           ];
         };
         /* Pending re-install

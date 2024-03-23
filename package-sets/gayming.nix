@@ -52,5 +52,6 @@
     # racing gayms
     #armagetronad
     extremetuxracer
+    rigsofrods
   ];
 }

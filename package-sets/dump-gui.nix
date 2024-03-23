@@ -122,7 +122,7 @@
     flacon
     unityhub
     tokodon
-    tootle
+    #tootle
     zathura
     remmina
     rustdesk
