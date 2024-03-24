@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # edited by phossil
-# 2024-01-30
+# 2024-03-23
 # Dell Latitude 3350
 
 { config, pkgs, ... }:
@@ -17,7 +17,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # would be great if discord could use pipewire >:[
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  ## kernel module `v4l2loopback` broken in linux 6.8, nixos 23.11
+  #boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   # embed kernel modules into initrd
   boot.initrd.kernelModules = [
     # intel graphics NOW
@@ -31,7 +32,8 @@
     # module loads before bcachefs or build it into the kernel to avoid this.
     "crc32c-intel"
     # discord pls upgade ur electron aaaaa
-    "v4l2loopback"
+    ## kernel module `v4l2loopback` broken in linux 6.8, nixos 23.11
+    #"v4l2loopback"
   ];
   # kernel command line
   boot.kernelParams = [

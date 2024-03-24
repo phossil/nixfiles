@@ -22,7 +22,8 @@
     plotinus.enable = true;
     # curse you, alcohol
     cdemu = {
-      enable = true;
+      # kernel module `vhba` broken in linux 6.8, nixos 23.11
+      #enable = true;
       group = "phossil";
     };
     # did not know there was a module for this xd
