@@ -72,7 +72,7 @@
     cpu-x
     pavucontrol
     waypipe
-    qgit
+    #qgit
     ghostwriter
     discordchatexporter-cli
     #discocss
@@ -121,5 +121,6 @@
     nixpkgs-unstable.legacyPackages.${system}.vesktop
     qpwgraph
     cage
+    gittyup
   ];
 }
