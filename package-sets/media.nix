@@ -36,5 +36,7 @@
     memento
     # use unstable until 24.05 (?) is released
     nixpkgs-unstable.legacyPackages.${system}.rsgain
+    puddletag
+    flacon
   ];
 }

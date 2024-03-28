@@ -53,5 +53,7 @@
     #armagetronad
     extremetuxracer
     rigsofrods
+    lugaru
+    linthesia
   ];
 }

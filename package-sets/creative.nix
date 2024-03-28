@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs-unstable, ... }:
 
 {
   # define lv2 path and some other stuff because zrythm
@@ -34,7 +34,7 @@
   ];
   # packages
   environment.systemPackages = with pkgs; [
-    # graphics and design
+    # graphics and modelling
     krita
     openscad
     pikopixel
@@ -50,6 +50,9 @@
     drawpile
     rx
     wings
+    lazpaint
+    hugin
+    nixpkgs-unstable.legacyPackages.${system}.makehuman
     # music and stuff
     zrythm
     vmpk
@@ -76,6 +79,7 @@
     luppp
     sonic-lineup
     openutau
+    kwave
     #csound-qt
     # lv2 plugins - archlinux.org/groups/x86_64/lv2-plugins/
     geonkick
@@ -126,10 +130,12 @@
     dexed
     cardinal
     stochas
-    # video editing
+    # video editing and effects
     olive-editor
     flowblade
     cinelerra
     kdenlive
+    openshot-qt
+    natron
   ];
 }

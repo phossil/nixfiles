@@ -53,7 +53,6 @@
     testdisk-qt
     kiwix
     mkchromecast
-    kwave
     #audacity
     libreddit
     #swayimg
@@ -80,7 +79,6 @@
     racket
     texmaker
     lyx
-    flowblade
     #blackbox-terminal
     basex
     zeal
@@ -92,8 +90,6 @@
     nasc
     #fondo
     ripes
-    lugaru
-    linthesia
     warp
     nix-query-tree-viewer
     wike
@@ -105,7 +101,6 @@
     #ferdium
     #station
     gpu-viewer
-    puddletag
     heimdall-gui
     surge
     #vifm
@@ -114,12 +109,10 @@
     #neochat
     #quaternion
     fractal
-    natron
     jedit
     nix-software-center.packages.${system}.nix-software-center
     gnome.gnome-characters
     labwc
-    flacon
     unityhub
     tokodon
     #tootle
