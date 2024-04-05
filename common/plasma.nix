@@ -1,4 +1,4 @@
-{ config, pkgs, lib, kde2nix, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # enable plasma5 qwq
@@ -6,8 +6,8 @@
     enable = true;
     displayManager.sddm.enable = true;
     displayManager.sddm.wayland.enable = true;
-    desktopManager.plasma6.enable = true;
-    displayManager.defaultSession = lib.mkForce "plasma";
+    desktopManager.plasma5.enable = true;
+    displayManager.defaultSession = lib.mkForce "plasmawayland";
   };
 
   programs = {

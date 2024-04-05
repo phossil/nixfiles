@@ -90,11 +90,10 @@
             ./common
             ./common/cups.nix
             ./common/desktop.nix
-            ./common/gnome.nix
+            #./common/gnome.nix
             ./common/fs-support.nix
-            # ~~two~~ special imports
             #./common/lomiri.nix
-            #./common/plasma.nix
+            ./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
