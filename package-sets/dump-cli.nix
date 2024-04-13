@@ -1,9 +1,7 @@
 { config, pkgs, lem-flake, ... }:
 
 {
-  # List packages installed in system profile. To search, run:
-  # $ nix search nixpkgs wget
-  ## pls make sure flakes are enabled for searching to work
+  # I might use these someday™️
   environment.systemPackages = with pkgs; [
     ddate
     wol
@@ -25,7 +23,6 @@
     scsh
     antiword
     epeg
-    fbcat
     uxn
     heimdall
     v4l-utils
@@ -51,5 +48,14 @@
     kiln
     ncgopher
     noteshrink
+    unrar
+    p7zip
+    gnupg
+    nmap    
+    zile
+    zip
+    unzip
+    fclones
+    chntpw
   ];
 }

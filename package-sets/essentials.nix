@@ -18,14 +18,6 @@
       # uncomment when in nixos stable
       #speechSynthesisSupport = true;
     };
-    # command palette for gtk3 apps
-    plotinus.enable = true;
-    # curse you, alcohol
-    cdemu = {
-      # kernel module `vhba` broken in linux 6.8, nixos 23.11
-      #enable = true;
-      group = "phossil";
-    };
     # did not know there was a module for this xd
     gnome-disks.enable = true;
     # brasero wasn't working for me :|
@@ -67,7 +59,6 @@
     #virt-manager
     vorta
     xorg.xkill
-    protonvpn-gui
     gsmartcontrol
     cpu-x
     pavucontrol
@@ -82,7 +73,6 @@
     diffpdf
     zenmonitor
     appimage-run
-    szyszka
     meld
     kolourpaint
     gnome.gnome-dictionary
@@ -101,9 +91,6 @@
     soundfont-fluid
     freepats
     lapce
-    copyq
-    synapse
-    czkawka
     qview
     wezterm
     activitywatch
@@ -120,7 +107,9 @@
     # The --loader flag was deprecated in Node v20.6.0
     nixpkgs-unstable.legacyPackages.${system}.vesktop
     qpwgraph
-    cage
+    scrcpy
+    gcolor3
+    tokodon
     gittyup
   ];
 }

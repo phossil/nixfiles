@@ -54,7 +54,7 @@
     # i want to preserve my ssd TwT
     "lazytime"
   ];
-  
+
   # ⚠️ Mount point '/boot' which backs the random seed file is world accessible, which is a security hole! ⚠️
   # ⚠️ Random seed file '/boot/loader/random-seed' is world accessible, which is a security hole! ⚠️
   fileSystems."/boot".options = [

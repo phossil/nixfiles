@@ -1,9 +1,19 @@
 { config, pkgs, nix-software-center, ... }:
 
 {
-  # List packages installed in system profile. To search, run:
-  # $ nix search nixpkgs wget
-  ## pls make sure flakes are enabled for searching to work
+  # apps with extra requirements
+  programs = {
+    # command palette for gtk3 apps
+    plotinus.enable = true;
+    # curse you, alcohol
+    cdemu = {
+      # kernel module `vhba` broken in linux 6.8, nixos 23.11
+      #enable = true;
+      group = "phossil";
+    };
+  };
+
+  # and a bunch of apps I will probably never use TwT
   environment.systemPackages = with pkgs; [
     android-studio
     #digikam
@@ -16,7 +26,6 @@
     libsForQt5.kdegraphics-thumbnailers
     libsForQt5.kio-extras
     #unetbootin
-    gcolor3
     arcanPackages.all-wrapped
     xournalpp
     #michabo
@@ -114,10 +123,15 @@
     gnome.gnome-characters
     labwc
     unityhub
-    tokodon
     #tootle
     zathura
     remmina
     rustdesk
+    protonvpn-gui
+    szyszka
+    copyq
+    synapse
+    czkawka
+    cage
   ];
 }

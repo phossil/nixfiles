@@ -4,8 +4,7 @@
   # Allow non-free software
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search nixpkgs wget
+  # unproductive software I still like having around :)
   environment.systemPackages = with pkgs; [
     cli-visualizer
     cava
@@ -20,5 +19,8 @@
     activate-linux
     soulseekqt
     macchina
+    jp2a
+    lolcat
+    tty-clock
   ];
 }

@@ -27,10 +27,6 @@
     links2
     starship
     neofetch
-    jp2a
-    lolcat
-    unrar
-    p7zip
     tealdeer
     ffmpeg-full
     syncthing
@@ -48,27 +44,18 @@
     dateutils
     usbutils
     bat
-    gnupg
-    trash-cli
     tokei
-    nmap
     sshfs
     borgbackup
     rlwrap
     nix-prefetch-github
-    zile
     imagemagick
-    zip
-    unzip
     radeontop
     delta
-    tty-clock
     nixpkgs-fmt
     eza
     iotop
-    scrcpy
     rsync
-    fclones
     nix-prefetch-git
     wget
     intel-gpu-tools
@@ -78,10 +65,10 @@
     clinfo
     wayland-utils
     ventoy
-    chntpw
     nix-index
     nix-tree
     dutree
     file
+    fbcat
   ];
 }
