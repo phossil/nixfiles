@@ -1,4 +1,4 @@
-{ config, pkgs, nix-software-center, ... }:
+{ config, pkgs, nix-software-center, nixos-conf-editor, icicle, ... }:
 
 {
   # apps with extra requirements
@@ -37,7 +37,6 @@
     tagainijisho
     lyrebird
     friture
-    qalculate-gtk
     srain
     paperwork
     helvum
@@ -133,5 +132,10 @@
     synapse
     czkawka
     cage
+    nixos-conf-editor.packages.${system}.nixos-conf-editor
+    icicle.packages.${system}.icicle
+    convertall
+    f3d
+    qmmp
   ];
 }

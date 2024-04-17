@@ -55,5 +55,7 @@
     rigsofrods
     lugaru
     linthesia
+    endless-sky
+    simutrans
   ];
 }

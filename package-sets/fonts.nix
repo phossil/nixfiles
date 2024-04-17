@@ -1,4 +1,4 @@
-{ config, pkgs, nixflake-misc, ... }:
+{ config, pkgs, nixflake-misc, nixpkgs-unstable,... }:
 
 {
   # set font in tty
@@ -74,6 +74,7 @@
     unscii
     kreative-square-fonts
     comic-neue
+    nixpkgs-unstable.legacyPackages.${system}.geist-font
     # font i've been using when playing noita with mangohud for years now
     nixflake-misc.packages.${system}.unifraktur-cook
     # and its sibling for use some day:tm:

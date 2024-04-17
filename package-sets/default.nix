@@ -70,5 +70,12 @@
     dutree
     file
     fbcat
+    # i need these for my midis aaaa
+    fluidsynth
+    soundfont-generaluser
+    soundfont-ydp-grand
+    soundfont-fluid
+    freepats
+    soundfont-arachno
   ];
 }

@@ -85,11 +85,6 @@
     qbittorrent
     gimp
     hexchat
-    fluidsynth
-    soundfont-generaluser
-    soundfont-ydp-grand
-    soundfont-fluid
-    freepats
     lapce
     qview
     wezterm
@@ -111,5 +106,7 @@
     gcolor3
     tokodon
     gittyup
+    qsynth
+    qalculate-gtk    
   ];
 }

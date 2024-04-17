@@ -74,12 +74,16 @@
     musescore
     giada
     non
-    qsynth
     surge-XT
     luppp
     sonic-lineup
     openutau
     kwave
+    furnace
+    lmms
+    polyphone
+    paulstretch
+    muse
     #csound-qt
     # lv2 plugins - archlinux.org/groups/x86_64/lv2-plugins/
     geonkick
@@ -130,6 +134,7 @@
     dexed
     cardinal
     stochas
+    sfizz
     # video editing and effects
     olive-editor
     flowblade

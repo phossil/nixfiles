@@ -8,8 +8,8 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # gnome software center but for derivations
-    nix-software-center.url = "github:vlinkz/nix-software-center";
+    # gnome software center but for nixpkgs
+    nix-software-center.url = "github:snowfallorg/nix-software-center";
     # nixpkgs fork with WIP lomiri commits
     # will fix later:tm:
     #nixpkgs-lomiri.url = "github:OPNA2608/nixpkgs/init/lomiri-junk";
@@ -19,6 +19,10 @@
     lem-flake.url = "github:dariof4/lem-flake";
     # `nixpkgs` but rolling
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # an app for editing nixos configs ??? :O
+    nixos-conf-editor.url = "github:snowfallorg/nixos-conf-editor";
+    # not calamares, huhh ???
+    icicle.url = "github:snowfallorg/icicle";
   };
   outputs =
     { self
@@ -29,6 +33,8 @@
     , nixflake-misc
     , lem-flake
     , nixpkgs-unstable
+    , nixos-conf-editor
+    , icicle
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let
