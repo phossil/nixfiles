@@ -51,7 +51,7 @@
     unrar
     p7zip
     gnupg
-    nmap    
+    nmap
     zile
     zip
     unzip

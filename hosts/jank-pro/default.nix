@@ -45,7 +45,7 @@
   };
 
   # fs options for the root and home partitions
-  # pls check the arch wiki's page on f2fs  
+  # pls check the arch wiki's page on f2fs
   fileSystems."/".options = [
     "defaults"
     "compress_algorithm=zstd:6"
@@ -54,7 +54,7 @@
     "gc_merge"
     "lazytime"
   ];
-  # pls check the arch wiki's page on f2fs      
+  # pls check the arch wiki's page on f2fs
   fileSystems."/home".options = [
     "defaults"
     # foreground compression with zstd
@@ -85,7 +85,7 @@
         #      got:    sha256-pzJpQdiYVpcKDShePak2I0uEh7u08vJgX7OBF5p5yAM=
         #mkl
       ];
-      # enable 32-bit support because Steam 
+      # enable 32-bit support because Steam
       driSupport32Bit = true;
       # same as extraPackages but 32-bit
       extraPackages32 = with pkgs.pkgsi686Linux; [

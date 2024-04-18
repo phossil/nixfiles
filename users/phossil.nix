@@ -3,7 +3,7 @@
 {
   # user management
   users = {
-    # specify group ID because `useradd -mUs /bin/zsh phossil` 
+    # specify group ID because `useradd -mUs /bin/zsh phossil`
     groups.phossil.gid = 1000;
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.phossil = {

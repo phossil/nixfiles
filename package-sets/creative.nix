@@ -15,8 +15,6 @@
     VST_PATH =
       "$HOME/.vst:$HOME/.nix-profile/lib/vst:/run/current-system/sw/lib/vst";
   };
-  # rtkit is optional but recommended for PipeWire
-  security.rtkit.enable = true;
   # memory unlocking for zrythm, hopefully
   security.pam.loginLimits = [
     {

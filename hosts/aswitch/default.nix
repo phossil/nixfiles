@@ -40,7 +40,7 @@
       level-zero
       mkl
     ];
-    # enable 32-bit graphics support because Steam 
+    # enable 32-bit graphics support because Steam
     driSupport32Bit = true;
   };
 

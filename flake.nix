@@ -10,9 +10,6 @@
     };
     # gnome software center but for nixpkgs
     nix-software-center.url = "github:snowfallorg/nix-software-center";
-    # nixpkgs fork with WIP lomiri commits
-    # will fix later:tm:
-    #nixpkgs-lomiri.url = "github:OPNA2608/nixpkgs/init/lomiri-junk";
     # personal flake with a bunch of random stuff
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # the new common lisp IDE
@@ -29,7 +26,6 @@
     , nixpkgs
     , nixos-generators
     , nix-software-center
-      #, nixpkgs-lomiri
     , nixflake-misc
     , lem-flake
     , nixpkgs-unstable
@@ -51,7 +47,7 @@
         /* Device is inaccessible and offline indefintely
         Gem-JankPro = lib.nixosSystem {
           inherit system;
-          # also required for lomiri and lem
+          # required for for settings and packages not found in nixpkgs
           specialArgs = attrs;
 
           # the real config files :3
@@ -87,7 +83,7 @@
         # i need a darla too :>
         Gem-Emily = lib.nixosSystem {
           inherit system;
-          # required for `lem-flake`
+          # required for for settings and packages not found in nixpkgs
           specialArgs = attrs;
 
           modules = [
@@ -112,7 +108,7 @@
             ./package-sets/fonts.nix
             ./package-sets/fun.nix
             ./package-sets/gayming.nix
-            # needs unstable bc rsgain            
+            # needs unstable bc rsgain
             ./package-sets/media.nix
             ./package-sets/themes.nix
           ];

@@ -18,7 +18,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # syncthing is nice     
+    # syncthing is nice
     syncthingtray
   ];
 

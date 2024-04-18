@@ -107,6 +107,6 @@
     tokodon
     gittyup
     qsynth
-    qalculate-gtk    
+    qalculate-gtk
   ];
 }

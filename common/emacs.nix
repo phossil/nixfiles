@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  # install emacs with gcc for native elisp code  
+  # install emacs with gcc for native elisp code
   services.emacs = {
     package = pkgs.emacsNativeComp;
     enable = true;

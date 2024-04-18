@@ -6,7 +6,7 @@
 
   # services for users :3
   services = {
-    # sync the yeetmas joplin files    
+    # sync the yeetmas joplin files
     #onedrive.enable = true;
   };
   programs = {
