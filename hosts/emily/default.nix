@@ -53,6 +53,8 @@
     "background_compression=zstd:6"
     # i want to preserve my ssd TwT
     "lazytime"
+    # is this enabled by default ????
+    "discard"
   ];
 
   # ⚠️ Mount point '/boot' which backs the random seed file is world accessible, which is a security hole! ⚠️
