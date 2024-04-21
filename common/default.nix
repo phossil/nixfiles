@@ -6,9 +6,6 @@
     experimental-features = nix-command flakes
   '';
 
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-
   # use NetworkManager for managing networks ... it's in the name
   networking.networkmanager.enable = true;
 
