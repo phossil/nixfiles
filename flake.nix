@@ -142,6 +142,36 @@
           ];
         };
         */
+        # golden laptop :o
+        Gem-Gold = lib.nixosSystem {
+          inherit system;
+          # required for for settings and packages not found in nixpkgs
+          specialArgs = attrs;
+
+          modules = [
+            ./hosts/gold
+            ./common
+            ./common/cups.nix
+            ./common/desktop.nix
+            ./common/fs-support.nix
+            ./common/plasma.nix
+            ./common/plymouth.nix
+            ./common/shell.nix
+            ./common/user-input.nix
+            ./common/virtualization.nix
+            ./package-sets
+            ./package-sets/creative.nix
+            ./package-sets/dump-cli.nix
+            ./package-sets/dump-gui.nix
+            ./package-sets/essentials.nix
+            ./package-sets/fonts.nix
+            ./package-sets/fun.nix
+            ./package-sets/gayming.nix
+            # needs unstable bc rsgain
+            ./package-sets/media.nix
+            ./package-sets/themes.nix
+          ];
+        };
       };
 
       packages = {
