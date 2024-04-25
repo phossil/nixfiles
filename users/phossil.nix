@@ -10,7 +10,7 @@
       isNormalUser = true;
       shell = pkgs.zsh;
       home = "/home/phossil";
-      description = "Phosu Parsons";
+      description = "pennimew pettals";
       # `useradd -mUs /bin/zsh phossil`
       uid = 1000;
       group = "phossil";

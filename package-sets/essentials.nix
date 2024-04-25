@@ -106,7 +106,16 @@
     gcolor3
     tokodon
     gittyup
-    qsynth
     qalculate-gtk
+    # two who music :3
+    qsynth
+    # i need these for my midis aaaa
+    fluidsynth
+    soundfont-generaluser
+    soundfont-ydp-grand
+    soundfont-fluid
+    soundfont-arachno
+    wildmidi
+    freepats
   ];
 }

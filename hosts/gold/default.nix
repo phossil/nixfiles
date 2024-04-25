@@ -36,7 +36,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pnnoi = {
     isNormalUser = true;
-    description = "pennimer parsons";
+    description = "pennimew pettals";
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
