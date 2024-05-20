@@ -20,6 +20,12 @@
     # I don't remember what this was for but the setting
     # in libvirt makes this one redundant
     dconf.enable = true;
+    # mandatory for flakes
+    git = {
+      enable = true;
+      # required for large files
+      lfs.enable = true;
+    };
   };
   # List packages installed in system profile. To search, run:
   # $ nix search nixpkgs wget
@@ -30,7 +36,7 @@
     tealdeer
     ffmpeg-full
     syncthing
-    git
+    #git
     pandoc
     bottom
     chezmoi
