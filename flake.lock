@@ -137,27 +137,9 @@
         "type": "github"
       }
     },
-    "lem-flake": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1692724401,
-        "narHash": "sha256-ePZAMzOa97nMRfoIMqbu2fgZ23pLj4ktKHG1a4eJbI0=",
-        "owner": "dariof4",
-        "repo": "lem-flake",
-        "rev": "16a21316608b1a3c49b249fa99f767532b82653c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dariof4",
-        "repo": "lem-flake",
-        "type": "github"
-      }
-    },
     "nix-software-center": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "utils": "utils"
       },
       "locked": {
@@ -176,7 +158,7 @@
     },
     "nixflake-misc": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1711915978,
@@ -210,7 +192,7 @@
     "nixos-conf-editor": {
       "inputs": {
         "flake-compat": "flake-compat_2",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_4",
         "snowfall-lib": "snowfall-lib_2"
       },
       "locked": {
@@ -282,19 +264,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1692447944,
-        "narHash": "sha256-fkJGNjEmTPvqBs215EQU4r9ivecV5Qge5cF/QDLVn3U=",
-        "path": "/nix/store/s4jqyj35hii03rs7j5n6vn7gpgp6ja81-source",
-        "rev": "d680ded26da5cf104dd2735a51e88d2d8f487b4d",
-        "type": "path"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1692638711,
         "narHash": "sha256-J0LgSFgJVGCC1+j5R2QndadWI1oumusg6hCtYAzLID4=",
         "owner": "NixOS",
@@ -309,7 +278,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1711703276,
         "narHash": "sha256-iMUFArF0WCatKK6RzfUJknjem0H9m4KgorO/p3Dopkk=",
@@ -325,7 +294,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1698318101,
         "narHash": "sha256-gUihHt3yPD7bVqg+k/UVHgngyaJ3DMEBchbymBMvK1E=",
@@ -341,7 +310,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1713995372,
         "narHash": "sha256-fFE3M0vCoiSwCX02z8VF58jXFRj9enYUSTqjyHAjrds=",
@@ -357,16 +326,32 @@
         "type": "github"
       }
     },
+    "nixpkgs_6": {
+      "locked": {
+        "lastModified": 1715961556,
+        "narHash": "sha256-+NpbZRCRisUHKQJZF3CT+xn14ZZQO+KjxIIanH3Pvn4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4a6b83b05df1a8bd7d99095ec4b4d271f2956b64",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "icicle": "icicle",
-        "lem-flake": "lem-flake",
         "nix-software-center": "nix-software-center",
         "nixflake-misc": "nixflake-misc",
         "nixos-conf-editor": "nixos-conf-editor",
         "nixos-generators": "nixos-generators",
-        "nixpkgs": "nixpkgs_6",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs": "nixpkgs_5",
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "temporary-lem-flake": "temporary-lem-flake"
       }
     },
     "snowfall-lib": {
@@ -457,6 +442,24 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "temporary-lem-flake": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_6"
+      },
+      "locked": {
+        "lastModified": 1716455570,
+        "narHash": "sha256-Qj4RgBtNrM43N847/1lt41zdUOjZi4nc2RLyJoSZIBQ=",
+        "owner": "phossil",
+        "repo": "temporary-lem-flake",
+        "rev": "a2e453039e66332bed7cdce48e4b6692e51795e8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "phossil",
+        "repo": "temporary-lem-flake",
         "type": "github"
       }
     },

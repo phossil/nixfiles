@@ -13,7 +13,7 @@
     # personal flake with a bunch of random stuff
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # the new common lisp IDE
-    lem-flake.url = "github:dariof4/lem-flake";
+    temporary-lem-flake.url = "github:phossil/temporary-lem-flake";
     # `nixpkgs` but rolling
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # an app for editing nixos configs ??? :O
@@ -27,7 +27,7 @@
     , nixos-generators
     , nix-software-center
     , nixflake-misc
-    , lem-flake
+    , temporary-lem-flake
     , nixpkgs-unstable
     , nixos-conf-editor
     , icicle

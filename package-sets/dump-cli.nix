@@ -1,4 +1,4 @@
-{ config, pkgs, lem-flake, ... }:
+{ config, pkgs, temporary-lem-flake, ... }:
 
 {
   # I might use these someday™️
@@ -42,7 +42,7 @@
     uniscribe
     mediamtx
     # when will this be added to nixpkgs ? q q
-    lem-flake.packages.${system}.lem
+    temporary-lem-flake.packages.${system}.default
     #asuka
     #bombadillo
     kiln
