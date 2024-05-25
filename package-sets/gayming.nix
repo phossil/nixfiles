@@ -19,7 +19,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search nixpkgs wget
   environment.systemPackages = with pkgs; [
-    minecraft
+    #minecraft # broken
     mangohud
     taisei
     #itch
@@ -56,6 +56,6 @@
     lugaru
     linthesia
     endless-sky
-    simutrans
+    #simutrans # error: cannot download pak128.Britain.1.18-120-3.zip from any mirror
   ];
 }

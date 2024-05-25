@@ -2,7 +2,7 @@
   description = "phossil's nixos flake collection";
   inputs = {
     # the most important flake in nixos
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     # generates nixos images (useful for creating rescue iso's)
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -15,7 +15,7 @@
     # the new common lisp IDE
     temporary-lem-flake.url = "github:phossil/temporary-lem-flake";
     # `nixpkgs` but rolling
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # an app for editing nixos configs ??? :O
     nixos-conf-editor.url = "github:snowfallorg/nixos-conf-editor";
     # not calamares, huhh ???
@@ -28,7 +28,7 @@
     , nix-software-center
     , nixflake-misc
     , temporary-lem-flake
-    , nixpkgs-unstable
+      #, nixpkgs-unstable
     , nixos-conf-editor
     , icicle
       # `@attrs` is required for the lomiri stuffs
@@ -90,7 +90,7 @@
             ./hosts/emily
             ./users/phossil.nix
             ./common
-            ./common/cups.nix
+            #./common/cups.nix # error: cannot download UnifiedLinuxDriver-4.01.17.tar.gz from any mirror
             ./common/desktop.nix
             #./common/gnome.nix
             ./common/fs-support.nix
@@ -108,7 +108,6 @@
             ./package-sets/fonts.nix
             ./package-sets/fun.nix
             ./package-sets/gayming.nix
-            # needs unstable bc rsgain
             ./package-sets/media.nix
             ./package-sets/themes.nix
           ];
@@ -142,6 +141,7 @@
           ];
         };
         */
+        /* device is inaccessible
         # golden laptop :o
         Gem-Gold = lib.nixosSystem {
           inherit system;
@@ -172,6 +172,7 @@
             ./package-sets/themes.nix
           ];
         };
+        */
       };
 
       packages = {

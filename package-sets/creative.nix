@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs-unstable, ... }:
+{ config, pkgs, ... }:
 
 {
   # define lv2 path and some other stuff because zrythm
@@ -50,7 +50,7 @@
     wings
     lazpaint
     hugin
-    nixpkgs-unstable.legacyPackages.${system}.makehuman
+    makehuman
     # music and stuff
     zrythm
     vmpk
@@ -75,7 +75,7 @@
     surge-XT
     luppp
     sonic-lineup
-    openutau
+    #openutau # error: cannot download Concentus.Oggfile.1.0.4.nupkg from any mirror
     kwave
     furnace
     lmms
@@ -136,7 +136,7 @@
     # video editing and effects
     olive-editor
     flowblade
-    cinelerra
+    #cinelerra # error: cannot download source from any mirror
     kdenlive
     openshot-qt
     natron

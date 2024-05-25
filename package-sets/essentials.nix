@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs-unstable, ... }:
+{ config, pkgs, ... }:
 
 {
   # Allow non-free software
@@ -91,16 +91,12 @@
     activitywatch
     font-manager
     nheko
-    peazip
+    #peazip # install: cannot stat 'dev/peazip': No such file or directory
     revolt-desktop
     textadept
     xfe
     cudatext
-    # vesktop currently broken with error in nixos stable:
-    #
-    # Error: tsx must be loaded with --import instead of --loader
-    # The --loader flag was deprecated in Node v20.6.0
-    nixpkgs-unstable.legacyPackages.${system}.vesktop
+    vesktop
     qpwgraph
     scrcpy
     gcolor3

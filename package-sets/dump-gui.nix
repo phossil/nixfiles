@@ -15,7 +15,7 @@
 
   # and a bunch of apps I will probably never use TwT
   environment.systemPackages = with pkgs; [
-    android-studio
+    #android-studio # error: cannot download android-studio-2023.3.1.19-linux.tar.gz from any mirror
     #digikam
     gnome-feeds
     flameshot
@@ -26,7 +26,7 @@
     libsForQt5.kdegraphics-thumbnailers
     libsForQt5.kio-extras
     #unetbootin
-    arcanPackages.all-wrapped
+    arcan-all-wrapped
     xournalpp
     #michabo
     #river
@@ -92,7 +92,7 @@
     zeal
     bustle
     #ctx
-    dfeet
+    d-spy
     regextester
     sysprof
     nasc
@@ -125,7 +125,7 @@
     #tootle
     zathura
     remmina
-    rustdesk
+    #rustdesk # error: cannot download crate-flutter_rust_bridge_codegen-1.75.3.tar.gz from any mirror
     protonvpn-gui
     szyszka
     copyq

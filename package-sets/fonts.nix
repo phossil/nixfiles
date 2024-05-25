@@ -1,4 +1,4 @@
-{ config, pkgs, nixflake-misc, nixpkgs-unstable, ... }:
+{ config, pkgs, nixflake-misc, ... }:
 
 {
   # set font in tty
@@ -44,7 +44,7 @@
     # japanese
     ipaexfont
     # essential Macrohard fonts like Times New Roman
-    corefonts
+    #corefonts # error: cannot download georgi32.exe from any mirror
     # yes
     xkcd-font
     # go outside and touch the grass :^)
@@ -74,7 +74,7 @@
     unscii
     kreative-square-fonts
     comic-neue
-    nixpkgs-unstable.legacyPackages.${system}.geist-font
+    geist-font
     # font i've been using when playing noita with mangohud for years now
     nixflake-misc.packages.${system}.unifraktur-cook
     # and its sibling for use some day:tm:

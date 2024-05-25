@@ -2,11 +2,11 @@
 
 {
   # enable plasma5 qwq
-  services.xserver = {
-    enable = true;
+  services = {
+    xserver.enable = true;
     displayManager.sddm.enable = true;
     displayManager.sddm.wayland.enable = true;
-    desktopManager.plasma5.enable = true;
+    xserver.desktopManager.plasma5.enable = true;
     displayManager.defaultSession = lib.mkForce "plasmawayland";
   };
 

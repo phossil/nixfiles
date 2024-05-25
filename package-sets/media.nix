@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs-unstable, ... }:
+{ config, pkgs, ... }:
 
 {
   # Allow non-free software
@@ -26,7 +26,7 @@
     handbrake
     hydrus
     calibre
-    syncplay
+    #syncplay # build time is too long, won't wait for completed output
     #sonixd
     clematis
     tartube-yt-dlp
@@ -34,8 +34,7 @@
     vlc
     mpv
     memento
-    # use unstable until 24.05 (?) is released
-    nixpkgs-unstable.legacyPackages.${system}.rsgain
+    rsgain
     puddletag
     flacon
   ];
