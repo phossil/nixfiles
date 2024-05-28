@@ -6,8 +6,8 @@
     xserver.enable = true;
     displayManager.sddm.enable = true;
     displayManager.sddm.wayland.enable = true;
-    xserver.desktopManager.plasma5.enable = true;
-    displayManager.defaultSession = lib.mkForce "plasmawayland";
+    desktopManager.plasma6.enable = true;
+    displayManager.defaultSession = lib.mkForce "plasma";
   };
 
   programs = {
@@ -23,5 +23,5 @@
   ];
 
   # the gtk-based (?) panel is annoying
-  i18n.inputMethod.ibus.panel = "${pkgs.plasma5Packages.plasma-desktop}/lib/libexec/kimpanel-ibus-panel";
+  i18n.inputMethod.ibus.panel = "${pkgs.kdePackages.plasma-desktop}/lib/libexec/kimpanel-ibus-panel";
 }
