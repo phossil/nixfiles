@@ -17,8 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # would be great if discord could use pipewire >:[
-  ## kernel module `v4l2loopback` broken in linux 6.8, nixos 23.11
-  #boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   # embed kernel modules into initrd
   boot.initrd.kernelModules = [
     # intel graphics NOW
@@ -32,8 +31,7 @@
     # module loads before bcachefs or build it into the kernel to avoid this.
     "crc32c-intel"
     # discord pls upgade ur electron aaaaa
-    ## kernel module `v4l2loopback` broken in linux 6.8, nixos 23.11
-    #"v4l2loopback"
+    "v4l2loopback"
   ];
   # kernel command line
   boot.kernelParams = [

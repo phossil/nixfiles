@@ -8,7 +8,7 @@
     # curse you, alcohol
     cdemu = {
       # kernel module `vhba` broken in linux 6.8, nixos 23.11
-      #enable = true;
+      enable = true;
       group = "phossil";
     };
   };
