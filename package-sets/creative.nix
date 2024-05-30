@@ -75,14 +75,14 @@
     surge-XT
     luppp
     sonic-lineup
-    #openutau # error: cannot download Concentus.Oggfile.1.0.4.nupkg from any mirror
+    openutau
     kwave
     furnace
     lmms
     polyphone
     paulstretch
     muse
-    #csound-qt
+    csound-qt
     # lv2 plugins - archlinux.org/groups/x86_64/lv2-plugins/
     geonkick
     distrho
@@ -136,7 +136,7 @@
     # video editing and effects
     olive-editor
     flowblade
-    #cinelerra # error: cannot download source from any mirror
+    cinelerra
     kdenlive
     openshot-qt
     natron

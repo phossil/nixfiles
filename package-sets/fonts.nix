@@ -44,7 +44,7 @@
     # japanese
     ipaexfont
     # essential Macrohard fonts like Times New Roman
-    #corefonts # error: cannot download georgi32.exe from any mirror
+    corefonts
     # yes
     xkcd-font
     # go outside and touch the grass :^)

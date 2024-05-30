@@ -26,8 +26,7 @@
     handbrake
     hydrus
     calibre
-    #syncplay # build time is too long, won't wait for completed output
-    #sonixd
+    syncplay
     clematis
     tartube-yt-dlp
     trackma-gtk

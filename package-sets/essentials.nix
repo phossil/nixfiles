@@ -31,15 +31,17 @@
   # enable waydroid for Android apps
   virtualisation.waydroid.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search nixpkgs wget
+  # all the apps :3
   environment.systemPackages = with pkgs; [
     alacritty
     keepassxc
-    vivaldi
+    (vivaldi.override {
+      proprietaryCodecs = true;
+      enableWidevine = true;
+      vivaldi-ffmpeg-codecs = pkgs.vivaldi-ffmpeg-codecs;
+      widevine-cdm = pkgs.widevine-cdm;
+    })
     (discord.override { nss = nss_latest; })
-    vivaldi-ffmpeg-codecs
-    widevine-cdm
     speedcrunch
     libsForQt5.qtimageformats
     (wrapOBS.override { } {
@@ -56,20 +58,16 @@
     libreoffice-qt
     hunspellDicts.en_US
     thunderbird
-    #virt-manager
     vorta
     xorg.xkill
     gsmartcontrol
     cpu-x
     pavucontrol
     waypipe
-    #qgit
     ghostwriter
     discordchatexporter-cli
-    #discocss
     breeze-icons
     crow-translate
-    #artha
     diffpdf
     zenmonitor
     appimage-run
@@ -79,13 +77,9 @@
     gnome.dconf-editor
     okteta
     krename
-    #koreader
-    #cdrkit
-    #dvdauthor
     qbittorrent
     gimp
     hexchat
-    lapce
     qview
     wezterm
     activitywatch

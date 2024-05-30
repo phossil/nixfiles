@@ -46,16 +46,16 @@
     freeciv
     xonotic
     # pet the froge :>
-    #frogatto
+    #frogatto # build failure
     # kiki, my beloved ❤
     superTuxKart
     # racing gayms
-    #armagetronad
+    #armagetronad # build failure
     extremetuxracer
     rigsofrods
     lugaru
     linthesia
     endless-sky
-    #simutrans # error: cannot download pak128.Britain.1.18-120-3.zip from any mirror
+    simutrans
   ];
 }

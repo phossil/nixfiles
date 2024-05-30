@@ -90,7 +90,7 @@
             ./hosts/emily
             ./users/phossil.nix
             ./common
-            #./common/cups.nix # error: cannot download UnifiedLinuxDriver-4.01.17.tar.gz from any mirror
+            ./common/cups.nix
             ./common/desktop.nix
             #./common/gnome.nix
             ./common/fs-support.nix
@@ -187,29 +187,19 @@
             specialArgs = attrs;
 
             modules = [
-              # Currently fails on NixOS 23.05 to build due to ZFS incompatibility with bcachefs
-              #<nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
-              (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix")
-              ({ pkgs, ... }: {
-                # kernelPackages already defined in installation-cd-minimal-new-kernel-no-zfs.nix
-                boot.kernelPackages = lib.mkOverride 0 pkgs.linuxPackages_testing;
-                # use zstd compression when generating squashfs image
+              ({
+                # use zstd compression when generating the squashfs image
                 isoImage.squashfsCompression = "zstd -Xcompression-level 6";
-              })
 
-              ({ pkgs, ... }: {
-                # gimme that nix command goodness
-                nix.extraOptions = ''
-                  experimental-features = nix-command flakes
-                '';
+                # i don't use zfs and i don't plan on it any time soon,
+                # especially if i'm forced to use an older kernel for an
+                # out-of-tree kernel module TWT
+                boot.supportedFilesystems.zfs = lib.mkForce false;
                 # disable conflicting options
                 networking.wireless.enable = false;
-                # don't let the system run out of memory
-                services.earlyoom.enable = true;
-                ## warning: mdadm: Neither MAILADDR nor PROGRAM has been set. This will cause the `mdmon` service to crash.
-                # who needs swraid when you can have bcachefs ?
-                boot.swraid.enable = lib.mkForce false;
+                services.openssh.settings.PermitRootLogin = lib.mkForce "no";
               })
+              ./common
               ./common/desktop.nix
               ./common/gnome.nix
               ./common/fs-support.nix
