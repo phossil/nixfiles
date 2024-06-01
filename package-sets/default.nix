@@ -35,7 +35,6 @@
     tealdeer
     ffmpeg-full
     syncthing
-    #git
     pandoc
     bottom
     chezmoi

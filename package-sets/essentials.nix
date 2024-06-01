@@ -9,14 +9,19 @@
     firefox = {
       enable = true;
       # give ff super powers >:D
+      # pls make sure to install the corresponding addons
       nativeMessagingHosts.packages = with pkgs; [
-        fx-cast-bridge
-        ff2mpv
-        bukubrow
-        jabref
+        keepassxc # from main app, needs system-wide too
       ];
-      # uncomment when in nixos stable
+      # uncomment when in nixos stable™️
       #speechSynthesisSupport = true;
+      # wowee, more lang'iges :O
+      languagePacks = [
+        "en-US"
+        "de"
+        "es-ES"
+        "ja"
+      ];
     };
     # did not know there was a module for this xd
     gnome-disks.enable = true;
@@ -107,5 +112,12 @@
     soundfont-arachno
     wildmidi
     freepats
+    # offline machine translation
+    # package offers no native messaging host directly
+    translatelocally
+    translatelocally-models.de-en-base
+    translatelocally-models.es-en-tiny
+    translatelocally-models.en-de-base
+    translatelocally-models.en-es-tiny
   ];
 }

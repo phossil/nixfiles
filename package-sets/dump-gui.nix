@@ -7,14 +7,25 @@
     plotinus.enable = true;
     # curse you, alcohol
     cdemu = {
-      # kernel module `vhba` broken in linux 6.8, nixos 23.11
       enable = true;
       group = "phossil";
     };
+    # give ff super powers >:D
+    # pls make sure to install the corresponding addons
+    firefox.nativeMessagingHosts.packages = with pkgs; [
+      fx-cast-bridge
+      ff2mpv-rust
+      bukubrow
+      jabref # from main app, needs system-wide too
+    ];
   };
 
-  # and a bunch of apps I will probably never use TwT
   environment.systemPackages = with pkgs; [
+    # `firefox.nativeMessagingHosts` 2: electric boogaloo
+    bukubrow # duplicate bc vivaldi
+    buku
+    jabref
+    # and a bunch of apps I will probably never use TwT
     android-studio
     gnome-feeds
     flameshot
