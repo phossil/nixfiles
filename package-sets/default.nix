@@ -31,8 +31,7 @@
   # $ nix search nixpkgs wget
   environment.systemPackages = with pkgs; [
     links2
-    starship
-    neofetch
+    fastfetch
     tealdeer
     ffmpeg-full
     syncthing
