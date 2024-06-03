@@ -23,5 +23,5 @@
   ];
 
   # the gtk-based (?) panel is annoying
-  i18n.inputMethod.ibus.panel = "${pkgs.kdePackages.plasma-desktop}/lib/libexec/kimpanel-ibus-panel";
+  i18n.inputMethod.ibus.panel = "${pkgs.kdePackages.plasma-desktop}/libexec/kimpanel-ibus-panel";
 }
