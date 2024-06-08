@@ -118,5 +118,7 @@
     convertall
     f3d
     qmmp
+    localsend
+    floorp
   ];
 }
