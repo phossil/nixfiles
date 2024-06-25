@@ -48,7 +48,7 @@
     })
     (discord.override { nss = nss_latest; })
     speedcrunch
-    libsForQt5.qtimageformats
+    kdePackages.qtimageformats
     (wrapOBS.override { } {
       plugins = with obs-studio-plugins; [
         obs-vkcapture

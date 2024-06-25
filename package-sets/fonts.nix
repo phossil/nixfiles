@@ -9,13 +9,28 @@
   };
 
   # set default fonts
-  # make sure they're installed in `fonts.fonts`
+  # make sure they're installed in `fonts.packages`
   fonts.fontconfig.defaultFonts = {
-    serif = [ "FreeSerif" "Noto Serif" ];
-    sansSerif = [ "Go" "IPAexGothic" "FreeSans" "Noto Sans" ];
-    monospace =
-      [ "mononoki" "Fantasque Sans Mono" "FreeMono" "Noto Sans Mono" ];
-    emoji = [ "Twitter Color Emoji" "Noto Color Emoji" ];
+    serif = [
+      "FreeSerif"
+      "Noto Serif"
+    ];
+    sansSerif = [
+      "Go"
+      "IPAexGothic"
+      "FreeSans"
+      "Noto Sans"
+    ];
+    monospace = [
+      "mononoki"
+      "Fantasque Sans Mono"
+      "FreeMono"
+      "Noto Sans Mono"
+    ];
+    emoji = [
+      "Twitter Color Emoji"
+      "Noto Color Emoji"
+    ];
   };
 
   # cache for 32-bit bc wine
@@ -39,8 +54,8 @@
     fantasque-sans-mono
     # if source code pro were made by google, probably
     borg-sans-mono
-    # random symbols and some logos
-    font-awesome_5
+    # font awesome but better
+    line-awesome
     # japanese
     ipaexfont
     # essential Macrohard fonts like Times New Roman
@@ -75,6 +90,15 @@
     kreative-square-fonts
     comic-neue
     geist-font
+    commit-mono
+    # some fugi recommendations :3
+    ibm-plex
+    paratype-pt-mono
+    anonymousPro
+    # puna fonts 🦆
+    #input-fonts # free for personal use only qwq
+    mplus-outline-fonts.githubRelease
+    openmoji-color
     # font i've been using when playing noita with mangohud for years now
     nixflake-misc.packages.${system}.unifraktur-cook
     # and its sibling for use some day:tm:

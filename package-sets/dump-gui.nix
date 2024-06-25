@@ -32,8 +32,8 @@
     goverlay
     easyeffects
     noisetorch
-    libsForQt5.kdegraphics-thumbnailers
-    libsForQt5.kio-extras
+    kdePackages.kdegraphics-thumbnailers
+    kdePackages.kio-extras
     arcan-all-wrapped
     xournalpp
     nyxt
@@ -55,7 +55,7 @@
     newsflash
     joplin-desktop
     xournalpp
-    libsForQt5.breeze-qt5
+    kdePackages.breeze
     gnome-firmware-updater
     gnome.gnome-calendar
     sigil
