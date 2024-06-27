@@ -20,6 +20,11 @@
     nixos-conf-editor.url = "github:snowfallorg/nixos-conf-editor";
     # not calamares, huhh ???
     icicle.url = "github:snowfallorg/icicle";
+    # system76's cosmic desktop
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { self
@@ -31,6 +36,7 @@
       #, nixpkgs-unstable
     , nixos-conf-editor
     , icicle
+    , nixos-cosmic
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let
@@ -110,6 +116,16 @@
             ./package-sets/gayming.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
+            # cosmic !!
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+
+              services.desktopManager.cosmic.enable = true;
+            }
+            nixos-cosmic.nixosModules.default
           ];
         };
         /* Pending re-install
