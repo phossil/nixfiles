@@ -56,5 +56,7 @@
     fclones
     chntpw
     lsd
+    numbat
+    maxima
   ];
 }

@@ -120,5 +120,11 @@
     qmmp
     localsend
     floorp
+    gnumeric
+    #calligra # qtwebkit is unmaintained
+    texmacs
+    ted
+    cantor
+    wxmaxima
   ];
 }

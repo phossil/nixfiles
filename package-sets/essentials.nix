@@ -119,5 +119,7 @@
     translatelocally-models.es-en-tiny
     translatelocally-models.en-de-base
     translatelocally-models.en-es-tiny
+    # i somehow forget to add this every time TwT
+    filelight
   ];
 }
