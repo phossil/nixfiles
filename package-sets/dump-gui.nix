@@ -64,7 +64,7 @@
     kleopatra
     testdisk-qt
     kiwix
-    mkchromecast
+    #mkchromecast # youtube-dl is unmaintained
     libreddit
     video-trimmer
     lagrange

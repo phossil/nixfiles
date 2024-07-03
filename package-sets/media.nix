@@ -28,7 +28,7 @@
     calibre
     syncplay
     clematis
-    tartube-yt-dlp
+    #tartube-yt-dlp # youtube-dl is unmaintained
     trackma-gtk
     vlc
     mpv
