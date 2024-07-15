@@ -4,6 +4,9 @@
 {
   boot.plymouth = {
     enable = true;
+    # fancy font :3
+    # tip: use the escape key while booting to view
+    font = "${pkgs.fantasque-sans-mono}/share/fonts/opentype/FantasqueSansMono-Regular.otf";
     # yuyu spinny
     logo = pkgs.fetchurl {
       # i couldn't find a better link for the image but the site credits
