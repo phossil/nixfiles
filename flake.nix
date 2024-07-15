@@ -96,6 +96,7 @@
             ./hosts/emily
             ./users/phossil.nix
             ./common
+            #./common/cosmic.nix # The option `hardware.graphics' does not exist.
             ./common/cups.nix
             ./common/desktop.nix
             #./common/gnome.nix
@@ -116,16 +117,6 @@
             ./package-sets/gayming.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
-            # cosmic !!
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-              };
-
-              services.desktopManager.cosmic.enable = true;
-            }
-            nixos-cosmic.nixosModules.default
           ];
         };
         /* Pending re-install
