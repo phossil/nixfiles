@@ -173,6 +173,26 @@
         "type": "github"
       }
     },
+    "nixflake-cuarzo": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1721963283,
+        "narHash": "sha256-kgXUprZzwNKf6R2ZOs3Dk+mQ03xPCBuNmUiVhtHbp0Q=",
+        "owner": "phossil",
+        "repo": "nixflake-cuarzo",
+        "rev": "7c503aa8caa60d3d785181e101d377ae13d1b91c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "phossil",
+        "repo": "nixflake-cuarzo",
+        "type": "github"
+      }
+    },
     "nixflake-misc": {
       "inputs": {
         "nixpkgs": "nixpkgs_3"
@@ -411,6 +431,7 @@
       "inputs": {
         "icicle": "icicle",
         "nix-software-center": "nix-software-center",
+        "nixflake-cuarzo": "nixflake-cuarzo",
         "nixflake-misc": "nixflake-misc",
         "nixos-conf-editor": "nixos-conf-editor",
         "nixos-cosmic": "nixos-cosmic",

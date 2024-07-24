@@ -28,8 +28,12 @@
       "Noto Sans Mono"
     ];
     emoji = [
+      # standard emojis
       "Twitter Color Emoji"
       "Noto Color Emoji"
+      # private use characters (ie nerd font symbols)
+      "la-solid-900"
+      "Material Design Icons"
     ];
   };
 
@@ -54,8 +58,10 @@
     fantasque-sans-mono
     # if source code pro were made by google, probably
     borg-sans-mono
-    # font awesome but better
+    # font awesome but prettier
     line-awesome
+    # more non standard characters qwq
+    material-design-icons
     # japanese
     ipaexfont
     # essential Macrohard fonts like Times New Roman

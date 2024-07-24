@@ -28,7 +28,6 @@
     # and a bunch of apps I will probably never use TwT
     android-studio
     gnome-feeds
-    flameshot
     goverlay
     easyeffects
     noisetorch
@@ -41,7 +40,7 @@
     gImageReader
     megapixels
     tagainijisho
-    lyrebird
+    #lyrebird # deprecated
     friture
     srain
     paperwork
@@ -109,8 +108,6 @@
     #rustdesk # error: cannot download crate-flutter_rust_bridge_codegen-1.75.3.tar.gz from any mirror
     protonvpn-gui
     szyszka
-    copyq
-    synapse
     czkawka
     cage
     nixos-conf-editor.packages.${system}.nixos-conf-editor

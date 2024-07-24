@@ -25,6 +25,11 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # cool new wayland library :o
+    nixflake-cuarzo = {
+      url = "github:phossil/nixflake-cuarzo";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { self
@@ -37,6 +42,7 @@
     , nixos-conf-editor
     , icicle
     , nixos-cosmic
+    , nixflake-cuarzo
       # `@attrs` is required for the lomiri stuffs
     }@attrs:
     let
@@ -107,6 +113,7 @@
             ./common/shell.nix
             ./common/user-input.nix
             ./common/virtualization.nix
+            ./common/wayland-sessions.nix
             ./package-sets
             ./package-sets/creative.nix
             ./package-sets/dump-cli.nix

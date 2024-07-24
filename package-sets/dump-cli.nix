@@ -35,7 +35,6 @@
     ttygif
     diod
     onefetch
-    fontfor
     numatop
     recode
     unipicker
