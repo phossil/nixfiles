@@ -1,4 +1,9 @@
-{ config, pkgs, nixflake-misc, ... }:
+{
+  config,
+  pkgs,
+  nixflake-misc,
+  ...
+}:
 
 {
   # set font in tty

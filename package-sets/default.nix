@@ -56,7 +56,7 @@
     imagemagick
     radeontop
     delta
-    nixpkgs-fmt
+    nixfmt-rfc-style
     eza
     iotop
     rsync

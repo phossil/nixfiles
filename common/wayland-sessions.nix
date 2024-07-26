@@ -1,4 +1,9 @@
-{ config, pkgs, nixflake-cuarzo, ... }:
+{
+  config,
+  pkgs,
+  nixflake-cuarzo,
+  ...
+}:
 
 {
   # main compositor
@@ -8,9 +13,7 @@
 
   # the one i actually want to use, louvre views
   # requires `with pkgs;` for `${system}`
-  services.displayManager.sessionPackages = with pkgs; [
-    nixflake-cuarzo.packages.${system}.louvre
-  ];
+  services.displayManager.sessionPackages = with pkgs; [ nixflake-cuarzo.packages.${system}.louvre ];
 
   # mandatory daemons
   environment.systemPackages = with pkgs; [

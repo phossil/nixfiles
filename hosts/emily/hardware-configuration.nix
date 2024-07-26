@@ -5,12 +5,26 @@
 # 2023-05-12
 # Latitude 3350
 
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "uas" "sd_mod" "rtsx_pci_sdmmc" "bcache" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ehci_pci"
+    "ahci"
+    "uas"
+    "sd_mod"
+    "rtsx_pci_sdmmc"
+    "bcache"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -26,8 +40,7 @@
     fsType = "vfat";
   };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/ec2fb2a6-240e-4377-9bfd-84c008cb6743"; }];
+  swapDevices = [ { device = "/dev/disk/by-uuid/ec2fb2a6-240e-4377-9bfd-84c008cb6743"; } ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

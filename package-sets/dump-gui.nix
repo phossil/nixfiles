@@ -1,4 +1,11 @@
-{ config, pkgs, nix-software-center, nixos-conf-editor, icicle, ... }:
+{
+  config,
+  pkgs,
+  nix-software-center,
+  nixos-conf-editor,
+  icicle,
+  ...
+}:
 
 {
   # apps with extra requirements

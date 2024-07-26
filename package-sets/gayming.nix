@@ -1,4 +1,9 @@
-{ config, pkgs, nixflake-misc, ... }:
+{
+  config,
+  pkgs,
+  nixflake-misc,
+  ...
+}:
 
 {
   # Allow non-free software

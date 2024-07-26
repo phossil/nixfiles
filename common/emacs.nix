@@ -7,7 +7,5 @@
     enable = true;
   };
   # generate documents from emacs using texlive
-  environment.systemPackages = with pkgs; [
-    texlive.combined.scheme-full
-  ];
+  environment.systemPackages = with pkgs; [ texlive.combined.scheme-full ];
 }

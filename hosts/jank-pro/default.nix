@@ -30,7 +30,10 @@
       digimend
     ];
     # load zenpower and v4l2loopback immediately on boot
-    initrd.kernelModules = [ "zenpower" "v4l2loopback" ];
+    initrd.kernelModules = [
+      "zenpower"
+      "v4l2loopback"
+    ];
     # blacklist the radeon graphics and amd temp sensor drivers
     blacklistedKernelModules = [ "k10temp" ];
     # kernel command line
@@ -138,5 +141,4 @@
   #system.stateVersion = "22.11"; # Did you read the comment?
   #system.stateVersion = "23.05"; # Did you read the comment?
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

@@ -1,4 +1,9 @@
-{ config, pkgs, temporary-lem-flake, ... }:
+{
+  config,
+  pkgs,
+  temporary-lem-flake,
+  ...
+}:
 
 {
   # I might use these someday™️

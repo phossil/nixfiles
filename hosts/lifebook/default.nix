@@ -7,14 +7,13 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      #./userspace-sw.nix
-      #./fonts.nix
-      #./linux_life95.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    #./userspace-sw.nix
+    #./fonts.nix
+    #./linux_life95.nix
+  ];
 
   # latest Linux kernel
   #boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -51,5 +50,4 @@
   #system.stateVersion = "22.05"; # Did you read the comment?
   #system.stateVersion = "22.11"; # Did you read the comment?
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }

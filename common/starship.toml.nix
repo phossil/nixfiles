@@ -20,7 +20,13 @@
     "error_symbol" = "[✗](bold red)";
     "success_symbol" = "[>](bold green)";
   };
-  "line_break" = { "disabled" = true; };
-  "time" = { "disabled" = false; };
-  "username" = { "show_always" = true; };
+  "line_break" = {
+    "disabled" = true;
+  };
+  "time" = {
+    "disabled" = false;
+  };
+  "username" = {
+    "show_always" = true;
+  };
 }

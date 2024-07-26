@@ -1,5 +1,9 @@
-{ config, libs, nixos-cosmic, ... }:
-
+{
+  config,
+  libs,
+  nixos-cosmic,
+  ...
+}:
 
 {
   imports = [ nixos-cosmic.nixosModules.default ];
@@ -10,8 +14,7 @@
   };
 
   services.desktopManager.cosmic.enable = true;
-  
+
   services.displayManager.cosmic-greeter.enable =
-    if (config.services.displayManager.sddm.enable == true)
-    then false else true;
+    if (config.services.displayManager.sddm.enable == true) then false else true;
 }

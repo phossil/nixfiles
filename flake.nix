@@ -32,65 +32,69 @@
     };
   };
   outputs =
-    { self
-    , nixpkgs
-    , nixos-generators
-    , nix-software-center
-    , nixflake-misc
-    , temporary-lem-flake
+    {
+      self,
+      nixpkgs,
+      nixos-generators,
+      nix-software-center,
+      nixflake-misc,
+      temporary-lem-flake,
       #, nixpkgs-unstable
-    , nixos-conf-editor
-    , icicle
-    , nixos-cosmic
-    , nixflake-cuarzo
-      # `@attrs` is required for the lomiri stuffs
+      nixos-conf-editor,
+      icicle,
+      nixos-cosmic,
+      nixflake-cuarzo,
+    # `@attrs` is required for third-party flakes, maybe ... idk TwT
     }@attrs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
       };
       lib = nixpkgs.lib;
     in
     {
       # my main devices are defined here
       nixosConfigurations = {
-        /* Device is inaccessible and offline indefintely
-        Gem-JankPro = lib.nixosSystem {
-          inherit system;
-          # required for for settings and packages not found in nixpkgs
-          specialArgs = attrs;
+        /*
+          Device is inaccessible and offline indefintely
+          Gem-JankPro = lib.nixosSystem {
+            inherit system;
+            # required for for settings and packages not found in nixpkgs
+            specialArgs = attrs;
 
-          # the real config files :3
-          modules = [
-            ./hosts/jank-pro
-            ./users/phossil.nix
-            ./common
-            ./common/cups.nix
-            ./common/desktop.nix
-            ./common/fs-support.nix
-            ./common/gnome.nix
-            ./common/virtualization.nix
-            # the next ~~two~~ imports are special :3
-            #./common/lomiri.nix
-            ./common/plymouth.nix
-            ./common/shell.nix
-            ./common/user-input.nix
-            ./package-sets
-            ./package-sets/creative.nix
-            ./package-sets/dump-cli.nix
-            ./package-sets/dump-gui.nix
-            ./package-sets/essentials.nix
-            ./package-sets/fonts.nix
-            ./package-sets/fun.nix
-            ./package-sets/gayming.nix
-            ./package-sets/lsp.nix
-            # needs unstable bc rsgain
-            ./package-sets/media.nix
-            ./package-sets/themes.nix
-          ];
-        };
+            # the real config files :3
+            modules = [
+              ./hosts/jank-pro
+              ./users/phossil.nix
+              ./common
+              ./common/cups.nix
+              ./common/desktop.nix
+              ./common/fs-support.nix
+              ./common/gnome.nix
+              ./common/virtualization.nix
+              # the next ~~two~~ imports are special :3
+              #./common/lomiri.nix
+              ./common/plymouth.nix
+              ./common/shell.nix
+              ./common/user-input.nix
+              ./package-sets
+              ./package-sets/creative.nix
+              ./package-sets/dump-cli.nix
+              ./package-sets/dump-gui.nix
+              ./package-sets/essentials.nix
+              ./package-sets/fonts.nix
+              ./package-sets/fun.nix
+              ./package-sets/gayming.nix
+              ./package-sets/lsp.nix
+              # needs unstable bc rsgain
+              ./package-sets/media.nix
+              ./package-sets/themes.nix
+            ];
+          };
         */
         # i need a darla too :>
         Gem-Emily = lib.nixosSystem {
@@ -126,66 +130,69 @@
             ./package-sets/themes.nix
           ];
         };
-        /* Pending re-install
-        Gem-LifeBook = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./hosts/lifebook
-            ./users/phossil.nix
-            ./common
-            ./common/desktop.nix
-            #./common/fs-support.nix
-            ./common/gnome.nix
-            ./common/shell.nix
-            ./common/user-input.nix
-            ./package-sets
-          ];
-        };
+        /*
+          Pending re-install
+          Gem-LifeBook = lib.nixosSystem {
+            inherit system;
+            modules = [
+              ./hosts/lifebook
+              ./users/phossil.nix
+              ./common
+              ./common/desktop.nix
+              #./common/fs-support.nix
+              ./common/gnome.nix
+              ./common/shell.nix
+              ./common/user-input.nix
+              ./package-sets
+            ];
+          };
         */
-        /* Device is inaccessible and offline indefintely
-        Gem-ASwitch = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./hosts/aswitch
-            ./users/phossil.nix
-            ./common
-            ./common/gnome.nix
-            ./common/shell.nix
-            ./package-sets
-          ];
-        };
+        /*
+          Device is inaccessible and offline indefintely
+          Gem-ASwitch = lib.nixosSystem {
+            inherit system;
+            modules = [
+              ./hosts/aswitch
+              ./users/phossil.nix
+              ./common
+              ./common/gnome.nix
+              ./common/shell.nix
+              ./package-sets
+            ];
+          };
         */
-        /* device is inaccessible
-        # golden laptop :o
-        Gem-Gold = lib.nixosSystem {
-          inherit system;
-          # required for for settings and packages not found in nixpkgs
-          specialArgs = attrs;
+        /*
+          device is inaccessible
+          # golden laptop :o
+          Gem-Gold = lib.nixosSystem {
+            inherit system;
+            # required for for settings and packages not found in nixpkgs
+            specialArgs = attrs;
 
-          modules = [
-            ./hosts/gold
-            ./common
-            ./common/cups.nix
-            ./common/desktop.nix
-            ./common/fs-support.nix
-            ./common/plasma.nix
-            ./common/plymouth.nix
-            ./common/shell.nix
-            ./common/user-input.nix
-            ./common/virtualization.nix
-            ./package-sets
-            ./package-sets/creative.nix
-            ./package-sets/dump-cli.nix
-            ./package-sets/dump-gui.nix
-            ./package-sets/essentials.nix
-            ./package-sets/fonts.nix
-            ./package-sets/fun.nix
-            ./package-sets/gayming.nix
-            # needs unstable bc rsgain
-            ./package-sets/media.nix
-            ./package-sets/themes.nix
-          ];
-        };
+            modules = [
+              ./hosts/gold
+              ./common
+              ./common/cups.nix
+              ./common/desktop.nix
+              ./common/fs-support.nix
+              ./common/plasma.nix
+              ./common/plymouth.nix
+              ./common/shell.nix
+              ./common/user-input.nix
+              ./common/virtualization.nix
+              ./package-sets
+              ./package-sets/creative.nix
+              ./package-sets/dump-cli.nix
+              ./package-sets/dump-gui.nix
+              ./package-sets/essentials.nix
+              ./package-sets/fonts.nix
+              ./package-sets/fun.nix
+              ./package-sets/gayming.nix
+              # needs unstable bc rsgain
+              ./package-sets/media.nix
+              ./package-sets/themes.nix
+            ];
+          };
         */
       };
 
@@ -229,6 +236,6 @@
       };
 
       # make the flake look pretty :)
-      formatter.${system} = pkgs.nixpkgs-fmt;
+      formatter.${system} = pkgs.nixfmt-rfc-style;
     };
 }

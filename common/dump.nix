@@ -13,5 +13,7 @@
   hardware.sensor.iio.enable = true;
 
   # firefox with decent touchscreen suppport ??? :O
-  environment.sessionVariables = { MOZ_USE_XINPUT2 = "1"; };
+  environment.sessionVariables = {
+    MOZ_USE_XINPUT2 = "1";
+  };
 }
