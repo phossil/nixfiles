@@ -39,7 +39,7 @@
       nix-software-center,
       nixflake-misc,
       temporary-lem-flake,
-      #, nixpkgs-unstable
+      # ,nixpkgs-unstable
       nixos-conf-editor,
       icicle,
       nixos-cosmic,
@@ -117,7 +117,7 @@
             ./common/shell.nix
             ./common/user-input.nix
             ./common/virtualization.nix
-            #./common/wayland-sessions.nix # maybe some other day:tm:
+            ./common/wayland-sessions.nix # maybe some other day:tm:
             ./package-sets
             ./package-sets/creative.nix
             ./package-sets/dump-cli.nix

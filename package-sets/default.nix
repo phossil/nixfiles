@@ -74,5 +74,6 @@
     dutree
     file
     fbcat
+    nvtopPackages.intel
   ];
 }

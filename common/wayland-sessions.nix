@@ -6,14 +6,16 @@
 }:
 
 {
-  # main compositor
+  # macos-like wayland compositor
+  # requires `with pkgs;` for `${system}`
+  services.displayManager.sessionPackages = with pkgs; [ nixflake-cuarzo.packages.${system}.louvre ];
+  
+  # louvre doesn't seem to support xwayland yet
+  programs.gamescope.enable = true;
+  # xwayland capable compositor if gamescope fails
   programs.labwc.enable = true;
   # extra just in case
   programs.miriway.enable = true;
-
-  # the one i actually want to use, louvre views
-  # requires `with pkgs;` for `${system}`
-  services.displayManager.sessionPackages = with pkgs; [ nixflake-cuarzo.packages.${system}.louvre ];
 
   # mandatory daemons
   environment.systemPackages = with pkgs; [
