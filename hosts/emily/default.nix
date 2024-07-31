@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # edited by phossil
-# 2024-03-23
+# 2024-07-31
 # Dell Latitude 3350
 
 { config, pkgs, ... }:
@@ -16,8 +16,6 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # would be great if discord could use pipewire >:[
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
   # embed kernel modules into initrd
   boot.initrd.kernelModules = [
     # intel graphics NOW
@@ -30,13 +28,10 @@
     # resulting in increased system resource utilisation. Ensure that the
     # module loads before bcachefs or build it into the kernel to avoid this.
     "crc32c-intel"
-    # discord pls upgade ur electron aaaaa
-    "v4l2loopback"
   ];
   # kernel command line
   boot.kernelParams = [
     # make Intel Graphics go fast, even for VMs
-    "i915.fastboot=1"
     "i915.enable_fbc=1"
     "i915.enable_gvt=1"
     # rescue me !!!
