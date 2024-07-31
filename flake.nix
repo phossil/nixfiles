@@ -21,10 +21,10 @@
     # not calamares, huhh ???
     icicle.url = "github:snowfallorg/icicle";
     # system76's cosmic desktop
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #nixos-cosmic = {
+    #  url = "github:lilyinstarlight/nixos-cosmic";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
     # cool new wayland library :o
     nixflake-cuarzo = {
       url = "github:phossil/nixflake-cuarzo";
@@ -39,10 +39,10 @@
       nix-software-center,
       nixflake-misc,
       temporary-lem-flake,
-      # ,nixpkgs-unstable
+      # nixpkgs-unstable,
       nixos-conf-editor,
       icicle,
-      nixos-cosmic,
+      # nixos-cosmic,
       nixflake-cuarzo,
     # `@attrs` is required for third-party flakes, maybe ... idk TwT
     }@attrs:
