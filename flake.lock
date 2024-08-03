@@ -164,11 +164,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1721963283,
-        "narHash": "sha256-kgXUprZzwNKf6R2ZOs3Dk+mQ03xPCBuNmUiVhtHbp0Q=",
+        "lastModified": 1722707508,
+        "narHash": "sha256-W/6TwghzTrAEnl9CE3R5mgxZPGx09ghsKSr4Z6oMoIA=",
         "owner": "phossil",
         "repo": "nixflake-cuarzo",
-        "rev": "7c503aa8caa60d3d785181e101d377ae13d1b91c",
+        "rev": "5c785fbf21c13ce876c8b08a5f8bdfc2c2ec0585",
         "type": "github"
       },
       "original": {
@@ -343,11 +343,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1722221733,
-        "narHash": "sha256-sga9SrrPb+pQJxG1ttJfMPheZvDOxApFfwXCFO0H9xw=",
+        "lastModified": 1722519197,
+        "narHash": "sha256-VEdJmVU2eLFtLqCjTYJd1J7+Go8idAcZoT11IewFiRg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "12bf09802d77264e441f48e25459c10c93eada2e",
+        "rev": "05405724efa137a0b899cce5ab4dde463b4fd30b",
         "type": "github"
       },
       "original": {
