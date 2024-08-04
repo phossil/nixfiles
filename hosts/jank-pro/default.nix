@@ -24,22 +24,14 @@
     loader.efi.canTouchEfiVariables = true;
 
     # out-of-tree kernel modules
-    extraModulePackages = with config.boot.kernelPackages; [
-      zenpower
-      v4l2loopback
-      digimend
-    ];
+    extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
     # load zenpower and v4l2loopback immediately on boot
-    initrd.kernelModules = [
-      "zenpower"
-      "v4l2loopback"
-    ];
+    initrd.kernelModules = [ "zenpower" ];
     # blacklist the radeon graphics and amd temp sensor drivers
     blacklistedKernelModules = [ "k10temp" ];
     # kernel command line
     kernelParams = [
       # make Intel Graphics go fast, even for VMs
-      "i915.fastboot=1"
       "i915.enable_fbc=1"
       "i915.enable_gvt=1"
       # rescue me !!!
@@ -61,9 +53,9 @@
   fileSystems."/home".options = [
     "defaults"
     # foreground compression with zstd
-    "compression=zstd"
+    "compression=zstd:6"
     # background compression with zstd
-    "background_compression=zstd"
+    "background_compression=zstd:6"
   ];
 
   # audio and graphics stuffs
@@ -83,10 +75,6 @@
         # all the intel stuffs
         intel-media-sdk
         level-zero
-        #error: hash mismatch in fixed-output derivation '/nix/store/59mh14pl3xl56lnywrjzsas8qmlyzmsd-intel-oneapi-tbb-2021.9.0-2021.9.0-43484.x86_64.rpm.drv':
-        #   specified: sha256-wIktdf1p1SS1KrnUlc8LPkm0r9dhZE6cQNr4ZKTWI6A=
-        #      got:    sha256-pzJpQdiYVpcKDShePak2I0uEh7u08vJgX7OBF5p5yAM=
-        #mkl
       ];
       # enable 32-bit support because Steam
       driSupport32Bit = true;
@@ -140,5 +128,6 @@
   #system.stateVersion = "22.05"; # Did you read the comment?
   #system.stateVersion = "22.11"; # Did you read the comment?
   #system.stateVersion = "23.05"; # Did you read the comment?
-  system.stateVersion = "23.11"; # Did you read the comment?
+  #system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 }

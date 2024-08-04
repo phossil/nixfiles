@@ -36,7 +36,7 @@
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-partuuid/0eac4b66-1a28-40a4-8804-2798576df6ff";
+    device = "/dev/disk/by-uuid/5b364937-af83-4f62-b5cf-afe5d92b3d15";
     fsType = "bcachefs";
   };
 

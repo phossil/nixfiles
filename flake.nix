@@ -59,43 +59,39 @@
     {
       # my main devices are defined here
       nixosConfigurations = {
-        /*
-          Device is inaccessible and offline indefintely
-          Gem-JankPro = lib.nixosSystem {
-            inherit system;
-            # required for for settings and packages not found in nixpkgs
-            specialArgs = attrs;
+        Gem-JankPro = lib.nixosSystem {
+          inherit system;
+          # required for for settings and packages not found in nixpkgs
+          specialArgs = attrs;
 
-            # the real config files :3
-            modules = [
-              ./hosts/jank-pro
-              ./users/phossil.nix
-              ./common
-              ./common/cups.nix
-              ./common/desktop.nix
-              ./common/fs-support.nix
-              ./common/gnome.nix
-              ./common/virtualization.nix
-              # the next ~~two~~ imports are special :3
-              #./common/lomiri.nix
-              ./common/plymouth.nix
-              ./common/shell.nix
-              ./common/user-input.nix
-              ./package-sets
-              ./package-sets/creative.nix
-              ./package-sets/dump-cli.nix
-              ./package-sets/dump-gui.nix
-              ./package-sets/essentials.nix
-              ./package-sets/fonts.nix
-              ./package-sets/fun.nix
-              ./package-sets/gayming.nix
-              ./package-sets/lsp.nix
-              # needs unstable bc rsgain
-              ./package-sets/media.nix
-              ./package-sets/themes.nix
-            ];
-          };
-        */
+          # the real config files :3
+          modules = [
+            ./hosts/jank-pro
+            ./users/phossil.nix
+            ./common
+            ./common/cups.nix
+            ./common/desktop.nix
+            ./common/fs-support.nix
+            ./common/lomiri.nix
+            ./common/plasma.nix
+            ./common/plymouth.nix
+            ./common/shell.nix
+            ./common/user-input.nix
+            ./common/virtualization.nix
+            ./package-sets
+            ./package-sets/creative.nix
+            ./package-sets/dump-cli.nix
+            ./package-sets/dump-gui.nix
+            ./package-sets/essentials.nix
+            ./package-sets/fonts.nix
+            ./package-sets/fun.nix
+            ./package-sets/gayming.nix
+            ./package-sets/lsp.nix
+            # needs unstable bc rsgain
+            ./package-sets/media.nix
+            ./package-sets/themes.nix
+          ];
+        };
         # i need a darla too :>
         Gem-Emily = lib.nixosSystem {
           inherit system;
@@ -109,7 +105,6 @@
             #./common/cosmic.nix # The option `hardware.graphics' does not exist.
             ./common/cups.nix
             ./common/desktop.nix
-            #./common/gnome.nix
             ./common/fs-support.nix
             ./common/lomiri.nix
             ./common/plasma.nix
