@@ -121,6 +121,7 @@
             ./package-sets/fonts.nix
             ./package-sets/fun.nix
             ./package-sets/gayming.nix
+            ./package-sets/lsp.nix
             ./package-sets/media.nix
             ./package-sets/themes.nix
           ];

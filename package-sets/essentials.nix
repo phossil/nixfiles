@@ -121,5 +121,6 @@
     translatelocally-models.en-es-tiny
     # i somehow forget to add this every time TwT
     filelight
+    skanlite
   ];
 }

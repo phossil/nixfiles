@@ -6,6 +6,6 @@
   environment.systemPackages = with pkgs; [
     gopls
     rust-analyzer
-    rnix-lsp
+    nil
   ];
 }

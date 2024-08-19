@@ -14,8 +14,6 @@
   programs.gamescope.enable = true;
   # xwayland capable compositor if gamescope fails
   programs.labwc.enable = true;
-  # extra just in case
-  programs.miriway.enable = true;
 
   # mandatory daemons
   environment.systemPackages = with pkgs; [
