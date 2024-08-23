@@ -21,10 +21,10 @@
     # not calamares, huhh ???
     icicle.url = "github:snowfallorg/icicle";
     # system76's cosmic desktop
-    #nixos-cosmic = {
-    #  url = "github:lilyinstarlight/nixos-cosmic";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic/52d805f5bbace64211f1bf68e88efd3447ed1dae";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # cool new wayland library :o
     nixflake-cuarzo = {
       url = "github:phossil/nixflake-cuarzo";
@@ -42,7 +42,7 @@
       # nixpkgs-unstable,
       nixos-conf-editor,
       icicle,
-      # nixos-cosmic,
+      nixos-cosmic,
       nixflake-cuarzo,
     # `@attrs` is required for third-party flakes, maybe ... idk TwT
     }@attrs:
@@ -102,7 +102,7 @@
             ./hosts/emily
             ./users/phossil.nix
             ./common
-            #./common/cosmic.nix # The option `hardware.graphics' does not exist.
+            ./common/cosmic.nix # The option `hardware.graphics' does not exist.
             ./common/cups.nix
             ./common/desktop.nix
             ./common/fs-support.nix
