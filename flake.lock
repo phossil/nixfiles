@@ -484,7 +484,8 @@
         "nixos-cosmic": "nixos-cosmic",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs_5",
-        "temporary-lem-flake": "temporary-lem-flake"
+        "temporary-lem-flake": "temporary-lem-flake",
+        "zen-browser-flake": "zen-browser-flake"
       }
     },
     "rust-overlay": {
@@ -654,6 +655,26 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "zen-browser-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725133024,
+        "narHash": "sha256-rYesAAJxgSrcjfUaAAaFcAHKsR7Sgbz0z6+1cnnw8R8=",
+        "owner": "phossil",
+        "repo": "zen-browser-flake",
+        "rev": "39d562cada32a4b7b78998830341025390685698",
+        "type": "github"
+      },
+      "original": {
+        "owner": "phossil",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

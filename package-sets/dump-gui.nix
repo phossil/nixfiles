@@ -4,6 +4,7 @@
   nix-software-center,
   nixos-conf-editor,
   icicle,
+  zen-browser-flake,
   ...
 }:
 
@@ -123,12 +124,13 @@
     f3d
     qmmp
     localsend
-    floorp
+    #floorp
     gnumeric
     #calligra # qtwebkit is unmaintained
     texmacs
     ted
     cantor
     wxmaxima
+    zen-browser-flake.packages.${system}.specific
   ];
 }

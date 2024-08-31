@@ -30,6 +30,11 @@
       url = "github:phossil/nixflake-cuarzo";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # vivaldi but firefox
+    zen-browser-flake = {
+      url = "github:phossil/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -44,6 +49,7 @@
       icicle,
       nixos-cosmic,
       nixflake-cuarzo,
+      zen-browser-flake,
     # `@attrs` is required for third-party flakes, maybe ... idk TwT
     }@attrs:
     let
@@ -87,7 +93,6 @@
             ./package-sets/fun.nix
             ./package-sets/gayming.nix
             ./package-sets/lsp.nix
-            # needs unstable bc rsgain
             ./package-sets/media.nix
             ./package-sets/themes.nix
           ];
@@ -102,17 +107,17 @@
             ./hosts/emily
             ./users/phossil.nix
             ./common
-            ./common/cosmic.nix # The option `hardware.graphics' does not exist.
+            ./common/cosmic.nix
             ./common/cups.nix
             ./common/desktop.nix
             ./common/fs-support.nix
             ./common/lomiri.nix
-            ./common/plasma.nix
+            #./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./common/virtualization.nix
-            ./common/wayland-sessions.nix # maybe some other day:tm:
+            ./common/wayland-sessions.nix
             ./package-sets
             ./package-sets/creative.nix
             ./package-sets/dump-cli.nix
