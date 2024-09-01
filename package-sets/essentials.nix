@@ -89,7 +89,7 @@
     wezterm
     activitywatch
     font-manager
-    nheko
+    #nheko # `Package ‘olm-3.2.16’ in` ... `/pkgs/development/libraries/olm/default.nix:26 is marked as insecure, refusing to evaluate.`
     #peazip # install: cannot stat 'dev/peazip': No such file or directory
     revolt-desktop
     textadept
