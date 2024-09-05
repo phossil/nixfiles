@@ -111,7 +111,7 @@
             ./common/cups.nix
             ./common/desktop.nix
             ./common/fs-support.nix
-            ./common/lomiri.nix
+            #./common/lomiri.nix
             #./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
