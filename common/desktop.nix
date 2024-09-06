@@ -76,5 +76,7 @@
         workstation = true;
       };
     };
+    # don't enable gnome keyring bc keepassxc
+    gnome.gnome-keyring.enable = false;
   };
 }
