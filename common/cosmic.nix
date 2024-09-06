@@ -22,11 +22,4 @@
   # don't enable cosmic greeter if sddm is already enabled qwq
   services.displayManager.cosmic-greeter.enable =
     if (config.services.displayManager.sddm.enable == true) then false else true;
-
-  # exclude these packages bc the build them takes too long TwT
-  environment.cosmic.excludePackages = with pkgs; [
-    cosmic-edit
-    cosmic-store
-    cosmic-term
-  ];
 }
