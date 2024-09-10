@@ -202,8 +202,8 @@
         # naming scheme: [image format]-[kernel]-[user interface]
 
         x86_64-linux = {
-          # iso image with bcachefs-enabled kernel and gnome for x86_64-based systems
-          iso-bcachefs-gnome = nixos-generators.nixosGenerate {
+          # iso image with bcachefs-enabled kernel and cosmic for x86_64-based systems
+          iso-bcachefs-cosmic = nixos-generators.nixosGenerate {
             inherit system;
             # required by `package-sets/fonts` for some yet-to-be-merged fonts
             specialArgs = attrs;
@@ -222,8 +222,8 @@
                 services.openssh.settings.PermitRootLogin = lib.mkForce "no";
               })
               ./common
+              ./common/cosmic.nix
               ./common/desktop.nix
-              ./common/gnome.nix
               ./common/fs-support.nix
               ./common/plymouth.nix
               ./common/shell.nix
