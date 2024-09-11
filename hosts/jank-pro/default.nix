@@ -39,17 +39,27 @@
     ];
   };
 
-  # fs options for the root and home partitions
-  # pls check the arch wiki's page on f2fs
+  # ⚠️ Mount point '/boot' which backs the random seed file is world accessible, which is a security hole! ⚠️
+  # ⚠️ Random seed file '/boot/loader/random-seed' is world accessible, which is a security hole! ⚠️
+  fileSystems."/boot".options = [ "umask=0077" ];
+
+  # fs options for the root and nix subvolumes
+  # pls check the arch wiki's page on btrfs
   fileSystems."/".options = [
     "defaults"
-    "compress_algorithm=zstd:6"
-    "compress_chksum"
-    "atgc"
-    "gc_merge"
+    "subvol=@"
+    "discard=async"
     "lazytime"
   ];
-  # pls check the arch wiki's page on f2fs
+  fileSystems."/nix".options = [
+    "defaults"
+    "subvol=@nix"
+    "discard=async"
+    "compress=zstd:6"
+    "noatime"
+  ];
+
+  # pls check the arch wiki's page on bcachefs
   fileSystems."/home".options = [
     "defaults"
     # foreground compression with zstd
