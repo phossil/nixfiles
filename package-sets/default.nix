@@ -75,5 +75,6 @@
     file
     fbcat
     nvtopPackages.intel
+    lsd
   ];
 }

@@ -36,5 +36,6 @@
     rsgain
     puddletag
     flacon
+    qmmp
   ];
 }

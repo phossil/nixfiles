@@ -51,16 +51,20 @@
     ncgopher
     noteshrink
     unrar
-    p7zip
+    #p7zip # superseded by 7zz
     gnupg
     nmap
     zile
-    zip
-    unzip
+    #zip # latest release is from 2008
+    #unzip # latest release is form 2009
     fclones
     chntpw
-    lsd
     numbat
     maxima
+    _7zz
+    squashfsTools
+    ripunzip # unzip but in rust
+    runzip # file name encoding conversion within zip files
+    squashfs-tools-ng # tar2sqfs is neato :>
   ];
 }

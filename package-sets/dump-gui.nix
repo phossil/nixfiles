@@ -122,7 +122,6 @@
     icicle.packages.${system}.icicle
     convertall
     f3d
-    qmmp
     localsend
     #floorp
     gnumeric
@@ -132,5 +131,6 @@
     cantor
     wxmaxima
     zen-browser-flake.packages.${system}.specific
+    openrefine
   ];
 }
