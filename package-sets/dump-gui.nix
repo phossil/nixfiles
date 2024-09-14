@@ -134,5 +134,7 @@
     zen-browser-flake.packages.${system}.specific
     openrefine
     eriedaberries-nix-packages.packages.${system}.lem-sdl2
+    coppwr # qpwgraph but rust
+    pwvucontrol # pavucontrol but for pipewire
   ];
 }
