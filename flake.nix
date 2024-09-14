@@ -13,7 +13,7 @@
     # personal flake with a bunch of random stuff
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # the new common lisp IDE
-    temporary-lem-flake.url = "github:phossil/temporary-lem-flake";
+    #temporary-lem-flake.url = "github:phossil/temporary-lem-flake";
     # `nixpkgs` but rolling
     #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # an app for editing nixos configs ??? :O
@@ -35,6 +35,11 @@
       url = "github:phossil/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # a flake with lem
+    eriedaberries-nix-packages = {
+      url = "github:eriedaberrie/my-nix-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -43,13 +48,14 @@
       nixos-generators,
       nix-software-center,
       nixflake-misc,
-      temporary-lem-flake,
-      # nixpkgs-unstable,
+      #temporary-lem-flake,
+      #nixpkgs-unstable,
       nixos-conf-editor,
       icicle,
       nixos-cosmic,
       nixflake-cuarzo,
       zen-browser-flake,
+      eriedaberries-nix-packages,
     # `@attrs` is required for third-party flakes, maybe ... idk TwT
     }@attrs:
     let

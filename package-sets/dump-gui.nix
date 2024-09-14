@@ -5,6 +5,7 @@
   nixos-conf-editor,
   icicle,
   zen-browser-flake,
+  eriedaberries-nix-packages,
   ...
 }:
 
@@ -132,5 +133,6 @@
     wxmaxima
     zen-browser-flake.packages.${system}.specific
     openrefine
+    eriedaberries-nix-packages.packages.${system}.lem-sdl2
   ];
 }
