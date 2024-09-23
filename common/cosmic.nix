@@ -33,7 +33,13 @@
     style = "adwaita-dark";
   };
 
-  # the cosmic file manager looks pretty but it ruins my file metadata
-  # including mtime and crtime
-  environment.systemPackages = with pkgs; [ gnome.nautilus ];
+  environment.systemPackages = with pkgs; [
+    # the cosmic file manager looks pretty but it ruins my file metadata
+    # including mtime and crtime
+    gnome.nautilus
+    # xwayland support is still a bit buggy when multiple x11 apps close and later re-open
+    # when possible , use wayland
+    qt5.qtwayland
+    qt6.qtwayland
+  ];
 }
