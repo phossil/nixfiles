@@ -16,7 +16,7 @@
     plotinus.enable = true;
     # curse you, alcohol
     cdemu = {
-      enable = true;
+      #enable = true; # re-enable when vhba is updated for linux 6.11
       group = "phossil";
     };
     # give ff super powers >:D
