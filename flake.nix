@@ -137,23 +137,21 @@
             ./package-sets/themes.nix
           ];
         };
-        /*
-          Pending re-install
-          Gem-LifeBook = lib.nixosSystem {
-            inherit system;
-            modules = [
-              ./hosts/lifebook
-              ./users/phossil.nix
-              ./common
-              ./common/desktop.nix
-              #./common/fs-support.nix
-              ./common/gnome.nix
-              ./common/shell.nix
-              ./common/user-input.nix
-              ./package-sets
-            ];
-          };
-        */
+        Gem-LifeBook = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/lifebook
+            ./users/phossil.nix
+            ./common
+            ./common/desktop.nix
+            #./common/fs-support.nix
+            ./common/plymouth.nix
+            ./common/shell.nix
+            ./common/user-input.nix
+            ./package-sets
+            ./package-sets/creative.nix
+          ];
+        };
         /*
           Device is inaccessible and offline indefintely
           Gem-ASwitch = lib.nixosSystem {

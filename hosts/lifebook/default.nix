@@ -1,43 +1,77 @@
 # Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# your system. Help is available in the configuration.nix(5) man page, on
+# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 # edited by phossil
-# 2023-09-20
+# 2024-10-06
 
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    #./userspace-sw.nix
-    #./fonts.nix
-    #./linux_life95.nix
   ];
-
-  # latest Linux kernel
-  #boot.kernelPackages = pkgs.linuxPackages_latest;
-  # xanmod kernel with task type scheduler
-  #boot.kernelPackages = pkgs.linuxPackages_xanmod_tt;
-  # xanmod_tt kernel with clang optimazations for ivy bridge
-  #boot.kernelPackages = pkgs.linux_life95;
-  # kernel command line
-  boot.kernelParams = [
-    # make Intel Graphics go fast
-    "i915.fastboot=1"
-    "i915.enable_fbc=1"
-  ];
-
-  # splash screen :D
-  boot.plymouth.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # embed kernel modules into initrd
+  boot.initrd.kernelModules = [
+    # intel graphics NOW
+    "intel_agp"
+    "i915"
+  ];
+  # kernel command line
+  boot.kernelParams = [
+    # make Intel Graphics go fast
+    "i915.enable_fbc=1"
+  ];
+
+  # mount options for btrfs subvolumes
+  # pls check the arch wiki's page on btrfs
+  fileSystems."/".options = [
+    "defaults"
+    # i want to preserve my ssd TwT
+    "lazytime"
+  ];
+  fileSystems."/nix".options = [
+    "defaults"
+    # also helps preserve ssd
+    "noatime"
+    "compress-force=zstd:6"
+  ];
+  fileSystems."/home".options = [
+    "defaults"
+    "lazytime"
+    "compress-force=zstd:6"
+  ];
+  fileSystems."/var/cache".options = [
+    "defaults"
+    "lazytime"
+  ];
+  fileSystems."/var/log".options = [
+    "defaults"
+    "noatime"
+    "lazytime"
+    "compress-force=zstd:6"
+  ];
+  fileSystems."/var/tmp".options = [
+    "defaults"
+    "lazytime"
+  ];
+
+  # Define your hostname.
   networking.hostName = "Gem-LifeBook";
+
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -49,5 +83,7 @@
   #system.stateVersion = "21.11"; # Did you read the comment?
   #system.stateVersion = "22.05"; # Did you read the comment?
   #system.stateVersion = "22.11"; # Did you read the comment?
-  system.stateVersion = "23.05"; # Did you read the comment?
+  #system.stateVersion = "23.05"; # Did you read the comment?
+  #system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 }
