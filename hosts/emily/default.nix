@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 # edited by phossil
-# 2024-07-31
+# 2024-10-06
 # Dell Latitude 3350
 
 { config, pkgs, ... }:
@@ -16,18 +16,12 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
   # embed kernel modules into initrd
   boot.initrd.kernelModules = [
     # intel graphics NOW
     "intel_agp"
     "i915"
-    # note from gentoo wiki: bcachefs page
-    #
-    # If the crc32c-intel module is available and bcachefs loads before it
-    # (or is built in) the CRC32 hardware instruction will not be used
-    # resulting in increased system resource utilisation. Ensure that the
-    # module loads before bcachefs or build it into the kernel to avoid this.
-    "crc32c-intel"
   ];
   # kernel command line
   boot.kernelParams = [
@@ -38,23 +32,37 @@
     "sysrq_always_enabled"
   ];
 
-  # fs options for the root partition (bcachefs)
+  # mount options for btrfs subvolumes
+  # pls check the arch wiki's page on btrfs
   fileSystems."/".options = [
-    # foreground compression with zstd, level 6
-    "compression=zstd:6"
-    # background compression with zstd, level 6
-    "background_compression=zstd:6"
+    "defaults"
     # i want to preserve my ssd TwT
     "lazytime"
-    # is this enabled by default ????
-    "discard"
   ];
-
-  # ⚠️ Mount point '/boot' which backs the random seed file is world accessible, which is a security hole! ⚠️
-  # ⚠️ Random seed file '/boot/loader/random-seed' is world accessible, which is a security hole! ⚠️
-  fileSystems."/boot".options = [
-    # stolen from a debian fstab
-    "umask=0077"
+  fileSystems."/nix".options = [
+    "defaults"
+    # also helps preserve ssd
+    "noatime"
+    "compress-force=zstd:6"
+  ];
+  fileSystems."/home".options = [
+    "defaults"
+    "lazytime"
+    "compress-force=zstd:6"
+  ];
+  fileSystems."/var/cache".options = [
+    "defaults"
+    "lazytime"
+  ];
+  fileSystems."/var/log".options = [
+    "defaults"
+    "noatime"
+    "lazytime"
+    "compress-force=zstd:6"
+  ];
+  fileSystems."/var/tmp".options = [
+    "defaults"
+    "lazytime"
   ];
 
   # graphics drivers and stuff
