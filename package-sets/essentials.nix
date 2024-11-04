@@ -82,7 +82,7 @@
     gnome.dconf-editor
     okteta
     krename
-    qbittorrent
+    #qbittorrent # `Package ‘qbittorrent-4.6.4’ in` ... `/pkgs/applications/networking/p2p/qbittorrent/default.nix:93 is marked as insecure, refusing to evaluate.`
     gimp
     hexchat
     qview
