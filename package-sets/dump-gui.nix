@@ -104,7 +104,7 @@
     curtail
     gnome-obfuscate
     gpu-viewer
-    heimdall-gui
+    #heimdall-gui # colission between heimdall and heimdall-gui
     surge
     fractal
     jedit
