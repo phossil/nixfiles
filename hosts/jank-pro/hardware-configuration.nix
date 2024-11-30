@@ -19,7 +19,6 @@
     "usbhid"
     "sd_mod"
     "sr_mod"
-    "bcache"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
@@ -28,21 +27,28 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/0d4c7330-e315-4849-8d51-f5208ce3c660";
     fsType = "btrfs";
+    options = [ "subvol=@" ];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/0d4c7330-e315-4849-8d51-f5208ce3c660";
     fsType = "btrfs";
+    options = [ "subvol=@nix" ];
+  };
+
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/fba1b678-b4e5-4840-9968-2800590bac18";
+    fsType = "btrfs";
+    options = [ "subvol=@home" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/23DA-C4BB";
     fsType = "vfat";
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/5b364937-af83-4f62-b5cf-afe5d92b3d15";
-    fsType = "bcachefs";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   swapDevices = [ { device = "/dev/disk/by-uuid/34c9ad59-f3b9-4f92-91d3-b29d03879b45"; } ];
@@ -53,7 +59,6 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp34s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.virbr0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

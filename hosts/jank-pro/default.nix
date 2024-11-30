@@ -39,33 +39,18 @@
     ];
   };
 
-  # ⚠️ Mount point '/boot' which backs the random seed file is world accessible, which is a security hole! ⚠️
-  # ⚠️ Random seed file '/boot/loader/random-seed' is world accessible, which is a security hole! ⚠️
-  fileSystems."/boot".options = [ "umask=0077" ];
-
   # fs options for the root and nix subvolumes
   # pls check the arch wiki's page on btrfs
-  fileSystems."/".options = [
-    "defaults"
-    "subvol=@"
-    "discard=async"
-    "lazytime"
-  ];
+  fileSystems."/".options = [ "lazytime" ];
   fileSystems."/nix".options = [
-    "defaults"
-    "subvol=@nix"
-    "discard=async"
-    "compress=zstd:6"
+    "compress-force=zstd:6"
     "noatime"
   ];
 
-  # pls check the arch wiki's page on bcachefs
+  # pls check the arch wiki's page on btrfs
   fileSystems."/home".options = [
-    "defaults"
-    # foreground compression with zstd
-    "compression=zstd:6"
-    # background compression with zstd
-    "background_compression=zstd:6"
+    # force compression with zstd , level 6
+    "compress-force=zstd:6"
   ];
 
   # audio and graphics stuffs
