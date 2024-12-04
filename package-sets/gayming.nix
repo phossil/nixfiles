@@ -27,9 +27,9 @@
     #minecraft # broken
     mangohud
     taisei
-    #itch
+    #itch # error: cannot download source from any mirror
     jstest-gtk
-    grapejuice
+    #grapejuice # removed , see https://github.com/NixOS/nixpkgs/pull/336748
     unciv
     prismlauncher
     teeworlds
@@ -51,11 +51,11 @@
     freeciv
     xonotic
     # pet the froge :>
-    #frogatto # build failure
+    frogatto
     # kiki, my beloved ❤
     superTuxKart
     # racing gayms
-    #armagetronad # build failure
+    armagetronad
     extremetuxracer
     rigsofrods
     lugaru

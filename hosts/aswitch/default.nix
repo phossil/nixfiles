@@ -24,7 +24,7 @@
   ];
 
   # intel graphics
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       # might be needed for qsv support
@@ -40,7 +40,7 @@
       mkl
     ];
     # enable 32-bit graphics support because Steam
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # Bootloader.
@@ -66,9 +66,9 @@
   };
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Allow unfree packages
@@ -129,5 +129,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   #system.stateVersion = "22.11"; # Did you read the comment?
-  system.stateVersion = "23.05"; # Did you read the comment?
+  #system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }

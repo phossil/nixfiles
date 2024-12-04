@@ -2,7 +2,7 @@
   description = "phossil's nixos flake collection";
   inputs = {
     # the most important flake in nixos
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     # generates nixos images (useful for creating rescue iso's)
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -13,7 +13,7 @@
     # personal flake with a bunch of random stuff
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # the new common lisp IDE
-    #temporary-lem-flake.url = "github:phossil/temporary-lem-flake";
+    lem.url = "github:lem-project/lem";
     # `nixpkgs` but rolling
     #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # an app for editing nixos configs ??? :O
@@ -35,11 +35,6 @@
       url = "github:phossil/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # a flake with lem
-    eriedaberries-nix-packages = {
-      url = "github:eriedaberrie/my-nix-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs =
     {
@@ -48,14 +43,13 @@
       nixos-generators,
       nix-software-center,
       nixflake-misc,
-      #temporary-lem-flake,
+      lem,
       #nixpkgs-unstable,
       nixos-conf-editor,
       icicle,
       nixos-cosmic,
       nixflake-cuarzo,
       zen-browser-flake,
-      eriedaberries-nix-packages,
     # `@attrs` is required for third-party flakes, maybe ... idk TwT
     }@attrs:
     let
@@ -71,6 +65,7 @@
     {
       # my main devices are defined here
       nixosConfigurations = {
+        /* offline indefinitely
         Gem-JankPro = lib.nixosSystem {
           inherit system;
           # required for for settings and packages not found in nixpkgs
@@ -103,6 +98,7 @@
             ./package-sets/themes.nix
           ];
         };
+        */
         # i need a darla too :>
         Gem-Emily = lib.nixosSystem {
           inherit system;
@@ -113,12 +109,12 @@
             ./hosts/emily
             ./users/phossil.nix
             ./common
-            ./common/cosmic.nix
+            #./common/cosmic.nix
             ./common/cups.nix
             ./common/desktop.nix
             ./common/fs-support.nix
             #./common/lomiri.nix
-            #./common/plasma.nix
+            ./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
@@ -145,6 +141,7 @@
             ./common
             ./common/desktop.nix
             #./common/fs-support.nix
+            ./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
@@ -152,22 +149,19 @@
             ./package-sets/creative.nix
           ];
         };
-        /*
-          Device is inaccessible and offline indefintely
           Gem-ASwitch = lib.nixosSystem {
             inherit system;
             modules = [
               ./hosts/aswitch
               ./users/phossil.nix
               ./common
-              ./common/gnome.nix
+              ./common/plasma.nix
               ./common/shell.nix
               ./package-sets
             ];
           };
-        */
         /*
-          device is inaccessible
+          inaccessible and offline indefinitely
           # golden laptop :o
           Gem-Gold = lib.nixosSystem {
             inherit system;

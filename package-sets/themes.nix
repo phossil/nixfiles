@@ -7,7 +7,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search nixpkgs wget
   environment.systemPackages = with pkgs; [
-    luna-icons
+    #luna-icons # error: luna-icons has been removed as it was removed upstream
     la-capitaine-icon-theme
     flat-remix-icon-theme
     kora-icon-theme

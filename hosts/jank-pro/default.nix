@@ -56,7 +56,7 @@
   # audio and graphics stuffs
   hardware = {
     # hardware accelerated graphics
-    opengl = {
+    graphics = {
       enable = true;
       driSupport = true;
       extraPackages = with pkgs; [
@@ -72,7 +72,7 @@
         level-zero
       ];
       # enable 32-bit support because Steam
-      driSupport32Bit = true;
+      enable32Bit = true;
       # same as extraPackages but 32-bit
       extraPackages32 = with pkgs.pkgsi686Linux; [
         vaapiVdpau

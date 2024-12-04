@@ -5,7 +5,7 @@
   nixos-conf-editor,
   icicle,
   zen-browser-flake,
-  eriedaberries-nix-packages,
+  lem,
   ...
 }:
 
@@ -27,6 +27,11 @@
       bukubrow
       jabref # from main app, needs system-wide too
     ];
+    # quick fire transfer app
+    localsend = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -54,8 +59,8 @@
     srain
     paperwork
     helvum
-    gnome.gnome-logs
-    gnome.gnome-sound-recorder
+    gnome-logs
+    gnome-sound-recorder
     drawio
     netsurf-browser
     treesheets
@@ -63,9 +68,8 @@
     newsflash
     joplin-desktop
     xournalpp
-    kdePackages.breeze
     gnome-firmware-updater
-    gnome.gnome-calendar
+    gnome-calendar
     sigil
     sqlitebrowser
     anki
@@ -73,7 +77,7 @@
     testdisk-qt
     kiwix
     #mkchromecast # youtube-dl is unmaintained
-    libreddit
+    redlib
     video-trimmer
     lagrange
     osdlyrics
@@ -109,31 +113,30 @@
     fractal
     jedit
     nix-software-center.packages.${system}.nix-software-center
-    gnome.gnome-characters
+    gnome-characters
     labwc
     unityhub
     zathura
     remmina
-    #rustdesk # error: cannot download crate-flutter_rust_bridge_codegen-1.75.3.tar.gz from any mirror
+    rustdesk
     protonvpn-gui
     szyszka
     czkawka
     cage
     nixos-conf-editor.packages.${system}.nixos-conf-editor
-    icicle.packages.${system}.icicle
+    #icicle.packages.${system}.icicle # fatal: unable to access 'https://gitlab.gnome.org/vlinkz/vte4-rs/': The requested URL returned error: 503
     convertall
     f3d
-    localsend
     #floorp
     gnumeric
-    #calligra # qtwebkit is unmaintained
+    calligra
     texmacs
     ted
     cantor
     wxmaxima
     zen-browser-flake.packages.${system}.specific
     openrefine
-    eriedaberries-nix-packages.packages.${system}.lem-sdl2
+    lem.packages.${system}.lem-sdl2
     coppwr # qpwgraph but rust
     pwvucontrol # pavucontrol but for pipewire
   ];

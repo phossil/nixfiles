@@ -66,7 +66,7 @@
   ];
 
   # graphics drivers and stuff
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       # might be needed for qsv support
@@ -81,7 +81,7 @@
       level-zero
     ];
     # enable 32-bit graphics support because Steam
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # networking.hostName = "nixos"; # Define your hostname.
@@ -98,6 +98,7 @@
   # ipfs
   services.kubo = {
     enable = true;
+    startWhenNeeded = true;
     settings.Addresses.API = [ "/ip4/127.0.0.1/tcp/5001" ];
   };
 
@@ -117,5 +118,6 @@
   #system.stateVersion = "22.11"; # Did you read the comment?
   #system.stateVersion = "23.05"; # Did you read the comment?
   #system.stateVersion = "23.11"; # Did you read the comment?
-  system.stateVersion = "24.05"; # Did you read the comment?
+  #system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }

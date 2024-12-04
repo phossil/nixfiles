@@ -26,7 +26,7 @@
     # did not know there was a module for this xd
     gnome-disks.enable = true;
     # brasero wasn't working for me :|
-    k3b.enable = true;
+    #k3b.enable = true; # make: *** [Makefile:136: all] Error 2
     # useful for interacting with vm's managed by libvirt
     virt-manager.enable = true;
     # useful when interacting with android-based devices
@@ -71,15 +71,15 @@
     waypipe
     ghostwriter
     discordchatexporter-cli
-    breeze-icons
+    kdePackages.breeze-icons
     crow-translate
     diffpdf
     zenmonitor
     appimage-run
     meld
-    kolourpaint
-    gnome.gnome-dictionary
-    gnome.dconf-editor
+    kdePackages.kolourpaint
+    wordbook
+    dconf-editor
     okteta
     krename
     #qbittorrent # `Package ‘qbittorrent-4.6.4’ in` ... `/pkgs/applications/networking/p2p/qbittorrent/default.nix:93 is marked as insecure, refusing to evaluate.`
@@ -99,7 +99,7 @@
     qpwgraph
     scrcpy
     gcolor3
-    tokodon
+    kdePackages.tokodon
     gittyup
     qalculate-gtk
     # two who music :3

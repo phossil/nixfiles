@@ -80,12 +80,12 @@
     csound-qt
     # lv2 plugins - archlinux.org/groups/x86_64/lv2-plugins/
     geonkick
-    distrho
+    distrho-ports
     zam-plugins
     dragonfly-reverb
     zynaddsubfx-ntk
     adlplug
-    ams-lv2
+    #ams-lv2 # error: Package ‘ams-lv2-1.2.2’ in /nix/store/...-source/pkgs/by-name/am/ams-lv2/package.nix:25 is marked as broken, refusing to evaluate.
     artyFX
     x42-avldrums
     bchoppr
@@ -134,6 +134,6 @@
     cinelerra
     kdenlive
     openshot-qt
-    natron
+    #natron # error: '::Effect' has not been declared
   ];
 }

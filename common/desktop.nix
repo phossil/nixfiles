@@ -20,7 +20,8 @@
       LC_TIME = "en_US.UTF-8";
     };
     inputMethod = {
-      enabled = "ibus";
+      enable = true;
+      type = "ibus";
       ibus.engines = with pkgs.ibus-engines; [
         uniemoji
         mozc
@@ -30,7 +31,6 @@
   };
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

@@ -50,7 +50,7 @@
     # largest collection
     noto-fonts
     # chinese, japanese, and korean
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     # emojis, anta baka
     noto-fonts-emoji
     # no idea what's in this one but ok

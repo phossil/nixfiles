@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  #temporary-lem-flake,
   ...
 }:
 
@@ -45,8 +44,6 @@
     unipicker
     uniscribe
     mediamtx
-    # when will this be added to nixpkgs ? q q
-    #temporary-lem-flake.packages.${system}.default
     kiln
     ncgopher
     noteshrink

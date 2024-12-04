@@ -69,10 +69,6 @@
   # Define your hostname.
   networking.hostName = "Gem-LifeBook";
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -85,5 +81,6 @@
   #system.stateVersion = "22.11"; # Did you read the comment?
   #system.stateVersion = "23.05"; # Did you read the comment?
   #system.stateVersion = "23.11"; # Did you read the comment?
-  system.stateVersion = "24.05"; # Did you read the comment?
+  #system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }
