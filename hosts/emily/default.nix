@@ -35,33 +35,27 @@
   # mount options for btrfs subvolumes
   # pls check the arch wiki's page on btrfs
   fileSystems."/".options = [
-    "defaults"
     # i want to preserve my ssd TwT
     "lazytime"
   ];
   fileSystems."/nix".options = [
-    "defaults"
     # also helps preserve ssd
     "noatime"
     "compress-force=zstd:6"
   ];
   fileSystems."/home".options = [
-    "defaults"
     "lazytime"
     "compress-force=zstd:6"
   ];
   fileSystems."/var/cache".options = [
-    "defaults"
     "lazytime"
   ];
   fileSystems."/var/log".options = [
-    "defaults"
     "noatime"
     "lazytime"
     "compress-force=zstd:6"
   ];
   fileSystems."/var/tmp".options = [
-    "defaults"
     "lazytime"
   ];
 

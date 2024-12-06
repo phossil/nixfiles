@@ -30,11 +30,6 @@
       url = "github:phossil/nixflake-cuarzo";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # vivaldi but firefox
-    zen-browser-flake = {
-      url = "github:phossil/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs =
     {
@@ -49,7 +44,6 @@
       icicle,
       nixos-cosmic,
       nixflake-cuarzo,
-      zen-browser-flake,
     # `@attrs` is required for third-party flakes, maybe ... idk TwT
     }@attrs:
     let
@@ -65,39 +59,40 @@
     {
       # my main devices are defined here
       nixosConfigurations = {
-        /* offline indefinitely
-        Gem-JankPro = lib.nixosSystem {
-          inherit system;
-          # required for for settings and packages not found in nixpkgs
-          specialArgs = attrs;
+        /*
+          offline indefinitely
+          Gem-JankPro = lib.nixosSystem {
+            inherit system;
+            # required for for settings and packages not found in nixpkgs
+            specialArgs = attrs;
 
-          # the real config files :3
-          modules = [
-            ./hosts/jank-pro
-            ./users/phossil.nix
-            ./common
-            ./common/cups.nix
-            ./common/desktop.nix
-            ./common/fs-support.nix
-            ./common/lomiri.nix
-            ./common/plasma.nix
-            ./common/plymouth.nix
-            ./common/shell.nix
-            ./common/user-input.nix
-            ./common/virtualization.nix
-            ./package-sets
-            ./package-sets/creative.nix
-            ./package-sets/dump-cli.nix
-            ./package-sets/dump-gui.nix
-            ./package-sets/essentials.nix
-            ./package-sets/fonts.nix
-            ./package-sets/fun.nix
-            ./package-sets/gayming.nix
-            ./package-sets/lsp.nix
-            ./package-sets/media.nix
-            ./package-sets/themes.nix
-          ];
-        };
+            # the real config files :3
+            modules = [
+              ./hosts/jank-pro
+              ./users/phossil.nix
+              ./common
+              ./common/cups.nix
+              ./common/desktop.nix
+              ./common/fs-support.nix
+              ./common/lomiri.nix
+              ./common/plasma.nix
+              ./common/plymouth.nix
+              ./common/shell.nix
+              ./common/user-input.nix
+              ./common/virtualization.nix
+              ./package-sets
+              ./package-sets/creative.nix
+              ./package-sets/dump-cli.nix
+              ./package-sets/dump-gui.nix
+              ./package-sets/essentials.nix
+              ./package-sets/fonts.nix
+              ./package-sets/fun.nix
+              ./package-sets/gayming.nix
+              ./package-sets/lsp.nix
+              ./package-sets/media.nix
+              ./package-sets/themes.nix
+            ];
+          };
         */
         # i need a darla too :>
         Gem-Emily = lib.nixosSystem {
@@ -149,17 +144,17 @@
             ./package-sets/creative.nix
           ];
         };
-          Gem-ASwitch = lib.nixosSystem {
-            inherit system;
-            modules = [
-              ./hosts/aswitch
-              ./users/phossil.nix
-              ./common
-              ./common/plasma.nix
-              ./common/shell.nix
-              ./package-sets
-            ];
-          };
+        Gem-ASwitch = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/aswitch
+            ./users/phossil.nix
+            ./common
+            ./common/plasma.nix
+            ./common/shell.nix
+            ./package-sets
+          ];
+        };
         /*
           inaccessible and offline indefinitely
           # golden laptop :o

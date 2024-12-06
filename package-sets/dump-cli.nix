@@ -63,5 +63,6 @@
     ripunzip # unzip but in rust
     runzip # file name encoding conversion within zip files
     squashfs-tools-ng # tar2sqfs is neato :>
+    nix-query-tree-viewer
   ];
 }

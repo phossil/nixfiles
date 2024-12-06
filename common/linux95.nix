@@ -10,7 +10,6 @@
   nixpkgs = {
     overlays = [
       (final: prev: {
-        # temporary override until 6.7 is officially released
         linuxPackages_testing = pkgs.linuxPackagesFor (
           pkgs.linux_testing.override {
             structuredExtraConfig = with lib.kernel; {

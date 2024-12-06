@@ -4,7 +4,6 @@
   nix-software-center,
   nixos-conf-editor,
   icicle,
-  zen-browser-flake,
   lem,
   ...
 }:
@@ -16,7 +15,7 @@
     plotinus.enable = true;
     # curse you, alcohol
     cdemu = {
-      #enable = true; # re-enable when vhba is updated for linux 6.11
+      enable = true;
       group = "phossil";
     };
     # give ff super powers >:D
@@ -73,7 +72,7 @@
     sigil
     sqlitebrowser
     anki
-    kleopatra
+    kdePackages.kleopatra
     testdisk-qt
     kiwix
     #mkchromecast # youtube-dl is unmaintained
@@ -82,7 +81,7 @@
     lagrange
     osdlyrics
     devede
-    kalzium
+    kdePackages.kalzium
     fiji
     parsec-bin
     moonlight-qt
@@ -101,7 +100,6 @@
     nasc
     ripes
     warp
-    nix-query-tree-viewer
     wike
     junction
     emblem
@@ -134,7 +132,8 @@
     ted
     cantor
     wxmaxima
-    zen-browser-flake.packages.${system}.specific
+    # see github.com/NixOS/nixpkgs/pull/347222#issuecomment-2508814428
+    #zen-browser-flake.packages.${system}.specific
     openrefine
     lem.packages.${system}.lem-sdl2
     coppwr # qpwgraph but rust

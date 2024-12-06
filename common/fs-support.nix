@@ -11,5 +11,5 @@
   ];
   environment.systemPackages = with pkgs; [ hfsprogs ];
   # bc bcachefs q_q
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_11;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
 }

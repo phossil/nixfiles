@@ -82,7 +82,7 @@
     dconf-editor
     okteta
     krename
-    #qbittorrent # `Package ‘qbittorrent-4.6.4’ in` ... `/pkgs/applications/networking/p2p/qbittorrent/default.nix:93 is marked as insecure, refusing to evaluate.`
+    qbittorrent
     gimp
     hexchat
     qview
@@ -90,7 +90,7 @@
     activitywatch
     font-manager
     #nheko # `Package ‘olm-3.2.16’ in` ... `/pkgs/development/libraries/olm/default.nix:26 is marked as insecure, refusing to evaluate.`
-    #peazip # install: cannot stat 'dev/peazip': No such file or directory
+    peazip
     revolt-desktop
     textadept
     xfe
@@ -120,7 +120,7 @@
     translatelocally-models.en-de-base
     translatelocally-models.en-es-tiny
     # i somehow forget to add this every time TwT
-    filelight
-    skanlite
+    kdePackages.filelight
+    kdePackages.skanlite
   ];
 }

@@ -27,7 +27,7 @@
     #minecraft # broken
     mangohud
     taisei
-    #itch # error: cannot download source from any mirror
+    itch
     jstest-gtk
     #grapejuice # removed , see https://github.com/NixOS/nixpkgs/pull/336748
     unciv

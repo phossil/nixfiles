@@ -1,10 +1,22 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  nixos-cosmic,
+  ...
+}:
 
 {
   # gimme that nix command goodness
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
+
+  # use prebuilt binaries of cosmic when possible
+  # added to enable building the bootable image from any host
+  nix.settings = {
+    substituters = [ "https://cosmic.cachix.org/" ];
+    trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+  };
 
   # use NetworkManager for managing networks ... it's in the name
   networking.networkmanager.enable = true;
