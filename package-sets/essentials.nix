@@ -90,7 +90,7 @@
     activitywatch
     font-manager
     #nheko # `Package ‘olm-3.2.16’ in` ... `/pkgs/development/libraries/olm/default.nix:26 is marked as insecure, refusing to evaluate.`
-    peazip
+    #peazip # `Package ‘archiver-3.5.1’ in` ... `/pkgs/by-name/ar/archiver/package.nix:31 is marked as insecure, refusing to evaluate.`
     revolt-desktop
     textadept
     xfe
