@@ -31,6 +31,10 @@
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/A654-BAB1";
     fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   swapDevices = [ { device = "/dev/disk/by-uuid/c629a9d2-81fa-46ac-9d08-e361a6405c63"; } ];

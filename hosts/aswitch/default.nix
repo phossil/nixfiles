@@ -37,7 +37,7 @@
       # all the intel stuffs
       intel-media-sdk
       level-zero
-      mkl
+      #mkl # i forgot why i installed this
     ];
     # enable 32-bit graphics support because Steam
     enable32Bit = true;
@@ -96,18 +96,19 @@
     };
   };
   # streaming server !!! >:D
-  services.mediamtx = {
-    enable = true;
-    settings = {
-      paths = {
-        "live.stream" = { };
-        obs = {
-          runOnReady = "ffmpeg -hwaccel_output_format qsv -i rtsp://localhost:$RTSP_PORT/$RTSP_PATH -c:v h264_qsv -f rtsp rtsp://localhost:$RTSP_PORT/live.stream";
-          runOnReadyRestart = "yes";
-        };
-      };
-    };
-  };
+  ## `ERR: json: cannot unmarshal string into Go struct field alias.paths of type bool`
+  #services.mediamtx = {
+  #  enable = true;
+  #  settings = {
+  #    paths = {
+  #      "live.stream" = { };
+  #      obs = {
+  #        runOnReady = "ffmpeg -hwaccel_output_format qsv -i rtsp://localhost:$RTSP_PORT/$RTSP_PATH -c:v h264_qsv -f rtsp rtsp://localhost:$RTSP_PORT/live.stream";
+  #        runOnReadyRestart = "yes";
+  #      };
+  #    };
+  #  };
+  #};
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -117,8 +118,8 @@
   networking.firewall = {
     allowedTCPPorts = [
       4533 # navidrome
-      1935 # mediamtx
-      8554 # mediamtx
+      #1935 # mediamtx
+      #8554 # mediamtx
     ];
   };
 
