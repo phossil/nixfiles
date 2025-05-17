@@ -146,13 +146,27 @@
         };
         Gem-ASwitch = lib.nixosSystem {
           inherit system;
+          # required for for settings and packages not found in nixpkgs
+          specialArgs = attrs;
+
           modules = [
             ./hosts/aswitch
             ./users/phossil.nix
             ./common
+            ./common/desktop.nix
             ./common/plasma.nix
+            ./common/plymouth.nix
             ./common/shell.nix
+            ./common/user-input.nix
             ./package-sets
+            ./package-sets/dump-cli.nix
+            ./package-sets/dump-gui.nix
+            ./package-sets/essentials.nix
+            ./package-sets/fonts.nix
+            ./package-sets/fun.nix
+            ./package-sets/lsp.nix
+            ./package-sets/media.nix
+            ./package-sets/themes.nix
           ];
         };
         /*
@@ -188,6 +202,17 @@
             ];
           };
         */
+        Gem-9020m = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/9020m
+            ./users/phossil.nix
+            ./common
+            ./common/shell.nix
+            ./common/user-input.nix
+            ./package-sets
+          ];
+        };
       };
 
       packages = {

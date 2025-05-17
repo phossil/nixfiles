@@ -3,7 +3,8 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 # edited by phossil
-# 2023-07-14
+# 2025-05-16
+# Acer Switch SA5-271
 
 { config, pkgs, ... }:
 
@@ -13,15 +14,58 @@
     ./hardware-configuration.nix
   ];
 
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # embed kernel modules into initrd
+  boot.initrd.kernelModules = [
+    # intel graphics NOW
+    "intel_agp"
+    "i915"
+  ];
   # kernel command line
   boot.kernelParams = [
     # make Intel Graphics go fast, even for VMs
-    "i915.fastboot=1"
     "i915.enable_fbc=1"
     "i915.enable_gvt=1"
     # rescue me !!!
     "sysrq_always_enabled"
   ];
+
+  # mount options for btrfs subvolumes
+  # pls check the arch wiki's page on btrfs
+  fileSystems."/".options = [
+    # i want to preserve my ssd TwT
+    "lazytime"
+  ];
+  fileSystems."/home".options = [
+    "lazytime"
+    "compress-force=zstd:6"
+  ];
+  fileSystems."/nix".options = [
+    # also helps preserve ssd
+    "noatime"
+    "compress-force=zstd:6"
+  ];
+  fileSystems."/srv".options = [
+    "lazytime"
+    "compress-force=zstd:6"
+  ];
+
+  fileSystems."/var/cache".options = [
+    "lazytime"
+  ];
+  fileSystems."/var/log".options = [
+    "noatime"
+    "lazytime"
+    "compress-force=zstd:6"
+  ];
+  fileSystems."/var/tmp".options = [
+    "lazytime"
+  ];
+
+  networking.hostName = "Gem-ASwitch"; # Define your hostname.
 
   # intel graphics
   hardware.graphics = {
@@ -36,91 +80,17 @@
       intel-compute-runtime
       # all the intel stuffs
       intel-media-sdk
-      level-zero
-      #mkl # i forgot why i installed this
+      #level-zero # i forgot what this was for qwq
+      #mkl # same as `level-zero` TwT
     ];
     # enable 32-bit graphics support because Steam
     enable32Bit = true;
   };
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  networking.hostName = "Gem-ASwitch"; # Define your hostname.
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # required for configuring syncthing "locally"
-    waypipe
-    midori
-  ];
-
-  # List services that you want to enable:
-
-  # syncthing server ? :o
-  services.syncthing.enable = true;
-
-  # music server ? owo
-  services.navidrome = {
+  # might be needed for `ssh-agent` , i forgor qwq
+  programs.gnupg.agent = {
     enable = true;
-    settings = {
-      Address = "0.0.0.0";
-      MusicFolder = "/var/music";
-    };
-  };
-  # streaming server !!! >:D
-  ## `ERR: json: cannot unmarshal string into Go struct field alias.paths of type bool`
-  #services.mediamtx = {
-  #  enable = true;
-  #  settings = {
-  #    paths = {
-  #      "live.stream" = { };
-  #      obs = {
-  #        runOnReady = "ffmpeg -hwaccel_output_format qsv -i rtsp://localhost:$RTSP_PORT/$RTSP_PATH -c:v h264_qsv -f rtsp rtsp://localhost:$RTSP_PORT/live.stream";
-  #        runOnReadyRestart = "yes";
-  #      };
-  #    };
-  #  };
-  #};
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  networking.firewall = {
-    allowedTCPPorts = [
-      4533 # navidrome
-      #1935 # mediamtx
-      #8554 # mediamtx
-    ];
+    enableSSHSupport = true;
   };
 
   # This value determines the NixOS release from which the default

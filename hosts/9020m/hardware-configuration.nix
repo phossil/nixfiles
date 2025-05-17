@@ -16,23 +16,22 @@
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"
+    "ehci_pci"
     "ahci"
-    "usbhid"
     "sd_mod"
-    "rtsx_usb_sdmmc"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/dbbc91b6-69b1-4b33-9aab-39a9dd658d7f";
+    device = "/dev/disk/by-uuid/6a1a08bf-bdeb-4d25-94a6-76aa36c70905";
     fsType = "btrfs";
     options = [ "subvol=@" ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F96F-2B79";
+    device = "/dev/disk/by-uuid/2DCC-479C";
     fsType = "vfat";
     options = [
       "fmask=0077"
@@ -41,49 +40,49 @@
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/dbbc91b6-69b1-4b33-9aab-39a9dd658d7f";
+    device = "/dev/disk/by-uuid/6a1a08bf-bdeb-4d25-94a6-76aa36c70905";
     fsType = "btrfs";
     options = [ "subvol=@home" ];
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/dbbc91b6-69b1-4b33-9aab-39a9dd658d7f";
+    device = "/dev/disk/by-uuid/6a1a08bf-bdeb-4d25-94a6-76aa36c70905";
     fsType = "btrfs";
     options = [ "subvol=@nix" ];
   };
 
   fileSystems."/root" = {
-    device = "/dev/disk/by-uuid/dbbc91b6-69b1-4b33-9aab-39a9dd658d7f";
+    device = "/dev/disk/by-uuid/6a1a08bf-bdeb-4d25-94a6-76aa36c70905";
     fsType = "btrfs";
     options = [ "subvol=@root" ];
   };
 
   fileSystems."/srv" = {
-    device = "/dev/disk/by-uuid/dbbc91b6-69b1-4b33-9aab-39a9dd658d7f";
+    device = "/dev/disk/by-uuid/6a1a08bf-bdeb-4d25-94a6-76aa36c70905";
     fsType = "btrfs";
     options = [ "subvol=@srv" ];
   };
 
   fileSystems."/var/cache" = {
-    device = "/dev/disk/by-uuid/dbbc91b6-69b1-4b33-9aab-39a9dd658d7f";
+    device = "/dev/disk/by-uuid/6a1a08bf-bdeb-4d25-94a6-76aa36c70905";
     fsType = "btrfs";
     options = [ "subvol=@cache" ];
   };
 
   fileSystems."/var/log" = {
-    device = "/dev/disk/by-uuid/dbbc91b6-69b1-4b33-9aab-39a9dd658d7f";
+    device = "/dev/disk/by-uuid/6a1a08bf-bdeb-4d25-94a6-76aa36c70905";
     fsType = "btrfs";
     options = [ "subvol=@log" ];
   };
 
   fileSystems."/var/tmp" = {
-    device = "/dev/disk/by-uuid/dbbc91b6-69b1-4b33-9aab-39a9dd658d7f";
+    device = "/dev/disk/by-uuid/6a1a08bf-bdeb-4d25-94a6-76aa36c70905";
     fsType = "btrfs";
     options = [ "subvol=@tmp" ];
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/b4adbf8f-6931-40fe-8bf1-3c767834b28f"; }
+    { device = "/dev/disk/by-uuid/8d424dff-ae1b-498e-93d5-0d6160045d25"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -91,7 +90,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
