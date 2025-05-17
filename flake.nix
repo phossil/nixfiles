@@ -95,6 +95,7 @@
           };
         */
         # i need a darla too :>
+        ## broken :c
         Gem-Emily = lib.nixosSystem {
           inherit system;
           # required for for settings and packages not found in nixpkgs

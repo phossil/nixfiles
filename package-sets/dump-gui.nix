@@ -110,18 +110,18 @@
     surge
     fractal
     jedit
-    nix-software-center.packages.${system}.nix-software-center
+    #nix-software-center.packages.${system}.nix-software-center # long build time
     gnome-characters
     labwc
     unityhub
     zathura
     remmina
-    rustdesk
+    #rustdesk # long build time
     protonvpn-gui
     szyszka
     czkawka
     cage
-    nixos-conf-editor.packages.${system}.nixos-conf-editor
+    #nixos-conf-editor.packages.${system}.nixos-conf-editor # long build time
     #icicle.packages.${system}.icicle # fatal: unable to access 'https://gitlab.gnome.org/vlinkz/vte4-rs/': The requested URL returned error: 503
     convertall
     f3d
@@ -133,7 +133,7 @@
     cantor
     wxmaxima
     # see github.com/NixOS/nixpkgs/pull/347222#issuecomment-2508814428
-    #zen-browser-flake.packages.${system}.specific
+    #zen-browser-flake.packages.${system}.specific # sketchy security practices
     openrefine
     lem.packages.${system}.lem-sdl2
     coppwr # qpwgraph but rust

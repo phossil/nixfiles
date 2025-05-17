@@ -10,6 +10,8 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
+  # yummers :P
+  nix.package = pkgs.lix;
 
   # use prebuilt binaries of cosmic when possible
   # added to enable building the bootable image from any host
