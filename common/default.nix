@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  nixos-cosmic,
   ...
 }:
 
@@ -12,13 +11,6 @@
   '';
   # yummers :P
   nix.package = pkgs.lix;
-
-  # use prebuilt binaries of cosmic when possible
-  # added to enable building the bootable image from any host
-  nix.settings = {
-    substituters = [ "https://cosmic.cachix.org/" ];
-    trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-  };
 
   # use NetworkManager for managing networks ... it's in the name
   networking.networkmanager.enable = true;

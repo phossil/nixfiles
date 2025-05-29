@@ -69,7 +69,7 @@
     cpu-x
     pavucontrol
     waypipe
-    ghostwriter
+    kdePackages.ghostwriter
     discordchatexporter-cli
     kdePackages.breeze-icons
     crow-translate

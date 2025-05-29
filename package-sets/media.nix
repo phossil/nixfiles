@@ -21,7 +21,7 @@
     jamesdsp
     helio-workstation
     shntool
-    imgbrd-grabber
+    #imgbrd-grabber # build failure
     flac
     handbrake
     hydrus

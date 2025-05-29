@@ -20,9 +20,9 @@
     catimg
     yaft
     translate-shell
-    fbv
+    #fbv # build failure
     ioping
-    dstat
+    dool
     hilbish
     scsh
     antiword

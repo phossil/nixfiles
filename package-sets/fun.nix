@@ -8,7 +8,7 @@
   environment.systemPackages = with pkgs; [
     cli-visualizer
     cava
-    projectm
+    projectm-sdl-cpp
     glava
     neo-cowsay
     nicotine-plus

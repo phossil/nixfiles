@@ -68,7 +68,7 @@
     vulkan-tools
     clinfo
     wayland-utils
-    ventoy
+    #ventoy `error: Package ‘ventoy-1.1.05’ in` ... `/pkgs/by-name/ve/ventoy/package.nix:200 is marked as insecure, refusing to evaluate.`
     nix-index
     nix-tree
     dutree

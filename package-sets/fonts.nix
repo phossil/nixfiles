@@ -98,7 +98,7 @@
     # more random fonts
     cooper-hewitt
     unscii
-    kreative-square-fonts
+    kreative-square
     comic-neue
     geist-font
     commit-mono

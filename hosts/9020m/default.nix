@@ -61,7 +61,7 @@
   hardware.graphics.enable = true;
   environment.systemPackages = with pkgs; [
     waypipe
-    midori
+    #midori # `error: 'midori' original project has been abandonned upstream and the package was broken for a while in nixpkgs`
   ];
 
   # List services that you want to enable:

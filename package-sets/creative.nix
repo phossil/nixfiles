@@ -71,7 +71,7 @@
     luppp
     sonic-lineup
     openutau
-    kwave
+    kdePackages.kwave
     furnace
     lmms
     polyphone
@@ -132,7 +132,7 @@
     olive-editor
     flowblade
     cinelerra
-    kdenlive
+    kdePackages.kdenlive
     openshot-qt
     #natron # error: '::Effect' has not been declared
   ];

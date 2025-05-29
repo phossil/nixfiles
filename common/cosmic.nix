@@ -2,14 +2,10 @@
   config,
   libs,
   pkgs,
-  nixos-cosmic,
   ...
 }:
 
 {
-  # import nixos module from the cosmic flake
-  imports = [ nixos-cosmic.nixosModules.default ];
-
   # main setting
   services.desktopManager.cosmic.enable = true;
 

@@ -2,7 +2,7 @@
   description = "phossil's nixos flake collection";
   inputs = {
     # the most important flake in nixos
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     # generates nixos images (useful for creating rescue iso's)
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -20,11 +20,6 @@
     nixos-conf-editor.url = "github:snowfallorg/nixos-conf-editor";
     # not calamares, huhh ???
     icicle.url = "github:snowfallorg/icicle";
-    # system76's cosmic desktop
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # cool new wayland library :o
     nixflake-cuarzo = {
       url = "github:phossil/nixflake-cuarzo";
@@ -42,7 +37,6 @@
       #nixpkgs-unstable,
       nixos-conf-editor,
       icicle,
-      nixos-cosmic,
       nixflake-cuarzo,
     # `@attrs` is required for third-party flakes, maybe ... idk TwT
     }@attrs:

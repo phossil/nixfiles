@@ -97,7 +97,7 @@
     d-spy
     regextester
     sysprof
-    nasc
+    #nasc # build failure
     ripes
     warp
     wike
