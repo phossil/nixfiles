@@ -109,7 +109,7 @@
             ./common/shell.nix
             ./common/user-input.nix
             ./common/virtualization.nix
-            ./common/wayland-sessions.nix
+            #./common/wayland-sessions.nix
             ./package-sets
             ./package-sets/creative.nix
             ./package-sets/dump-cli.nix
@@ -149,10 +149,12 @@
             ./users/phossil.nix
             ./common
             ./common/desktop.nix
+            ./common/fs-support.nix
             ./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
+            ./common/virtualization.nix
             ./package-sets
             ./package-sets/dump-cli.nix
             ./package-sets/dump-gui.nix

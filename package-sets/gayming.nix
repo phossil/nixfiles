@@ -51,7 +51,7 @@
     freeciv
     xonotic
     # pet the froge :>
-    frogatto
+    #frogatto
     # kiki, my beloved ❤
     superTuxKart
     # racing gayms
