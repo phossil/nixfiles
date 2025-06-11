@@ -7,7 +7,7 @@
 
   # this is absolutely mandatory, i swear
   programs.starship.enable = true;
-  programs.starship.settings = import ./starship.toml.nix;
+  programs.starship.settings = lib.importTOML ./starship.toml;
 
   # i want my time stamps
   services.atuin.enable = true;

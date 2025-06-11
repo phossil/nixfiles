@@ -3,41 +3,26 @@
   inputs = {
     # the most important flake in nixos
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    # generates nixos images (useful for creating rescue iso's)
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # gnome software center but for nixpkgs
     nix-software-center.url = "github:snowfallorg/nix-software-center";
     # personal flake with a bunch of random stuff
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # the new common lisp IDE
     lem.url = "github:lem-project/lem";
-    # `nixpkgs` but rolling
-    #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # an app for editing nixos configs ??? :O
     nixos-conf-editor.url = "github:snowfallorg/nixos-conf-editor";
     # not calamares, huhh ???
     icicle.url = "github:snowfallorg/icicle";
-    # cool new wayland library :o
-    nixflake-cuarzo = {
-      url = "github:phossil/nixflake-cuarzo";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs =
     {
       self,
       nixpkgs,
-      nixos-generators,
       nix-software-center,
       nixflake-misc,
       lem,
-      #nixpkgs-unstable,
       nixos-conf-editor,
       icicle,
-      nixflake-cuarzo,
     # `@attrs` is required for third-party flakes, maybe ... idk TwT
     }@attrs:
     let
@@ -68,7 +53,6 @@
               ./common/cups.nix
               ./common/desktop.nix
               ./common/fs-support.nix
-              ./common/lomiri.nix
               ./common/plasma.nix
               ./common/plymouth.nix
               ./common/shell.nix
@@ -99,17 +83,14 @@
             ./hosts/emily
             ./users/phossil.nix
             ./common
-            #./common/cosmic.nix
             ./common/cups.nix
             ./common/desktop.nix
             ./common/fs-support.nix
-            #./common/lomiri.nix
             ./common/plasma.nix
             ./common/plymouth.nix
             ./common/shell.nix
             ./common/user-input.nix
             ./common/virtualization.nix
-            #./common/wayland-sessions.nix
             ./package-sets
             ./package-sets/creative.nix
             ./package-sets/dump-cli.nix
@@ -209,45 +190,6 @@
             ./common/user-input.nix
             ./package-sets
           ];
-        };
-      };
-
-      packages = {
-        # some installation images made with nixos-generators
-        # naming scheme: [image format]-[kernel]-[user interface]
-
-        x86_64-linux = {
-          # iso image with bcachefs-enabled kernel and cosmic for x86_64-based systems
-          iso-bcachefs-cosmic = nixos-generators.nixosGenerate {
-            inherit system;
-            # required by `package-sets/fonts` for some yet-to-be-merged fonts
-            specialArgs = attrs;
-
-            modules = [
-              ({
-                # use zstd compression when generating the squashfs image
-                isoImage.squashfsCompression = "zstd -Xcompression-level 6";
-
-                # i don't use zfs and i don't plan on it any time soon,
-                # especially if i'm forced to use an older kernel for an
-                # out-of-tree kernel module TWT
-                boot.supportedFilesystems.zfs = lib.mkForce false;
-                # disable conflicting options
-                networking.wireless.enable = false;
-                services.openssh.settings.PermitRootLogin = lib.mkForce "no";
-              })
-              ./common
-              ./common/cosmic.nix
-              ./common/desktop.nix
-              ./common/fs-support.nix
-              ./common/plymouth.nix
-              ./common/shell.nix
-              ./common/user-input.nix
-              ./package-sets
-              ./package-sets/fonts.nix
-            ];
-            format = "install-iso";
-          };
         };
       };
 

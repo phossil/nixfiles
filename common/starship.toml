@@ -1,0 +1,34 @@
+# don't print a new line at the start of the prompt
+add_newline = false
+
+# always display username
+[username]
+show_always = true
+
+# display if task on exit is yippee or umu
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[✗](bold red)"
+
+# don't print a new line before the  error and success symbols (y are u doing that...)
+[line_break]
+disabled = true
+
+# always display time
+[time]
+disabled = false
+
+# "bold red" style when battery capacity is between 0% and 10%
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+# "bold yellow" style when battery capacity is between 10% and 30%
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+
+# "bold yellow" style when battery capacity is between 10% and 30%
+[[battery.display]]
+threshold = 50
+style = "bold green"
