@@ -1,9 +1,8 @@
 { lib, pkgs, ... }:
 
 {
-  # install zsh with autosuggestions
-  programs.zsh.enable = true;
-  programs.zsh.autosuggestions.enable = true;
+  # install fish
+  programs.fish.enable = true;
 
   # this is absolutely mandatory, i swear
   programs.starship.enable = true;
@@ -13,7 +12,12 @@
   services.atuin.enable = true;
   # 128 * 1024 makes sense, right ?
   services.atuin.maxHistoryLength = 131072;
-  # the above only enables the server, a client instance is needed
-  # TODO: add to global zshrc
-  environment.systemPackages = [ pkgs.atuin ];
+
+  environment.systemPackages = with pkgs; [
+    # the above only enables the server, a client instance is needed
+    # TODO: add to global fish config
+    atuin
+    # add the `!!` function to fish , like bash and zsh
+    fishPlugins.bang-bang
+  ];
 }
