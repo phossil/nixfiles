@@ -64,5 +64,8 @@
     runzip # file name encoding conversion within zip files
     squashfs-tools-ng # tar2sqfs is neato :>
     nix-query-tree-viewer
+    vips # imagemagick but better
+    libva-utils # `vainfo` , check hw video codec support
+    atanks # smol game :>
   ];
 }

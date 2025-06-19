@@ -138,5 +138,10 @@
     lem.packages.${system}.lem-sdl2
     coppwr # qpwgraph but rust
     pwvucontrol # pavucontrol but for pipewire
+    emacsNativeComp # another IDE for common lisp qwq
+    mpd # music player
+    listenbrainz-mpd # good listenbrainz client
+    #euphonica # pretty mpd client
+    mpd-discord-rpc # mpd activity status for discord
   ];
 }
