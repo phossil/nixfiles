@@ -8,7 +8,7 @@
     # personal flake with a bunch of random stuff
     nixflake-misc.url = "github:phossil/nixflake-misc";
     # the new common lisp IDE
-    lem.url = "github:lem-project/lem";
+    lem.url = "github:lem-project/lem/v2.3.0";
     # an app for editing nixos configs ??? :O
     nixos-conf-editor.url = "github:snowfallorg/nixos-conf-editor";
     # not calamares, huhh ???
